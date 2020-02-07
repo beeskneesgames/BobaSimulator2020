@@ -8,17 +8,18 @@ public class BobaSpawner : MonoBehaviour {
 
     float timeSinceLastBoba = 0.0f;
 
-    void Start() {
-        for (int i = 0; i < 1; i++) {
-            Instantiate(bobaPrefab);
-        }
-    }
-
     void Update() {
         timeSinceLastBoba += Time.deltaTime;
 
         if (timeSinceLastBoba > interval) {
-            Instantiate(bobaPrefab);
+            GameObject boba = Instantiate(bobaPrefab);
+
+            boba.transform.position = new Vector3(
+                Random.Range(-10.0f, 10.0f),
+                transform.position.y,
+                transform.position.z
+            );
+
             timeSinceLastBoba = 0.0f;
         }
     }
