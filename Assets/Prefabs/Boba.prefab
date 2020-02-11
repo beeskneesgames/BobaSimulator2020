@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8307884831947455403}
   - component: {fileID: 2134530666737532811}
   - component: {fileID: 1252243512829311430}
+  - component: {fileID: 8581486434208527861}
   m_Layer: 0
   m_Name: Boba
   m_TagString: Untagged
@@ -110,3 +111,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &8581486434208527861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7211006325878908688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de63cd5653a70457f97321f7e3deee78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
