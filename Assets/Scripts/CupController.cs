@@ -12,9 +12,6 @@ public class CupController : MonoBehaviour {
     void Update() {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        Debug.Log($"mouse position: {mousePosition}");
-        Debug.Log($"input mouse position: {Input.mousePosition}");
-
         transform.position = new Vector3(
             mousePosition.x,
             transform.position.y,
