@@ -7,7 +7,7 @@ public class BobaCatcher : MonoBehaviour {
         Boba boba = other.GetComponent<Boba>();
 
         if (boba != null) {
-            boba.FallIntoCup();
+            boba.FallIntoCup(GetComponentInParent<CupController>());
         }
     }
 }

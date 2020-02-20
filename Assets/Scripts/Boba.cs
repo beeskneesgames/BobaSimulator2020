@@ -3,11 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Boba : MonoBehaviour {
-    public void FallIntoCup() {
-        Debug.Log("Here I go!");
-        // Reparent into cup
-        // Delete rigidbody
-        // Manually fall down (and inward sometimes) by updating position until
-        // it hits the bottom collider.
+    private bool manuallyFalling;
+
+    private void Update() {
+        if (manuallyFalling) {
+            // TODO: Fix boba fall speed
+            transform.position = new Vector3(
+                transform.position.x,
+                transform.position.y - Time.deltaTime,
+                transform.position.z
+            );
+        }
+    }
+
+    public void FallIntoCup(CupController cup) {
+        manuallyFalling = true;
+        transform.parent = cup.transform;
+
+        Destroy(GetComponent<Rigidbody>());
     }
 }
