@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class Boba : MonoBehaviour {
     private bool manuallyFalling;
+    private Vector3 targetPosition;
 
     private void Update() {
         if (manuallyFalling) {
-            // TODO: Fix boba fall speed
-            transform.position = new Vector3(
-                transform.position.x,
-                transform.position.y - Time.deltaTime,
-                transform.position.z
-            );
+            // TODO: lerp to targetPosition
+            transform.localPosition = targetPosition;
+            manuallyFalling = false;
         }
     }
 
     public void FallIntoCup(CupController cup) {
         manuallyFalling = true;
-        transform.parent = cup.transform;
+        BobaPlacer bobaPlacer = cup.GetComponentInChildren<BobaPlacer>();
+        transform.parent = bobaPlacer.transform;
 
         Destroy(GetComponent<Rigidbody>());
+        GetComponent<Collider>().enabled = false;
+
+        targetPosition = bobaPlacer.PopPosition();
     }
 }

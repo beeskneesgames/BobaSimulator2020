@@ -15,8 +15,8 @@ public class BobaSpawner : MonoBehaviour {
             GameObject boba = Instantiate(bobaPrefab);
 
             boba.transform.position = new Vector3(
-                Random.Range(-10.0f, 10.0f),
-                //transform.position.x,
+                //Random.Range(-10.0f, 10.0f),
+                transform.position.x,
                 transform.position.y,
                 transform.position.z
             );
