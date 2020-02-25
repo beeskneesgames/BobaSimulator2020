@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CupController : MonoBehaviour {
-    // Start is called before the first frame update
-    void Start() {
+    private void Update() {
+        if (PauseMenu.isPaused) {
+            return;
+        }
 
-    }
-
-    // Update is called once per frame
-    void Update() {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         transform.position = new Vector3(
