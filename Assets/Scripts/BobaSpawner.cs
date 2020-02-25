@@ -13,10 +13,10 @@ public class BobaSpawner : MonoBehaviour {
 
         if (timeSinceLastBoba > interval) {
             GameObject boba = Instantiate(bobaPrefab);
+            float xPosition = GlobalVariables.isDebug ? transform.position.x : Random.Range(-10.0f, 10.0f);
 
             boba.transform.position = new Vector3(
-                //Random.Range(-10.0f, 10.0f),
-                transform.position.x,
+                xPosition,
                 transform.position.y,
                 transform.position.z
             );
