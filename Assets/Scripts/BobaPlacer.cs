@@ -16,8 +16,7 @@ public class BobaPlacer : MonoBehaviour {
     } ;
 
     public Vector3 PopPosition() {
-        // TODO: Randomize positionIndex between 0 and bobaPositions[layerIndex].Count
-        int positionIndex = 0;
+        int positionIndex = Random.Range(0, bobaPositions[layerIndex].Count);
         float xPosition = bobaPositions[layerIndex][positionIndex] * bobaSize;
         float yPosition = (float)layerIndex * bobaSize * 0.85f;
         float zPosition = 0.0f;
