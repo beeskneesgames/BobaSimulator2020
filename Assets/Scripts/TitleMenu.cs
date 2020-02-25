@@ -11,4 +11,8 @@ public class TitleMenu : MonoBehaviour {
     public void ExitGame() {
         Application.Quit();
     }
+
+    public void SetDebug(bool isDebug) {
+        GlobalVariables.isDebug = isDebug;
+    }
 }
