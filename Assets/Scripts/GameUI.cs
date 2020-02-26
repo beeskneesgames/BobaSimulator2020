@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class GameUI : MonoBehaviour {
     public Text bobaCount;
+    public Text timeRemainingText;
 
     private void Start() {
-        if (GlobalVariables.isDebug) {
-            bobaCount.gameObject.SetActive(true);
-        } else {
-            bobaCount.gameObject.SetActive(false);
-        }
+        bobaCount.gameObject.SetActive(GlobalVariables.isDebug);
+        timeRemainingText.gameObject.SetActive(GlobalVariables.isDebug);
     }
 }
