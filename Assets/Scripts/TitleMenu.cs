@@ -8,7 +8,7 @@ public class TitleMenu : MonoBehaviour {
     public Toggle debugToggle;
 
     private void Start() {
-        GlobalVariables.isDebug = debugToggle.isOn;
+        Debugger.Instance.IsOn = debugToggle.isOn;
     }
 
     public void StartGame() {
@@ -20,6 +20,6 @@ public class TitleMenu : MonoBehaviour {
     }
 
     public void SetDebug(bool isDebug) {
-        GlobalVariables.isDebug = isDebug;
+        Debugger.Instance.IsOn = isDebug;
     }
 }
