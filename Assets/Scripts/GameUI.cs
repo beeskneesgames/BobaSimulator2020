@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameUI : MonoBehaviour {
+public class GameUI : MonoBehaviour, IDebuggerListener {
     public Text bobaCount;
     public Text timeRemainingText;
 
     private void Start() {
-        bobaCount.gameObject.SetActive(GlobalVariables.isDebug);
-        timeRemainingText.gameObject.SetActive(GlobalVariables.isDebug);
+        Debugger.Instance.AddListener(this);
+        UpdateVisibilities();
+    }
+
+    public void DebuggerToggled() {
+        UpdateVisibilities();
+    }
+
+    private void UpdateVisibilities() {
+        bobaCount.gameObject.SetActive(Debugger.Instance.IsOn);
+        timeRemainingText.gameObject.SetActive(Debugger.Instance.IsOn);
     }
 }
