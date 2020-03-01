@@ -15,7 +15,7 @@ public class Debugger : MonoBehaviour {
     }
 
     private List<IDebuggerListener> listeners;
-    private bool isOn;
+    private bool isOn = true;
     public bool IsOn {
         get {
             return isOn;
@@ -31,6 +31,8 @@ public class Debugger : MonoBehaviour {
         }
     }
 
+    public PhaseManager phaseManager;
+
     private void Awake() {
         if (instance != null && instance != this) {
             Destroy(gameObject);
@@ -45,6 +47,12 @@ public class Debugger : MonoBehaviour {
     private void Update() {
         if (Input.GetKeyDown(KeyCode.BackQuote)) {
             IsOn = !IsOn;
+        }
+
+        if (IsOn) {
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                phaseManager.SkipPhase();
+            }
         }
     }
 
