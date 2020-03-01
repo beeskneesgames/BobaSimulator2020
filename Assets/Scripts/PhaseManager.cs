@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeManager : MonoBehaviour {
+public class PhaseManager : MonoBehaviour {
     public Text timeRemainingText;
     public float timeRemaining = 10.0f;
     public float TimeRemaining {
