@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PhaseManager : MonoBehaviour {
     public Text timeRemainingText;
-    public float timeRemaining = 10.0f;
+    public float timeRemaining;
     public float TimeRemaining {
         get {
             return timeRemaining;
@@ -24,9 +25,17 @@ public class PhaseManager : MonoBehaviour {
         }
     }
 
+    private void Start() {
+        GetComponent<BobaPhase>().StartPhase();
+    }
+
     private void Update() {
         if (TimeRemaining >= 0.0f) {
             TimeRemaining -= Time.deltaTime;
         }
+    }
+
+    public void PhaseStarted(GamePhase gamePhase) {
+        TimeRemaining = gamePhase.Time;
     }
 }
