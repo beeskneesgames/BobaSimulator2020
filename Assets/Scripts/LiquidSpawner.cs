@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class LiquidSpawner : MonoBehaviour {
     public LiquidStream liquidStreamPrefab;
+    private LiquidStream liquidStream;
 
     private void Start() {
-        Instantiate(liquidStreamPrefab);
+        liquidStream = Instantiate(liquidStreamPrefab);
+    }
+
+    private void OnDisable() {
+        Destroy(liquidStream.gameObject);
     }
 }

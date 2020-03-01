@@ -12,7 +12,7 @@ public class LiquidPhase : GamePhase {
     }
     public override float Time {
         get {
-            return 10.0f;
+            return 2.0f;
         }
     }
 
