@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class LiquidPhase : GamePhase {
     public LiquidSpawner liquidSpawner;
+
+    public override string Name {
+        get {
+            return "Liquid Phase";
+        }
+    }
     public override float Time {
         get {
             return 10.0f;

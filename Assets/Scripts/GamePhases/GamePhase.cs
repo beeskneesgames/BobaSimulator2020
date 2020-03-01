@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class GamePhase : MonoBehaviour {
+    public virtual string Name { get; }
     public virtual float Time { get; }
     private PhaseManager phaseManager;
 

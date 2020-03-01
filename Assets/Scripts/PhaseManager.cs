@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PhaseManager : MonoBehaviour {
+    public Text currentPhaseText;
     public Text timeRemainingText;
     public float timeRemaining;
     public float TimeRemaining {
@@ -46,7 +47,9 @@ public class PhaseManager : MonoBehaviour {
 
     public void PhaseStarted(GamePhase gamePhase) {
         currentPhase = gamePhase;
-        TimeRemaining = gamePhase.Time;
+
+        TimeRemaining = currentPhase.Time;
+        currentPhaseText.text = currentPhase.Name;
     }
 
     public void SkipPhase() {
