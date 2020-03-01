@@ -25,17 +25,22 @@ public class PhaseManager : MonoBehaviour {
         }
     }
 
+    private GamePhase currentPhase;
+
     private void Start() {
         GetComponent<BobaPhase>().StartPhase();
     }
 
     private void Update() {
-        if (TimeRemaining >= 0.0f) {
+        if (TimeRemaining > 0.0f) {
             TimeRemaining -= Time.deltaTime;
+        } else {
+            currentPhase.EndPhase();
         }
     }
 
     public void PhaseStarted(GamePhase gamePhase) {
+        currentPhase = gamePhase;
         TimeRemaining = gamePhase.Time;
     }
 }

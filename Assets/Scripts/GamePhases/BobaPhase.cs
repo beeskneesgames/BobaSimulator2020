@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class BobaPhase : GamePhase {
     public BobaSpawner bobaSpawner;
@@ -11,5 +12,10 @@ public class BobaPhase : GamePhase {
 
     protected override void Execute() {
         bobaSpawner.gameObject.SetActive(true);
+    }
+
+    public override void EndPhase() {
+        bobaSpawner.gameObject.SetActive(false);
+        GetComponent<LiquidPhase>().StartPhase();
     }
 }

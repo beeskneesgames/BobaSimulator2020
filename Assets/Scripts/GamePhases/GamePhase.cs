@@ -16,4 +16,5 @@ public abstract class GamePhase : MonoBehaviour {
     }
 
     protected abstract void Execute();
+    public abstract void EndPhase();
 }
