@@ -28,6 +28,7 @@ public class PhaseManager : MonoBehaviour {
     private GamePhase currentPhase;
 
     private void Start() {
+        Debugger.Instance.phaseManager = this;
         GetComponent<BobaPhase>().StartPhase();
     }
 
@@ -39,8 +40,16 @@ public class PhaseManager : MonoBehaviour {
         }
     }
 
+    private void OnDestroy() {
+        Debugger.Instance.phaseManager = null;
+    }
+
     public void PhaseStarted(GamePhase gamePhase) {
         currentPhase = gamePhase;
         TimeRemaining = gamePhase.Time;
+    }
+
+    public void SkipPhase() {
+        currentPhase.EndPhase();
     }
 }
