@@ -38,6 +38,7 @@ public class Debugger : MonoBehaviour {
         }
 
         instance = this;
+        DontDestroyOnLoad(gameObject);
         listeners = new List<IDebuggerListener>();
     }
 
