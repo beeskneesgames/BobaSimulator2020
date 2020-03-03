@@ -15,7 +15,7 @@ public class LiquidCatcher : MonoBehaviour
 
         set {
             liquidPercentage = Mathf.Min(value, 1.0f);
-            liquidPercentageText.text = $"Liquid Percentage: {LiquidPercentage * 100.0f}%";
+            liquidPercentageText.text = $"Liquid Percentage: {(LiquidPercentage * 100.0f).ToString("N0")}%";
         }
     }
 
