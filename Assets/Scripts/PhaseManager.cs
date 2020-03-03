@@ -20,8 +20,10 @@ public class PhaseManager : MonoBehaviour {
                 timeRemaining = 0.0f;
             }
 
-            int minutesRemaining = (int)TimeRemaining / 60;
-            int secondsRemaining = (int)TimeRemaining % 60;
+            // Add 1 to time remaining to make it easier to read
+            float timeRemainingToDisplay = TimeRemaining + 1.0f;
+            int minutesRemaining = (int)timeRemainingToDisplay / 60;
+            int secondsRemaining = (int)timeRemainingToDisplay % 60;
             timeRemainingText.text = $"{minutesRemaining}:{secondsRemaining.ToString("00")}";
         }
     }
@@ -34,10 +36,18 @@ public class PhaseManager : MonoBehaviour {
     }
 
     private void Update() {
-        if (TimeRemaining > 0.0f) {
-            TimeRemaining -= Time.deltaTime;
+        TimeRemaining -= Time.deltaTime;
+
+        if (IsInEndDelay()) {
+            if (!currentPhase.phaseEnding) {
+                currentPhase.EndPhase();
+            }
+        }
+
+        if (IsInStartDelay() || IsInEndDelay()) {
+            timeRemainingText.color = Color.red;
         } else {
-            currentPhase.EndPhase();
+            timeRemainingText.color = Color.white;
         }
     }
 
@@ -48,11 +58,19 @@ public class PhaseManager : MonoBehaviour {
     public void PhaseStarted(GamePhase gamePhase) {
         currentPhase = gamePhase;
 
-        TimeRemaining = currentPhase.Time;
+        TimeRemaining = currentPhase.Time + currentPhase.StartDelay + currentPhase.EndDelay;
         currentPhaseText.text = currentPhase.Name;
     }
 
     public void SkipPhase() {
-        currentPhase.EndPhase();
+        TimeRemaining = currentPhase.EndDelay;
+    }
+
+    private bool IsInStartDelay() {
+        return TimeRemaining >= currentPhase.Time + currentPhase.EndDelay;
+    }
+
+    private bool IsInEndDelay() {
+        return TimeRemaining < currentPhase.EndDelay;
     }
 }

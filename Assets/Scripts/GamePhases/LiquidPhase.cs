@@ -12,15 +12,19 @@ public class LiquidPhase : GamePhase {
     }
     public override float Time {
         get {
-            return 2.0f;
+            return 10.0f;
         }
     }
 
-    protected override void Execute() {
+    protected override void ExecuteStart() {
         liquidSpawner.gameObject.SetActive(true);
     }
 
-    public override void EndPhase() {
+    protected override void ExecuteEnd() {
         liquidSpawner.gameObject.SetActive(false);
+    }
+
+    protected override void StartNextPhase() {
+        Debug.Log("NO NEXT PHASE");
     }
 }
