@@ -5,6 +5,11 @@ using UnityEngine;
 public class BobaPhase : GamePhase {
     public BobaSpawner bobaSpawner;
 
+    public override float EndDelay {
+        get {
+            return 2.0f;
+        }
+    }
     public override string Name {
         get {
             return "Boba Phase";
@@ -16,12 +21,15 @@ public class BobaPhase : GamePhase {
         }
     }
 
-    protected override void Execute() {
+    protected override void ExecuteStart() {
         bobaSpawner.gameObject.SetActive(true);
     }
 
-    public override void EndPhase() {
+    protected override void ExecuteEnd() {
         bobaSpawner.gameObject.SetActive(false);
+    }
+
+    protected override void StartNextPhase() {
         GetComponent<LiquidPhase>().StartPhase();
     }
 }

@@ -22,6 +22,8 @@ public class Boba : MonoBehaviour {
             if (Mathf.Approximately(fractionOfJourney, 1.0f)) {
                 manuallyFalling = false;
             }
+        } else if (transform.position.y <= -100.0f) {
+            Destroy(gameObject);
         }
     }
 

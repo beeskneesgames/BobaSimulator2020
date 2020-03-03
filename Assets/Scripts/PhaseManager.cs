@@ -36,6 +36,11 @@ public class PhaseManager : MonoBehaviour {
     private void Update() {
         if (TimeRemaining > 0.0f) {
             TimeRemaining -= Time.deltaTime;
+            if (TimeRemaining >= currentPhase.Time + currentPhase.EndDelay || TimeRemaining < currentPhase.EndDelay) {
+                timeRemainingText.color = Color.red;
+            } else {
+                timeRemainingText.color = Color.white;
+            }
         } else {
             currentPhase.EndPhase();
         }
@@ -48,7 +53,7 @@ public class PhaseManager : MonoBehaviour {
     public void PhaseStarted(GamePhase gamePhase) {
         currentPhase = gamePhase;
 
-        TimeRemaining = currentPhase.Time;
+        TimeRemaining = currentPhase.Time + currentPhase.StartDelay + currentPhase.EndDelay;
         currentPhaseText.text = currentPhase.Name;
     }
 

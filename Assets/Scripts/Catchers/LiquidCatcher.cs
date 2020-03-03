@@ -14,20 +14,18 @@ public class LiquidCatcher : MonoBehaviour
         }
 
         set {
-            liquidPercentage = value;
-            liquidPercentageText.text = $"Liquid Percentage: {LiquidPercentage * 100.0f}";
+            liquidPercentage = Mathf.Min(value, 1.0f);
+            liquidPercentageText.text = $"Liquid Percentage: {LiquidPercentage * 100.0f}%";
         }
     }
 
     private void Update() {
         if (currentLiquidStream != null) {
-            LiquidPercentage += Time.deltaTime;
+            LiquidPercentage += Time.deltaTime * 0.2f;
         }
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log("TRIGGER ENTER LIQUID CATCHER");
-        Debug.Log($"trigger enter liquid stream other: {other}");
         LiquidStream liquidStream = other.GetComponent<LiquidStream>();
 
         if (liquidStream != null) {
