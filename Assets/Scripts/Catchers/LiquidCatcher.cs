@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LiquidCatcher : MonoBehaviour
-{
+public class LiquidCatcher : MonoBehaviour {
     private LiquidStream currentLiquidStream;
     public Text liquidPercentageText;
     private float liquidPercentage = 0.0f;
