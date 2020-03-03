@@ -7,7 +7,7 @@ public abstract class GamePhase : MonoBehaviour {
     public virtual float Time { get; }
     private PhaseManager phaseManager;
 
-    private void Start() {
+    private void Awake() {
         phaseManager = GetComponent<PhaseManager>();
     }
 
