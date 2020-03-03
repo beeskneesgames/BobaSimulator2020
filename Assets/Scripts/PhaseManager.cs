@@ -64,7 +64,6 @@ public class PhaseManager : MonoBehaviour {
 
     public void SkipPhase() {
         TimeRemaining = currentPhase.EndDelay;
-        currentPhase.EndPhase();
     }
 
     private bool IsInStartDelay() {
