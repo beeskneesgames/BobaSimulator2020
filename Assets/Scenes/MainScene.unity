@@ -586,6 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3883bb2822049848ffd58bf8e7c966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentPhaseText: {fileID: 1990101993}
   timeRemainingText: {fileID: 1043665535}
   timeRemaining: 10
 --- !u!4 &576963517
