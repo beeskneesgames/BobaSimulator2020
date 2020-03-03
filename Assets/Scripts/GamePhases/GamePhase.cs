@@ -15,6 +15,7 @@ public abstract class GamePhase : MonoBehaviour {
             return 0.0f;
         }
     }
+    public bool phaseEnding = false;
     private PhaseManager phaseManager;
 
     private void Awake() {
@@ -30,6 +31,8 @@ public abstract class GamePhase : MonoBehaviour {
     }
 
     public void EndPhase() {
+        phaseEnding = true;
+
         ExecuteEnd();
 
         StartCoroutine(DelayPhase(EndDelay, () => {
