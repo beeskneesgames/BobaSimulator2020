@@ -11,6 +11,8 @@ public class LiquidSpawner : MonoBehaviour {
     }
 
     private void OnDisable() {
-        Destroy(liquidStream.gameObject);
+        if (liquidStream != null) {
+            Destroy(liquidStream.gameObject);
+        }
     }
 }
