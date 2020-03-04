@@ -615,6 +615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4710beb4d37f549e6a495359bd8d8d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phaseEnding: 0
+  bobaPlacer: {fileID: 8646206877487016826}
   bobaSpawner: {fileID: 286188011}
 --- !u!114 &576963519
 MonoBehaviour:
@@ -628,6 +630,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e88215f58f34527b19260461a6fac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phaseEnding: 0
   liquidSpawner: {fileID: 1079247979}
 --- !u!1 &609153969
 GameObject:
@@ -2302,6 +2305,11 @@ PrefabInstance:
       propertyPath: bobaCountText
       value: 
       objectReference: {fileID: 1408072806}
+    - target: {fileID: 3354550414495793895, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: bobaPhase
+      value: 
+      objectReference: {fileID: 576963518}
     - target: {fileID: 4372339344446634623, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
       propertyPath: m_Name
@@ -2314,3 +2322,15 @@ PrefabInstance:
       objectReference: {fileID: 1871739564}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 085f12f3e603343d283dff5825a08724, type: 3}
+--- !u!114 &8646206877487016826 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 701384633801086272, guid: 085f12f3e603343d283dff5825a08724,
+    type: 3}
+  m_PrefabInstance: {fileID: 8646206877487016825}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b69f766b950a412ab5e91832a33bee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

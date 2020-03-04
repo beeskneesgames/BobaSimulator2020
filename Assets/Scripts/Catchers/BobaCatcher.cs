@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class BobaCatcher : MonoBehaviour {
     public Text bobaCountText;
+    public BobaPhase bobaPhase;
+
     private int bobaCount = 0;
     private int BobaCount {
         get {
@@ -23,6 +25,10 @@ public class BobaCatcher : MonoBehaviour {
         if (boba != null) {
             boba.FallIntoCup(GetComponentInParent<CupController>());
             BobaCount++;
+
+            if (bobaPhase.ShouldEndEarly()) {
+                bobaPhase.EndPhaseEarly();
+            }
         }
     }
 }

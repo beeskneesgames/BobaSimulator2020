@@ -40,6 +40,10 @@ public abstract class GamePhase : MonoBehaviour {
         }));
     }
 
+    public void EndPhaseEarly() {
+        phaseManager.SkipPhase();
+    }
+
     private IEnumerator DelayPhase(float delay, System.Action callback) {
         yield return new WaitForSeconds(delay);
         callback();
@@ -48,4 +52,6 @@ public abstract class GamePhase : MonoBehaviour {
     protected abstract void ExecuteStart();
     protected abstract void ExecuteEnd();
     protected abstract void StartNextPhase();
+
+    public abstract bool ShouldEndEarly();
 }

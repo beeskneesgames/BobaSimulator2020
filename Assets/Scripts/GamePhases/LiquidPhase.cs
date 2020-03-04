@@ -27,4 +27,8 @@ public class LiquidPhase : GamePhase {
     protected override void StartNextPhase() {
         Debug.Log("NO NEXT PHASE");
     }
+
+    public override bool ShouldEndEarly() {
+        return false;
+    }
 }
