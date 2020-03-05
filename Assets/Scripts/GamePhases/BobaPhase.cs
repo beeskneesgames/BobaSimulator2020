@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BobaPhase : GamePhase {
+    public BobaPlacer bobaPlacer;
     public BobaSpawner bobaSpawner;
 
     public override float EndDelay {
@@ -31,5 +32,9 @@ public class BobaPhase : GamePhase {
 
     protected override void StartNextPhase() {
         GetComponent<LiquidPhase>().StartPhase();
+    }
+
+    public override bool ShouldEndEarly() {
+        return !bobaPlacer.HasPositions();
     }
 }

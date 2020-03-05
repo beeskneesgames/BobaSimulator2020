@@ -29,6 +29,7 @@ public class Boba : MonoBehaviour {
 
     public void FallIntoCup(CupController cup) {
         BobaPlacer bobaPlacer = cup.GetComponentInChildren<BobaPlacer>();
+
         transform.parent = bobaPlacer.transform;
 
         manuallyFalling = true;
