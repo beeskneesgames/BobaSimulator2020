@@ -14,6 +14,6 @@ public class Stats : MonoBehaviour {
     }
 
     public void RestartGame() {
-        SceneManager.LoadScene("MainScene");
+        GameManager.StartMainScene();
     }
 }
