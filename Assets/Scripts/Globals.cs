@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Globals {
-    public static int bobaCount = 0;
+    public static int bobaCount;
     public static float liquidPercentage;
 
     public static float GetScreenSize(Camera camera) {

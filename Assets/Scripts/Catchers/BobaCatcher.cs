@@ -15,6 +15,7 @@ public class BobaCatcher : MonoBehaviour {
 
         set {
             bobaCount = value;
+            Globals.bobaCount = BobaCount;
             bobaCountText.text = $"Boba Count: {BobaCount}";
         }
     }
