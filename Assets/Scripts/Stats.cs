@@ -16,4 +16,8 @@ public class Stats : MonoBehaviour {
     public void RestartGame() {
         GameManager.StartMainScene();
     }
+
+    public void ExitGame() {
+        GameManager.ExitGame();
+    }
 }
