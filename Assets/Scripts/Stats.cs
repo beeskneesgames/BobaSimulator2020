@@ -9,6 +9,6 @@ public class Stats : MonoBehaviour {
 
     void Start() {
         bobaCountText.text = $"Boba Count: {Globals.bobaCount}";
-        liquidPercentageText.text = $"Liquid Percentage: {Globals.FormattedLiquidPercentage()}%";
+        liquidPercentageText.text = $"Liquid Percentage: {Globals.FormattedLiquidPercentage}%";
     }
 }
