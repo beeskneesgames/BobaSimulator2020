@@ -7,10 +7,10 @@
 1. Open up the root scene (TitleScene) and play through the game in order to check for bugs and allow for recompilation
 1. Open a branch (`update-unity`)
 1. Commit:
-```
-  Upgrade Unity & add README
+  ```
+    Upgrade Unity & add README
 
-  * 2019.3.3f1 -> 2019.3.4f1
-```
+    * 2019.3.3f1 -> 2019.3.4f1
+  ```
 1. Open a pull request with the title `Upgrade Unity to 2019.3.4f1`
 1. Get your spouse to review it
