@@ -17,6 +17,7 @@ public class BobaPlacer : MonoBehaviour {
         new List<float> { -0.45f, 0.0f, 0.6f, 1.4f, 2.4f, 3.0f, 3.4f, 4.0f, 4.45f },
         new List<float> { -0.5f, 0.0f, 0.7f, 1.5f, 2.5f, 3.0f, 3.7f, 4.2f, 4.5f },
         new List<float> { -0.55f, 0.0f, 0.8f, 1.6f, 2.6f, 3.0f, 3.8f, 4.1f, 4.55f },
+        new List<float> { -0.6f, -0.1f, 0.6f, 1.3f, 1.9f, 2.0f, 2.8f, 3.6f, 4.3f, 4.6f },
     };
 
     private void Awake() {
