@@ -10,10 +10,13 @@ public class BobaPlacer : MonoBehaviour {
     Vector3 defaultPosition;
 
     List<List<float>> bobaPositions = new List<List<float>> {
-        new List<float> {  0.0f, 1.0f, 2.0f, 3.0f, 4.0f },
-        new List<float> { -0.2f, 0.8f, 1.8f, 2.8f, 3.8f },
-        new List<float> { -0.4f, 0.6f, 1.6f, 2.6f, 3.6f },
-        new List<float> {  0.4f, 1.4f, 2.4f, 3.4f, 4.4f },
+        new List<float> { -0.15f, 0.5f, 1.0f, 1.6f, 2.0f, 3.0f, 3.8f, 4.1f },
+        new List<float> { -0.3f, 0.0f, 0.3f, 1.3f, 2.0f, 2.3f, 3.3f, 3.0f, 4.3f },
+        new List<float> { -0.35f, 0.0f, 0.35f, 1.35f, 2.35f, 3.35f, 4.0f, 4.35f },
+        new List<float> { -0.4f, 0.4f, 1.4f, 2.0f, 2.4f, 3.4f, 4.0f, 4.4f },
+        new List<float> { -0.45f, 0.0f, 0.6f, 1.4f, 2.4f, 3.0f, 3.4f, 4.0f, 4.45f },
+        new List<float> { -0.5f, 0.0f, 0.7f, 1.5f, 2.5f, 3.0f, 3.7f, 4.2f, 4.5f },
+        new List<float> { -0.55f, 0.0f, 0.8f, 1.6f, 2.6f, 3.0f, 3.8f, 4.1f, 4.55f },
     };
 
     private void Awake() {
@@ -46,7 +49,7 @@ public class BobaPlacer : MonoBehaviour {
 
     private Vector3 GeneratePosition(float normalizedXPosition, int layerIndex) {
         float xPosition = normalizedXPosition * bobaSize;
-        float yPosition = layerIndex * bobaSize * 0.85f;
+        float yPosition = layerIndex * bobaSize * 0.75f;
         float zPosition = 0.0f;
 
         return new Vector3(xPosition, yPosition, zPosition);
