@@ -45,10 +45,10 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void Restart() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.StartMainScene();
     }
 
     public void ExitGame() {
-        SceneManager.LoadScene("TitleScene");
+        GameManager.StartTitleScene();
     }
 }
