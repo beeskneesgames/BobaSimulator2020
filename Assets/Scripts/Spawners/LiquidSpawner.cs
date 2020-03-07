@@ -26,8 +26,7 @@ public class LiquidSpawner : MonoBehaviour {
     }
 
     private Vector3 GeneratePosition() {
-        //float xPosition = Debugger.Instance.IsOn ? 0.0f : Random.Range(-screenSize, screenSize);
-        float xPosition = Random.Range(-screenSize, screenSize);
+        float xPosition = Debugger.Instance.IsOn ? 0.0f : Random.Range(-screenSize, screenSize);
         return new Vector3(xPosition, 0.0f, 0.0f);
     }
 
