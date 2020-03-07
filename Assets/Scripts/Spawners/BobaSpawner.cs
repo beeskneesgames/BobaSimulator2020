@@ -6,22 +6,29 @@ public class BobaSpawner : MonoBehaviour {
     public GameObject bobaPrefab;
     public float interval = 1.0f;
 
-    float timeSinceLastBoba = 0.0f;
+    private float timeSinceLastBoba = 0.0f;
+    private float screenSize;
 
-    void Update() {
+    private void Start() {
+        screenSize = Globals.GetScreenSize(Camera.main);
+    }
+
+    private void Update() {
         timeSinceLastBoba += Time.deltaTime;
 
         if (timeSinceLastBoba > interval) {
             GameObject boba = Instantiate(bobaPrefab);
-            float xPosition = Debugger.Instance.IsOn ? transform.position.x : Random.Range(-10.0f, 10.0f);
-
-            boba.transform.position = new Vector3(
-                xPosition,
-                transform.position.y,
-                transform.position.z
-            );
-
+            boba.transform.position = GeneratePosition();
             timeSinceLastBoba = 0.0f;
         }
+    }
+
+    private Vector3 GeneratePosition() {
+        float xPosition = Debugger.Instance.IsOn ? transform.position.x : Random.Range(-screenSize, screenSize);
+        return new Vector3(
+            xPosition,
+            transform.position.y,
+            transform.position.z
+        );
     }
 }
