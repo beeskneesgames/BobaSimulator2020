@@ -73,6 +73,6 @@ public class PhaseManager : MonoBehaviour {
     }
 
     private bool IsInEndDelay() {
-        return TimeRemaining < currentPhase.EndDelay;
+        return TimeRemaining <= currentPhase.EndDelay;
     }
 }

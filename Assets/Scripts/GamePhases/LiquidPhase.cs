@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LiquidPhase : GamePhase {
     public LiquidSpawner liquidSpawner;
@@ -24,8 +25,8 @@ public class LiquidPhase : GamePhase {
         liquidSpawner.gameObject.SetActive(false);
     }
 
-    protected override void StartNextPhase() {
-        Debug.Log("NO NEXT PHASE");
+    protected override void ExecuteNext() {
+        SceneManager.LoadScene("FinalScoreScene");
     }
 
     public override bool ShouldEndEarly() {

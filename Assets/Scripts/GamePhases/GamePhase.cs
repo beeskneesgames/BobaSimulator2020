@@ -36,7 +36,7 @@ public abstract class GamePhase : MonoBehaviour {
         ExecuteEnd();
 
         StartCoroutine(DelayPhase(EndDelay, () => {
-            StartNextPhase();
+            ExecuteNext();
         }));
     }
 
@@ -51,7 +51,7 @@ public abstract class GamePhase : MonoBehaviour {
 
     protected abstract void ExecuteStart();
     protected abstract void ExecuteEnd();
-    protected abstract void StartNextPhase();
+    protected abstract void ExecuteNext();
 
     public abstract bool ShouldEndEarly();
 }

@@ -30,7 +30,7 @@ public class BobaPhase : GamePhase {
         bobaSpawner.gameObject.SetActive(false);
     }
 
-    protected override void StartNextPhase() {
+    protected override void ExecuteNext() {
         GetComponent<LiquidPhase>().StartPhase();
     }
 
