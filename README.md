@@ -1,7 +1,7 @@
 # BOBA SIMULATOR 2020
 
 ## Updating Unity
-1. Download & install latest Unity version from Unity Hub.
+1. Download and install latest Unity version from Unity Hub.
 1. Find the project in the Unity Hub "Projects" tab and select the newly-installed version of Unity in the "Unity Version" dropdown.
 1. Click the project, and when prompted to upgrade, click "CONFIRM".
 1. Open up the project in Visual Studio and check for editor updates (Visual Studio > Check For Updates).
