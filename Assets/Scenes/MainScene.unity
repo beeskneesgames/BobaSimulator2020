@@ -1195,6 +1195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e486b8712cb204911afe85b1682cadf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interval: 1
   liquidStreamPrefab: {fileID: 319297041745917509, guid: 09ffb6d8f597b4d60bf48bc8b6413f22,
     type: 3}
 --- !u!4 &1079247980
@@ -1530,6 +1531,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292319618}
   m_CullTransparentMesh: 0
+--- !u!1001 &1305309222
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8646206877487016827}
+    m_Modifications:
+    - target: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e286ea36b9fe4a02a94fdce82b32be7, type: 2}
+    - target: {fileID: -927199367670048503, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+        type: 3}
+      propertyPath: m_Name
+      value: LiquidFill
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf0dd3bc2bae84b218da6d5697ac73c1, type: 3}
 --- !u!1 &1408072804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2334,3 +2409,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b69f766b950a412ab5e91832a33bee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &8646206877487016827 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 790085619033458796, guid: 085f12f3e603343d283dff5825a08724,
+    type: 3}
+  m_PrefabInstance: {fileID: 8646206877487016825}
+  m_PrefabAsset: {fileID: 0}
