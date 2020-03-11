@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class LiquidCatcher : MonoBehaviour {
     private LiquidStream currentLiquidStream;
+    public ClippingPlane clippingPlane;
     public Text liquidPercentageText;
+
+    private float clippingPlaneStartY;
     private float liquidPercentage = 0.0f;
     private float LiquidPercentage {
         get {
@@ -14,9 +17,19 @@ public class LiquidCatcher : MonoBehaviour {
 
         set {
             liquidPercentage = Mathf.Min(value, 1.0f);
+
             Globals.liquidPercentage = liquidPercentage;
             liquidPercentageText.text = $"Liquid Percentage: {Globals.FormattedLiquidPercentage}%";
+            clippingPlane.transform.position = new Vector3(
+                clippingPlane.transform.position.x,
+                clippingPlaneStartY + (liquidPercentage * 10.0f),
+                clippingPlane.transform.position.z
+            );
         }
+    }
+
+    private void Start() {
+        clippingPlaneStartY = clippingPlane.transform.position.y;
     }
 
     private void Update() {
