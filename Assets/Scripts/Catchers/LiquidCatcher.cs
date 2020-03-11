@@ -22,7 +22,7 @@ public class LiquidCatcher : MonoBehaviour {
             liquidPercentageText.text = $"Liquid Percentage: {Globals.FormattedLiquidPercentage}%";
             clippingPlane.transform.position = new Vector3(
                 clippingPlane.transform.position.x,
-                clippingPlaneStartY + (liquidPercentage * 10.0f),
+                clippingPlaneStartY + (liquidPercentage * 2.4f),
                 clippingPlane.transform.position.z
             );
         }
