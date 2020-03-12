@@ -1166,6 +1166,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043665533}
   m_CullTransparentMesh: 0
+--- !u!1 &1059142926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059142927}
+  - component: {fileID: 1059142928}
+  m_Layer: 0
+  m_Name: LiqudStreamClippingPlane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1059142927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059142926}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: -1.16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8646206877487016827}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &1059142928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059142926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a2815c620bfb4fe39ca708df2ff8ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 9e286ea36b9fe4a02a94fdce82b32be7, type: 2}
 --- !u!1 &1079247978
 GameObject:
   m_ObjectHideFlags: 0
@@ -2386,6 +2430,16 @@ PrefabInstance:
       propertyPath: clippingPlane
       value: 
       objectReference: {fileID: 1115679729}
+    - target: {fileID: 6068854567667401820, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.99619997
+      objectReference: {fileID: 0}
+    - target: {fileID: 6068854567667401820, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.00000011920929
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 085f12f3e603343d283dff5825a08724, type: 3}
 --- !u!114 &8646206877487016826 stripped
@@ -2400,3 +2454,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b69f766b950a412ab5e91832a33bee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &8646206877487016827 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 790085619033458796, guid: 085f12f3e603343d283dff5825a08724,
+    type: 3}
+  m_PrefabInstance: {fileID: 8646206877487016825}
+  m_PrefabAsset: {fileID: 0}
