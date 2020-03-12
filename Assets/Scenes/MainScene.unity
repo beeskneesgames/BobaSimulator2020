@@ -2430,6 +2430,16 @@ PrefabInstance:
       propertyPath: clippingPlane
       value: 
       objectReference: {fileID: 1115679729}
+    - target: {fileID: 5757651565647154844, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: liquidFillClippingPlane
+      value: 
+      objectReference: {fileID: 1115679729}
+    - target: {fileID: 5757651565647154844, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: liquidStreamClippingPlane
+      value: 
+      objectReference: {fileID: 1059142928}
     - target: {fileID: 6068854567667401820, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
       propertyPath: m_Size.x
