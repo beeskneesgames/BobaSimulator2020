@@ -27,6 +27,11 @@ public class LiquidSpawner : MonoBehaviour {
 
     private Vector3 GeneratePosition() {
         float xPosition = Debugger.Instance.IsOn ? 0.0f : Random.Range(-screenSize, screenSize);
+
+        // Use 0.5 for the z-position here so the liquid stream appears to be
+        // going into the liquid fill. Without this, part of the stream will
+        // appear "in front of" the fill, breaking the illusion of it filling
+        // the cup.
         return new Vector3(xPosition, 0.0f, 0.5f);
     }
 
