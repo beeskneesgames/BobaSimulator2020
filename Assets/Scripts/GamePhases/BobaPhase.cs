@@ -31,7 +31,7 @@ public class BobaPhase : GamePhase {
     }
 
     protected override void ExecuteNext() {
-        GetComponent<LiquidPhase>().StartPhase();
+        GetComponent<IcePhase>().StartPhase();
     }
 
     public override bool ShouldEndEarly() {
