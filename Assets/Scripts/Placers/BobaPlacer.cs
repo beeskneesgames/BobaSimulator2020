@@ -68,12 +68,23 @@ public class BobaPlacer : MonoBehaviour {
     private Vector3 GeneratePosition(float normalizedXPosition, int layerIndex) {
         float xPosition = normalizedXPosition * bobaSize;
         float yPosition = GenerateYPosition(layerIndex);
-        float zPosition = 0.0f;
+        float zPosition;
 
-        return new Vector3(xPosition, yPosition, zPosition);
+        // Hide 10% of the boba when the liquid fills the cup.
+        if (Random.value > 0.9f) {
+            zPosition = 0.1f;
+        } else {
+            zPosition = 0.0f;
+        }
+
+        return new Vector3(
+            xPosition,
+            Random.Range(yPosition - 0.04f, yPosition + 0.04f),
+            zPosition
+        );
     }
 
     private float GenerateYPosition(int layerIndex) {
-        return layerIndex * bobaSize * 0.75f;
+        return layerIndex * bobaSize * 0.85f;
     }
 }

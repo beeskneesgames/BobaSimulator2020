@@ -56,8 +56,12 @@ public class IcePlacer : MonoBehaviour {
     private Vector3 GeneratePosition(float normalizedXPosition, int layerIndex) {
         float xPosition = normalizedXPosition * iceSize;
         float yPosition = layerIndex * iceSize * 0.75f;
-        float zPosition = 0.075f;
+        float zPosition = 0.05f;
 
-        return new Vector3(xPosition, yPosition, zPosition);
+        return new Vector3(
+            xPosition,
+            Random.Range(yPosition - 0.05f, yPosition + 0.05f),
+            Random.Range(zPosition - 0.025f, zPosition + 0.025f)
+        );
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IceSpawner : MonoBehaviour {
     public GameObject icePrefab;
-    public float interval = 0.5f;
+    public float interval = 0.2f;
 
     private float timeSinceLastIce = 0.0f;
     private float screenSize;
