@@ -2166,6 +2166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icePrefab: {fileID: 8921091994608646006, guid: b60b261c746624cd89f311d5604bd8cf,
     type: 3}
+  bobaPlacer: {fileID: 8646206877487016826}
 --- !u!1 &1731897111
 GameObject:
   m_ObjectHideFlags: 0

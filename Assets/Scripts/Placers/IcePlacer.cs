@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class IcePlacer : MonoBehaviour {
     public GameObject icePrefab;
+    public BobaPlacer bobaPlacer;
 
     float iceSize = 0.5f;
     int layerIndex = 0;
+    bool layerIndexCalculated = false;
     Vector3 defaultPosition;
 
     List<List<float>> icePositions = new List<List<float>> {
@@ -32,6 +34,11 @@ public class IcePlacer : MonoBehaviour {
         // return a previous position to avoid errors.
         if (!HasPositions()) {
             return defaultPosition;
+        }
+
+        if (!layerIndexCalculated) {
+            layerIndex = Mathf.RoundToInt(bobaPlacer.TopY / iceSize);
+            layerIndexCalculated = true;
         }
 
         int positionIndex = Random.Range(0, icePositions[layerIndex].Count);
