@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BobaPhase : GamePhase {
-    public BobaPlacer bobaPlacer;
-    public BobaSpawner bobaSpawner;
+public class IcePhase : GamePhase {
+    public IcePlacer icePlacer;
+    public IceSpawner iceSpawner;
 
     public override float EndDelay {
         get {
@@ -13,7 +13,7 @@ public class BobaPhase : GamePhase {
     }
     public override string Name {
         get {
-            return "Boba Phase";
+            return "Ice Phase";
         }
     }
     public override float Time {
@@ -23,18 +23,18 @@ public class BobaPhase : GamePhase {
     }
 
     protected override void ExecuteStart() {
-        bobaSpawner.gameObject.SetActive(true);
+        iceSpawner.gameObject.SetActive(true);
     }
 
     protected override void ExecuteEnd() {
-        bobaSpawner.gameObject.SetActive(false);
+        iceSpawner.gameObject.SetActive(false);
     }
 
     protected override void ExecuteNext() {
-        GetComponent<IcePhase>().StartPhase();
+        GetComponent<LiquidPhase>().StartPhase();
     }
 
     public override bool ShouldEndEarly() {
-        return !bobaPlacer.HasPositions();
+        return !icePlacer.HasPositions();
     }
 }

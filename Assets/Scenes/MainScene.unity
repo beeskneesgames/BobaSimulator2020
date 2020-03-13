@@ -269,7 +269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -200}
+  m_AnchoredPosition: {x: 50, y: -285}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &283182152
@@ -567,6 +567,7 @@ GameObject:
   - component: {fileID: 576963516}
   - component: {fileID: 576963518}
   - component: {fileID: 576963519}
+  - component: {fileID: 576963520}
   m_Layer: 0
   m_Name: PhaseManager
   m_TagString: Untagged
@@ -632,6 +633,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phaseEnding: 0
   liquidSpawner: {fileID: 1079247979}
+--- !u!114 &576963520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576963515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7dc8ecae0ee84d1e972a10465f945ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaseEnding: 0
+  icePlacer: {fileID: 1684247762}
+  iceSpawner: {fileID: 2113207058}
 --- !u!1 &609153969
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,6 +677,7 @@ Transform:
   m_Children:
   - {fileID: 286188012}
   - {fileID: 1079247980}
+  - {fileID: 2113207057}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -862,7 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26deef0aa6900424c9fdcde84ce5d0ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phaseManager: {fileID: 0}
+  phaseManager: {fileID: 576963516}
 --- !u!4 &886806595
 Transform:
   m_ObjectHideFlags: 0
@@ -1792,6 +1809,7 @@ RectTransform:
   - {fileID: 1990101992}
   - {fileID: 1043665534}
   - {fileID: 1871739563}
+  - {fileID: 1857562724}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1813,10 +1831,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bobaCount: {fileID: 1408072806}
-  currentPhase: {fileID: 1990101993}
-  hotkeys: {fileID: 283182152}
+  iceCount: {fileID: 1857562725}
   liquidPercentage: {fileID: 1871739564}
+  currentPhase: {fileID: 1990101993}
   timeRemainingText: {fileID: 1043665535}
+  hotkeys: {fileID: 283182152}
 --- !u!1 &1440495214
 GameObject:
   m_ObjectHideFlags: 0
@@ -2102,6 +2121,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482385978}
   m_CullTransparentMesh: 0
+--- !u!1 &1684247760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1684247761}
+  - component: {fileID: 1684247762}
+  m_Layer: 0
+  m_Name: IcePlacer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1684247761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684247760}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8646206877487016827}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1684247762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684247760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f787046fdc51849efbfe6a1e3518a11c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icePrefab: {fileID: 8921091994608646006, guid: b60b261c746624cd89f311d5604bd8cf,
+    type: 3}
 --- !u!1 &1731897111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,6 +2243,83 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731897111}
   m_CullTransparentMesh: 0
+--- !u!1 &1857562723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1857562724}
+  - component: {fileID: 1857562726}
+  - component: {fileID: 1857562725}
+  m_Layer: 5
+  m_Name: IceCount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1857562724
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857562723}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1434657483}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -135}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &1857562725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857562723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 5
+    m_MaxSize: 50
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 'Ice Count: 0'
+--- !u!222 &1857562726
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1857562723}
+  m_CullTransparentMesh: 0
 --- !u!1 &1871739562
 GameObject:
   m_ObjectHideFlags: 0
@@ -2213,7 +2354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -125}
+  m_AnchoredPosition: {x: 50, y: -210}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1871739564
@@ -2333,6 +2474,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1990101991}
   m_CullTransparentMesh: 0
+--- !u!1 &2113207056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2113207057}
+  - component: {fileID: 2113207058}
+  m_Layer: 0
+  m_Name: IceSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2113207057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113207056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 609153970}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2113207058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113207056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eae5d26fc8e1846cfa5c7ca0d45b2b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icePrefab: {fileID: 8921091994608646006, guid: b60b261c746624cd89f311d5604bd8cf,
+    type: 3}
+  interval: 1
 --- !u!1001 &8646206877487016825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2345,6 +2532,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e13308ac083e84a869b168522475cfa6, type: 2}
+    - target: {fileID: 770944821597637519, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: icePhase
+      value: 
+      objectReference: {fileID: 576963520}
+    - target: {fileID: 770944821597637519, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: iceCountText
+      value: 
+      objectReference: {fileID: 1857562725}
     - target: {fileID: 790085619033458796, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2399,6 +2596,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2666215252223318534, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: m_Name
+      value: BobaPlacer
       objectReference: {fileID: 0}
     - target: {fileID: 3354550414495793895, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}

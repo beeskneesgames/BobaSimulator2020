@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Globals {
     public static int bobaCount;
+    public static int iceCount;
     public static float liquidPercentage;
     public static string FormattedLiquidPercentage {
         get {
