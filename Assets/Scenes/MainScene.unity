@@ -2520,7 +2520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icePrefab: {fileID: 8921091994608646006, guid: b60b261c746624cd89f311d5604bd8cf,
     type: 3}
-  interval: 1
+  interval: 0.2
 --- !u!1001 &8646206877487016825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2622,6 +2622,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cup
+      objectReference: {fileID: 0}
+    - target: {fileID: 5600663904104072597, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.024
       objectReference: {fileID: 0}
     - target: {fileID: 5757651565647154844, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
