@@ -5,12 +5,17 @@ using UnityEngine;
 public class IcePlacer : MonoBehaviour {
     public GameObject icePrefab;
 
-    float iceSize = 1.0f;
+    float iceSize = 0.5f;
     int layerIndex = 0;
     Vector3 defaultPosition;
 
     List<List<float>> icePositions = new List<List<float>> {
-        new List<float> { 0.0f, 1.0f, 2.0f },
+        new List<float> {  0.2f,  0.85f },
+        new List<float> { -0.05f, 0.9f  },
+        new List<float> { -0.1f,  0.55f, 1.18f },
+        new List<float> { -0.15f, 0.5f,  1.13f },
+        new List<float> { -0.2f,  0.45f, 1.12f },
+        new List<float> { -0.25f, 0.4f,  1.07f }
     };
 
     private void Awake() {
@@ -44,7 +49,7 @@ public class IcePlacer : MonoBehaviour {
     private Vector3 GeneratePosition(float normalizedXPosition, int layerIndex) {
         float xPosition = normalizedXPosition * iceSize;
         float yPosition = layerIndex * iceSize * 0.75f;
-        float zPosition = 0.0f;
+        float zPosition = 0.075f;
 
         return new Vector3(xPosition, yPosition, zPosition);
     }
