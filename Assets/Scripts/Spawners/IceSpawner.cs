@@ -19,6 +19,12 @@ public class IceSpawner : MonoBehaviour {
         if (timeSinceLastIce > interval) {
             GameObject ice = Instantiate(icePrefab);
             ice.transform.position = GeneratePosition();
+            ice.transform.Rotate(
+                Random.Range(0.0f, 360.0f),
+                Random.Range(0.0f, 360.0f),
+                Random.Range(0.0f, 360.0f),
+                Space.Self
+            );
             timeSinceLastIce = 0.0f;
         }
     }
