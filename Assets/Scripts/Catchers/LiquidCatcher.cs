@@ -40,9 +40,16 @@ public class LiquidCatcher : MonoBehaviour {
         float newClippingPlaneY;
 
         if (currentLiquidStream == null) {
+            // When the liquid stream isn't colliding with the cup, move the
+            // clipping plane off-screen so we don't see the stream getting cut
+            // off.
             newClippingPlaneY = -100.0f;
         } else {
+            // When the liquid stream is colliding with the cup, move the
+            // clipping plane to the bottom of the cup so the stream is cut off
+            // right there.
             newClippingPlaneY = liquidStreamClippingPlaneStartY;
+
             LiquidPercentage += Time.deltaTime * 0.2f;
         }
 
