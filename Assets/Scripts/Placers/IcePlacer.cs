@@ -5,13 +5,18 @@ using UnityEngine;
 public class IcePlacer : MonoBehaviour {
     public GameObject icePrefab;
     public BobaPlacer bobaPlacer;
+    public ClippingPlane liquidFillClippingPlane;
 
-    float iceSize = 0.5f;
-    int layerIndex = 0;
-    bool layerIndexCalculated = false;
-    Vector3 defaultPosition;
+    private float iceSize = 0.5f;
+    private int layerIndex = 0;
+    private bool layerIndexCalculated = false;
+    private bool iceFloating = false;
+    private float liquidFillClippingPlaneStartY;
+    private Vector3 defaultPosition;
+    private float startY;
+    private float lastPoppedY;
 
-    List<List<float>> icePositions = new List<List<float>> {
+    private List<List<float>> icePositions = new List<List<float>> {
         new List<float> {  0.2f,  0.85f },
         new List<float> { -0.05f, 0.9f  },
         new List<float> { -0.1f,  0.55f, 1.18f },
@@ -23,6 +28,32 @@ public class IcePlacer : MonoBehaviour {
     private void Awake() {
         List<float> lastLayer = icePositions[icePositions.Count - 1];
         defaultPosition = GeneratePosition(lastLayer[lastLayer.Count - 1], icePositions.Count - 1);
+        startY = transform.localPosition.y;
+    }
+
+    private void Start() {
+        liquidFillClippingPlaneStartY = liquidFillClippingPlane.transform.localPosition.y;
+    }
+
+    private void Update() {
+        // TODO: Fix this whole mess.
+        float liquidY = liquidFillClippingPlane.transform.localPosition.y;
+
+        if (!iceFloating) {
+            float topLayerY = lastPoppedY;
+
+            if (liquidY - liquidFillClippingPlaneStartY > topLayerY) {
+                iceFloating = true;
+            }
+        }
+
+        if (iceFloating) {
+            transform.localPosition = new Vector3(
+                transform.localPosition.x,
+                liquidY - lastPoppedY,
+                transform.localPosition.z
+            );
+        }
     }
 
     public bool HasPositions() {
@@ -44,6 +75,9 @@ public class IcePlacer : MonoBehaviour {
         int positionIndex = Random.Range(0, icePositions[layerIndex].Count);
         Vector3 position = GeneratePosition(icePositions[layerIndex][positionIndex], layerIndex);
 
+        // TODO: Gross get rid of
+        lastPoppedY = GenerateYPosition(layerIndex);
+
         icePositions[layerIndex].RemoveAt(positionIndex);
 
         if (icePositions[layerIndex].Count == 0) {
@@ -55,7 +89,7 @@ public class IcePlacer : MonoBehaviour {
 
     private Vector3 GeneratePosition(float normalizedXPosition, int layerIndex) {
         float xPosition = normalizedXPosition * iceSize;
-        float yPosition = layerIndex * iceSize * 0.75f;
+        float yPosition = GenerateYPosition(layerIndex);
         float zPosition = 0.05f;
 
         return new Vector3(
@@ -63,5 +97,9 @@ public class IcePlacer : MonoBehaviour {
             Random.Range(yPosition - 0.05f, yPosition + 0.05f),
             Random.Range(zPosition - 0.025f, zPosition + 0.025f)
         );
+    }
+
+    private float GenerateYPosition(float layerIndex) {
+        return layerIndex * iceSize * 0.75f;
     }
 }
