@@ -51,7 +51,9 @@ public class IcePlacer : MonoBehaviour {
         // so the liquid will hit it there.
         liquidFillCollider.transform.localPosition = new Vector3(
             liquidFillCollider.transform.localPosition.x,
-            ice.transform.localPosition.y,
+            // Add iceSize so we don't start floating until we're most of the
+            // way up the ice.
+            ice.transform.localPosition.y + iceSize * 0.15f,
             liquidFillCollider.transform.localPosition.z
         );
     }
