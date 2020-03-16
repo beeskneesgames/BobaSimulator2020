@@ -6,15 +6,15 @@ public class IcePlacer : MonoBehaviour {
     public GameObject icePrefab;
     public BobaPlacer bobaPlacer;
     public ClippingPlane liquidFillClippingPlane;
+    public GameObject liquidFillCollider;
 
     private float iceSize = 0.5f;
     private int layerIndex = 0;
     private bool layerIndexCalculated = false;
-    private bool iceFloating = false;
-    private float liquidFillClippingPlaneStartY;
     private Vector3 defaultPosition;
-    private float startY;
-    private float lastPoppedY;
+
+    private bool iceFloating = false;
+    private float liquidFillClippingPlaneLastY;
 
     private List<List<float>> icePositions = new List<List<float>> {
         new List<float> {  0.2f,  0.85f },
@@ -28,32 +28,37 @@ public class IcePlacer : MonoBehaviour {
     private void Awake() {
         List<float> lastLayer = icePositions[icePositions.Count - 1];
         defaultPosition = GeneratePosition(lastLayer[lastLayer.Count - 1], icePositions.Count - 1);
-        startY = transform.localPosition.y;
     }
 
     private void Start() {
-        liquidFillClippingPlaneStartY = liquidFillClippingPlane.transform.localPosition.y;
+        liquidFillClippingPlaneLastY = liquidFillClippingPlane.transform.localPosition.y;
     }
 
     private void Update() {
-        // TODO: Fix this whole mess.
-        float liquidY = liquidFillClippingPlane.transform.localPosition.y;
-
-        if (!iceFloating) {
-            float topLayerY = lastPoppedY;
-
-            if (liquidY - liquidFillClippingPlaneStartY > topLayerY) {
-                iceFloating = true;
-            }
-        }
-
         if (iceFloating) {
             transform.localPosition = new Vector3(
                 transform.localPosition.x,
-                liquidY - lastPoppedY,
+                transform.localPosition.y + (liquidFillClippingPlane.transform.localPosition.y - liquidFillClippingPlaneLastY),
                 transform.localPosition.z
             );
+
+            liquidFillClippingPlaneLastY = liquidFillClippingPlane.transform.localPosition.y;
         }
+    }
+
+    public void IcePlaced(Ice ice) {
+        // Put the liquid fill collider on the same level as the last placed ice
+        // so the liquid will hit it there.
+        liquidFillCollider.transform.localPosition = new Vector3(
+            liquidFillCollider.transform.localPosition.x,
+            ice.transform.localPosition.y,
+            liquidFillCollider.transform.localPosition.z
+        );
+    }
+
+    public void StartFloating() {
+        iceFloating = true;
+        liquidFillClippingPlaneLastY = liquidFillClippingPlane.transform.localPosition.y;
     }
 
     public bool HasPositions() {
@@ -74,9 +79,6 @@ public class IcePlacer : MonoBehaviour {
 
         int positionIndex = Random.Range(0, icePositions[layerIndex].Count);
         Vector3 position = GeneratePosition(icePositions[layerIndex][positionIndex], layerIndex);
-
-        // TODO: Gross get rid of
-        lastPoppedY = GenerateYPosition(layerIndex);
 
         icePositions[layerIndex].RemoveAt(positionIndex);
 
