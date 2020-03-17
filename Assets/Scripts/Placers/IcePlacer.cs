@@ -47,7 +47,7 @@ public class IcePlacer : MonoBehaviour {
     }
 
     public void IcePlaced(Ice ice) {
-        // Put the liquid fill collider on the same level as the last placed ice
+        // Put the ice placer collider on the same level as the last placed ice
         // so the liquid will hit it there.
         icePlacerCollider.transform.localPosition = new Vector3(
             icePlacerCollider.transform.localPosition.x,
