@@ -19,7 +19,7 @@ public class Boba : MonoBehaviour {
             );
             timeFalling += Time.deltaTime;
 
-            if (Mathf.Approximately(fractionOfJourney, 1.0f)) {
+            if (fractionOfJourney >= 1.0f) {
                 manuallyFalling = false;
             }
         } else if (transform.position.y <= -100.0f) {

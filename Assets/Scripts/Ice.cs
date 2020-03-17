@@ -7,6 +7,7 @@ public class Ice : MonoBehaviour {
     private Vector3 startingPosition;
     private Vector3 targetPosition;
     private float timeFalling = 0.0f;
+    private IcePlacer icePlacer;
 
     private void Update() {
         if (manuallyFalling) {
@@ -19,8 +20,11 @@ public class Ice : MonoBehaviour {
             );
             timeFalling += Time.deltaTime;
 
-            if (Mathf.Approximately(fractionOfJourney, 1.0f)) {
+            if (fractionOfJourney >= 1.0f) {
                 manuallyFalling = false;
+
+                // Let the ice placer know that we're done being placed.
+                icePlacer.IcePlaced(this);
             }
         } else if (transform.position.y <= -100.0f) {
             Destroy(gameObject);
@@ -28,15 +32,14 @@ public class Ice : MonoBehaviour {
     }
 
     public void FallIntoCup(CupController cup) {
-        IcePlacer icePlacer = cup.GetComponentInChildren<IcePlacer>();
-
-        transform.parent = icePlacer.transform;
-
         manuallyFalling = true;
         startingPosition = transform.localPosition;
-        targetPosition = icePlacer.PopPosition();
 
         GetComponent<Collider>().enabled = false;
         Destroy(GetComponent<Rigidbody>());
+
+        icePlacer = cup.GetComponentInChildren<IcePlacer>();
+        transform.parent = icePlacer.transform;
+        targetPosition = icePlacer.PopPosition();
     }
 }

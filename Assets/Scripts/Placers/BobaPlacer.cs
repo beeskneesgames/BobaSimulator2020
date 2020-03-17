@@ -5,6 +5,14 @@ using UnityEngine;
 public class BobaPlacer : MonoBehaviour {
     public GameObject bobaPrefab;
 
+    // Get the Y-position of the current top layer of boba, so the IcePlacer can
+    // start on the correct layer.
+    public float TopY {
+        get {
+            return GenerateYPosition(layerIndex);
+        }
+    }
+
     float bobaSize = 0.18f;
     int layerIndex = 0;
     Vector3 defaultPosition;
@@ -59,9 +67,25 @@ public class BobaPlacer : MonoBehaviour {
 
     private Vector3 GeneratePosition(float normalizedXPosition, int layerIndex) {
         float xPosition = normalizedXPosition * bobaSize;
-        float yPosition = layerIndex * bobaSize * 0.75f;
-        float zPosition = 0.0f;
+        float yPosition = GenerateYPosition(layerIndex);
+        float zPosition;
 
-        return new Vector3(xPosition, yPosition, zPosition);
+        // Hide 10% of the boba when the liquid fills the cup.
+        if (Random.value > 0.9f) {
+            zPosition = 0.1f;
+        } else {
+            zPosition = 0.0f;
+        }
+
+        // Slightly randomize y/z positions for visual variation.
+        return new Vector3(
+            xPosition,
+            Random.Range(yPosition - 0.04f, yPosition + 0.04f),
+            zPosition
+        );
+    }
+
+    private float GenerateYPosition(int layerIndex) {
+        return layerIndex * bobaSize * 0.85f;
     }
 }

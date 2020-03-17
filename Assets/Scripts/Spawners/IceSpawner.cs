@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IceSpawner : MonoBehaviour {
     public GameObject icePrefab;
-    public float interval = 0.5f;
+    public float interval = 0.2f;
 
     private float timeSinceLastIce = 0.0f;
     private float screenSize;
@@ -19,6 +19,12 @@ public class IceSpawner : MonoBehaviour {
         if (timeSinceLastIce > interval) {
             GameObject ice = Instantiate(icePrefab);
             ice.transform.position = GeneratePosition();
+            ice.transform.Rotate(
+                Random.Range(0.0f, 360.0f),
+                Random.Range(0.0f, 360.0f),
+                Random.Range(0.0f, 360.0f),
+                Space.Self
+            );
             timeSinceLastIce = 0.0f;
         }
     }

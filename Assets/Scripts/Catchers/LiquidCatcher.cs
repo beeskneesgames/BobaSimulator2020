@@ -9,6 +9,11 @@ public class LiquidCatcher : MonoBehaviour {
     public ClippingPlane liquidStreamClippingPlane;
     public Text liquidPercentageText;
     public float liquidFillSpeed = 2.4f;
+    public float LiquidFillTopY {
+        get {
+            return liquidFillClippingPlaneStartY + (liquidPercentage * liquidFillSpeed);
+        }
+    }
 
     private float liquidFillClippingPlaneStartY;
     private float liquidStreamClippingPlaneStartY;
@@ -25,7 +30,7 @@ public class LiquidCatcher : MonoBehaviour {
             liquidPercentageText.text = $"Liquid Percentage: {Globals.FormattedLiquidPercentage}%";
             liquidFillClippingPlane.transform.localPosition = new Vector3(
                 liquidFillClippingPlane.transform.localPosition.x,
-                liquidFillClippingPlaneStartY + (liquidPercentage * liquidFillSpeed),
+                LiquidFillTopY,
                 liquidFillClippingPlane.transform.localPosition.z
             );
         }
