@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LiquidFillCollider : MonoBehaviour {
+public class IcePlacerCollider : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.GetComponent<ClippingPlane>()) {
             GetComponentInParent<IcePlacer>().StartFloating();

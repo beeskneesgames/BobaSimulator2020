@@ -6,7 +6,7 @@ public class IcePlacer : MonoBehaviour {
     public GameObject icePrefab;
     public BobaPlacer bobaPlacer;
     public ClippingPlane liquidFillClippingPlane;
-    public GameObject liquidFillCollider;
+    public GameObject icePlacerCollider;
 
     private float iceSize = 0.5f;
     private int layerIndex = 0;
@@ -49,12 +49,12 @@ public class IcePlacer : MonoBehaviour {
     public void IcePlaced(Ice ice) {
         // Put the liquid fill collider on the same level as the last placed ice
         // so the liquid will hit it there.
-        liquidFillCollider.transform.localPosition = new Vector3(
-            liquidFillCollider.transform.localPosition.x,
+        icePlacerCollider.transform.localPosition = new Vector3(
+            icePlacerCollider.transform.localPosition.x,
             // Add iceSize so we don't start floating until we're most of the
             // way up the ice.
-            ice.transform.localPosition.y + iceSize * 0.15f,
-            liquidFillCollider.transform.localPosition.z
+            ice.transform.localPosition.y + iceSize * 0.5f,
+            icePlacerCollider.transform.localPosition.z
         );
     }
 

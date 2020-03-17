@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 106688634}
   - component: {fileID: 106688635}
   m_Layer: 0
-  m_Name: LiquidFillCollider
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -254,7 +254,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 106688631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdfcf2d584a7743fd8284cf0054a4d9d, type: 3}
+  m_Script: {fileID: 11500000, guid: f5e21de574ba248cebe078eb2f992f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!54 &106688635
@@ -2258,7 +2258,7 @@ MonoBehaviour:
     type: 3}
   bobaPlacer: {fileID: 8646206877487016826}
   liquidFillClippingPlane: {fileID: 1115679729}
-  liquidFillCollider: {fileID: 106688631}
+  icePlacerCollider: {fileID: 0}
 --- !u!1 &1687662348
 GameObject:
   m_ObjectHideFlags: 0
