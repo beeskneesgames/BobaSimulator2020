@@ -96,6 +96,7 @@ public class IcePlacer : MonoBehaviour {
         float yPosition = layerIndex * iceSize * 0.75f;
         float zPosition = 0.05f;
 
+        // Slightly randomize y/z positions for visual variation.
         return new Vector3(
             xPosition,
             Random.Range(yPosition - 0.05f, yPosition + 0.05f),

@@ -77,6 +77,7 @@ public class BobaPlacer : MonoBehaviour {
             zPosition = 0.0f;
         }
 
+        // Slightly randomize y/z positions for visual variation.
         return new Vector3(
             xPosition,
             Random.Range(yPosition - 0.04f, yPosition + 0.04f),
