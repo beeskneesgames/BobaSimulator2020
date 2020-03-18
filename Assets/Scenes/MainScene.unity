@@ -1269,7 +1269,7 @@ GameObject:
   - component: {fileID: 1059142927}
   - component: {fileID: 1059142928}
   m_Layer: 0
-  m_Name: LiqudStreamClippingPlane
+  m_Name: LiquidStreamClippingPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2258,7 +2258,7 @@ MonoBehaviour:
     type: 3}
   bobaPlacer: {fileID: 8646206877487016826}
   liquidFillClippingPlane: {fileID: 1115679729}
-  icePlacerCollider: {fileID: 0}
+  icePlacerCollider: {fileID: 106688631}
 --- !u!1 &1687662348
 GameObject:
   m_ObjectHideFlags: 0
