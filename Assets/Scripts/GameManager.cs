@@ -8,6 +8,10 @@ public class GameManager {
         Application.Quit();
     }
 
+    public static void StartCreditsScene() {
+        SceneManager.LoadScene("CreditsScene");
+    }
+
     public static void StartMainScene() {
         SceneManager.LoadScene("MainScene");
     }
