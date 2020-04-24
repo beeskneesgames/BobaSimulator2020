@@ -32,7 +32,11 @@ public class LiquidSpawner : MonoBehaviour {
         // going into the liquid fill. Without this, part of the stream will
         // appear "in front of" the fill, breaking the illusion of it filling
         // the cup.
-        return new Vector3(xPosition, 0.0f, 0.5f);
+        return new Vector3(
+            xPosition,
+            0.0f,
+            transform.position.z + 0.5f
+        );
     }
 
     private void OnDisable() {
