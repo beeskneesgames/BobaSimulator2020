@@ -5,21 +5,19 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TitleMenu : MonoBehaviour {
-    public Toggle debugToggle;
-
     private void Start() {
-        Debugger.Instance.IsOn = debugToggle.isOn;
+        Debugger.Instance.IsOn = false;
     }
 
     public void StartGame() {
         GameManager.StartMainScene();
     }
 
-    public void ExitGame() {
-        GameManager.ExitGame();
+    public void ShowCredits() {
+        GameManager.StartCreditsScene();
     }
 
-    public void SetDebug(bool isDebug) {
-        Debugger.Instance.IsOn = isDebug;
+    public void ExitGame() {
+        GameManager.ExitGame();
     }
 }
