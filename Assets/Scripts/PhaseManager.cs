@@ -61,7 +61,7 @@ public class PhaseManager : MonoBehaviour {
     }
 
     public void InstructionsHidden() {
-        Debug.Log("Instructions hidden");
+        currentPhase.StartPhase();
     }
 
     public void CurrentPhaseStarted() {
