@@ -17,6 +17,10 @@ public class LiquidPhase : GamePhase {
         }
     }
 
+    protected override void ExecuteBeforeStart() {
+        phaseManager.instructionsAnimator.SetTrigger("StartLiquid");
+    }
+
     protected override void ExecuteStart() {
         liquidSpawner.gameObject.SetActive(true);
     }
