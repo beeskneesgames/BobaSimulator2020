@@ -3,7 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InstructionsAnimationListener : MonoBehaviour {
+    public PhaseManager phaseManager;
+
     public void BobaAnimationEnded() {
-        Debug.Log("Boba animation ended");
+        phaseManager.InstructionsHidden();
+    }
+
+    public void IceAnimationEnded() {
+        phaseManager.InstructionsHidden();
+    }
+
+    public void TeaAnimationEnded() {
+        phaseManager.InstructionsHidden();
     }
 }

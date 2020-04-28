@@ -988,6 +988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e810e95c8004e8a89b824f04900051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phaseManager: {fileID: 576963516}
 --- !u!1001 &389988860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1295,6 +1296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3883bb2822049848ffd58bf8e7c966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instructionsAnimator: {fileID: 382275890}
   currentPhaseText: {fileID: 1990101993}
   timeRemainingText: {fileID: 1043665535}
   timeRemaining: 10
