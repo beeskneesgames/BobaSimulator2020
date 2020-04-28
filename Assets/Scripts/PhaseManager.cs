@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PhaseManager : MonoBehaviour {
+    public Animator instructionsAnimator;
     public Text currentPhaseText;
     public Text timeRemainingText;
     public float timeRemaining;
@@ -28,26 +29,30 @@ public class PhaseManager : MonoBehaviour {
         }
     }
 
+    private bool timerActive = false;
     private GamePhase currentPhase;
+    public GamePhase CurrentPhase {
+        get {
+            return currentPhase;
+        }
+
+        set {
+            currentPhase = value;
+        }
+    }
 
     private void Start() {
         Debugger.Instance.phaseManager = this;
-        GetComponent<BobaPhase>().StartPhase();
+        GetComponent<BobaPhase>().BeforeStartPhase();
     }
 
     private void Update() {
-        TimeRemaining -= Time.deltaTime;
+        if (timerActive) {
+            TickTimer();
 
-        if (IsInEndDelay()) {
-            if (!currentPhase.phaseEnding) {
-                currentPhase.EndPhase();
+            if (TimeRemaining <= 0.0f) {
+                timerActive = false;
             }
-        }
-
-        if (IsInStartDelay() || IsInEndDelay()) {
-            timeRemainingText.color = Color.red;
-        } else {
-            timeRemainingText.color = Color.white;
         }
     }
 
@@ -55,11 +60,14 @@ public class PhaseManager : MonoBehaviour {
         Debugger.Instance.phaseManager = null;
     }
 
-    public void PhaseStarted(GamePhase gamePhase) {
-        currentPhase = gamePhase;
+    public void InstructionsHidden() {
+        currentPhase.StartPhase();
+    }
 
+    public void CurrentPhaseStarted() {
         TimeRemaining = currentPhase.Time + currentPhase.StartDelay + currentPhase.EndDelay;
         currentPhaseText.text = currentPhase.Name;
+        timerActive = true;
     }
 
     public void SkipPhase() {
@@ -74,5 +82,21 @@ public class PhaseManager : MonoBehaviour {
 
     private bool IsInEndDelay() {
         return TimeRemaining <= currentPhase.EndDelay;
+    }
+
+    private void TickTimer() {
+        TimeRemaining -= Time.deltaTime;
+
+        if (IsInEndDelay()) {
+            if (!currentPhase.phaseEnding) {
+                currentPhase.EndPhase();
+            }
+        }
+
+        if (IsInStartDelay() || IsInEndDelay()) {
+            timeRemainingText.color = Color.red;
+        } else {
+            timeRemainingText.color = Color.white;
+        }
     }
 }

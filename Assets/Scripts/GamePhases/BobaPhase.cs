@@ -22,6 +22,10 @@ public class BobaPhase : GamePhase {
         }
     }
 
+    protected override void ExecuteBeforeStart() {
+        phaseManager.instructionsAnimator.SetTrigger("StartBoba");
+    }
+
     protected override void ExecuteStart() {
         bobaSpawner.gameObject.SetActive(true);
     }
@@ -31,7 +35,7 @@ public class BobaPhase : GamePhase {
     }
 
     protected override void ExecuteNext() {
-        GetComponent<IcePhase>().StartPhase();
+        GetComponent<IcePhase>().BeforeStartPhase();
     }
 
     public override bool ShouldEndEarly() {

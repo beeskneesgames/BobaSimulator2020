@@ -16,14 +16,19 @@ public abstract class GamePhase : MonoBehaviour {
         }
     }
     public bool phaseEnding = false;
-    private PhaseManager phaseManager;
+    protected PhaseManager phaseManager;
 
     private void Awake() {
         phaseManager = GetComponent<PhaseManager>();
     }
 
+    public void BeforeStartPhase() {
+        phaseManager.CurrentPhase = this;
+        ExecuteBeforeStart();
+    }
+
     public void StartPhase() {
-        phaseManager.PhaseStarted(this);
+        phaseManager.CurrentPhaseStarted();
 
         StartCoroutine(DelayPhase(StartDelay, () => {
             ExecuteStart();
@@ -47,6 +52,13 @@ public abstract class GamePhase : MonoBehaviour {
     private IEnumerator DelayPhase(float delay, System.Action callback) {
         yield return new WaitForSeconds(delay);
         callback();
+    }
+
+    protected virtual void ExecuteBeforeStart() {
+        // Override this if you want to play an animation or something before
+        // the timer starts. Do NOT call super(), since it'll start the phase
+        // right away.
+        StartPhase();
     }
 
     protected abstract void ExecuteStart();

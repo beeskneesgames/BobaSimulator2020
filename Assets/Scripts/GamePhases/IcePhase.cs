@@ -22,6 +22,10 @@ public class IcePhase : GamePhase {
         }
     }
 
+    protected override void ExecuteBeforeStart() {
+        phaseManager.instructionsAnimator.SetTrigger("StartIce");
+    }
+
     protected override void ExecuteStart() {
         iceSpawner.gameObject.SetActive(true);
     }
@@ -31,7 +35,7 @@ public class IcePhase : GamePhase {
     }
 
     protected override void ExecuteNext() {
-        GetComponent<LiquidPhase>().StartPhase();
+        GetComponent<LiquidPhase>().BeforeStartPhase();
     }
 
     public override bool ShouldEndEarly() {
