@@ -13,7 +13,7 @@ public class InstructionsAnimationListener : MonoBehaviour {
         phaseManager.InstructionsHidden();
     }
 
-    public void TeaAnimationEnded() {
+    public void LiquidAnimationEnded() {
         phaseManager.InstructionsHidden();
     }
 }
