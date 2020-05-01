@@ -1034,7 +1034,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 8ca30019a011e4df9b042a34d5665957,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8ca30019a011e4df9b042a34d5665957,
         type: 3}
@@ -2317,7 +2317,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8646206877487016827}
-  m_RootOrder: 16
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!114 &1059142928
 MonoBehaviour:
@@ -3397,7 +3397,7 @@ Transform:
   m_Children:
   - {fileID: 106688632}
   m_Father: {fileID: 8646206877487016827}
-  m_RootOrder: 17
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1684247762
 MonoBehaviour:
@@ -4521,6 +4521,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.x
       value: 0.00000011920929
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589357983551770575, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: bounceDistance
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589357983551770575, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: bounceSpeed
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 085f12f3e603343d283dff5825a08724, type: 3}

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Boba : MonoBehaviour {
+    private CupEffects cupEffects;
     private bool manuallyFalling;
     private Vector3 startingPosition;
     private Vector3 targetPosition;
@@ -21,6 +22,7 @@ public class Boba : MonoBehaviour {
 
             if (fractionOfJourney >= 1.0f) {
                 manuallyFalling = false;
+                cupEffects.Bounce();
             }
         } else if (transform.position.y <= -100.0f) {
             Destroy(gameObject);
@@ -28,6 +30,7 @@ public class Boba : MonoBehaviour {
     }
 
     public void FallIntoCup(CupController cup) {
+        cupEffects = cup.GetComponent<CupEffects>();
         BobaPlacer bobaPlacer = cup.GetComponentInChildren<BobaPlacer>();
 
         transform.parent = bobaPlacer.transform;
