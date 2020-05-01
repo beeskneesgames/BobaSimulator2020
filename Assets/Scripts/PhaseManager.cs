@@ -48,11 +48,20 @@ public class PhaseManager : MonoBehaviour {
 
     private void Update() {
         if (timerActive) {
+            // If the phase timer is active, tick it down and then pause it if
+            // the time is up.
             TickTimer();
 
             if (TimeRemaining <= 0.0f) {
                 timerActive = false;
             }
+        } else if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
+            // If the phase timer is inactive, it means we're playing an
+            // instructions animation.
+            //
+            // While in one of these animations, if the player clicks, fast
+            // forward the animation.
+            instructionsAnimator.SetTrigger("Hide");
         }
     }
 
@@ -71,7 +80,7 @@ public class PhaseManager : MonoBehaviour {
     }
 
     public void SkipPhase() {
-        if (!currentPhase.phaseEnding) {
+        if (timerActive && !currentPhase.phaseEnding) {
             TimeRemaining = currentPhase.EndDelay;
         }
     }
