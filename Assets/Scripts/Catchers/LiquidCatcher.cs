@@ -36,7 +36,10 @@ public class LiquidCatcher : MonoBehaviour {
         }
     }
 
+    private CupEffects cupEffects;
+
     private void Start() {
+        cupEffects = GetComponentInParent<CupEffects>();
         liquidFillClippingPlaneStartY = liquidFillClippingPlane.transform.localPosition.y;
         liquidStreamClippingPlaneStartY = liquidStreamClippingPlane.transform.localPosition.y;
     }
@@ -70,6 +73,7 @@ public class LiquidCatcher : MonoBehaviour {
 
         if (liquidStream != null) {
             currentLiquidStream = liquidStream;
+            cupEffects.Lower();
         }
     }
 
@@ -78,6 +82,7 @@ public class LiquidCatcher : MonoBehaviour {
 
         if (liquidStream != null) {
             currentLiquidStream = null;
+            cupEffects.Raise();
         }
     }
 }
