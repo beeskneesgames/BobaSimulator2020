@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ice : MonoBehaviour {
+    private CupEffects cupEffects;
     private bool manuallyFalling;
     private Vector3 startingPosition;
     private Vector3 targetPosition;
@@ -25,6 +26,7 @@ public class Ice : MonoBehaviour {
 
                 // Let the ice placer know that we're done being placed.
                 icePlacer.IcePlaced(this);
+                cupEffects.Bounce();
             }
         } else if (transform.position.y <= -100.0f) {
             Destroy(gameObject);
@@ -32,6 +34,7 @@ public class Ice : MonoBehaviour {
     }
 
     public void FallIntoCup(CupController cup) {
+        cupEffects = cup.GetComponent<CupEffects>();
         manuallyFalling = true;
         startingPosition = transform.localPosition;
 
