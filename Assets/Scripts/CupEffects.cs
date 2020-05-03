@@ -16,17 +16,17 @@ public class CupEffects : MonoBehaviour {
         Raise
     }
 
-    public float bounceDistance = 0.075f;
-    public float bounceSpeed = 2.5f;
+    public float yMoveDistance = 0.075f;
+    public float yMoveSpeed = 2.5f;
 
     private Effect currentEffect = Effect.None;
-    private BounceDirection bounceDirection;
+    private BounceDirection currentBounceDirection;
     private float startingY;
     private float lowestY;
 
     private void Start() {
         startingY = transform.localPosition.y;
-        lowestY = startingY - bounceDistance;
+        lowestY = startingY - yMoveDistance;
     }
 
     private void Update() {
@@ -46,7 +46,7 @@ public class CupEffects : MonoBehaviour {
     public void Bounce() {
         if (currentEffect == Effect.None) {
             currentEffect = Effect.Bounce;
-            bounceDirection = BounceDirection.Down;
+            currentBounceDirection = BounceDirection.Down;
         }
     }
 
@@ -64,13 +64,13 @@ public class CupEffects : MonoBehaviour {
 
     private void UpdateBounce() {
         float newY;
-        float yOffset = Time.deltaTime * bounceSpeed;
+        float yOffset = Time.deltaTime * yMoveSpeed;
 
-        if (bounceDirection == BounceDirection.Down) {
+        if (currentBounceDirection == BounceDirection.Down) {
             newY = transform.localPosition.y - yOffset;
 
             if (newY < lowestY) {
-                bounceDirection = BounceDirection.Up;
+                currentBounceDirection = BounceDirection.Up;
             }
         } else {
             newY = transform.localPosition.y + yOffset;
@@ -89,7 +89,7 @@ public class CupEffects : MonoBehaviour {
     }
 
     private void UpdateLower() {
-        float yOffset = Time.deltaTime * bounceSpeed;
+        float yOffset = Time.deltaTime * yMoveSpeed;
         float newY = transform.localPosition.y - yOffset;
 
         if (newY < lowestY) {
@@ -105,7 +105,7 @@ public class CupEffects : MonoBehaviour {
     }
 
     private void UpdateRaise() {
-        float yOffset = Time.deltaTime * bounceSpeed;
+        float yOffset = Time.deltaTime * yMoveSpeed;
         float newY = transform.localPosition.y + yOffset;
 
         if (newY > startingY) {
