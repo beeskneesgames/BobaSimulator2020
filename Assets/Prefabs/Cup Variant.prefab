@@ -69,6 +69,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab511282f3eca43e7841adfd6d4e15a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yMoveDistance: 0.075
+  yMoveSpeed: 2.5
 --- !u!1 &6018219313563978916
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5012103be904741278479c2cd724139a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cupBottom: {fileID: 6058679674822358610}
   liquidFillClippingPlane: {fileID: 0}
   liquidStreamClippingPlane: {fileID: 0}
   liquidPercentageText: {fileID: 0}

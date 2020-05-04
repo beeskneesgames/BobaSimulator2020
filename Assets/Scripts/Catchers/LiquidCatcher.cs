@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class LiquidCatcher : MonoBehaviour {
-    private LiquidStream currentLiquidStream;
+    public GameObject cupBottom;
     public ClippingPlane liquidFillClippingPlane;
     public ClippingPlane liquidStreamClippingPlane;
     public Text liquidPercentageText;
@@ -15,8 +15,28 @@ public class LiquidCatcher : MonoBehaviour {
         }
     }
 
+    private LiquidStream currentLiquidStream;
+    private LiquidStream CurrentLiquidStream {
+        get {
+            return currentLiquidStream;
+        }
+
+        set {
+            LiquidStream oldLiquidStream = currentLiquidStream;
+            currentLiquidStream = value;
+
+            if (oldLiquidStream == null && currentLiquidStream != null) {
+                // If we just started catching a liquid stream, notify it of the
+                // start.
+                currentLiquidStream.StartBeingCaught(this);
+            } else if (oldLiquidStream != null && currentLiquidStream == null) {
+                // If we just stopped catching a liquid stream, notify it of the
+                // stop.
+                oldLiquidStream.StopBeingCaught(this);
+            }
+        }
+    }
     private float liquidFillClippingPlaneStartY;
-    private float liquidStreamClippingPlaneStartY;
     private float liquidPercentage = 0.0f;
     private float LiquidPercentage {
         get {
@@ -41,18 +61,19 @@ public class LiquidCatcher : MonoBehaviour {
     private void Start() {
         cupEffects = GetComponentInParent<CupEffects>();
         liquidFillClippingPlaneStartY = liquidFillClippingPlane.transform.localPosition.y;
-        liquidStreamClippingPlaneStartY = liquidStreamClippingPlane.transform.localPosition.y;
     }
 
     private void Update() {
-        UpdateLiquidStreamClippingPlaneY();
+        if (CurrentLiquidStream != null) {
+            LiquidPercentage += Time.deltaTime * 0.2f;
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
         LiquidStream liquidStream = other.GetComponent<LiquidStream>();
 
         if (liquidStream != null) {
-            currentLiquidStream = liquidStream;
+            CurrentLiquidStream = liquidStream;
             cupEffects.Lower();
         }
     }
@@ -61,45 +82,8 @@ public class LiquidCatcher : MonoBehaviour {
         LiquidStream liquidStream = other.GetComponent<LiquidStream>();
 
         if (liquidStream != null) {
-            currentLiquidStream = null;
+            CurrentLiquidStream = null;
             cupEffects.Raise();
         }
-    }
-
-    // TODO: Fix clipping plane bug
-    //
-    // Current problem: This method immediately resets the clipping plane
-    // to y=-100 even though it should be giving up control to the stream (since
-    // it's transitioning at the beginning).
-    //
-    // Reason: We're in the *catcher* here. That means currentLiquidStream is
-    // only set during a collision. When it's not set (because it's not hitting
-    // the cup), we have no way of knowing if it's transitioning or not, so we assume
-    // it's not and show the whole stream.
-    //
-    // Possible solution: Move some control stuff around so that the stream
-    // always controls its clipping plane.
-    private void UpdateLiquidStreamClippingPlaneY() {
-        float newLiquidStreamClippingPlaneY;
-
-        if (currentLiquidStream == null) {
-            // When the liquid stream isn't colliding with the cup, move the
-            // clipping plane off-screen so we don't see the stream getting cut
-            // off.
-            newLiquidStreamClippingPlaneY = -100.0f;
-        } else {
-            // When the liquid stream is colliding with the cup, move the
-            // clipping plane to the bottom of the cup so the stream is cut off
-            // right there.
-            newLiquidStreamClippingPlaneY = liquidStreamClippingPlaneStartY;
-
-            LiquidPercentage += Time.deltaTime * 0.2f;
-        }
-
-        liquidStreamClippingPlane.transform.localPosition = new Vector3(
-            liquidStreamClippingPlane.transform.localPosition.x,
-            newLiquidStreamClippingPlaneY,
-            liquidStreamClippingPlane.transform.localPosition.z
-        );
     }
 }
