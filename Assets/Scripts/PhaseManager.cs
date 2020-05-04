@@ -8,6 +8,7 @@ public class PhaseManager : MonoBehaviour {
     public Animator instructionsAnimator;
     public Text currentPhaseText;
     public Text timeRemainingText;
+    public GamePhase startingPhase;
     public float timeRemaining;
     public float TimeRemaining {
         get {
@@ -43,7 +44,7 @@ public class PhaseManager : MonoBehaviour {
 
     private void Start() {
         Debugger.Instance.phaseManager = this;
-        GetComponent<BobaPhase>().BeforeStartPhase();
+        startingPhase.BeforeStartPhase();
     }
 
     private void Update() {
