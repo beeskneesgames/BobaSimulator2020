@@ -2364,6 +2364,7 @@ MonoBehaviour:
   interval: 1
   liquidStreamPrefab: {fileID: 319297041745917509, guid: 09ffb6d8f597b4d60bf48bc8b6413f22,
     type: 3}
+  liquidStreamClippingPlane: {fileID: 1059142928}
 --- !u!4 &1079247980
 Transform:
   m_ObjectHideFlags: 0

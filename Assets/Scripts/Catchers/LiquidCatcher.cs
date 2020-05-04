@@ -45,6 +45,41 @@ public class LiquidCatcher : MonoBehaviour {
     }
 
     private void Update() {
+        UpdateLiquidStreamClippingPlaneY();
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        LiquidStream liquidStream = other.GetComponent<LiquidStream>();
+
+        if (liquidStream != null) {
+            currentLiquidStream = liquidStream;
+            cupEffects.Lower();
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        LiquidStream liquidStream = other.GetComponent<LiquidStream>();
+
+        if (liquidStream != null) {
+            currentLiquidStream = null;
+            cupEffects.Raise();
+        }
+    }
+
+    // TODO: Fix clipping plane bug
+    //
+    // Current problem: This method immediately resets the clipping plane
+    // to y=-100 even though it should be giving up control to the stream (since
+    // it's transitioning at the beginning).
+    //
+    // Reason: We're in the *catcher* here. That means currentLiquidStream is
+    // only set during a collision. When it's not set (because it's not hitting
+    // the cup), we have no way of knowing if it's transitioning or not, so we assume
+    // it's not and show the whole stream.
+    //
+    // Possible solution: Move some control stuff around so that the stream
+    // always controls its clipping plane.
+    private void UpdateLiquidStreamClippingPlaneY() {
         float newLiquidStreamClippingPlaneY;
 
         if (currentLiquidStream == null) {
@@ -66,23 +101,5 @@ public class LiquidCatcher : MonoBehaviour {
             newLiquidStreamClippingPlaneY,
             liquidStreamClippingPlane.transform.localPosition.z
         );
-    }
-
-    private void OnTriggerEnter(Collider other) {
-        LiquidStream liquidStream = other.GetComponent<LiquidStream>();
-
-        if (liquidStream != null) {
-            currentLiquidStream = liquidStream;
-            cupEffects.Lower();
-        }
-    }
-
-    private void OnTriggerExit(Collider other) {
-        LiquidStream liquidStream = other.GetComponent<LiquidStream>();
-
-        if (liquidStream != null) {
-            currentLiquidStream = null;
-            cupEffects.Raise();
-        }
     }
 }

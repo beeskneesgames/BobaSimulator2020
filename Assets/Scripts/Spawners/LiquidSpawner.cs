@@ -5,6 +5,7 @@ using UnityEngine;
 public class LiquidSpawner : MonoBehaviour {
     public float interval = 1.0f;
     public LiquidStream liquidStreamPrefab;
+    public ClippingPlane liquidStreamClippingPlane;
 
     private LiquidStream liquidStream;
     private float timeSinceLastStream = 0.0f;
@@ -13,7 +14,9 @@ public class LiquidSpawner : MonoBehaviour {
     private void Start() {
         screenSize = Globals.GetScreenSize(Camera.main);
         liquidStream = Instantiate(liquidStreamPrefab);
+        liquidStream.clippingPlane = liquidStreamClippingPlane;
         liquidStream.transform.position = GeneratePosition();
+        liquidStream.TransitionIn();
     }
 
     private void Update() {
