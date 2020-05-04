@@ -22,11 +22,11 @@ public class LiquidPhase : GamePhase {
     }
 
     protected override void ExecuteStart() {
-        liquidSpawner.gameObject.SetActive(true);
+        liquidSpawner.StartSpawning();
     }
 
     protected override void ExecuteEnd() {
-        liquidSpawner.gameObject.SetActive(false);
+        liquidSpawner.StopSpawning();
     }
 
     protected override void ExecuteNext() {

@@ -27,11 +27,11 @@ public class IcePhase : GamePhase {
     }
 
     protected override void ExecuteStart() {
-        iceSpawner.gameObject.SetActive(true);
+        iceSpawner.StartSpawning();
     }
 
     protected override void ExecuteEnd() {
-        iceSpawner.gameObject.SetActive(false);
+        iceSpawner.StopSpawning();
     }
 
     protected override void ExecuteNext() {

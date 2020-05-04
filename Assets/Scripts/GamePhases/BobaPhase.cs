@@ -27,11 +27,11 @@ public class BobaPhase : GamePhase {
     }
 
     protected override void ExecuteStart() {
-        bobaSpawner.gameObject.SetActive(true);
+        bobaSpawner.StartSpawning();
     }
 
     protected override void ExecuteEnd() {
-        bobaSpawner.gameObject.SetActive(false);
+        bobaSpawner.StopSpawning();
     }
 
     protected override void ExecuteNext() {

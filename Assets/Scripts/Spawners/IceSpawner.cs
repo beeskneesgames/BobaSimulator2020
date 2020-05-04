@@ -6,6 +6,7 @@ public class IceSpawner : MonoBehaviour {
     public GameObject icePrefab;
     public float interval = 0.2f;
 
+    private bool isSpawning = false;
     private float timeSinceLastIce = 0.0f;
     private float screenSize;
 
@@ -14,19 +15,29 @@ public class IceSpawner : MonoBehaviour {
     }
 
     private void Update() {
-        timeSinceLastIce += Time.deltaTime;
+        if (isSpawning) {
+            timeSinceLastIce += Time.deltaTime;
 
-        if (timeSinceLastIce > interval) {
-            GameObject ice = Instantiate(icePrefab);
-            ice.transform.position = GeneratePosition();
-            ice.transform.Rotate(
-                Random.Range(0.0f, 360.0f),
-                Random.Range(0.0f, 360.0f),
-                Random.Range(0.0f, 360.0f),
-                Space.Self
-            );
-            timeSinceLastIce = 0.0f;
+            if (timeSinceLastIce > interval) {
+                GameObject ice = Instantiate(icePrefab);
+                ice.transform.position = GeneratePosition();
+                ice.transform.Rotate(
+                    Random.Range(0.0f, 360.0f),
+                    Random.Range(0.0f, 360.0f),
+                    Random.Range(0.0f, 360.0f),
+                    Space.Self
+                );
+                timeSinceLastIce = 0.0f;
+            }
         }
+    }
+
+    public void StartSpawning() {
+        isSpawning = true;
+    }
+
+    public void StopSpawning() {
+        isSpawning = false;
     }
 
     private Vector3 GeneratePosition() {

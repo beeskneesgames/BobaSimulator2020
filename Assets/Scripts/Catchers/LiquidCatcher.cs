@@ -64,7 +64,7 @@ public class LiquidCatcher : MonoBehaviour {
     }
 
     private void Update() {
-        if (CurrentLiquidStream != null) {
+        if (CurrentLiquidStream != null && CurrentLiquidStream.IsShown) {
             LiquidPercentage += Time.deltaTime * 0.2f;
         }
     }
@@ -74,7 +74,10 @@ public class LiquidCatcher : MonoBehaviour {
 
         if (liquidStream != null) {
             CurrentLiquidStream = liquidStream;
-            cupEffects.Lower();
+
+            if (liquidStream.IsShown) {
+                cupEffects.Lower();
+            }
         }
     }
 
@@ -83,7 +86,10 @@ public class LiquidCatcher : MonoBehaviour {
 
         if (liquidStream != null) {
             CurrentLiquidStream = null;
-            cupEffects.Raise();
+
+            if (liquidStream.IsShown) {
+                cupEffects.Raise();
+            }
         }
     }
 }
