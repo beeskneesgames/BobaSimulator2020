@@ -15,7 +15,7 @@ Shader "BeesKneesGames/ClippingPlane" {
 
         CGPROGRAM
 
-        #pragma surface surf Standard fullforwardshadows
+        #pragma surface surf Standard fullforwardshadows addshadow
         #pragma target 3.0
 
         // Unity Lighting properties
