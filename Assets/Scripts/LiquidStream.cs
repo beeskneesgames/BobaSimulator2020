@@ -10,7 +10,7 @@ public class LiquidStream : MonoBehaviour {
         None
     }
 
-    public LiquidCatcher currentCatcher;
+    public LiquidCatcher liquidCatcher;
     public CupEffects cupEffects;
     public ClippingPlane clippingPlane;
     public Transition CurrentTransition {
@@ -62,7 +62,7 @@ public class LiquidStream : MonoBehaviour {
             // the stream, lower the cup, since that's what we normally do at
             // the beginning of the collision (which is what it will be from the
             // player's perspective).
-            if (currentCatcher != null) {
+            if (liquidCatcher != null) {
                 cupEffects.Lower();
             }
         }
@@ -78,18 +78,18 @@ public class LiquidStream : MonoBehaviour {
     }
 
     public void StartBeingCaught(LiquidCatcher catcher) {
-        currentCatcher = catcher;
+        liquidCatcher = catcher;
         cupEffects = catcher.GetComponentInParent<CupEffects>();
     }
 
     public void StopBeingCaught(LiquidCatcher catcher) {
-        currentCatcher = null;
+        liquidCatcher = null;
         cupEffects = null;
     }
 
     private void UpdateClippingPlaneY() {
         if (IsShown) {
-            if (currentCatcher == null) {
+            if (liquidCatcher == null) {
                 // When the liquid stream isn't being caught, move the clipping
                 // plane off-screen so we don't see the stream getting cut off.
                 clippingPlane.transform.localPosition = new Vector3(
@@ -105,7 +105,7 @@ public class LiquidStream : MonoBehaviour {
                 // catcher is parented to the cup rather than the liquid stream.
                 clippingPlane.transform.position = new Vector3(
                     clippingPlane.transform.position.x,
-                    currentCatcher.cupBottom.transform.position.y,
+                    liquidCatcher.cupBottom.transform.position.y,
                     clippingPlane.transform.position.z
                 );
             }
