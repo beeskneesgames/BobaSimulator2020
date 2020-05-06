@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class LiquidCatcher : MonoBehaviour {
-    private LiquidStream currentLiquidStream;
+    public GameObject cupBottom;
     public ClippingPlane liquidFillClippingPlane;
     public ClippingPlane liquidStreamClippingPlane;
     public Text liquidPercentageText;
@@ -15,8 +15,28 @@ public class LiquidCatcher : MonoBehaviour {
         }
     }
 
+    private LiquidStream currentLiquidStream;
+    private LiquidStream CurrentLiquidStream {
+        get {
+            return currentLiquidStream;
+        }
+
+        set {
+            LiquidStream oldLiquidStream = currentLiquidStream;
+            currentLiquidStream = value;
+
+            if (oldLiquidStream == null && currentLiquidStream != null) {
+                // If we just started catching a liquid stream, notify it of the
+                // start.
+                currentLiquidStream.StartBeingCaught(this);
+            } else if (oldLiquidStream != null && currentLiquidStream == null) {
+                // If we just stopped catching a liquid stream, notify it of the
+                // stop.
+                oldLiquidStream.StopBeingCaught(this);
+            }
+        }
+    }
     private float liquidFillClippingPlaneStartY;
-    private float liquidStreamClippingPlaneStartY;
     private float liquidPercentage = 0.0f;
     private float LiquidPercentage {
         get {
@@ -41,39 +61,23 @@ public class LiquidCatcher : MonoBehaviour {
     private void Start() {
         cupEffects = GetComponentInParent<CupEffects>();
         liquidFillClippingPlaneStartY = liquidFillClippingPlane.transform.localPosition.y;
-        liquidStreamClippingPlaneStartY = liquidStreamClippingPlane.transform.localPosition.y;
     }
 
     private void Update() {
-        float newLiquidStreamClippingPlaneY;
-
-        if (currentLiquidStream == null) {
-            // When the liquid stream isn't colliding with the cup, move the
-            // clipping plane off-screen so we don't see the stream getting cut
-            // off.
-            newLiquidStreamClippingPlaneY = -100.0f;
-        } else {
-            // When the liquid stream is colliding with the cup, move the
-            // clipping plane to the bottom of the cup so the stream is cut off
-            // right there.
-            newLiquidStreamClippingPlaneY = liquidStreamClippingPlaneStartY;
-
+        if (CurrentLiquidStream != null && CurrentLiquidStream.IsShown) {
             LiquidPercentage += Time.deltaTime * 0.2f;
         }
-
-        liquidStreamClippingPlane.transform.localPosition = new Vector3(
-            liquidStreamClippingPlane.transform.localPosition.x,
-            newLiquidStreamClippingPlaneY,
-            liquidStreamClippingPlane.transform.localPosition.z
-        );
     }
 
     private void OnTriggerEnter(Collider other) {
         LiquidStream liquidStream = other.GetComponent<LiquidStream>();
 
         if (liquidStream != null) {
-            currentLiquidStream = liquidStream;
-            cupEffects.Lower();
+            CurrentLiquidStream = liquidStream;
+
+            if (liquidStream.IsShown) {
+                cupEffects.Lower();
+            }
         }
     }
 
@@ -81,8 +85,11 @@ public class LiquidCatcher : MonoBehaviour {
         LiquidStream liquidStream = other.GetComponent<LiquidStream>();
 
         if (liquidStream != null) {
-            currentLiquidStream = null;
-            cupEffects.Raise();
+            CurrentLiquidStream = null;
+
+            if (liquidStream.IsShown) {
+                cupEffects.Raise();
+            }
         }
     }
 }

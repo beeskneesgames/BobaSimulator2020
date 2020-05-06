@@ -6,6 +6,7 @@ public class LiquidSpawner : MonoBehaviour {
     public float interval = 1.0f;
     public LiquidStream liquidStreamPrefab;
 
+    private bool isSpawning = false;
     private LiquidStream liquidStream;
     private float timeSinceLastStream = 0.0f;
     private float screenSize;
@@ -14,14 +15,17 @@ public class LiquidSpawner : MonoBehaviour {
         screenSize = Globals.GetScreenSize(Camera.main);
         liquidStream = Instantiate(liquidStreamPrefab);
         liquidStream.transform.position = GeneratePosition();
+        liquidStream.Hide();
     }
 
     private void Update() {
-        timeSinceLastStream += Time.deltaTime;
+        if (isSpawning) {
+            timeSinceLastStream += Time.deltaTime;
 
-        if (timeSinceLastStream > interval) {
-            liquidStream.transform.position = GeneratePosition();
-            timeSinceLastStream = 0.0f;
+            if (timeSinceLastStream > interval) {
+                liquidStream.transform.position = GeneratePosition();
+                timeSinceLastStream = 0.0f;
+            }
         }
     }
 
@@ -39,9 +43,13 @@ public class LiquidSpawner : MonoBehaviour {
         );
     }
 
-    private void OnDisable() {
-        if (liquidStream != null) {
-            Destroy(liquidStream.gameObject);
-        }
+    public void StartSpawning() {
+        isSpawning = true;
+        liquidStream.Show();
+    }
+
+    public void StopSpawning() {
+        isSpawning = false;
+        liquidStream.Hide();
     }
 }

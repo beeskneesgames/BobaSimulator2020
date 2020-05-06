@@ -5,8 +5,8 @@ Shader "BeesKneesGames/ClippingPlane" {
 
     SubShader {
         Tags {
-            "RenderType" = "Opaque"
-            "Queue" = "Geometry"
+            "RenderType" = "TransparentCutout"
+            "Queue" = "AlphaTest"
         }
 
         // Render faces regardless of whether they point towards the camera or
@@ -15,7 +15,7 @@ Shader "BeesKneesGames/ClippingPlane" {
 
         CGPROGRAM
 
-        #pragma surface surf Standard fullforwardshadows
+        #pragma surface surf Standard fullforwardshadows addshadow
         #pragma target 3.0
 
         // Unity Lighting properties

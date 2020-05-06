@@ -6,6 +6,7 @@ public class BobaSpawner : MonoBehaviour {
     public GameObject bobaPrefab;
     public float interval = 0.001f;
 
+    private bool isSpawning = false;
     private float timeSinceLastBoba = 0.0f;
     private float screenSize;
 
@@ -14,13 +15,23 @@ public class BobaSpawner : MonoBehaviour {
     }
 
     private void Update() {
-        timeSinceLastBoba += Time.deltaTime;
+        if (isSpawning) {
+            timeSinceLastBoba += Time.deltaTime;
 
-        if (timeSinceLastBoba > interval) {
-            GameObject boba = Instantiate(bobaPrefab);
-            boba.transform.position = GeneratePosition();
-            timeSinceLastBoba = 0.0f;
+            if (timeSinceLastBoba > interval) {
+                GameObject boba = Instantiate(bobaPrefab);
+                boba.transform.position = GeneratePosition();
+                timeSinceLastBoba = 0.0f;
+            }
         }
+    }
+
+    public void StartSpawning() {
+        isSpawning = true;
+    }
+
+    public void StopSpawning() {
+        isSpawning = false;
     }
 
     private Vector3 GeneratePosition() {
