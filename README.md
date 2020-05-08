@@ -1,5 +1,10 @@
 # BOBA SIMULATOR 2020
 
+## Setting up Console Enhanced free
+1. Click Window > Console Enhanced.
+1. Drag the newly-opened window into whichever tab group your regular console is in.
+1. Right click your regular console tab and click "Close tab".
+
 ## Updating Unity
 1. Download and install latest Unity version from Unity Hub.
 1. Find the project in the Unity Hub "Projects" tab and select the newly-installed version of Unity in the "Unity Version" dropdown.
