@@ -27,6 +27,11 @@ public class Ice : MonoBehaviour {
                 // Let the ice placer know that we're done being placed.
                 icePlacer.IcePlaced(this);
                 cupEffects.Bounce();
+
+                int clipNumber = Random.Range(1, 9);
+
+                // Choose a random ice clip
+                FindObjectOfType<AudioManager>().Play($"Ice{clipNumber.ToString()}");
             }
         } else if (transform.position.y <= -100.0f) {
             Destroy(gameObject);
