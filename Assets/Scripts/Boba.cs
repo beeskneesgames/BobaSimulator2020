@@ -23,6 +23,11 @@ public class Boba : MonoBehaviour {
             if (fractionOfJourney >= 1.0f) {
                 manuallyFalling = false;
                 cupEffects.Bounce();
+
+                int clipNumber = Random.Range(1, 8);
+
+                // Choose a random boba clip
+                FindObjectOfType<AudioManager>().Play($"Boba{clipNumber.ToString()}");
             }
         } else if (transform.position.y <= -100.0f) {
             Destroy(gameObject);
