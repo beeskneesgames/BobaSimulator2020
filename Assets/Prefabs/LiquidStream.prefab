@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9e286ea36b9fe4a02a94fdce82b32be7, type: 2}
+  - {fileID: 2100000, guid: b312b6c0c925b4f23b1d82b30f19edce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,7 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd7ccf323bca5490aa6d15964ecd00fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCatcher: {fileID: 0}
+  liquidCatcher: {fileID: 0}
+  cupEffects: {fileID: 0}
   clippingPlane: {fileID: 5317381964136027581}
 --- !u!1 &8812279474108314295
 GameObject:
@@ -153,4 +154,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2815c620bfb4fe39ca708df2ff8ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 9e286ea36b9fe4a02a94fdce82b32be7, type: 2}
+  material: {fileID: 2100000, guid: b312b6c0c925b4f23b1d82b30f19edce, type: 2}
