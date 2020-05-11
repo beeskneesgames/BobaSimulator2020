@@ -32,16 +32,16 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void Play(string sound) {
-        Sound s = Array.Find(sounds, item => item.name == sound);
-        if (s == null) {
+        Sound sound = Array.Find(sounds, (Predicate<Sound>)(item => item.name == sound));
+        if (sound == null) {
             Debug.LogWarning("Sound: " + sound + " not found!");
             return;
         }
 
-        s.source.volume = s.volume * (1f + UnityEngine.Random.Range(-s.volumeVariance / 2f, s.volumeVariance / 2f));
-        s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
+        sound.source.volume = sound.volume * (1.0f + UnityEngine.Random.Range(-sound.volumeVariance * 0.5f, sound.volumeVariance * 0.5f));
+        sound.source.pitch = sound.pitch * (1.0f + UnityEngine.Random.Range(-sound.pitchVariance * 0.5f, sound.pitchVariance * 0.5f));
 
-        s.source.Play();
+        sound.source.Play();
     }
 
 }
