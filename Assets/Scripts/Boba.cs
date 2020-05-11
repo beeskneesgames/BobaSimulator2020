@@ -24,10 +24,7 @@ public class Boba : MonoBehaviour {
                 manuallyFalling = false;
                 cupEffects.Bounce();
 
-                int clipNumber = Random.Range(1, 8);
-
-                // Choose a random boba clip
-                FindObjectOfType<AudioManager>().Play($"Boba{clipNumber.ToString()}");
+                AudioManager.Instance.PlayBoba();
             }
         } else if (transform.position.y <= -100.0f) {
             Destroy(gameObject);

@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour {
     public AudioMixerGroup mixerGroup;
 
     public Sound[] sounds;
+    private int bobaClipCount;
+    private int iceClipCount;
 
     private void Awake() {
         if (instance != null && instance != this) {
@@ -22,6 +24,9 @@ public class AudioManager : MonoBehaviour {
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        bobaClipCount = 8;
+        iceClipCount = 9;
 
         foreach (Sound sound in sounds) {
             sound.source = gameObject.AddComponent<AudioSource>();
@@ -36,7 +41,21 @@ public class AudioManager : MonoBehaviour {
         Play("Theme");
     }
 
-    public void Play(string soundName) {
+    public void PlayBoba() {
+        int clipNumber = UnityEngine.Random.Range(1, bobaClipCount);
+
+        // Choose a random clip
+        Play($"Boba{clipNumber.ToString()}");
+    }
+
+    public void PlayIce() {
+        int clipNumber = UnityEngine.Random.Range(1, iceClipCount);
+
+        // Choose a random clip
+        Play($"Ice{clipNumber.ToString()}");
+    }
+
+    private void Play(string soundName) {
         Sound sound = Array.Find(sounds, (Predicate<Sound>)(item => item.name == soundName));
         if (sound == null) {
             Debug.LogWarning("Sound: " + soundName + " not found!");
@@ -48,5 +67,4 @@ public class AudioManager : MonoBehaviour {
 
         sound.source.Play();
     }
-
 }
