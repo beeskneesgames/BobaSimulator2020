@@ -28,8 +28,11 @@ public class Debugger : MonoBehaviour {
             foreach (IDebuggerListener listener in listeners) {
                 listener.DebuggerToggled();
             }
+
+            UpdateGraphy();
         }
     }
+    private Tayx.Graphy.GraphyManager graphy;
 
     public PhaseManager phaseManager;
 
@@ -42,6 +45,11 @@ public class Debugger : MonoBehaviour {
         instance = this;
         DontDestroyOnLoad(gameObject);
         listeners = new List<IDebuggerListener>();
+    }
+
+    private void Start() {
+        graphy = Tayx.Graphy.GraphyManager.Instance;
+        UpdateGraphy();
     }
 
     private void Update() {
@@ -58,5 +66,11 @@ public class Debugger : MonoBehaviour {
 
     public void AddListener(IDebuggerListener listener) {
         listeners.Add(listener);
+    }
+
+    private void UpdateGraphy() {
+        if (graphy != null) {
+            graphy.gameObject.SetActive(IsOn);
+        }
     }
 }
