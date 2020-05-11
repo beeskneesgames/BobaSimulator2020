@@ -13,8 +13,8 @@ public class AudioManager : MonoBehaviour {
     public AudioMixerGroup mixerGroup;
 
     public Sound[] sounds;
-    private int bobaClipCount;
-    private int iceClipCount;
+    const int BobaClipCount = 8;
+    const int IceClipCount = 9;
 
     private void Awake() {
         if (instance != null && instance != this) {
@@ -24,9 +24,6 @@ public class AudioManager : MonoBehaviour {
 
         instance = this;
         DontDestroyOnLoad(gameObject);
-
-        bobaClipCount = 8;
-        iceClipCount = 9;
 
         foreach (Sound sound in sounds) {
             sound.source = gameObject.AddComponent<AudioSource>();
@@ -42,14 +39,14 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void PlayBoba() {
-        int clipNumber = UnityEngine.Random.Range(1, bobaClipCount);
+        int clipNumber = UnityEngine.Random.Range(1, BobaClipCount);
 
         // Choose a random clip
         Play($"Boba{clipNumber.ToString()}");
     }
 
     public void PlayIce() {
-        int clipNumber = UnityEngine.Random.Range(1, iceClipCount);
+        int clipNumber = UnityEngine.Random.Range(1, IceClipCount);
 
         // Choose a random clip
         Play($"Ice{clipNumber.ToString()}");
