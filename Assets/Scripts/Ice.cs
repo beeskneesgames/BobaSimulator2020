@@ -27,6 +27,8 @@ public class Ice : MonoBehaviour {
                 // Let the ice placer know that we're done being placed.
                 icePlacer.IcePlaced(this);
                 cupEffects.Bounce();
+
+                AudioManager.Instance.PlayIce();
             }
         } else if (transform.position.y <= -100.0f) {
             Destroy(gameObject);
