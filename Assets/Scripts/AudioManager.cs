@@ -3,20 +3,25 @@ using System;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
-
-    public static AudioManager instance;
+    private static AudioManager instance;
+    public static AudioManager Instance {
+        get {
+            return instance;
+        }
+    }
 
     public AudioMixerGroup mixerGroup;
 
     public Sound[] sounds;
 
     private void Awake() {
-        if (instance != null) {
+        if (instance != null && instance != this) {
             Destroy(gameObject);
-        } else {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
+            return;
         }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
 
         foreach (Sound sound in sounds) {
             sound.source = gameObject.AddComponent<AudioSource>();
@@ -31,10 +36,10 @@ public class AudioManager : MonoBehaviour {
         Play("Theme");
     }
 
-    public void Play(string sound) {
-        Sound sound = Array.Find(sounds, (Predicate<Sound>)(item => item.name == sound));
+    public void Play(string soundName) {
+        Sound sound = Array.Find(sounds, (Predicate<Sound>)(item => item.name == soundName));
         if (sound == null) {
-            Debug.LogWarning("Sound: " + sound + " not found!");
+            Debug.LogWarning("Sound: " + soundName + " not found!");
             return;
         }
 
