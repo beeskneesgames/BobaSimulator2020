@@ -13,8 +13,8 @@ public class AudioManager : MonoBehaviour {
     public AudioMixerGroup mixerGroup;
 
     public Sound[] sounds;
-    const int BobaClipCount = 8;
-    const int IceClipCount = 9;
+    private const int BobaClipCount = 8;
+    private const int IceClipCount = 9;
 
     private void Awake() {
         if (instance != null && instance != this) {
