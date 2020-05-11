@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public interface IDebuggerListener {
@@ -62,6 +63,10 @@ public class Debugger : MonoBehaviour {
                 phaseManager.SkipPhase();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.P)) {
+            StartCoroutine(TakeScreenshot());
+        }
     }
 
     public void AddListener(IDebuggerListener listener) {
@@ -72,5 +77,21 @@ public class Debugger : MonoBehaviour {
         if (graphy != null) {
             graphy.gameObject.SetActive(IsOn);
         }
+    }
+
+    private IEnumerator TakeScreenshot() {
+        yield return new WaitForEndOfFrame();
+
+        // Get image from screen.
+        Texture2D screenImage = new Texture2D(Screen.width, Screen.height);
+        screenImage.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        screenImage.Apply();
+
+        // Write to file
+        string desktopDir = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
+        DirectoryInfo fileDir = Directory.CreateDirectory($"{desktopDir}/boba-screenshots");
+        string filename = System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+        string filepath = $"{fileDir.FullName}/{filename}.png";
+        System.IO.File.WriteAllBytes(filepath, screenImage.EncodeToPNG());
     }
 }
