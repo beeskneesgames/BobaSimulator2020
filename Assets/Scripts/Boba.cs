@@ -23,6 +23,8 @@ public class Boba : MonoBehaviour {
             if (fractionOfJourney >= 1.0f) {
                 manuallyFalling = false;
                 cupEffects.Bounce();
+
+                AudioManager.Instance.PlayBoba();
             }
         } else if (transform.position.y <= -100.0f) {
             Destroy(gameObject);
