@@ -1352,7 +1352,7 @@ MonoBehaviour:
   instructionsAnimator: {fileID: 382275890}
   currentPhaseText: {fileID: 1990101993}
   timeRemainingText: {fileID: 1043665535}
-  startingPhase: {fileID: 576963519}
+  startingPhase: {fileID: 576963518}
   timeRemaining: 10
 --- !u!4 &576963517
 Transform:

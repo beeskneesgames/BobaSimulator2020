@@ -56,7 +56,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Boba1
     clip: {fileID: 8300000, guid: b8a13f164b7714c3bb4f02c82f6359d8, type: 3}
-    volume: 0.75
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -65,7 +65,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Boba2
     clip: {fileID: 8300000, guid: a754ce271fcd54698ab26ce9090b1af6, type: 3}
-    volume: 0.75
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Boba3
     clip: {fileID: 8300000, guid: 55778d77d87db43b7a6fff3a69d2782f, type: 3}
-    volume: 0.75
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Boba4
     clip: {fileID: 8300000, guid: 71539df5d30aa4dbcbca299f57fe8bd5, type: 3}
-    volume: 0.75
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Boba5
     clip: {fileID: 8300000, guid: 0630a1a4eec2549ba84eabb45f650f3d, type: 3}
-    volume: 0.75
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Boba6
     clip: {fileID: 8300000, guid: 370f0c8a53c5b4d638ddcb516cacc38f, type: 3}
-    volume: 0.75
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -110,7 +110,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Boba7
     clip: {fileID: 8300000, guid: 72d4e047c78104201931af1ef46843da, type: 3}
-    volume: 0.75
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Boba8
     clip: {fileID: 8300000, guid: c4138e516270b4fcdb21268a0d1952f0, type: 3}
-    volume: 0.75
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Ice1
     clip: {fileID: 8300000, guid: d2b66a49d7807496da593dea898db794, type: 3}
-    volume: 0.5
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Ice2
     clip: {fileID: 8300000, guid: f6d41afd50194405b8f6674e1ad69e97, type: 3}
-    volume: 0.5
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Ice3
     clip: {fileID: 8300000, guid: 7ff969f8c582b493fab1d3c300b9182a, type: 3}
-    volume: 0.5
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Ice4
     clip: {fileID: 8300000, guid: 9f23e46e6c0614f958e0cdea0773fba3, type: 3}
-    volume: 0.5
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Ice5
     clip: {fileID: 8300000, guid: 34c835cb765e6465b8f0bc508f0f026f, type: 3}
-    volume: 0.5
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Ice6
     clip: {fileID: 8300000, guid: bf52043d795d74a14aedf83ecfbf5ec0, type: 3}
-    volume: 0.5
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Ice7
     clip: {fileID: 8300000, guid: fd95e752d00154caeb086b0e7ad20f3b, type: 3}
-    volume: 0.5
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -191,7 +191,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Ice8
     clip: {fileID: 8300000, guid: fc1d786970ad04a15a3e97940b9aa316, type: 3}
-    volume: 0.5
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Ice9
     clip: {fileID: 8300000, guid: 43befd585089540bb9a9447c50fcda28, type: 3}
-    volume: 0.5
+    volume: 0.25
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
