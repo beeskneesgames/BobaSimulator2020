@@ -52,12 +52,8 @@ public class AudioManager : MonoBehaviour {
         Play($"Ice{clipNumber.ToString()}");
     }
 
-    public void PlayPaperUp() {
-        Play("PaperUp");
-    }
-
-    public void PlayPaperDown() {
-        Play("PaperDown");
+    public void PlayPaper() {
+        Play("Paper");
     }
 
     public void PlayLiquid() {

@@ -207,18 +207,9 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
-  - name: PaperUp
-    clip: {fileID: 8300000, guid: af3f2eb094ae64d27866b13d6ea0182b, type: 3}
-    volume: 0.5
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: PaperDown
-    clip: {fileID: 8300000, guid: 49a445e3308e5444983d9adcc5bfc615, type: 3}
-    volume: 0.25
+  - name: Paper
+    clip: {fileID: 8300000, guid: 6ab59b495c2644266a296800fddb3829, type: 3}
+    volume: 1
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
