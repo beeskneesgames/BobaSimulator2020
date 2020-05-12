@@ -55,6 +55,5 @@ public class LiquidSpawner : MonoBehaviour {
     public void StopSpawning() {
         isSpawning = false;
         liquidStream.Hide();
-        AudioManager.Instance.StopLiquid();
     }
 }
