@@ -23,6 +23,7 @@ public class LiquidPhase : GamePhase {
 
     protected override void ExecuteStart() {
         liquidSpawner.StartSpawning();
+        AudioManager.Instance.PlayLiquid();
     }
 
     protected override void ExecuteEnd() {
