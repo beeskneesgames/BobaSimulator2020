@@ -77,6 +77,8 @@ public class LiquidCatcher : MonoBehaviour {
 
             if (liquidStream.IsShown) {
                 cupEffects.Lower();
+                AudioManager.Instance.StopLiquid();
+                AudioManager.Instance.PlayCupLiquid();
             }
         }
     }
@@ -89,6 +91,8 @@ public class LiquidCatcher : MonoBehaviour {
 
             if (liquidStream.IsShown) {
                 cupEffects.Raise();
+                AudioManager.Instance.StopCupLiquid();
+                AudioManager.Instance.PlayLiquid();
             }
         }
     }

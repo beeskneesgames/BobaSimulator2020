@@ -52,16 +52,47 @@ public class AudioManager : MonoBehaviour {
         Play($"Ice{clipNumber.ToString()}");
     }
 
+    public void PlayPaper() {
+        Play("Paper");
+    }
+
+    public void PlayLiquid() {
+        Play("Liquid");
+    }
+
+    public void StopLiquid() {
+        Stop("Liquid");
+    }
+
+    public void PlayCupLiquid() {
+        Play("CupLiquid");
+    }
+
+    public void StopCupLiquid() {
+        Stop("CupLiquid");
+    }
+
     private void Play(string soundName) {
         Sound sound = Array.Find(sounds, (Predicate<Sound>)(item => item.name == soundName));
-        if (sound == null) {
-            Debug.LogWarning("Sound: " + soundName + " not found!");
-            return;
-        }
+        CheckForSound(sound, soundName);
 
         sound.source.volume = sound.volume * (1.0f + UnityEngine.Random.Range(-sound.volumeVariance * 0.5f, sound.volumeVariance * 0.5f));
         sound.source.pitch = sound.pitch * (1.0f + UnityEngine.Random.Range(-sound.pitchVariance * 0.5f, sound.pitchVariance * 0.5f));
 
         sound.source.Play();
+    }
+
+    private void Stop(string soundName) {
+        Sound sound = Array.Find(sounds, (Predicate<Sound>)(item => item.name == soundName));
+        CheckForSound(sound, soundName);
+
+        sound.source.Stop();
+    }
+
+    private void CheckForSound(Sound sound, string soundName) {
+        if (sound == null) {
+            Debug.LogWarning("Sound: " + soundName + " not found!");
+            return;
+        }
     }
 }

@@ -5,6 +5,10 @@ using UnityEngine;
 public class InstructionsAnimationListener : MonoBehaviour {
     public PhaseManager phaseManager;
 
+    public void PlayInstructionsSound() {
+        AudioManager.Instance.PlayPaper();
+    }
+
     public void BobaAnimationEnded() {
         phaseManager.InstructionsHidden();
     }
