@@ -70,6 +70,7 @@ public class LiquidStream : MonoBehaviour {
 
     public void Hide() {
         IsShown = false;
+
         clippingPlane.transform.localPosition = new Vector3(
             clippingPlane.transform.localPosition.x,
             1.0f,

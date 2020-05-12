@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: Theme
     clip: {fileID: 8300000, guid: 1d36c90aace2a49d59589e449c2ee576, type: 3}
-    volume: 0.075
+    volume: 0.025
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -205,5 +205,41 @@ MonoBehaviour:
     pitch: 1
     pitchVariance: 0
     loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: PaperUp
+    clip: {fileID: 8300000, guid: af3f2eb094ae64d27866b13d6ea0182b, type: 3}
+    volume: 0.5
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: PaperDown
+    clip: {fileID: 8300000, guid: 49a445e3308e5444983d9adcc5bfc615, type: 3}
+    volume: 0.25
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Liquid
+    clip: {fileID: 8300000, guid: 0a007d7cead6e44d5a186db94e934a90, type: 3}
+    volume: 0.5
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: CupLiquid
+    clip: {fileID: 8300000, guid: 1dfed090d0fb94b8ea01bdf340f42cc6, type: 3}
+    volume: 0.5
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}

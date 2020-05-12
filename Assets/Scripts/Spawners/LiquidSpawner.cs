@@ -20,6 +20,10 @@ public class LiquidSpawner : MonoBehaviour {
 
     private void Update() {
         if (isSpawning) {
+            if (timeSinceLastStream == 0.0f) {
+                AudioManager.Instance.PlayLiquid();
+            }
+
             timeSinceLastStream += Time.deltaTime;
 
             if (timeSinceLastStream > interval) {
@@ -51,5 +55,6 @@ public class LiquidSpawner : MonoBehaviour {
     public void StopSpawning() {
         isSpawning = false;
         liquidStream.Hide();
+        AudioManager.Instance.StopLiquid();
     }
 }
