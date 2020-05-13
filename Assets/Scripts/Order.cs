@@ -103,7 +103,6 @@ public class Order : MonoBehaviour {
     private string CompileAddIns(string addIn) {
         string addInOrder = "";
         string chosenOption = addInOptions[UnityEngine.Random.Range(0, addInOptions.Count - 1)];
-        isBubbleTea = true;
 
         if (chosenOption == "No" && addIn == "boba") {
             isBubbleTea = false;
