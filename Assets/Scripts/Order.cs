@@ -48,11 +48,10 @@ public class Order : MonoBehaviour {
     private void Start() {
         iceOrder = CompileAddIns("ice");
         bobaOrder = CompileAddIns("boba");
-        flavorOrder = CompileFlavor();
     }
 
     public string Compile() {
-        return $"{iceOrder}{flavorOrder}{bobaOrder}";
+        return $"{CompileFlavor()}{CompileIce()}{CompileBoba()}";
     }
 
     private string CompileIce() {
