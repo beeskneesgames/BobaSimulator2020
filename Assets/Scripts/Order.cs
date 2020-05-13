@@ -40,7 +40,9 @@ public class Order {
     }
 
     private string CompileFlavor() {
-        return "Classic Milk Tea with a splash of Coconut";
+        string chosenFlavor = flavors[UnityEngine.Random.Range(0, flavors.Count - 1)];
+
+        return $"{chosenFlavor}";
     }
 
     private string CompileAddIns(string addIn) {
