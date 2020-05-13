@@ -17,7 +17,6 @@ using UnityEngine;
 public class Order : MonoBehaviour {
     private string iceOrder;
     private string bobaOrder;
-    private string flavorOrder;
     private bool isBubbleTea = true;
 
     static List<string> flavors = new List<string> {
