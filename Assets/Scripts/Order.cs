@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Order : MonoBehaviour {
-    private string iceOrder;
-    private string bobaOrder;
+    private string iceOrder = "";
+    private string bobaOrder = "";
     private string flavorOrder;
     private bool isBubbleTea;
 
@@ -35,8 +35,8 @@ public class Order : MonoBehaviour {
     };
 
     private void Start() {
-        iceOrder = CompileIce();
-        bobaOrder = CompileBoba();
+        iceOrder = CompileAddIns("ice");
+        bobaOrder = CompileAddIns("boba";
         flavorOrder = CompileFlavor();
     }
 
@@ -50,7 +50,7 @@ public class Order : MonoBehaviour {
             return iceOrder;
         } else {
             // Mango tea with light ice
-            return $" with {CompileAddIns("ice")}";
+            return $" with {iceOrder}";
         }
     }
 
