@@ -45,6 +45,6 @@ public class Ice : MonoBehaviour {
 
         icePlacer = cup.GetComponentInChildren<IcePlacer>();
         transform.parent = icePlacer.transform;
-        targetPosition = icePlacer.PopPosition();
+        targetPosition = icePlacer.PopPosition(startingPosition);
     }
 }

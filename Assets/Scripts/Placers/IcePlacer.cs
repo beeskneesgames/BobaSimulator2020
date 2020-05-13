@@ -16,7 +16,7 @@ public class IcePlacer : MonoBehaviour {
     private bool iceFloating = false;
     private float liquidFillClippingPlaneLastY;
 
-    private List<List<float>> icePositions = new List<List<float>> {
+    private List<List<float>> xLayers = new List<List<float>> {
         new List<float> {  0.2f,  0.85f },
         new List<float> { -0.05f, 0.9f  },
         new List<float> { -0.1f,  0.55f, 1.18f },
@@ -25,9 +25,25 @@ public class IcePlacer : MonoBehaviour {
         new List<float> { -0.25f, 0.4f,  1.07f }
     };
 
+    private List<List<Vector3>> positionLayers;
+
     private void Awake() {
-        List<float> lastLayer = icePositions[icePositions.Count - 1];
-        defaultPosition = GeneratePosition(lastLayer[lastLayer.Count - 1], icePositions.Count - 1);
+        // Set up the ice positions
+        positionLayers = new List<List<Vector3>>(xLayers.Count);
+
+        for (int i = 0; i < xLayers.Count; i++) {
+            List<float> xLayer = xLayers[i];
+            List<Vector3> positionLayer = new List<Vector3>(xLayer.Count);
+
+            foreach (float x in xLayer) {
+                positionLayer.Add(GeneratePosition(x, i));
+            }
+
+            positionLayers.Add(positionLayer);
+        }
+
+        List<Vector3> lastLayer = positionLayers[positionLayers.Count - 1];
+        defaultPosition = lastLayer[lastLayer.Count - 1];
     }
 
     private void Start() {
@@ -64,10 +80,10 @@ public class IcePlacer : MonoBehaviour {
     }
 
     public bool HasPositions() {
-        return layerIndex < icePositions.Count;
+        return layerIndex < xLayers.Count;
     }
 
-    public Vector3 PopPosition() {
+    public Vector3 PopPosition(Vector3 startingPosition) {
         // If we run out of positions before the phase is over while ice is still falling,
         // return a previous position to avoid errors.
         if (!HasPositions()) {
@@ -79,16 +95,29 @@ public class IcePlacer : MonoBehaviour {
             layerIndexCalculated = true;
         }
 
-        int positionIndex = Random.Range(0, icePositions[layerIndex].Count);
-        Vector3 position = GeneratePosition(icePositions[layerIndex][positionIndex], layerIndex);
+        int closestPositionIndex = 0;
+        Vector3 closestPosition = positionLayers[layerIndex][closestPositionIndex];
+        float closestDistance = Vector3.Distance(startingPosition, closestPosition);
 
-        icePositions[layerIndex].RemoveAt(positionIndex);
+        // Start at 1, since we started with position 0 above.
+        for (int i = 1; i < positionLayers[layerIndex].Count; i++) {
+            Vector3 potentialPosition = positionLayers[layerIndex][i];
+            float distance = Vector3.Distance(startingPosition, potentialPosition);
 
-        if (icePositions[layerIndex].Count == 0) {
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestPosition = potentialPosition;
+                closestPositionIndex = i;
+            }
+        }
+
+        positionLayers[layerIndex].RemoveAt(closestPositionIndex);
+
+        if (positionLayers[layerIndex].Count == 0) {
             layerIndex++;
         }
 
-        return position;
+        return closestPosition;
     }
 
     private Vector3 GeneratePosition(float normalizedXPosition, int layerIndex) {
