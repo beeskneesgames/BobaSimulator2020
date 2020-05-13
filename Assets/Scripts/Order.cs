@@ -15,7 +15,7 @@ using UnityEngine;
 // Mango with a splash of Blueberry tea
 
 public class Order : MonoBehaviour {
-    public enum Flavors {
+    public enum Flavor {
         Blueberry,
         Classic,
         Coconut,
@@ -27,7 +27,7 @@ public class Order : MonoBehaviour {
         Thai,
     };
 
-    public enum LiquidOption {
+    public enum FlavorOption {
         Splash,
         Half,
         Single,
@@ -42,19 +42,21 @@ public class Order : MonoBehaviour {
 
     public AddInOption IceAmount;
     public AddInOption BobaAmount;
-    public LiquidOption DrinkType;
+    public FlavorOption DrinkType;
+    public List<Flavor> DrinkFlavors;
 
     public Order() {
         IceAmount = GetRandomOption();
         BobaAmount = GetRandomOption();
         DrinkType = GetRandomDrinkType();
+        DrinkFlavors = GetRandomDrinkFlavors();
     }
 
-    public string ToString() {
+    public string ToSentence() {
         return $"{CompileFlavor()}{CompileIce()}{CompileBoba()}";
     }
 
-    private bool isBubbleTea() {
+    private bool IsBubbleTea() {
         return BobaAmount != AddInOption.None;
     }
 
@@ -70,13 +72,29 @@ public class Order : MonoBehaviour {
         return randomOption;
     }
 
-    private LiquidOption GetRandomDrinkType() {
-        Array liquidOptions = Enum.GetValues(typeof(LiquidOption));
-        LiquidOption randomOption = (LiquidOption)liquidOptions.GetValue(
+    private FlavorOption GetRandomDrinkType() {
+        Array liquidOptions = Enum.GetValues(typeof(FlavorOption));
+        FlavorOption randomOption = (FlavorOption)liquidOptions.GetValue(
             UnityEngine.Random.Range(0, liquidOptions.Length - 1)
         );
 
         return randomOption;
+    }
+
+    private List<Flavor> GetRandomDrinkFlavors() {
+        int numberOfFlavors = (DrinkType == FlavorOption.Single) ? 1 : 2;
+        List<Flavor> flavors = new List<Flavor> { };
+        Array flavorOptions = Enum.GetValues(typeof(Flavor));
+
+        for (int i = 0; i < numberOfFlavors; i++) {
+            Flavor randomOption = (Flavor)flavorOptions.GetValue(
+                UnityEngine.Random.Range(0, flavorOptions.Length - 1)
+            );
+
+            flavors.Add(randomOption);
+        }
+
+        return flavors;
     }
 
     private string CompileIce() {
