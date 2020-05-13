@@ -7,18 +7,19 @@ public class Boba : MonoBehaviour {
     private bool manuallyFalling;
     private Vector3 startingPosition;
     private Vector3 targetPosition;
-    private float timeFalling = 0.0f;
+    private float currentTimeFalling = 0.0f;
+    private float maxTimeFalling;
 
     private void Update() {
         if (manuallyFalling) {
-            float fractionOfJourney = timeFalling / 0.1f;
+            currentTimeFalling += Time.deltaTime;
+            float fractionOfJourney = currentTimeFalling / maxTimeFalling;
 
             transform.localPosition = Vector3.Lerp(
                 startingPosition,
                 targetPosition,
                 fractionOfJourney
             );
-            timeFalling += Time.deltaTime;
 
             if (fractionOfJourney >= 1.0f) {
                 manuallyFalling = false;
@@ -34,14 +35,17 @@ public class Boba : MonoBehaviour {
     public void FallIntoCup(CupController cup) {
         cupEffects = cup.GetComponent<CupEffects>();
         BobaPlacer bobaPlacer = cup.GetComponentInChildren<BobaPlacer>();
-
-        transform.parent = bobaPlacer.transform;
+        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        float velocity = rigidbody.velocity.magnitude;
 
         manuallyFalling = true;
+        transform.parent = bobaPlacer.transform;
+
         startingPosition = transform.localPosition;
         targetPosition = bobaPlacer.PopPosition(startingPosition);
+        maxTimeFalling = Vector3.Distance(startingPosition, targetPosition) / velocity;
 
         GetComponent<Collider>().enabled = false;
-        Destroy(GetComponent<Rigidbody>());
+        Destroy(rigidbody);
     }
 }
