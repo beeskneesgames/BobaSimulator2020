@@ -15,13 +15,14 @@ public class Boba : MonoBehaviour {
             currentTimeFalling += Time.deltaTime;
             float fractionOfJourney = currentTimeFalling / maxTimeFalling;
 
-            transform.localPosition = Vector3.Lerp(
-                startingPosition,
-                targetPosition,
-                fractionOfJourney
-            );
-
-            if (fractionOfJourney >= 1.0f) {
+            if (fractionOfJourney < 1.0f) {
+                transform.localPosition = new Vector3(
+                    transform.localPosition.x,
+                    Mathf.Lerp(startingPosition.y, targetPosition.y, fractionOfJourney),
+                    transform.localPosition.z
+                );
+            } else {
+                transform.localPosition = targetPosition;
                 manuallyFalling = false;
                 cupEffects.Bounce();
 
@@ -36,14 +37,14 @@ public class Boba : MonoBehaviour {
         cupEffects = cup.GetComponent<CupEffects>();
         BobaPlacer bobaPlacer = cup.GetComponentInChildren<BobaPlacer>();
         Rigidbody rigidbody = GetComponent<Rigidbody>();
-        float velocity = rigidbody.velocity.magnitude;
+        float velocity = Mathf.Abs(rigidbody.velocity.y);
 
         manuallyFalling = true;
         transform.parent = bobaPlacer.transform;
 
         startingPosition = transform.localPosition;
         targetPosition = bobaPlacer.PopPosition(startingPosition);
-        maxTimeFalling = Vector3.Distance(startingPosition, targetPosition) / velocity;
+        maxTimeFalling = (startingPosition.y - targetPosition.y) / velocity;
 
         GetComponent<Collider>().enabled = false;
         Destroy(rigidbody);
