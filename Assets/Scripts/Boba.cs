@@ -39,7 +39,7 @@ public class Boba : MonoBehaviour {
 
         manuallyFalling = true;
         startingPosition = transform.localPosition;
-        targetPosition = bobaPlacer.PopPosition();
+        targetPosition = bobaPlacer.PopPosition(startingPosition);
 
         GetComponent<Collider>().enabled = false;
         Destroy(GetComponent<Rigidbody>());
