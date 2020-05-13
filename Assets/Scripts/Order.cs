@@ -40,7 +40,7 @@ public class Order {
     }
 
     public string Compile() {
-        return $"{iceOrder()}{flavorOrder()}{bobaOrder()}";
+        return $"{iceOrder}{flavorOrder}{bobaOrder}";
     }
 
     private string CompileIce() {
