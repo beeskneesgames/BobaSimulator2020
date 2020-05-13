@@ -1,7 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 public class Order {
+    private string iceOrder;
+    private string bobaOrder;
+    private string flavorOrder;
+    private bool isBubbleTea;
+
     static List<string> flavors = new List<string> {
         "Blueberry",
         "Classic Milk Tea",
@@ -27,20 +33,57 @@ public class Order {
         "Extra",
     };
 
+    private void Start() {
+        iceOrder = CompileAddIns("ice");
+        bobaOrder = CompileAddIns("boba");
+        flavorOrder = CompileFlavor();
+    }
+
     public string Compile() {
-        return $"{CompileIce()}{CompileBoba()}{CompileFlavor()}";
+        return $"{iceOrder()}{flavorOrder()}{bobaOrder()}";
     }
 
     private string CompileIce() {
-        return CompileAddIns("ice");
+        if (String.IsNullOrEmpty(iceOrder)) {
+            // Mango tea
+            return iceOrder;
+        } else {
+            // Mango tea with light ice
+            return $" with {CompileAddIns("ice")}";
+        }
     }
 
     private string CompileBoba() {
-        return CompileAddIns("boba");
+        if (String.IsNullOrEmpty(bobaOrder)) {
+            // Mango tea
+            return bobaOrder;
+        } else if (String.IsNullOrEmpty(iceOrder)) {
+            // Mango tea with no boba
+            return $" with {bobaOrder}";
+        } else {
+            // Mango tea with no ice and light boba
+            return $" and {bobaOrder}";
+        }
     }
 
     private string CompileFlavor() {
         string chosenFlavor = flavors[UnityEngine.Random.Range(0, flavors.Count - 1)];
+        // TODO: Fix this so it can't repeat the chosen flavor
+        string secondaryFlavor = flavors[UnityEngine.Random.Range(0, flavors.Count - 1)];
+        string liquidOption = liquidOptions[UnityEngine.Random.Range(0, flavors.Count - 1)];
+        string teaType = isBubbleTea ? "bubble tea" : "tea";
+
+        switch (liquidOption) {
+            case "Splash":
+                return $"{chosenFlavor} {teaType} with a splash of ${secondaryFlavor}";
+                break;
+            case "50/50":
+                return $"{chosenFlavor} ${secondaryFlavor} {teaType}";
+                break;
+            default:
+                return $"{chosenFlavor} {teaType}";
+                break;
+        }
 
         return $"{chosenFlavor}";
     }
@@ -50,6 +93,10 @@ public class Order {
         string chosenOption = addInOptions[UnityEngine.Random.Range(0, addInOptions.Count - 1)];
 
         if (chosenOption == "Regular") {
+            if (addIn == "boba") {
+                isBubbleTea = true;
+            }
+
             return addInOrder;
         };
 
