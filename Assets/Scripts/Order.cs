@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class Order {
+public class Order : MonoBehaviour {
     private string iceOrder;
     private string bobaOrder;
     private string flavorOrder;
@@ -72,20 +73,21 @@ public class Order {
         string secondaryFlavor = flavors[UnityEngine.Random.Range(0, flavors.Count - 1)];
         string liquidOption = liquidOptions[UnityEngine.Random.Range(0, flavors.Count - 1)];
         string teaType = isBubbleTea ? "bubble tea" : "tea";
+        string compiledFlavor;
 
         switch (liquidOption) {
             case "Splash":
-                return $"{chosenFlavor} {teaType} with a splash of ${secondaryFlavor}";
+                compiledFlavor = $"{chosenFlavor} {teaType} with a splash of ${secondaryFlavor}";
                 break;
             case "50/50":
-                return $"{chosenFlavor} ${secondaryFlavor} {teaType}";
+                compiledFlavor = $"{chosenFlavor} ${secondaryFlavor} {teaType}";
                 break;
             default:
-                return $"{chosenFlavor} {teaType}";
+                compiledFlavor = $"{chosenFlavor} {teaType}";
                 break;
         }
 
-        return $"{chosenFlavor}";
+        return $"{compiledFlavor}";
     }
 
     private string CompileAddIns(string addIn) {
