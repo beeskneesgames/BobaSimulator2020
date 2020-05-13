@@ -22,8 +22,8 @@ public class Boba : MonoBehaviour {
                     transform.localPosition.z
                 );
             } else {
-                transform.localPosition = targetPosition;
                 manuallyFalling = false;
+                transform.localPosition = targetPosition;
                 cupEffects.Bounce();
 
                 AudioManager.Instance.PlayBoba();
