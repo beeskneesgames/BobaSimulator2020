@@ -3,6 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// This class creates strings for a person's order
+
+// For example:
+// Mango tea 
+// Mango bubble tea
+// Mango bubble tea with light ice
+// Mango bubble tea with light boba
+// Mango bubble tea with no ice and extra boba
+
+// Mango Blueberry bubble tea
+// Mango with a splash of Blueberry tea
+
 public class Order : MonoBehaviour {
     private string iceOrder;
     private string bobaOrder;
