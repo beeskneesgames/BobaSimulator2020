@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Order : MonoBehaviour {
-    private string iceOrder = "";
-    private string bobaOrder = "";
+    private string iceOrder;
+    private string bobaOrder;
     private string flavorOrder;
     private bool isBubbleTea;
 
