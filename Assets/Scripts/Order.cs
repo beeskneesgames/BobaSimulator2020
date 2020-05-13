@@ -102,6 +102,6 @@ public class Order : MonoBehaviour {
             return addInOrder;
         };
 
-        return $"{addInOrder} {addIn} ";
+        return $"{addInOrder} {addIn}";
     }
 }
