@@ -7,7 +7,7 @@ public class Order : MonoBehaviour {
     private string iceOrder;
     private string bobaOrder;
     private string flavorOrder;
-    private bool isBubbleTea;
+    private bool isBubbleTea = true;
 
     static List<string> flavors = new List<string> {
         "Blueberry",
@@ -46,10 +46,10 @@ public class Order : MonoBehaviour {
 
     private string CompileIce() {
         if (String.IsNullOrEmpty(iceOrder)) {
-            // Mango tea
+            // Mango bubble tea
             return iceOrder;
         } else {
-            // Mango tea with light ice
+            // Mango bubble tea with light ice
             return $" with {iceOrder}";
         }
     }
@@ -59,10 +59,10 @@ public class Order : MonoBehaviour {
             // Mango tea
             return bobaOrder;
         } else if (String.IsNullOrEmpty(iceOrder)) {
-            // Mango tea with no boba
+            // Mango bubble tea with extra boba
             return $" with {bobaOrder}";
         } else {
-            // Mango tea with no ice and light boba
+            // Mango bubble tea with no ice and light boba
             return $" and {bobaOrder}";
         }
     }
@@ -93,12 +93,14 @@ public class Order : MonoBehaviour {
     private string CompileAddIns(string addIn) {
         string addInOrder = "";
         string chosenOption = addInOptions[UnityEngine.Random.Range(0, addInOptions.Count - 1)];
+        isBubbleTea = true;
+
+        if (chosenOption == "No" && addIn == "boba") {
+            isBubbleTea = false;
+            return addInOrder;
+        };
 
         if (chosenOption == "Regular") {
-            if (addIn == "boba") {
-                isBubbleTea = true;
-            }
-
             return addInOrder;
         };
 
