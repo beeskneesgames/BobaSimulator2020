@@ -35,8 +35,8 @@ public class Order : MonoBehaviour {
     };
 
     private void Start() {
-        iceOrder = CompileAddIns("ice");
-        bobaOrder = CompileAddIns("boba");
+        iceOrder = CompileIce();
+        bobaOrder = CompileBoba();
         flavorOrder = CompileFlavor();
     }
 
