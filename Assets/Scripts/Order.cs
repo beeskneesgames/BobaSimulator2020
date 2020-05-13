@@ -15,42 +15,68 @@ using UnityEngine;
 // Mango with a splash of Blueberry tea
 
 public class Order : MonoBehaviour {
-    private string iceOrder;
-    private string bobaOrder;
-    private bool isBubbleTea = true;
-
-    static List<string> flavors = new List<string> {
-        "Blueberry",
-        "Classic Milk Tea",
-        "Coconut",
-        "Honeydew",
-        "Mango",
-        "Matcha",
-        "Strawberry",
-        "Taro",
-        "Thai Tea",
+    public enum Flavors {
+        Blueberry,
+        Classic,
+        Coconut,
+        Honeydew,
+        Mango,
+        Matcha,
+        Strawberry,
+        Taro,
+        Thai,
     };
 
-    static List<string> liquidOptions = new List<string> {
-        "Splash",
-        "50/50",
-        "Single flavor",
+    public enum LiquidOption {
+        Splash,
+        Half,
+        Single,
     };
 
-    static List<string> addInOptions = new List<string> {
-        "No",
-        "Light",
-        "Regular",
-        "Extra",
+    public enum AddInOption {
+        None,
+        Light,
+        Regular,
+        Extra,
     };
 
-    private void Start() {
-        iceOrder = CompileAddIns("ice");
-        bobaOrder = CompileAddIns("boba");
+    public AddInOption IceAmount;
+    public AddInOption BobaAmount;
+    public LiquidOption DrinkType;
+
+    public Order() {
+        IceAmount = GetRandomOption();
+        BobaAmount = GetRandomOption();
+        DrinkType = GetRandomDrinkType();
     }
 
-    public string Compile() {
+    public string ToString() {
         return $"{CompileFlavor()}{CompileIce()}{CompileBoba()}";
+    }
+
+    private bool isBubbleTea() {
+        return BobaAmount != AddInOption.None;
+    }
+
+    // TODO: These two random methods are the same but the types are diff
+    //       Is there a way to combine without it being messy?
+
+    private AddInOption GetRandomOption() {
+        Array addInOptions = Enum.GetValues(typeof(AddInOption));
+        AddInOption randomOption = (AddInOption)addInOptions.GetValue(
+            UnityEngine.Random.Range(0, addInOptions.Length - 1)
+        );
+
+        return randomOption;
+    }
+
+    private LiquidOption GetRandomDrinkType() {
+        Array liquidOptions = Enum.GetValues(typeof(LiquidOption));
+        LiquidOption randomOption = (LiquidOption)liquidOptions.GetValue(
+            UnityEngine.Random.Range(0, liquidOptions.Length - 1)
+        );
+
+        return randomOption;
     }
 
     private string CompileIce() {
