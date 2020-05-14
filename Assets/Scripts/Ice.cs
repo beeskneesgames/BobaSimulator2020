@@ -58,7 +58,7 @@ public class Ice : MonoBehaviour {
         targetWorldPosition = icePlacer.transform.TransformPoint(targetLocalPosition);
         maxTimeFalling = (startingPosition.y - targetWorldPosition.y) / velocity;
 
-        GetComponent<Collider>().enabled = false;
+        Destroy(GetComponent<Collider>());
         Destroy(rigidbody);
     }
 }

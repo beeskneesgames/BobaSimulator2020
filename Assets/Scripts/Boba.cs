@@ -55,7 +55,7 @@ public class Boba : MonoBehaviour {
         targetWorldPosition = bobaPlacer.transform.TransformPoint(targetLocalPosition);
         maxTimeFalling = (startingPosition.y - targetWorldPosition.y) / velocity;
 
-        GetComponent<Collider>().enabled = false;
+        Destroy(GetComponent<Collider>());
         Destroy(rigidbody);
     }
 }
