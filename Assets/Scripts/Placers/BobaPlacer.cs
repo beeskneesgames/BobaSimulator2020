@@ -17,7 +17,7 @@ public class BobaPlacer : MonoBehaviour {
     int layerIndex = 0;
     Vector3 defaultPosition;
 
-    List<List<float>> bobaPositions = new List<List<float>> {
+    private List<List<float>> xLayers = new List<List<float>> {
         new List<float> { -0.15f, 0.5f, 1.0f, 1.6f, 2.0f, 3.0f, 3.8f, 4.1f },
         new List<float> { -0.3f, 0.0f, 0.3f, 1.3f, 2.0f, 2.3f, 3.3f, 3.0f, 4.3f },
         new List<float> { -0.35f, 0.0f, 0.35f, 1.35f, 1.9f, 2.35f, 3.35f, 4.0f, 4.35f },
@@ -37,32 +37,61 @@ public class BobaPlacer : MonoBehaviour {
         new List<float> { -1.05f, -0.5f, 0.1f, 0.8f, 1.3f, 2.0f, 2.8f, 3.2f, 4.1f, 5.05f },
     };
 
+    private List<List<Vector3>> positionLayers;
+
     private void Awake() {
-        List<float> lastLayer = bobaPositions[bobaPositions.Count - 1];
-        defaultPosition = GeneratePosition(lastLayer[lastLayer.Count - 1], bobaPositions.Count - 1);
+        // Set up the boba positions
+        positionLayers = new List<List<Vector3>>(xLayers.Count);
+
+        for (int i = 0; i < xLayers.Count; i++) {
+            List<float> xLayer = xLayers[i];
+            List<Vector3> positionLayer = new List<Vector3>(xLayer.Count);
+
+            foreach (float x in xLayer) {
+                positionLayer.Add(GeneratePosition(x, i));
+            }
+
+            positionLayers.Add(positionLayer);
+        }
+
+        List<Vector3> lastLayer = positionLayers[positionLayers.Count - 1];
+        defaultPosition = lastLayer[lastLayer.Count - 1];
     }
 
     public bool HasPositions() {
-        return layerIndex < bobaPositions.Count;
+        return layerIndex < positionLayers.Count;
     }
 
-    public Vector3 PopPosition() {
+    public Vector3 PopPosition(Vector3 startingPosition) {
         // If we run out of positions before the phase is over while boba is still falling,
         // return a previous position to avoid errors.
         if (!HasPositions()) {
             return defaultPosition;
         }
 
-        int positionIndex = Random.Range(0, bobaPositions[layerIndex].Count);
-        Vector3 position = GeneratePosition(bobaPositions[layerIndex][positionIndex], layerIndex);
+        int closestPositionIndex = 0;
+        Vector3 closestPosition = positionLayers[layerIndex][closestPositionIndex];
+        float closestDistance = Vector3.Distance(startingPosition, closestPosition);
 
-        bobaPositions[layerIndex].RemoveAt(positionIndex);
+        // Start at 1, since we started with position 0 above.
+        for (int i = 1; i < positionLayers[layerIndex].Count; i++) {
+            Vector3 potentialPosition = positionLayers[layerIndex][i];
+            float distance = Vector3.Distance(startingPosition, potentialPosition);
 
-        if (bobaPositions[layerIndex].Count == 0) {
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                closestPosition = potentialPosition;
+                closestPositionIndex = i;
+            }
+        }
+
+        positionLayers[layerIndex].RemoveAt(closestPositionIndex);
+
+        if (positionLayers[layerIndex].Count == 0) {
             layerIndex++;
         }
 
-        return position;
+        return closestPosition;
     }
 
     private Vector3 GeneratePosition(float normalizedXPosition, int layerIndex) {

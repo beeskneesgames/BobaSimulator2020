@@ -3,26 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Ice : MonoBehaviour {
+    public bool IsCaught {
+        get {
+            return manuallyFalling;
+        }
+    }
+
     private CupEffects cupEffects;
     private bool manuallyFalling;
     private Vector3 startingPosition;
-    private Vector3 targetPosition;
-    private float timeFalling = 0.0f;
+    private Vector3 targetLocalPosition;
+    private Vector3 targetWorldPosition;
+    private float currentTimeFalling = 0.0f;
+    private float maxTimeFalling;
     private IcePlacer icePlacer;
 
     private void Update() {
         if (manuallyFalling) {
-            float fractionOfJourney = timeFalling / 0.1f;
+            currentTimeFalling += Time.deltaTime;
+            float fractionOfJourney = currentTimeFalling / maxTimeFalling;
 
-            transform.localPosition = Vector3.Lerp(
-                startingPosition,
-                targetPosition,
-                fractionOfJourney
-            );
-            timeFalling += Time.deltaTime;
-
-            if (fractionOfJourney >= 1.0f) {
+            if (maxTimeFalling > 0.0f && fractionOfJourney < 1.0f) {
+                Vector3 lastPosition = transform.position;
+                transform.position = new Vector3(
+                    transform.position.x,
+                    Mathf.Lerp(startingPosition.y, targetWorldPosition.y, fractionOfJourney),
+                    transform.position.z
+                );
+            } else {
                 manuallyFalling = false;
+                transform.parent = icePlacer.transform;
+                transform.localPosition = targetLocalPosition;
 
                 // Let the ice placer know that we're done being placed.
                 icePlacer.IcePlaced(this);
@@ -37,14 +48,18 @@ public class Ice : MonoBehaviour {
 
     public void FallIntoCup(CupController cup) {
         cupEffects = cup.GetComponent<CupEffects>();
-        manuallyFalling = true;
-        startingPosition = transform.localPosition;
-
-        GetComponent<Collider>().enabled = false;
-        Destroy(GetComponent<Rigidbody>());
-
         icePlacer = cup.GetComponentInChildren<IcePlacer>();
-        transform.parent = icePlacer.transform;
-        targetPosition = icePlacer.PopPosition();
+        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        float velocity = Mathf.Abs(rigidbody.velocity.y);
+
+        manuallyFalling = true;
+
+        startingPosition = transform.localPosition;
+        targetLocalPosition = icePlacer.PopPosition(startingPosition);
+        targetWorldPosition = icePlacer.transform.TransformPoint(targetLocalPosition);
+        maxTimeFalling = (startingPosition.y - targetWorldPosition.y) / velocity;
+
+        Destroy(GetComponent<Collider>());
+        Destroy(rigidbody);
     }
 }
