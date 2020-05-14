@@ -2,18 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-// This class creates strings for a person's order
-
-// For example:
-// Mango tea 
-// Mango bubble tea
-// Mango bubble tea with light ice
-// Mango bubble tea with light boba
-// Mango bubble tea with no ice and extra boba
-
-// Mango Blueberry bubble tea
-// Mango with a splash of Blueberry tea
-
 public class Order {
     public enum Flavor {
         Blueberry,
@@ -55,6 +43,18 @@ public class Order {
     }
 
     public string ToSentence() {
+        // This method returns a person's order as a readable sentence
+
+        // For example:
+        // Mango tea 
+        // Mango bubble tea
+        // Mango bubble tea with light ice
+        // Mango bubble tea with light boba
+        // Mango bubble tea with no ice and extra boba
+
+        // Mango Blueberry bubble tea
+        // Mango with a splash of Blueberry tea
+
         return $"{CompileFlavorString()}{CompileIceString()}{CompileBobaString()}";
     }
 
