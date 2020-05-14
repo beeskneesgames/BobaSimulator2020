@@ -60,6 +60,10 @@ public class LiquidStream : MonoBehaviour {
     public void StopTransitionIn() {
         if (CurrentTransition == Transition.In) {
             CurrentTransition = Transition.None;
+
+            if (liquidCatcher != null) {
+                cupEffects.Lower();
+            }
         }
     }
 
@@ -75,14 +79,6 @@ public class LiquidStream : MonoBehaviour {
         if (!IsShown) {
             IsShown = true;
             TransitionIn();
-
-            // If we're already colliding with the cup when we start showing
-            // the stream, lower the cup, since that's what we normally do at
-            // the beginning of the collision (which is what it will be from the
-            // player's perspective).
-            //if (liquidCatcher != null) {
-            //    cupEffects.Lower();
-            //}
         }
     }
 
