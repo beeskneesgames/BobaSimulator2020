@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 // This class creates strings for a person's order
 
@@ -15,7 +14,7 @@ using UnityEngine;
 // Mango Blueberry bubble tea
 // Mango with a splash of Blueberry tea
 
-public class Order : MonoBehaviour {
+public class Order {
     public enum Flavor {
         Blueberry,
         Classic,
