@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LiquidStream : MonoBehaviour {
-    private const float PourSpeed = 15.0f;
+    private const float PourSpeed = 50.0f;
 
     public enum Transition {
         In,
@@ -29,9 +29,15 @@ public class LiquidStream : MonoBehaviour {
     private Vector3 targetTransitionPosition;
     private float currentTimeTransitioning = 0.0f;
     private float maxTimeTransitioning;
+    private Vector3 nextPosition;
 
     private void Awake() {
         CurrentTransition = Transition.None;
+    }
+
+    public void MoveTo(Vector3 newPosition) {
+        nextPosition = newPosition;
+        //TransitionOut();
     }
 
     private void Update() {
@@ -40,6 +46,7 @@ public class LiquidStream : MonoBehaviour {
                 AnimateTransitionIn();
                 break;
             case Transition.Out:
+                AnimateTransitionOut();
                 break;
             case Transition.None:
                 UpdateClippingPlaneY();
@@ -49,10 +56,10 @@ public class LiquidStream : MonoBehaviour {
 
     public void TransitionIn() {
         CurrentTransition = Transition.In;
-        startingTransitionPosition = GetHiddenStreamLocalPosition();
-        targetTransitionPosition = GetFullStreamLocalPosition();
+        startingTransitionPosition = GetClippingPlaneHiddenPosition();
+        targetTransitionPosition = GetClippingPlaneFullPosition();
 
-        clippingPlane.transform.localPosition = startingTransitionPosition;
+        clippingPlane.transform.position = startingTransitionPosition;
         currentTimeTransitioning = 0.0f;
         maxTimeTransitioning = (startingTransitionPosition.y - targetTransitionPosition.y) / PourSpeed;
     }
@@ -84,7 +91,7 @@ public class LiquidStream : MonoBehaviour {
 
     public void Hide() {
         IsShown = false;
-        clippingPlane.transform.localPosition = GetHiddenStreamLocalPosition();
+        clippingPlane.transform.position = GetClippingPlaneHiddenPosition();
     }
 
     public void StartBeingCaught(LiquidCatcher catcher) {
@@ -102,16 +109,29 @@ public class LiquidStream : MonoBehaviour {
         float fractionOfJourney = currentTimeTransitioning / maxTimeTransitioning;
 
         if (fractionOfJourney < 1.0f) {
-            clippingPlane.transform.localPosition = Vector3.Lerp(
-                GetHiddenStreamLocalPosition(),
-                GetFullStreamLocalPosition(),
+            clippingPlane.transform.position = Vector3.Lerp(
+                GetClippingPlaneHiddenPosition(),
+                GetClippingPlaneFullPosition(),
                 currentTimeTransitioning / maxTimeTransitioning
             );
         } else {
             StopTransitionIn();
         }
+    }
 
-        // TODO check that we're being caught, end transition early
+    private void AnimateTransitionOut() {
+        //currentTimeTransitioning += Time.deltaTime;
+        //float fractionOfJourney = currentTimeTransitioning / maxTimeTransitioning;
+
+        //if (fractionOfJourney < 1.0f) {
+        //    clippingPlane.transform.position = Vector3.Lerp(
+        //        GetClippingPlaneHiddenPosition(),
+        //        GetClippingPlaneFullPosition(),
+        //        currentTimeTransitioning / maxTimeTransitioning
+        //    );
+        //} else {
+        //    StopTransitionIn();
+        //}
     }
 
     private void UpdateClippingPlaneY() {
@@ -119,35 +139,35 @@ public class LiquidStream : MonoBehaviour {
             if (liquidCatcher == null) {
                 // When the liquid stream isn't being caught, move the clipping
                 // plane off-screen so we don't see the stream getting cut off.
-                clippingPlane.transform.localPosition = GetFullStreamLocalPosition();
+                clippingPlane.transform.position = GetClippingPlaneFullPosition();
             } else {
                 // When the liquid stream is being caught, move the clipping plane
                 // to the center of the catcher so the stream is cut off right there.
                 //
                 // Note: We use position instead of localPosition here because the
                 // catcher is parented to the cup rather than the liquid stream.
-                clippingPlane.transform.position = GetCupBottomWorldPosition();
+                clippingPlane.transform.position = GetClippingPlaneCaughtPosition();
             }
         }
     }
 
-    private Vector3 GetHiddenStreamLocalPosition() {
+    private Vector3 GetClippingPlaneHiddenPosition() {
         return new Vector3(
-            clippingPlane.transform.localPosition.x,
-            1.0f,
-            clippingPlane.transform.localPosition.z
+            clippingPlane.transform.position.x,
+            6.0f,
+            clippingPlane.transform.position.z
         );
     }
 
-    private Vector3 GetFullStreamLocalPosition() {
+    private Vector3 GetClippingPlaneFullPosition() {
         return new Vector3(
-            clippingPlane.transform.localPosition.x,
-            -0.7f,
-            clippingPlane.transform.localPosition.z
+            clippingPlane.transform.position.x,
+            -4.0f,
+            clippingPlane.transform.position.z
         );
     }
 
-    private Vector3 GetCupBottomWorldPosition() {
+    private Vector3 GetClippingPlaneCaughtPosition() {
         return new Vector3(
             clippingPlane.transform.position.x,
             liquidCatcher.cupBottom.transform.position.y,
