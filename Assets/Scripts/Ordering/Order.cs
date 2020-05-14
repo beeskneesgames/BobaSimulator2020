@@ -47,8 +47,8 @@ public class Order {
         // Mango bubble tea with light boba
         // Mango bubble tea with no ice and extra boba
 
-        // Mango Blueberry bubble tea
-        // Mango with a splash of Blueberry tea
+        // Mango blueberry bubble tea
+        // Mango with a splash of blueberry tea
 
         return $"{CompileFlavorString()}{CompileIceString()}{CompileBobaString()}";
     }

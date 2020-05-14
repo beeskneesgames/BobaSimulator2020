@@ -29,8 +29,6 @@ public class OrderGenerator {
         return randomOrder;
     }
 
-    // TODO: These two random methods are the same but the types are diff
-    //       Is there a way to combine without it being messy?
     public static Order.AddInOption GetRandomOption() {
         Array addInOptions = Enum.GetValues(typeof(Order.AddInOption));
         Order.AddInOption randomOption = (Order.AddInOption)addInOptions.GetValue(
@@ -54,13 +52,14 @@ public class OrderGenerator {
         List<Order.Flavor> flavors = new List<Order.Flavor> { };
         Array flavorOptions = Enum.GetValues(typeof(Order.Flavor));
         int firstIndex = UnityEngine.Random.Range(0, flavorOptions.Length - 1);
-        int secondIndex;
 
         Order.Flavor firstFlavor = (Order.Flavor)flavorOptions.GetValue(firstIndex);
 
         flavors.Add(firstFlavor);
 
         if (numberOfFlavors == 2) {
+            int secondIndex;
+
             do {
                 secondIndex = UnityEngine.Random.Range(0, flavorOptions.Length - 1);
             } while (firstIndex == secondIndex);
