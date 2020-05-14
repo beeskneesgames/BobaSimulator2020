@@ -60,7 +60,7 @@ public class Order {
             compiledString = "";
         } else {
             // Mango bubble tea with light ice
-            compiledString = $" with {iceAmount}";
+            compiledString = $" with {iceAmount} ice";
         }
 
         return compiledString;
@@ -95,7 +95,7 @@ public class Order {
                 compiledString = $"{firstFlavor} {teaType} with a splash of ${secondFlavor}";
                 break;
             case FlavorOption.Half:
-                compiledString = $"{firstFlavor} ${secondFlavor} {teaType}";
+                compiledString = $"{firstFlavor} {secondFlavor} {teaType}";
                 break;
             default:
                 compiledString = $"{firstFlavor} {teaType}";
