@@ -8,11 +8,11 @@ public class Order {
         Coconut,
         Coffee,
         Honeydew,
+        Lemon,
         Mango,
         Matcha,
         Strawberry,
         Taro,
-        Thai,
     };
 
     public enum FlavorOption {
