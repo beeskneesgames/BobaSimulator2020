@@ -23,7 +23,7 @@ public class BobaCatcher : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         Boba boba = other.GetComponent<Boba>();
 
-        if (boba != null) {
+        if (boba != null && !boba.IsCaught) {
             boba.FallIntoCup(GetComponentInParent<CupController>());
             BobaCount++;
 

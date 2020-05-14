@@ -23,7 +23,7 @@ public class IceCatcher : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         Ice ice = other.GetComponent<Ice>();
 
-        if (ice != null) {
+        if (ice != null && !ice.IsCaught) {
             ice.FallIntoCup(GetComponentInParent<CupController>());
             IceCount++;
 

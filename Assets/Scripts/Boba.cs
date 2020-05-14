@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Boba : MonoBehaviour {
+    public bool IsCaught {
+        get {
+            return manuallyFalling;
+        }
+    }
+
     private CupEffects cupEffects;
     private bool manuallyFalling;
     private Vector3 startingPosition;
