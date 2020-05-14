@@ -6,7 +6,8 @@ public class Ice : MonoBehaviour {
     private CupEffects cupEffects;
     private bool manuallyFalling;
     private Vector3 startingPosition;
-    private Vector3 targetPosition;
+    private Vector3 targetLocalPosition;
+    private Vector3 targetWorldPosition;
     private float currentTimeFalling = 0.0f;
     private float maxTimeFalling;
     private IcePlacer icePlacer;
@@ -17,14 +18,15 @@ public class Ice : MonoBehaviour {
             float fractionOfJourney = currentTimeFalling / maxTimeFalling;
 
             if (fractionOfJourney < 1.0f) {
-                transform.localPosition = new Vector3(
-                    transform.localPosition.x,
-                    Mathf.Lerp(startingPosition.y, targetPosition.y, fractionOfJourney),
-                    transform.localPosition.z
+                transform.position = new Vector3(
+                    transform.position.x,
+                    Mathf.Lerp(startingPosition.y, targetWorldPosition.y, fractionOfJourney),
+                    transform.position.z
                 );
             } else {
                 manuallyFalling = false;
-                transform.localPosition = targetPosition;
+                transform.parent = icePlacer.transform;
+                transform.localPosition = targetLocalPosition;
 
                 // Let the ice placer know that we're done being placed.
                 icePlacer.IcePlaced(this);
@@ -44,11 +46,11 @@ public class Ice : MonoBehaviour {
         float velocity = Mathf.Abs(rigidbody.velocity.y);
 
         manuallyFalling = true;
-        transform.parent = icePlacer.transform;
 
         startingPosition = transform.localPosition;
-        targetPosition = icePlacer.PopPosition(startingPosition);
-        maxTimeFalling = (startingPosition.y - targetPosition.y) / velocity;
+        targetLocalPosition = icePlacer.PopPosition(startingPosition);
+        targetWorldPosition = icePlacer.transform.TransformPoint(targetLocalPosition);
+        maxTimeFalling = (startingPosition.y - targetWorldPosition.y) / velocity;
 
         GetComponent<Collider>().enabled = false;
         Destroy(rigidbody);
