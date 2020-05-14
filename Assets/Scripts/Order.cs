@@ -5,8 +5,8 @@ using System.Linq;
 public class Order {
     public enum Flavor {
         Blueberry,
-        Classic,
         Coconut,
+        Coffee,
         Honeydew,
         Mango,
         Matcha,
