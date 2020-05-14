@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ClippingPlane : MonoBehaviour {
-    public Material material;
+    public new Renderer renderer;
+    private Material material;
+
+    private void Start() {
+        material = renderer.material;
+    }
 
     private void Update() {
         material.SetVector("_PlanePosition", transform.position);

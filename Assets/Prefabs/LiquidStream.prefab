@@ -154,4 +154,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2815c620bfb4fe39ca708df2ff8ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderer: {fileID: 5085018562323935791}
   material: {fileID: 2100000, guid: b312b6c0c925b4f23b1d82b30f19edce, type: 2}
