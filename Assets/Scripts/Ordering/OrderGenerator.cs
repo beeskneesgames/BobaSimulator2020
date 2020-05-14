@@ -3,6 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 
 public class OrderGenerator {
+    public static Order GenerateBasicOrder() {
+        Order.FlavorOption drinkType = Order.FlavorOption.Single;
+
+        Order randomOrder = new Order {
+            iceAmount = Order.AddInOption.Regular,
+            bobaAmount = Order.AddInOption.Regular,
+            drinkType = drinkType,
+            drinkFlavors = GetRandomDrinkFlavors(drinkType),
+        };
+
+        return randomOrder;
+    }
+
     public static Order GenerateRandomOrder() {
         Order.FlavorOption drinkType = GetRandomDrinkType();
 
