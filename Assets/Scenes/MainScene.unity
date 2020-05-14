@@ -1144,12 +1144,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 539256611}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &562224435 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 38613139455543808, guid: 085f12f3e603343d283dff5825a08724,
-    type: 3}
-  m_PrefabInstance: {fileID: 8646206877487016825}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &569652574
 GameObject:
   m_ObjectHideFlags: 0
@@ -4949,11 +4943,6 @@ PrefabInstance:
       propertyPath: bounceSpeed
       value: 2.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6787585171232196437, guid: 085f12f3e603343d283dff5825a08724,
-        type: 3}
-      propertyPath: renderer
-      value: 
-      objectReference: {fileID: 562224435}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 085f12f3e603343d283dff5825a08724, type: 3}
 --- !u!114 &8646206877487016826 stripped

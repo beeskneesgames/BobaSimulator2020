@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2815c620bfb4fe39ca708df2ff8ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 23dfd3eddc8f34589a8c69a00df8f78a, type: 2}
+  renderer: {fileID: 38613139455543808}
 --- !u!1 &2666215252223318534
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +360,7 @@ GameObject:
   - component: {fileID: 8292140752206849532}
   m_Layer: 0
   m_Name: BottomCollider
-  m_TagString: Untagged
+  m_TagString: CupBottom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -388,7 +388,7 @@ BoxCollider:
   m_GameObject: {fileID: 6058679674822358610}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.96, y: 0.4, z: 0.96}
   m_Center: {x: 0, y: 0, z: 0}
@@ -782,6 +782,12 @@ PrefabInstance:
 --- !u!4 &3381818105728453839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7751844398378543061}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &38613139455543808 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
     type: 3}
   m_PrefabInstance: {fileID: 7751844398378543061}
   m_PrefabAsset: {fileID: 0}

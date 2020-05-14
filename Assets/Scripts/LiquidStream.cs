@@ -57,6 +57,12 @@ public class LiquidStream : MonoBehaviour {
         maxTimeTransitioning = (startingTransitionPosition.y - targetTransitionPosition.y) / PourSpeed;
     }
 
+    public void StopTransitionIn() {
+        if (CurrentTransition == Transition.In) {
+            CurrentTransition = Transition.None;
+        }
+    }
+
     public void TransitionOut() {
         CurrentTransition = Transition.Out;
     }
@@ -106,7 +112,7 @@ public class LiquidStream : MonoBehaviour {
                 currentTimeTransitioning / maxTimeTransitioning
             );
         } else {
-            clippingPlane.transform.localPosition = GetFullStreamLocalPosition();
+            StopTransitionIn();
         }
 
         // TODO check that we're being caught, end transition early

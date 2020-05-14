@@ -121,6 +121,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4772019522430111299}
   - component: {fileID: 5317381964136027581}
+  - component: {fileID: 1564362433036813363}
+  - component: {fileID: 4318987101096440728}
+  - component: {fileID: 4678056222612583297}
   m_Layer: 0
   m_Name: ClippingPlane
   m_TagString: Untagged
@@ -155,4 +158,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 5085018562323935791}
-  material: {fileID: 2100000, guid: b312b6c0c925b4f23b1d82b30f19edce, type: 2}
+--- !u!54 &1564362433036813363
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8812279474108314295}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &4318987101096440728
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8812279474108314295}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 0.1, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4678056222612583297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8812279474108314295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 853d4d73839774f50a459445e9feb1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
