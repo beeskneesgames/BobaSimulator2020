@@ -98,26 +98,34 @@ public class Order : MonoBehaviour {
     }
 
     private string CompileIceString() {
-        if (String.IsNullOrEmpty(iceOrder)) {
+        string compiledString;
+
+        if (iceAmount == AddInOption.Regular) {
             // Mango bubble tea
-            return iceOrder;
+            compiledString = "";
         } else {
             // Mango bubble tea with light ice
-            return $" with {iceOrder}";
+            compiledString = $" with {iceAmount}";
         }
+
+        return compiledString;
     }
 
     private string CompileBobaString() {
-        if (String.IsNullOrEmpty(bobaOrder)) {
+        string compiledString;
+
+        if (bobaAmount == AddInOption.None || bobaAmount == AddInOption.Regular) {
             // Mango tea
-            return bobaOrder;
-        } else if (String.IsNullOrEmpty(iceOrder)) {
+            compiledString = "";
+        } else if (iceAmount == AddInOption.Regular) {
             // Mango bubble tea with extra boba
-            return $" with {bobaOrder}";
+            compiledString = $" with {bobaAmount}";
         } else {
             // Mango bubble tea with no ice and light boba
-            return $" and {bobaOrder}";
+            compiledString = $" and {bobaAmount}";
         }
+
+        return compiledString;
     }
 
     private string CompileFlavorString() {
@@ -125,36 +133,20 @@ public class Order : MonoBehaviour {
         Flavor secondFlavor = drinkFlavors.Last();
         string teaType = isBubbleTea ? "bubble tea" : "tea";
 
-        string compiledFlavorString;
+        string compiledString;
 
         switch (drinkType) {
             case FlavorOption.Splash:
-                compiledFlavorString = $"{firstFlavor} {teaType} with a splash of ${secondFlavor}";
+                compiledString = $"{firstFlavor} {teaType} with a splash of ${secondFlavor}";
                 break;
             case FlavorOption.Half:
-                compiledFlavorString = $"{firstFlavor} ${secondFlavor} {teaType}";
+                compiledString = $"{firstFlavor} ${secondFlavor} {teaType}";
                 break;
             default:
-                compiledFlavorString = $"{firstFlavor} {teaType}";
+                compiledString = $"{firstFlavor} {teaType}";
                 break;
         }
 
-        return $"{compiledFlavorString}";
-    }
-
-    private string CompileAddIns(string addIn) {
-        string addInOrder = "";
-        string chosenOption = addInOptions[UnityEngine.Random.Range(0, addInOptions.Count - 1)];
-
-        if (chosenOption == "No" && addIn == "boba") {
-            isBubbleTea = false;
-            return addInOrder;
-        };
-
-        if (chosenOption == "Regular") {
-            return addInOrder;
-        };
-
-        return $"{addInOrder} {addIn}";
+        return $"{compiledString}";
     }
 }
