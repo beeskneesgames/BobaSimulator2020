@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 public class Order {
@@ -54,13 +55,14 @@ public class Order {
 
     private string CompileIceString() {
         string compiledString;
+        string iceAmountStr = iceAmount.ToString().ToLower();
 
         if (iceAmount == AddInOption.Regular) {
             // Mango bubble tea
             compiledString = "";
         } else {
             // Mango bubble tea with light ice
-            compiledString = $" with {iceAmount} ice";
+            compiledString = $" with {iceAmountStr} ice";
         }
 
         return compiledString;
@@ -68,16 +70,17 @@ public class Order {
 
     private string CompileBobaString() {
         string compiledString;
+        string bobaAmountStr = bobaAmount.ToString().ToLower();
 
         if (bobaAmount == AddInOption.None || bobaAmount == AddInOption.Regular) {
             // Mango tea
             compiledString = "";
         } else if (iceAmount == AddInOption.Regular) {
             // Mango bubble tea with extra boba
-            compiledString = $" with {bobaAmount}";
+            compiledString = $" with {bobaAmountStr} boba";
         } else {
             // Mango bubble tea with no ice and light boba
-            compiledString = $" and {bobaAmount}";
+            compiledString = $" and {bobaAmountStr} boba";
         }
 
         return compiledString;
@@ -92,7 +95,7 @@ public class Order {
 
         switch (drinkType) {
             case FlavorOption.Splash:
-                compiledString = $"{firstFlavor} {teaType} with a splash of ${secondFlavor}";
+                compiledString = $"{firstFlavor} with a splash of {secondFlavor} {teaType}";
                 break;
             case FlavorOption.Half:
                 compiledString = $"{firstFlavor} {secondFlavor} {teaType}";
