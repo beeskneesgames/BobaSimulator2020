@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 // This class creates strings for a person's order
@@ -40,24 +41,22 @@ public class Order : MonoBehaviour {
         Extra,
     };
 
-    public AddInOption IceAmount;
-    public AddInOption BobaAmount;
-    public FlavorOption DrinkType;
-    public List<Flavor> DrinkFlavors;
+    public AddInOption iceAmount;
+    public AddInOption bobaAmount;
+    public FlavorOption drinkType;
+    public List<Flavor> drinkFlavors;
+    public bool isBubbleTea;
 
     public Order() {
-        IceAmount = GetRandomOption();
-        BobaAmount = GetRandomOption();
-        DrinkType = GetRandomDrinkType();
-        DrinkFlavors = GetRandomDrinkFlavors();
+        iceAmount = GetRandomOption();
+        bobaAmount = GetRandomOption();
+        drinkType = GetRandomDrinkType();
+        drinkFlavors = GetRandomDrinkFlavors();
+        isBubbleTea = bobaAmount != AddInOption.None;
     }
 
     public string ToSentence() {
-        return $"{CompileFlavor()}{CompileIce()}{CompileBoba()}";
-    }
-
-    private bool IsBubbleTea() {
-        return BobaAmount != AddInOption.None;
+        return $"{CompileFlavorString()}{CompileIceString()}{CompileBobaString()}";
     }
 
     // TODO: These two random methods are the same but the types are diff
@@ -82,10 +81,11 @@ public class Order : MonoBehaviour {
     }
 
     private List<Flavor> GetRandomDrinkFlavors() {
-        int numberOfFlavors = (DrinkType == FlavorOption.Single) ? 1 : 2;
+        int numberOfFlavors = (drinkType == FlavorOption.Single) ? 1 : 2;
         List<Flavor> flavors = new List<Flavor> { };
         Array flavorOptions = Enum.GetValues(typeof(Flavor));
 
+        // TODO: Fix this so it can't repeat the 1st flavor
         for (int i = 0; i < numberOfFlavors; i++) {
             Flavor randomOption = (Flavor)flavorOptions.GetValue(
                 UnityEngine.Random.Range(0, flavorOptions.Length - 1)
@@ -97,7 +97,7 @@ public class Order : MonoBehaviour {
         return flavors;
     }
 
-    private string CompileIce() {
+    private string CompileIceString() {
         if (String.IsNullOrEmpty(iceOrder)) {
             // Mango bubble tea
             return iceOrder;
@@ -107,7 +107,7 @@ public class Order : MonoBehaviour {
         }
     }
 
-    private string CompileBoba() {
+    private string CompileBobaString() {
         if (String.IsNullOrEmpty(bobaOrder)) {
             // Mango tea
             return bobaOrder;
@@ -120,27 +120,26 @@ public class Order : MonoBehaviour {
         }
     }
 
-    private string CompileFlavor() {
-        string chosenFlavor = flavors[UnityEngine.Random.Range(0, flavors.Count - 1)];
-        // TODO: Fix this so it can't repeat the chosen flavor
-        string secondaryFlavor = flavors[UnityEngine.Random.Range(0, flavors.Count - 1)];
-        string liquidOption = liquidOptions[UnityEngine.Random.Range(0, flavors.Count - 1)];
+    private string CompileFlavorString() {
+        Flavor firstFlavor = drinkFlavors.First();
+        Flavor secondFlavor = drinkFlavors.Last();
         string teaType = isBubbleTea ? "bubble tea" : "tea";
-        string compiledFlavor;
 
-        switch (liquidOption) {
-            case "Splash":
-                compiledFlavor = $"{chosenFlavor} {teaType} with a splash of ${secondaryFlavor}";
+        string compiledFlavorString;
+
+        switch (drinkType) {
+            case FlavorOption.Splash:
+                compiledFlavorString = $"{firstFlavor} {teaType} with a splash of ${secondFlavor}";
                 break;
-            case "50/50":
-                compiledFlavor = $"{chosenFlavor} ${secondaryFlavor} {teaType}";
+            case FlavorOption.Half:
+                compiledFlavorString = $"{firstFlavor} ${secondFlavor} {teaType}";
                 break;
             default:
-                compiledFlavor = $"{chosenFlavor} {teaType}";
+                compiledFlavorString = $"{firstFlavor} {teaType}";
                 break;
         }
 
-        return $"{compiledFlavor}";
+        return $"{compiledFlavorString}";
     }
 
     private string CompileAddIns(string addIn) {
