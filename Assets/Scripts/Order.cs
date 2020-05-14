@@ -91,11 +91,9 @@ public class Order {
         flavors.Add(firstFlavor);
 
         if (numberOfFlavors == 2) {
-            secondIndex = UnityEngine.Random.Range(0, flavorOptions.Length - 1);
-
-            while (firstIndex == secondIndex) {
+            do {
                 secondIndex = UnityEngine.Random.Range(0, flavorOptions.Length - 1);
-            }
+            } while (firstIndex == secondIndex);
 
             Flavor secondFlavor = (Flavor)flavorOptions.GetValue(secondIndex);
             flavors.Add(secondFlavor);
