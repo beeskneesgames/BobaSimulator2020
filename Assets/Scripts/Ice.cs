@@ -23,7 +23,8 @@ public class Ice : MonoBehaviour {
             currentTimeFalling += Time.deltaTime;
             float fractionOfJourney = currentTimeFalling / maxTimeFalling;
 
-            if (fractionOfJourney < 1.0f) {
+            if (maxTimeFalling > 0.0f && fractionOfJourney < 1.0f) {
+                Vector3 lastPosition = transform.position;
                 transform.position = new Vector3(
                     transform.position.x,
                     Mathf.Lerp(startingPosition.y, targetWorldPosition.y, fractionOfJourney),
