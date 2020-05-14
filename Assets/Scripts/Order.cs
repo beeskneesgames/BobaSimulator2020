@@ -83,14 +83,22 @@ public class Order {
         int numberOfFlavors = (drinkType == FlavorOption.Single) ? 1 : 2;
         List<Flavor> flavors = new List<Flavor> { };
         Array flavorOptions = Enum.GetValues(typeof(Flavor));
+        int firstIndex = UnityEngine.Random.Range(0, flavorOptions.Length - 1);
+        int secondIndex;
 
-        // TODO: Fix this so it can't repeat the 1st flavor
-        for (int i = 0; i < numberOfFlavors; i++) {
-            Flavor randomOption = (Flavor)flavorOptions.GetValue(
-                UnityEngine.Random.Range(0, flavorOptions.Length - 1)
-            );
+        Flavor firstFlavor = (Flavor)flavorOptions.GetValue(firstIndex);
 
-            flavors.Add(randomOption);
+        flavors.Add(firstFlavor);
+
+        if (numberOfFlavors == 2) {
+            secondIndex = UnityEngine.Random.Range(0, flavorOptions.Length - 1);
+            Flavor secondFlavor = (Flavor)flavorOptions.GetValue(secondIndex);
+
+            while (firstIndex == secondIndex) {
+                secondIndex = UnityEngine.Random.Range(0, flavorOptions.Length - 1);
+            }
+
+            flavors.Add(secondFlavor);
         }
 
         return flavors;
