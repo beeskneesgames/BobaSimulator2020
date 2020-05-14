@@ -57,12 +57,19 @@ public class Order {
         string compiledString;
         string iceAmountStr = iceAmount.ToString().ToLower();
 
-        if (iceAmount == AddInOption.Regular) {
-            // Mango bubble tea
-            compiledString = "";
-        } else {
-            // Mango bubble tea with light ice
-            compiledString = $" with {iceAmountStr} ice";
+        switch (iceAmount) {
+            case AddInOption.None:
+                // Mango bubble tea with no ice
+                compiledString = " with no ice";
+                break;
+            case AddInOption.Regular:
+                // Mango bubble tea
+                compiledString = "";
+                break;
+            default:
+                // Mango bubble tea with light ice
+                compiledString = $" with {iceAmountStr} ice";
+                break;
         }
 
         return compiledString;
@@ -89,18 +96,22 @@ public class Order {
     private string CompileFlavorString() {
         Flavor firstFlavor = drinkFlavors.First();
         Flavor secondFlavor = drinkFlavors.Last();
+        string secondFlavorStr = secondFlavor.ToString().ToLower();
         string teaType = IsBubbleTea() ? "bubble tea" : "tea";
 
         string compiledString;
 
         switch (drinkType) {
             case FlavorOption.Splash:
-                compiledString = $"{firstFlavor} with a splash of {secondFlavor} {teaType}";
+                // Mango with a splash of lemon tea
+                compiledString = $"{firstFlavor} with a splash of {secondFlavorStr} {teaType}";
                 break;
             case FlavorOption.Half:
-                compiledString = $"{firstFlavor} {secondFlavor} {teaType}";
+                // Mango lemon tea
+                compiledString = $"{firstFlavor} {secondFlavorStr} {teaType}";
                 break;
             default:
+                // Mango tea
                 compiledString = $"{firstFlavor} {teaType}";
                 break;
         }
