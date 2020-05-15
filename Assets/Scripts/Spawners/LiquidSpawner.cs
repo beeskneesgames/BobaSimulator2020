@@ -23,7 +23,7 @@ public class LiquidSpawner : MonoBehaviour {
             timeSinceLastStream += Time.deltaTime;
 
             if (timeSinceLastStream > interval) {
-                liquidStream.transform.position = GeneratePosition();
+                liquidStream.MoveTo(GeneratePosition());
                 timeSinceLastStream = 0.0f;
             }
         }
