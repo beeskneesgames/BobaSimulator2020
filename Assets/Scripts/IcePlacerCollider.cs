@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IcePlacerCollider : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
-        if (other.GetComponent<ClippingPlane>()) {
+        if (other.tag == "LiquidFillClippingPlane") {
             GetComponentInParent<IcePlacer>().StartFloating();
             enabled = false;
         }
