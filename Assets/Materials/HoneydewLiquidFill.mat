@@ -72,6 +72,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _IsMoving: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _QueueOffset: 0
@@ -86,7 +87,7 @@ Material:
     m_Colors:
     - Vector3_75C8DA9F: {r: 0, g: 0, b: 0, a: 0}
     - Vector3_D2C83708: {r: 0, g: 0, b: 0, a: 0}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.7490196, g: 1, b: 0.7294118, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _PlaneNormal: {r: 0, g: 1, b: 0, a: 0}
