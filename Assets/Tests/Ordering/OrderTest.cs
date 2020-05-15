@@ -14,7 +14,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = drinkType,
-                drinkFlavors = Order.Flavor.Mango,
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
             Assert.AreEqual(expected: true, actual: order.IsBubbleTea());
@@ -27,9 +27,10 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.None,
                 drinkType = drinkType,
-                drinkFlavors = Order.Flavor.Mango,
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
             Assert.AreEqual(expected: false, actual: order.IsBubbleTea());
         }
     }
+}
