@@ -91,7 +91,9 @@ public class LiquidStream : MonoBehaviour {
     }
 
     public void StopTransitionOut() {
-        //throw new NotImplementedException();
+        transform.position = nextPosition;
+        clippingPlane.transform.localPosition = clippingPlaneStartingLocalPosition;
+        TransitionIn();
     }
 
     public bool IsTransitioning() {
@@ -118,6 +120,10 @@ public class LiquidStream : MonoBehaviour {
     public void StopBeingCaught(LiquidCatcher catcher) {
         liquidCatcher = null;
         cupEffects = null;
+
+        if (CurrentTransition == Transition.Out) {
+            StopTransitionOut();
+        }
     }
 
     private void AnimateTransitionIn() {
