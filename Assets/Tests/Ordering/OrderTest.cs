@@ -19,12 +19,10 @@ namespace Tests {
 
         [Test]
         public void CompileToSentenceStringWithNoIce() {
-            Order.FlavorOption drinkType = Order.FlavorOption.Single;
-
             Order order = new Order {
                 iceAmount = Order.AddInOption.None,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = drinkType,
+                drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
@@ -33,12 +31,10 @@ namespace Tests {
 
         [Test]
         public void CompileToSentenceStringWithLightIce() {
-            Order.FlavorOption drinkType = Order.FlavorOption.Single;
-
             Order order = new Order {
                 iceAmount = Order.AddInOption.Light,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = drinkType,
+                drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
@@ -47,12 +43,10 @@ namespace Tests {
 
         [Test]
         public void CompileToSentenceStringWithRegularIce() {
-            Order.FlavorOption drinkType = Order.FlavorOption.Single;
-
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = drinkType,
+                drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
@@ -61,12 +55,10 @@ namespace Tests {
 
         [Test]
         public void CompileToSentenceStringWithExtraIce() {
-            Order.FlavorOption drinkType = Order.FlavorOption.Single;
-
             Order order = new Order {
                 iceAmount = Order.AddInOption.Extra,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = drinkType,
+                drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
@@ -75,12 +67,10 @@ namespace Tests {
 
         [Test]
         public void CompileToSentenceStringWithNoBoba() {
-            Order.FlavorOption drinkType = Order.FlavorOption.Single;
-
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.None,
-                drinkType = drinkType,
+                drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
@@ -89,12 +79,10 @@ namespace Tests {
 
         [Test]
         public void CompileToSentenceStringWithLightBoba() {
-            Order.FlavorOption drinkType = Order.FlavorOption.Single;
-
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Light,
-                drinkType = drinkType,
+                drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
@@ -103,12 +91,10 @@ namespace Tests {
 
         [Test]
         public void CompileToSentenceStringWithRegularBoba() {
-            Order.FlavorOption drinkType = Order.FlavorOption.Single;
-
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = drinkType,
+                drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
@@ -117,12 +103,10 @@ namespace Tests {
 
         [Test]
         public void CompileToSentenceStringWithExtraBoba() {
-            Order.FlavorOption drinkType = Order.FlavorOption.Single;
-
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Extra,
-                drinkType = drinkType,
+                drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
@@ -131,12 +115,10 @@ namespace Tests {
 
         [Test]
         public void CompileToSentenceStringWithSingleFlavor() {
-            Order.FlavorOption drinkType = Order.FlavorOption.Single;
-
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = drinkType,
+                drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
             };
 
@@ -146,12 +128,10 @@ namespace Tests {
 
         [Test]
         public void CompileToSentenceStringWithHalfFlavor() {
-            Order.FlavorOption drinkType = Order.FlavorOption.Half;
-
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = drinkType,
+                drinkType = Order.FlavorOption.Half,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
             };
 
@@ -160,12 +140,10 @@ namespace Tests {
 
         [Test]
         public void CompileToSentenceStringWithSplashFlavor() {
-            Order.FlavorOption drinkType = Order.FlavorOption.Splash;
-
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = drinkType,
+                drinkType = Order.FlavorOption.Splash,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
             };
 
