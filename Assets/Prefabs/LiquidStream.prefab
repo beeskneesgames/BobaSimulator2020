@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5085018562323935791}
   - component: {fileID: 5085018562323935790}
   - component: {fileID: 319297041745917509}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LiquidStream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 1564362433036813363}
   - component: {fileID: 4318987101096440728}
   - component: {fileID: 4678056222612583297}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ClippingPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
