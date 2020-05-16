@@ -20,6 +20,7 @@ namespace Tests {
             Assert.AreEqual(expected: true, actual: order.IsBubbleTea());
         }
 
+        [Test]
         public void OrderNotBubbleTea() {
             Order.FlavorOption drinkType = Order.FlavorOption.Single;
 
