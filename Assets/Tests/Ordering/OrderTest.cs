@@ -28,7 +28,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.AreEqual(expected: "Mango bubble tea with no ice", actual: order.ToSentence());
+            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with no ice"));
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.AreEqual(expected: "Mango bubble tea with light ice", actual: order.ToSentence());
+            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with light ice"));
         }
 
         [Test]
@@ -56,7 +56,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.AreEqual(expected: "Mango bubble tea", actual: order.ToSentence());
+            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea"));
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.AreEqual(expected: "Mango bubble tea with extra ice", actual: order.ToSentence());
+            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with extra ice"));
         }
 
         [Test]
@@ -84,7 +84,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.AreEqual(expected: "Mango tea", actual: order.ToSentence());
+            Assert.That(order.ToSentence(), Is.EqualTo("Mango tea"));
         }
 
         [Test]
@@ -98,7 +98,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.AreEqual(expected: "Mango bubble tea with light boba", actual: order.ToSentence());
+            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with light boba"));
         }
 
         [Test]
@@ -112,7 +112,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.AreEqual(expected: "Mango bubble tea", actual: order.ToSentence());
+            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea"));
         }
 
         [Test]
@@ -126,7 +126,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.AreEqual(expected: "Mango bubble tea with extra boba", actual: order.ToSentence());
+            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with extra boba"));
         }
 
         [Test]
@@ -140,7 +140,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
             };
 
-            Assert.AreEqual(expected: "Mango bubble tea", actual: order.ToSentence());
+            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea"));
         }
 
 
@@ -155,7 +155,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
             };
 
-            Assert.AreEqual(expected: "Mango blueberry bubble tea", actual: order.ToSentence());
+            Assert.That(order.ToSentence(), Is.EqualTo("Mango blueberry bubble tea"));
         }
 
         [Test]
@@ -169,7 +169,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
             };
 
-            Assert.AreEqual(expected: "Mango with a splash of blueberry bubble tea", actual: order.ToSentence());
+            Assert.That(order.ToSentence(), Is.EqualTo("Mango with a splash of blueberry bubble tea"));
         }
     }
 }
