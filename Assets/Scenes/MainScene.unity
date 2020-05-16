@@ -2518,7 +2518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e486b8712cb204911afe85b1682cadf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval: 1
+  interval: 2
   liquidStreamPrefab: {fileID: 319297041745917509, guid: 09ffb6d8f597b4d60bf48bc8b6413f22,
     type: 3}
 --- !u!4 &1079247980
