@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -63,6 +62,7 @@ public class LiquidStream : MonoBehaviour {
     }
 
     public void TransitionIn() {
+        GetComponent<Renderer>().material.SetColor("_BaseColor", Order.FlavorColors[Globals.currentOrder.drinkFlavors[0]]);
         CurrentTransition = Transition.In;
         clippingPlanePreTransitionPosition = GetClippingPlaneHiddenPosition();
         clippingPlanePostTransitionPosition = GetClippingPlaneFullPosition();
