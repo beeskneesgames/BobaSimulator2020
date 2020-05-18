@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class Order {
     public enum Flavor {
@@ -26,6 +27,18 @@ public class Order {
         Light,
         Regular,
         Extra,
+    };
+
+    public readonly static Dictionary<Flavor, Color> FlavorColors = new Dictionary<Flavor, Color>() {
+        { Flavor.Blueberry,  new Color(0.31f,   0.53f,   0.97f  ) },
+        { Flavor.Coconut,    new Color(0.96f,   0.96f,   0.96f  ) },
+        { Flavor.Coffee,     new Color(0.44f,   0.31f,   0.22f  ) },
+        { Flavor.Honeydew,   new Color(0.749f,  1.0f,    0.729f ) },
+        { Flavor.Lemon,      new Color(1.0f,    1.0f,    0.4f   ) },
+        { Flavor.Mango,      new Color(1.0f,    0.51f,   0.26f  ) },
+        { Flavor.Matcha,     new Color(0.4118f, 0.749f,  0.3922f) },
+        { Flavor.Strawberry, new Color(0.7843f, 0.2471f, 0.2863f) },
+        { Flavor.Taro,       new Color(0.7412f, 0.4863f, 0.7765f) },
     };
 
     public AddInOption iceAmount;
