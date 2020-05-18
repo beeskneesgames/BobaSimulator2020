@@ -1,7 +1,7 @@
 # BOBA SIMULATOR 2020
 
 ## Setting up Console Enhanced free
-1. Click Window > Console Enhanced.
+1. In Unity, click Window > Console Enhanced.
 1. Drag the newly-opened window into whichever tab group your regular console is in.
 1. Right click your regular console tab and click "Close tab".
 
@@ -19,3 +19,9 @@
         * 2019.3.3f1 -> 2019.3.4f1
 1. Open a pull request with the following title format: `Upgrade Unity to 2019.3.4f1`.
 1. Get your spouse to review it.
+
+## Running tests
+1. In Unity, Go to Window > General > Test Runner
+1. Drag Test Runner tab to next to console tab (it won't persist between editor sessions FYI)
+1. Click on either the EditMode tab for unit tests or PlayMode tab for integration tests
+1. Click "Run All", "Run Selected", or "Rerun Failed"

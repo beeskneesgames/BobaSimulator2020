@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 public class Order {
     public enum Flavor {
+        NotSet,
         Blueberry,
         Coconut,
         Coffee,
@@ -16,25 +16,44 @@ public class Order {
     };
 
     public enum FlavorOption {
+        NotSet,
         Splash,
         Half,
         Single,
     };
 
     public enum AddInOption {
+        NotSet,
         None,
         Light,
         Regular,
         Extra,
     };
 
-    public AddInOption iceAmount;
-    public AddInOption bobaAmount;
-    public FlavorOption drinkType;
-    public List<Flavor> drinkFlavors;
+    public AddInOption iceAmount = AddInOption.NotSet;
+    public AddInOption bobaAmount = AddInOption.NotSet;
+    public FlavorOption drinkType = FlavorOption.NotSet;
+    public List<Flavor> drinkFlavors = new List<Flavor> { Flavor.NotSet };
 
     public bool IsBubbleTea() {
-        return bobaAmount != AddInOption.None;
+        bool isBubbleTea = bobaAmount != AddInOption.None && bobaAmount != AddInOption.NotSet;
+
+        return isBubbleTea;
+    }
+
+    public bool IsValid() {
+        bool isValid = true;
+        bool multipleFlavors = drinkFlavors.Count == 2;
+
+        if (iceAmount  == AddInOption.NotSet      ||
+            bobaAmount == AddInOption.NotSet      ||
+            drinkType  == FlavorOption.NotSet     ||
+            drinkFlavors.First() == Flavor.NotSet ||
+            drinkFlavors.Last()  == Flavor.NotSet ||
+            (multipleFlavors && drinkFlavors.First() == drinkFlavors.Last())) {
+            isValid = false;
+        }
+        return isValid;
     }
 
     public string ToSentence() {
