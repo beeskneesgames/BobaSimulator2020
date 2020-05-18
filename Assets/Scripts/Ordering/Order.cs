@@ -41,14 +41,14 @@ public class Order {
         return isBubbleTea;
     }
 
-    public static bool IsValid(Order order) {
+    public bool IsValid() {
         bool isValid = true;
 
-        if (order.iceAmount  == AddInOption.NotSet      ||
-            order.bobaAmount == AddInOption.NotSet      ||
-            order.drinkType  == FlavorOption.NotSet     ||
-            order.drinkFlavors.First() == Flavor.NotSet ||
-            order.drinkFlavors.Last()  == Flavor.NotSet) {
+        if (iceAmount  == AddInOption.NotSet      ||
+            bobaAmount == AddInOption.NotSet      ||
+            drinkType  == FlavorOption.NotSet     ||
+            drinkFlavors.First() == Flavor.NotSet ||
+            drinkFlavors.Last()  == Flavor.NotSet) {
             isValid = false;
         }
         return isValid;

@@ -43,30 +43,22 @@ public class OrderGenerator {
 
     private static Order.AddInOption GetRandomOption() {
         Array addInOptions = Enum.GetValues(typeof(Order.AddInOption));
-        Order.AddInOption randomOption = (Order.AddInOption)addInOptions.GetValue(
-            UnityEngine.Random.Range(0, addInOptions.Length - 1)
-        );
 
-        do {
-            randomOption = (Order.AddInOption)addInOptions.GetValue(
-                UnityEngine.Random.Range(0, addInOptions.Length - 1)
-            );
-        } while (randomOption == Order.AddInOption.NotSet);
+        // Start at 1 to avoid setting Order.FlavorOption.NotSet
+        Order.AddInOption randomOption = (Order.AddInOption)addInOptions.GetValue(
+            UnityEngine.Random.Range(1, addInOptions.Length - 1)
+        );
 
         return randomOption;
     }
 
     private static Order.FlavorOption GetRandomDrinkType() {
         Array liquidOptions = Enum.GetValues(typeof(Order.FlavorOption));
-        Order.FlavorOption randomOption = (Order.FlavorOption)liquidOptions.GetValue(
-            UnityEngine.Random.Range(0, liquidOptions.Length - 1)
-        );
 
-        do {
-            randomOption = (Order.FlavorOption)liquidOptions.GetValue(
-                UnityEngine.Random.Range(0, liquidOptions.Length - 1)
-            );
-        } while (randomOption == Order.FlavorOption.NotSet);
+        // Start at 1 to avoid setting Order.FlavorOption.NotSet
+        Order.FlavorOption randomOption = (Order.FlavorOption)liquidOptions.GetValue(
+            UnityEngine.Random.Range(1, liquidOptions.Length - 1)
+        );
 
         return randomOption;
     }
@@ -75,7 +67,9 @@ public class OrderGenerator {
         int numberOfFlavors = (drinkType == Order.FlavorOption.Single) ? 1 : 2;
         List<Order.Flavor> flavors = new List<Order.Flavor> { };
         Array flavorOptions = Enum.GetValues(typeof(Order.Flavor));
-        int firstIndex = UnityEngine.Random.Range(0, flavorOptions.Length - 1);
+
+        // Start at 1 to avoid setting Order.FlavorOption.NotSet
+        int firstIndex = UnityEngine.Random.Range(1, flavorOptions.Length - 1);
 
         Order.Flavor firstFlavor = (Order.Flavor)flavorOptions.GetValue(firstIndex);
 
@@ -85,7 +79,8 @@ public class OrderGenerator {
             int secondIndex;
 
             do {
-                secondIndex = UnityEngine.Random.Range(0, flavorOptions.Length - 1);
+                // Start at 1 to avoid setting Order.FlavorOption.NotSet
+                secondIndex = UnityEngine.Random.Range(1, flavorOptions.Length - 1);
             } while (firstIndex == secondIndex);
 
             Order.Flavor secondFlavor = (Order.Flavor)flavorOptions.GetValue(secondIndex);

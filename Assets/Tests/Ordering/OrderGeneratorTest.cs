@@ -9,7 +9,7 @@ namespace Tests {
             List<Order.Flavor> flavor = new List<Order.Flavor> { Order.Flavor.Mango };
             Order order = OrderGenerator.GenerateBasicOrder(flavor);
 
-            Assert.That(Order.IsValid(order), Is.True);
+            Assert.That(order.IsValid(), Is.True);
             Assert.That(order.iceAmount, Is.EqualTo(Order.AddInOption.Regular));
             Assert.That(order.bobaAmount, Is.EqualTo(Order.AddInOption.Regular));
             Assert.That(order.drinkType, Is.EqualTo(Order.FlavorOption.Single));
@@ -20,8 +20,7 @@ namespace Tests {
         public void GeneratesRandomOrder() {
             Order order = OrderGenerator.GenerateRandomOrder();
 
-            Assert.That(Order.IsValid(order), Is.True);
-  
+            Assert.That(order.IsValid(), Is.True);
         }
     }
 }

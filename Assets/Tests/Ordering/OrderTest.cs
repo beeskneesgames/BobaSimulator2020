@@ -26,14 +26,14 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.That(Order.IsValid(order), Is.True);
+            Assert.That(order.IsValid(), Is.True);
         }
 
         [Test]
         public void OrderIsNotValid() {
             Order order = new Order();
 
-            Assert.That(Order.IsValid(order), Is.False);
+            Assert.That(order.IsValid(), Is.False);
         }
 
         [Test]
