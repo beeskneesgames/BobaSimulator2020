@@ -24,8 +24,6 @@ public class BobaPhase : GamePhase {
 
     protected override void ExecuteBeforeStart() {
         phaseManager.instructionsAnimator.SetTrigger("StartBoba");
-        Globals.currentOrder = OrderGenerator.GenerateRandomOrder();
-        Debug.Log(Globals.currentOrder.ToSentence());
     }
 
     protected override void ExecuteStart() {

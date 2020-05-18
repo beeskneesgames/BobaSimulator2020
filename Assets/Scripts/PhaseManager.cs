@@ -44,6 +44,8 @@ public class PhaseManager : MonoBehaviour {
 
     private void Start() {
         Debugger.Instance.phaseManager = this;
+        Globals.currentOrder = OrderGenerator.GenerateRandomOrder();
+        Debug.Log(Globals.currentOrder.ToSentence());
         startingPhase.BeforeStartPhase();
     }
 
