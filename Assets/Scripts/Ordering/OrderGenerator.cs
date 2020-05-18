@@ -44,7 +44,7 @@ public class OrderGenerator {
     private static Order.AddInOption GetRandomOption() {
         Array addInOptions = Enum.GetValues(typeof(Order.AddInOption));
 
-        // Start at 1 to avoid setting Order.FlavorOption.NotSet
+        // Start at 1 to avoid setting Order.AddInOption.NotSet
         Order.AddInOption randomOption = (Order.AddInOption)addInOptions.GetValue(
             UnityEngine.Random.Range(1, addInOptions.Length - 1)
         );
@@ -68,7 +68,7 @@ public class OrderGenerator {
         List<Order.Flavor> flavors = new List<Order.Flavor> { };
         Array flavorOptions = Enum.GetValues(typeof(Order.Flavor));
 
-        // Start at 1 to avoid setting Order.FlavorOption.NotSet
+        // Start at 1 to avoid setting Order.Flavor.NotSet
         int firstIndex = UnityEngine.Random.Range(1, flavorOptions.Length - 1);
 
         Order.Flavor firstFlavor = (Order.Flavor)flavorOptions.GetValue(firstIndex);
@@ -79,7 +79,7 @@ public class OrderGenerator {
             int secondIndex;
 
             do {
-                // Start at 1 to avoid setting Order.FlavorOption.NotSet
+                // Start at 1 to avoid setting Order.Flavor.NotSet
                 secondIndex = UnityEngine.Random.Range(1, flavorOptions.Length - 1);
             } while (firstIndex == secondIndex);
 

@@ -50,7 +50,7 @@ public class Order {
             drinkType  == FlavorOption.NotSet     ||
             drinkFlavors.First() == Flavor.NotSet ||
             drinkFlavors.Last()  == Flavor.NotSet ||
-            multipleFlavors && drinkFlavors.First() == drinkFlavors.Last()) {
+            (multipleFlavors && drinkFlavors.First() == drinkFlavors.Last())) {
             isValid = false;
         }
         return isValid;
