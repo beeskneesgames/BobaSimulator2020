@@ -36,6 +36,22 @@ namespace Tests {
             Assert.That(order.IsValid(), Is.False);
         }
 
+
+        [Test]
+        public void OrderIsNotValidWithDuplicateFlavors() {
+            Order order = new Order {
+                iceAmount = Order.AddInOption.None,
+                bobaAmount = Order.AddInOption.Regular,
+                drinkType = Order.FlavorOption.Single,
+                drinkFlavors = new List<Order.Flavor> {
+                    Order.Flavor.Mango,
+                    Order.Flavor.Mango,
+                },
+            };
+
+            Assert.That(order.IsValid(), Is.False);
+        }
+
         [Test]
         public void CompileToSentenceStringWithNoIce() {
             Order order = new Order {

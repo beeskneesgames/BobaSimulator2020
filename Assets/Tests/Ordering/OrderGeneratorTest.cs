@@ -14,6 +14,7 @@ namespace Tests {
             Assert.That(order.bobaAmount, Is.EqualTo(Order.AddInOption.Regular));
             Assert.That(order.drinkType, Is.EqualTo(Order.FlavorOption.Single));
             Assert.That(order.drinkFlavors.First(), Is.EqualTo(Order.Flavor.Mango));
+            Assert.That(order.drinkFlavors.Count, Is.EqualTo(1));
         }
 
         [Test]

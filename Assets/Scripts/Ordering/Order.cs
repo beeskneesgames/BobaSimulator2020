@@ -43,12 +43,14 @@ public class Order {
 
     public bool IsValid() {
         bool isValid = true;
+        bool multipleFlavors = drinkFlavors.Count == 2;
 
         if (iceAmount  == AddInOption.NotSet      ||
             bobaAmount == AddInOption.NotSet      ||
             drinkType  == FlavorOption.NotSet     ||
             drinkFlavors.First() == Flavor.NotSet ||
-            drinkFlavors.Last()  == Flavor.NotSet) {
+            drinkFlavors.Last()  == Flavor.NotSet ||
+            multipleFlavors && drinkFlavors.First() == drinkFlavors.Last()) {
             isValid = false;
         }
         return isValid;
