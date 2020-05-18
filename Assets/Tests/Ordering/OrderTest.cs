@@ -18,6 +18,25 @@ namespace Tests {
         }
 
         [Test]
+        public void OrderIsValid() {
+            Order order = new Order {
+                iceAmount = Order.AddInOption.None,
+                bobaAmount = Order.AddInOption.Regular,
+                drinkType = Order.FlavorOption.Single,
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+            };
+
+            Assert.That(Order.IsValid(order), Is.True);
+        }
+
+        [Test]
+        public void OrderIsNotValid() {
+            Order order = new Order();
+
+            Assert.That(Order.IsValid(order), Is.False);
+        }
+
+        [Test]
         public void CompileToSentenceStringWithNoIce() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.None,

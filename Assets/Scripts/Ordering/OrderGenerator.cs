@@ -47,6 +47,12 @@ public class OrderGenerator {
             UnityEngine.Random.Range(0, addInOptions.Length - 1)
         );
 
+        do {
+            randomOption = (Order.AddInOption)addInOptions.GetValue(
+                UnityEngine.Random.Range(0, addInOptions.Length - 1)
+            );
+        } while (randomOption == Order.AddInOption.NotSet);
+
         return randomOption;
     }
 
@@ -55,6 +61,12 @@ public class OrderGenerator {
         Order.FlavorOption randomOption = (Order.FlavorOption)liquidOptions.GetValue(
             UnityEngine.Random.Range(0, liquidOptions.Length - 1)
         );
+
+        do {
+            randomOption = (Order.FlavorOption)liquidOptions.GetValue(
+                UnityEngine.Random.Range(0, liquidOptions.Length - 1)
+            );
+        } while (randomOption == Order.FlavorOption.NotSet);
 
         return randomOption;
     }
