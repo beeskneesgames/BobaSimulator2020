@@ -14,6 +14,10 @@ public class LiquidStream : MonoBehaviour {
     public LiquidCatcher liquidCatcher;
     public CupEffects cupEffects;
     public ClippingPlane clippingPlane;
+    public Order.Flavor CurrentFlavor {
+        get;
+        private set;
+    }
     public Transition CurrentTransition {
         get;
         private set;
@@ -62,7 +66,8 @@ public class LiquidStream : MonoBehaviour {
     }
 
     public void TransitionIn() {
-        GetComponent<Renderer>().material.SetColor("_BaseColor", Order.FlavorColors[Globals.currentOrder.drinkFlavors[0]]);
+        CurrentFlavor = Globals.currentOrder.drinkFlavors[0];
+        GetComponent<Renderer>().material.SetColor("_BaseColor", Order.FlavorColors[CurrentFlavor]);
         CurrentTransition = Transition.In;
         clippingPlanePreTransitionPosition = GetClippingPlaneHiddenPosition();
         clippingPlanePostTransitionPosition = GetClippingPlaneFullPosition();
