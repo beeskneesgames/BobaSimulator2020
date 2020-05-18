@@ -5,18 +5,13 @@ namespace Tests {
     public class OrderGeneratorTest {
         [Test]
         public void GeneratesBasicOrder() {
-            Order order = OrderGenerator.GenerateBasicOrder();
-            Order expectedOrder = new Order {
-                iceAmount = Order.AddInOption.Regular,
-                bobaAmount = Order.AddInOption.Regular,
-                drinkType = Order.FlavorOption.Single,
-                drinkFlavors = order.drinkFlavors,
-            };
+            List<Order.Flavor> flavor = new List<Order.Flavor> { Order.Flavor.Mango };
+            Order order = OrderGenerator.GenerateBasicOrder(flavor);
 
-            Assert.That(order.iceAmount, Is.EqualTo(expectedOrder.iceAmount));
-            Assert.That(order.bobaAmount, Is.EqualTo(expectedOrder.bobaAmount));
-            Assert.That(order.drinkType, Is.EqualTo(expectedOrder.drinkType));
-            Assert.That(order.drinkFlavors, Is.InstanceOf(typeof(List<Order.Flavor>)));
+            Assert.That(order.iceAmount, Is.EqualTo(Order.AddInOption.Regular));
+            Assert.That(order.bobaAmount, Is.EqualTo(Order.AddInOption.Regular));
+            Assert.That(order.drinkType, Is.EqualTo(Order.FlavorOption.Single));
+            Assert.That(order.drinkFlavors, Is.EqualTo(Order.Flavor.Mango));
         }
 
         [Test]

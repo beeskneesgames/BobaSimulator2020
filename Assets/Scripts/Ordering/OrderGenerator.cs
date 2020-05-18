@@ -15,6 +15,19 @@ public class OrderGenerator {
         return randomOrder;
     }
 
+    public static Order GenerateBasicOrder(List<Order.Flavor> flavors) {
+        Order.FlavorOption drinkType = Order.FlavorOption.Single;
+
+        Order randomOrder = new Order {
+            iceAmount = Order.AddInOption.Regular,
+            bobaAmount = Order.AddInOption.Regular,
+            drinkType = drinkType,
+            drinkFlavors = flavors,
+        };
+
+        return randomOrder;
+    }
+
     public static Order GenerateRandomOrder() {
         Order.FlavorOption drinkType = GetRandomDrinkType();
 
