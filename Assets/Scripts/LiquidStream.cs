@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LiquidStream : MonoBehaviour {
     private const float PourSpeed = 50.0f;
+    private const float FlavorInOrderChance = 0.75f;
 
     public enum Transition {
         In,
@@ -38,8 +39,11 @@ public class LiquidStream : MonoBehaviour {
     private Vector3 postTransitionPosition;
     private Vector3 nextPosition;
 
+    private System.Array possibleFlavors;
+
     private void Awake() {
         CurrentTransition = Transition.None;
+        possibleFlavors = System.Enum.GetValues(typeof(Order.Flavor));
     }
 
     private void Start() {
@@ -66,7 +70,19 @@ public class LiquidStream : MonoBehaviour {
     }
 
     public void TransitionIn() {
-        CurrentFlavor = Globals.currentOrder.drinkFlavors[0];
+        int flavorIndex;
+
+        if (Random.value < FlavorInOrderChance) {
+            // Most of the time, randomly pick one of the flavors in the order.
+            flavorIndex = Random.Range(0, Globals.currentOrder.drinkFlavors.Count - 1);
+            CurrentFlavor = Globals.currentOrder.drinkFlavors[flavorIndex];
+        } else {
+            // Occasionally, pick a random flavor that may not be in the order.
+            // Skip 0 since that's NotSet.
+            flavorIndex = Random.Range(1, possibleFlavors.Length - 1);
+            CurrentFlavor = (Order.Flavor)possibleFlavors.GetValue(flavorIndex);
+        }
+
         GetComponent<Renderer>().material.SetColor("_BaseColor", Order.FlavorColors[CurrentFlavor]);
         CurrentTransition = Transition.In;
         clippingPlanePreTransitionPosition = GetClippingPlaneHiddenPosition();
