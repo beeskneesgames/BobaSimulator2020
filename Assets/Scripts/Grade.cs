@@ -19,62 +19,71 @@ public class Grade {
         { Order.FlavorOption.Single, 1.00f },
     };
 
-    private List<string> goodPhrase = new List<string> {
+    private static List<string> goodExclamation = new List<string> {
         "Wow!",
         "Yum!",
-        "Mmmmm.",
+        "Mmmmm!",
     };
 
-    private List<string> mediocrePhrase = new List<string> {
+    private static List<string> mediocreExclamation = new List<string> {
         "Hmmm.",
         "Oh.",
         "Well…",
     };
 
-    private List<string> badPhrase = new List<string> {
+    private static List<string> badExclamation = new List<string> {
         "Uh oh!",
         "Yikes!",
         "Drats.",
         "Bummer…",
     };
 
-    private List<string> goodDescriptor = new List<string> {
-        "good",
-        "amazing",
-        "perfect",
-        "so yummy",
-        "refreshing",
+    private static List<string> goodDescriptor = new List<string> {
+        "great!",
+        "amazing!",
+        "perfect!",
+        "so yummy!",
+        "refreshing!",
     };
 
-    private List<string> mediocreDescriptor = new List<string> {
-        "okay",
-        "edible",
+    private static List<string> mediocreDescriptor = new List<string> {
+        "ok.",
+        "able to be drank.",
         "pretty good",
         "mediocre",
     };
 
-    private List<string> badDescriptor = new List<string> {
+    private static List<string> badDescriptor = new List<string> {
         "bad",
         "weird",
         "upsetting",
         "gross",
     };
 
-    private List<string> goodComment = new List<string> {
+    private static List<string> goodPhrase = new List<string> {
         "The flavor is spot on!",
         "This is exactly what I asked for!",
         "You should get a raise!",
         "Thank you so much!",
     };
 
-    // mediocre/bad comments
-    // "The flavor is a little off.",
-    // "There’s too much (splash flavor)."
-    // "There’s not enough (50/50 flavor)."
-    // "Where’s the (50/50 flavor) though?"
-    // "Do I taste (flavor that’s not supposed to be there)?"
 
+    private static Dictionary<string, Dictionary<string, List<string>>> comments = new Dictionary<string, Dictionary<string, List<string>>> {
+        { "good", new Dictionary<string, List<string>> {
+            { "exclamation", goodExclamation },
+            { "descriptor", goodDescriptor },
+        } },
 
+        { "mediocre", new Dictionary<string, List<string>> {
+            { "exclamation", mediocreExclamation},
+            { "descriptor", mediocreDescriptor },
+        } },
+
+        { "bad", new Dictionary<string, List<string>> {
+            { "exclamation", badExclamation },
+            { "descriptor", badDescriptor },
+        } },
+    };
 
     public enum LetterGrade {
         A,
@@ -114,7 +123,32 @@ public class Grade {
     }
 
     public string CompileComment() {
-        return "Wow! Delicious.";
+        // mediocre/bad phrase
+        // "The flavor is a little off.",
+        // "There’s too much (splash flavor)."
+        // "There’s not enough (50/50 flavor)."
+        // "Where’s the (50/50 flavor) though?"
+        // "Do I taste (flavor that’s not supposed to be there)?"
+
+        //[exclamation]! This tea was [descriptor]. [phrase].
+        string comment;
+
+        switch (letterGrade) {
+            case LetterGrade.A:
+                comment = "yum";
+                break;
+            case LetterGrade.C:
+                comment = "yum";
+                break;
+            case LetterGrade.F:
+                comment = "yum";
+                break;
+            default:
+                comment = "yum";
+                break;
+        }
+
+        return comment;
     }
 
     public string CompileDrinkName() {
