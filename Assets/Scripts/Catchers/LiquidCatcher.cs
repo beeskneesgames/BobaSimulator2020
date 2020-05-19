@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ public class LiquidCatcher : MonoBehaviour {
     public float liquidFillSpeed = 2.4f;
     public float LiquidFillTopY {
         get {
-            return liquidFillClippingPlaneStartY + (liquidPercentage * liquidFillSpeed);
+            return liquidFillClippingPlaneStartY + (Globals.TotalLiquidPercentage * liquidFillSpeed);
         }
     }
 
@@ -37,24 +38,6 @@ public class LiquidCatcher : MonoBehaviour {
         }
     }
     private float liquidFillClippingPlaneStartY;
-    private float liquidPercentage = 0.0f;
-    private float LiquidPercentage {
-        get {
-            return liquidPercentage;
-        }
-
-        set {
-            liquidPercentage = Mathf.Min(value, 1.0f);
-
-            Globals.liquidPercentage = liquidPercentage;
-            liquidPercentageText.text = $"Liquid Percentage: {Globals.FormattedLiquidPercentage}%";
-            liquidFillClippingPlane.transform.localPosition = new Vector3(
-                liquidFillClippingPlane.transform.localPosition.x,
-                LiquidFillTopY,
-                liquidFillClippingPlane.transform.localPosition.z
-            );
-        }
-    }
 
     private CupEffects cupEffects;
 
@@ -65,7 +48,8 @@ public class LiquidCatcher : MonoBehaviour {
 
     private void Update() {
         if (CurrentLiquidStream != null && CurrentLiquidStream.IsShown) {
-            LiquidPercentage += Time.deltaTime * 0.2f;
+            Globals.AddLiquid(CurrentLiquidStream.CurrentFlavor, Time.deltaTime * 0.2f);
+            UpdateLiquidDisplay();
         }
     }
 
@@ -95,5 +79,14 @@ public class LiquidCatcher : MonoBehaviour {
                 AudioManager.Instance.PlayLiquid();
             }
         }
+    }
+
+    private void UpdateLiquidDisplay() {
+        liquidPercentageText.text = $"Liquid Percentage: {Globals.FormattedLiquidPercentage}%";
+        liquidFillClippingPlane.transform.localPosition = new Vector3(
+            liquidFillClippingPlane.transform.localPosition.x,
+            LiquidFillTopY,
+            liquidFillClippingPlane.transform.localPosition.z
+        );
     }
 }
