@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LiquidStream : MonoBehaviour {
     private const float PourSpeed = 50.0f;
-    private const float FlavorInOrderChance = 0.75f;
+    private const float CorrectFlavorChance = 0.75f;
 
     public enum Transition {
         In,
@@ -72,7 +72,7 @@ public class LiquidStream : MonoBehaviour {
     public void TransitionIn() {
         int flavorIndex;
 
-        if (Random.value < FlavorInOrderChance) {
+        if (Random.value < CorrectFlavorChance) {
             // Most of the time, randomly pick one of the flavors in the order.
             flavorIndex = Random.Range(0, Globals.currentOrder.drinkFlavors.Count - 1);
             CurrentFlavor = Globals.currentOrder.drinkFlavors[flavorIndex];
