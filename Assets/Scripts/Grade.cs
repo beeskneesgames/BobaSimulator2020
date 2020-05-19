@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 public class Grade {
     private Dictionary<Order.AddInOption, float> perfectAddInPercentages = new Dictionary<Order.AddInOption, float> {
@@ -148,6 +148,90 @@ public class Grade {
     }
 
     public string CompileDrinkName() {
-        return "Strawberry honeydew with a splash of coconut bubble tea with light ice";
+        // This method returns a person's order as a readable sentence
+
+        // For example:
+        // Mango tea 
+        // Mango bubble tea
+        // Mango bubble tea with light ice
+        // Mango bubble tea with light boba
+        // Mango bubble tea with no ice and extra boba
+
+        // Mango blueberry bubble tea
+        // Mango with a splash of blueberry tea
+
+        return $"{CompileFlavorString()}{CompileIceString()}{CompileBobaString()}";
+    }
+
+    private string CompileIceString() {
+        string compiledString;
+        string iceAmountStr = Globals.currentOrder.iceAmount.ToString().ToLower();
+
+        switch (Globals.currentOrder.iceAmount) {
+            case Order.AddInOption.None:
+                // Mango bubble tea with no ice
+                compiledString = " with no ice";
+                break;
+            case Order.AddInOption.Regular:
+                // Mango bubble tea
+                compiledString = "";
+                break;
+            default:
+                // Mango bubble tea with light ice
+                compiledString = $" with {iceAmountStr} ice";
+                break;
+        }
+
+        return compiledString;
+    }
+
+    private string CompileBobaString() {
+        string compiledString;
+        string bobaAmountStr = Globals.currentOrder.bobaAmount.ToString().ToLower();
+
+        if (Globals.currentOrder.bobaAmount == Order.AddInOption.None || Globals.currentOrder.bobaAmount == Order.AddInOption.Regular) {
+            // Mango tea
+            compiledString = "";
+        } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Regular) {
+            // Mango bubble tea with extra boba
+            compiledString = $" with {bobaAmountStr} boba";
+        } else {
+            // Mango bubble tea with no ice and light boba
+            compiledString = $" and {bobaAmountStr} boba";
+        }
+
+        return compiledString;
+    }
+
+    private string CompileFlavorString() {
+        Order.Flavor firstFlavor = Globals.currentOrder.drinkFlavors.First();
+        Order.Flavor secondFlavor = Globals.currentOrder.drinkFlavors.Last();
+        string secondFlavorStr = secondFlavor.ToString().ToLower();
+        string teaType = IsBubbleTea() ? "bubble tea" : "tea";
+
+        string compiledString;
+
+        switch (Globals.currentOrder.drinkType) {
+            case Order.FlavorOption.Splash:
+                // Mango with a splash of lemon tea
+                compiledString = $"{firstFlavor} with a splash of {secondFlavorStr} {teaType}";
+                break;
+            case Order.FlavorOption.Half:
+                // Mango lemon tea
+                compiledString = $"{firstFlavor} {secondFlavorStr} {teaType}";
+                break;
+            default:
+                // Mango tea
+                compiledString = $"{firstFlavor} {teaType}";
+                break;
+        }
+
+        return $"{compiledString}";
+    }
+
+    public bool IsBubbleTea() {
+        bool isBubbleTea = Globals.currentOrder.bobaAmount != Order.AddInOption.None && Globals.currentOrder.bobaAmount != Order.AddInOption.NotSet;
+
+        return isBubbleTea;
     }
 }
