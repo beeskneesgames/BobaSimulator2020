@@ -127,24 +127,43 @@ public class Grade {
         // "Do I taste (flavor that’s not supposed to be there)?"
 
         //[exclamation]! This tea was [descriptor]. [phrase].
+        string exclamation;
+        string descriptor;
+        string phrase;
         string comment;
 
         switch (letterGrade) {
             case LetterGrade.A:
-                comment = "yum";
+                exclamation = ChooseComment("good", "exclamation");
+                descriptor = ChooseComment("good", "descriptor");
+                phrase = "";
                 break;
             case LetterGrade.C:
-                comment = "yum";
+                exclamation = ChooseComment("mediocre", "exclamation");
+                descriptor = ChooseComment("good", "descriptor");
+                phrase = "";
                 break;
             case LetterGrade.F:
-                comment = "yum";
+                exclamation = ChooseComment("bad", "exclamation");
+                descriptor = ChooseComment("good", "descriptor");
+                phrase = "";
                 break;
             default:
-                comment = "yum";
+                exclamation = "";
+                descriptor = "";
+                phrase = "";
                 break;
         }
 
+        comment = $"{exclamation} {descriptor} {phrase}";
+
         return comment;
+    }
+
+    private string ChooseComment(string level, string type) {
+        List<string> commentList = comments[level][type];
+        string randomOption = comments[level][type][UnityEngine.Random.Range(1, commentList.Count - 1)];
+        return randomOption;
     }
 
     public string CompileDrinkName() {
