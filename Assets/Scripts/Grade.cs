@@ -56,30 +56,28 @@ public class Grade {
         "gross",
     };
 
-    private static List<string> goodPhrase = new List<string> {
-        "The flavor is spot on!",
-        "This is exactly what I asked for!",
-        "You should get a raise!",
-        "Thank you so much!",
-    };
-
-
-    private static Dictionary<string, Dictionary<string, List<string>>> comments = new Dictionary<string, Dictionary<string, List<string>>> {
-        { "good", new Dictionary<string, List<string>> {
-            { "exclamation", goodExclamation },
-            { "descriptor", goodDescriptor },
+    private static Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> comments = new Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> {
+        { LetterGrade.A, new Dictionary<CommentType, List<string>> {
+            { CommentType.exclamation, goodExclamation },
+            { CommentType.descriptor, goodDescriptor },
         } },
 
-        { "mediocre", new Dictionary<string, List<string>> {
-            { "exclamation", mediocreExclamation},
-            { "descriptor", mediocreDescriptor },
+        { LetterGrade.C, new Dictionary<CommentType, List<string>> {
+            { CommentType.exclamation, mediocreExclamation},
+            { CommentType.descriptor, mediocreDescriptor },
         } },
 
-        { "bad", new Dictionary<string, List<string>> {
-            { "exclamation", badExclamation },
-            { "descriptor", badDescriptor },
+        { LetterGrade.F, new Dictionary<CommentType, List<string>> {
+            { CommentType.exclamation, badExclamation },
+            { CommentType.descriptor, badDescriptor },
         } },
     };
+
+    private enum CommentType {
+        exclamation,
+        descriptor,
+        phrase,
+    }
 
     public enum LetterGrade {
         A,
@@ -103,10 +101,12 @@ public class Grade {
     }
 
     private LetterGrade CompileLetterGrade() {
+        // TODO: Implement this
         return LetterGrade.A;
     }
 
     private List<Order.Flavor> ExtraFlavorsAdded() {
+        // TODO: Implement this
         return Globals.currentOrder.drinkFlavors;
     }
 
@@ -119,6 +119,10 @@ public class Grade {
     }
 
     public string CompileComment() {
+        // "The (flavor) flavor is spot on!",
+        // "This is exactly what I asked for!",
+        // "You should get a raise!",
+        // "Thank you so much!",
         // mediocre/bad phrase
         // "The flavor is a little off.",
         // "There’s too much (splash flavor)."
@@ -127,43 +131,46 @@ public class Grade {
         // "Do I taste (flavor that’s not supposed to be there)?"
 
         //[exclamation]! This tea was [descriptor]. [phrase].
-        string exclamation;
-        string descriptor;
+
+        string exclamation = ChooseString(letterGrade, CommentType.exclamation);
+        string descriptor = ChooseString(letterGrade, CommentType.descriptor);
+        string phrase = ChooseString(letterGrade, CommentType.phrase);
+
+        return $"{exclamation} {descriptor} {phrase}";
+    }
+
+    private string ChooseString(LetterGrade letterGrade, CommentType type) {
+        string str;
+        if (type == CommentType.phrase) {
+            str = ChoosePhrase(letterGrade);
+        } else {
+            List<string> commentList = comments[letterGrade][type];
+            string randomOption = comments[letterGrade][type][UnityEngine.Random.Range(1, commentList.Count - 1)];
+            str = randomOption;
+        }
+
+        return str;
+    }
+
+    private string ChoosePhrase(LetterGrade letterGrade) {
         string phrase;
-        string comment;
 
         switch (letterGrade) {
             case LetterGrade.A:
-                exclamation = ChooseComment("good", "exclamation");
-                descriptor = ChooseComment("good", "descriptor");
                 phrase = "";
                 break;
             case LetterGrade.C:
-                exclamation = ChooseComment("mediocre", "exclamation");
-                descriptor = ChooseComment("good", "descriptor");
                 phrase = "";
                 break;
             case LetterGrade.F:
-                exclamation = ChooseComment("bad", "exclamation");
-                descriptor = ChooseComment("good", "descriptor");
                 phrase = "";
                 break;
             default:
-                exclamation = "";
-                descriptor = "";
                 phrase = "";
                 break;
         }
 
-        comment = $"{exclamation} {descriptor} {phrase}";
-
-        return comment;
-    }
-
-    private string ChooseComment(string level, string type) {
-        List<string> commentList = comments[level][type];
-        string randomOption = comments[level][type][UnityEngine.Random.Range(1, commentList.Count - 1)];
-        return randomOption;
+        return phrase;
     }
 
     public string CompileDrinkName() {
