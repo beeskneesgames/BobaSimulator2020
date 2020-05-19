@@ -60,22 +60,26 @@ public class Grade {
     private static List<string> goodPhrase = new List<string> {
         $"The {Globals.currentOrder.drinkFlavors.First()} flavor is spot on!",
         "This is exactly what I asked for!",
+        "The boba amount is just right.",
+        "The ice amount is just right.",
         "You should get a raise!",
         "Thank you so much!",
     };
 
     // TODO: Fill these out
     private static List<string> mediocrePhrase = new List<string> {
-        "The flavor is a little off.",
+        "The flavor is a little odd.",
         "There’s too much (splash flavor).",
         "There’s not enough (50/50 flavor).",
         "Where’s the (50/50 flavor) though?",
         "Do I taste (flavor that’s not supposed to be there)?",
+        "There's too little boba.",
+        "There's too much boba.",
     };
 
     // TODO: Fill these out
     private static List<string> badPhrase = new List<string> {
-        "The flavor is a little off.",
+        "The flavor is way off.",
         "There’s too much (splash flavor).",
         "There’s not enough (50/50 flavor).",
         "Where’s the (50/50 flavor) though?",
@@ -166,14 +170,14 @@ public class Grade {
         // This method returns a person's order as a readable sentence
 
         // For example:
-        // Mango tea 
-        // Mango bubble tea
-        // Mango bubble tea with light ice
-        // Mango bubble tea with light boba
-        // Mango bubble tea with no ice and extra boba
+        // Honeydew tea 
+        // Honeydew bubble tea
+        // Honeydew bubble tea with light ice
+        // Honeydew bubble tea with light boba
+        // Honeydew bubble tea with no ice and extra boba
 
-        // Mango blueberry bubble tea
-        // Mango with a splash of blueberry tea
+        // Honeydew coconut bubble tea
+        // Honeydew with a splash of coconut tea
 
         return $"{CompileFlavorString()}{CompileIceString()}{CompileBobaString()}";
     }
@@ -184,15 +188,15 @@ public class Grade {
 
         switch (Globals.currentOrder.iceAmount) {
             case Order.AddInOption.None:
-                // Mango bubble tea with no ice
+                // Honeydew bubble tea with no ice
                 compiledString = " with no ice";
                 break;
             case Order.AddInOption.Regular:
-                // Mango bubble tea
+                // Honeydew bubble tea
                 compiledString = "";
                 break;
             default:
-                // Mango bubble tea with light ice
+                // Honeydew bubble tea with light ice
                 compiledString = $" with {iceAmountStr} ice";
                 break;
         }
@@ -205,13 +209,13 @@ public class Grade {
         string bobaAmountStr = Globals.currentOrder.bobaAmount.ToString().ToLower();
 
         if (Globals.currentOrder.bobaAmount == Order.AddInOption.None || Globals.currentOrder.bobaAmount == Order.AddInOption.Regular) {
-            // Mango tea
+            // Honeydew tea
             compiledString = "";
         } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Regular) {
-            // Mango bubble tea with extra boba
+            // Honeydew bubble tea with extra boba
             compiledString = $" with {bobaAmountStr} boba";
         } else {
-            // Mango bubble tea with no ice and light boba
+            // Honeydew bubble tea with no ice and light boba
             compiledString = $" and {bobaAmountStr} boba";
         }
 
@@ -228,15 +232,15 @@ public class Grade {
 
         switch (Globals.currentOrder.drinkType) {
             case Order.FlavorOption.Splash:
-                // Mango with a splash of lemon tea
+                // Honeydew with a splash of coconut tea
                 compiledString = $"{firstFlavor} with a splash of {secondFlavorStr} {teaType}";
                 break;
             case Order.FlavorOption.Half:
-                // Mango lemon tea
+                // Honeydew coconut tea
                 compiledString = $"{firstFlavor} {secondFlavorStr} {teaType}";
                 break;
             default:
-                // Mango tea
+                // Honeydew tea
                 compiledString = $"{firstFlavor} {teaType}";
                 break;
         }
