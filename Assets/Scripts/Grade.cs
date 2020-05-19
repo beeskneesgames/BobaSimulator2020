@@ -134,8 +134,20 @@ public class Grade {
     }
 
     private LetterGrade CompileLetterGrade() {
-        // TODO: Implement this
-        return LetterGrade.A;
+        float overallGrade = 1.0f;
+        float bobaGrade = GradeBoba();
+        float iceGrade = GradeIce();
+
+        overallGrade = overallGrade - bobaGrade - iceGrade;
+
+        switch (overallGrade) {
+            case float gradePercentage when (gradePercentage >= 1.0f):
+                return LetterGrade.A;
+            case float gradePercentage when (gradePercentage < 1.0f && gradePercentage >= 0.7f):
+                return LetterGrade.C;
+            default:
+                return LetterGrade.F;
+        }
     }
 
     private List<Order.Flavor> ExtraFlavorsAdded() {
@@ -147,8 +159,22 @@ public class Grade {
         return Globals.bobaCount / Globals.maxBobaCount;
     }
 
+    private float GradeBoba() {
+        float bobaPercentage = BobaPercentage();
+        float idealBobaPercentage = perfectAddInPercentages[Globals.currentOrder.bobaAmount];
+
+        return Math.Abs(bobaPercentage - idealBobaPercentage);
+    }
+
     private float IcePercentage() {
         return Globals.iceCount / Globals.maxIceCount;
+    }
+
+    private float GradeIce() {
+        float icePercentage = IcePercentage();
+        float idealIcePercentage = perfectAddInPercentages[Globals.currentOrder.iceAmount];
+
+        return Math.Abs(icePercentage - idealIcePercentage);
     }
 
     public string CompileComment() {
