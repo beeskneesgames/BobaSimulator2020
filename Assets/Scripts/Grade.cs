@@ -157,6 +157,7 @@ public class Grade {
     }
 
     private float FlavorDeductions() {
+        // TODO: Implement this
         return 0.0f;
     }
 
@@ -165,6 +166,7 @@ public class Grade {
     }
 
     private float BobaDeductions() {
+        // TODO: We probably want to weight AddIns as less important than flavor
         float bobaPercentage = BobaPercentage();
         float idealBobaPercentage = perfectAddInPercentages[Globals.currentOrder.bobaAmount];
 
@@ -176,6 +178,7 @@ public class Grade {
     }
 
     private float IceDeductions() {
+        // TODO: We probably want to weight AddIns as less important than flavor
         float icePercentage = IcePercentage();
         float idealIcePercentage = perfectAddInPercentages[Globals.currentOrder.iceAmount];
 
