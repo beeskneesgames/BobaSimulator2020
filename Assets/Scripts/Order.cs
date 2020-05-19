@@ -166,7 +166,7 @@ public class Order {
                 case AddInOption.Light:
                     return "Light ice";
                 case AddInOption.Regular:
-                    return "Ice";
+                    return "Regular ice";
                 case AddInOption.Extra:
                     return "Extra ice";
                 default:
@@ -184,7 +184,7 @@ public class Order {
                 case AddInOption.Light:
                     return "Light boba";
                 case AddInOption.Regular:
-                    return "Boba";
+                    return "Regular boba";
                 case AddInOption.Extra:
                     return "Extra boba";
                 default:

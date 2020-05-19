@@ -565,7 +565,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10403cd05ba104e4792dd308a6bbc968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderText: {fileID: 0}
+  orderText: {fileID: 203430921}
+  phaseManager: {fileID: 576963516}
 --- !u!1001 &154222118
 PrefabInstance:
   m_ObjectHideFlags: 0

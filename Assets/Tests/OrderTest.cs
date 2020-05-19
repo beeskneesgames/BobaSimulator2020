@@ -106,7 +106,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.That(order.IceDescription, Is.EqualTo("Ice"));
+            Assert.That(order.IceDescription, Is.EqualTo("Regular ice"));
         }
 
         [Test]
@@ -154,7 +154,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.That(order.BobaDescription, Is.EqualTo("Boba"));
+            Assert.That(order.BobaDescription, Is.EqualTo("Regular boba"));
         }
 
         [Test]
