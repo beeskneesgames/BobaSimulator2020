@@ -10,7 +10,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.None,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.FlavorOption.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
             Grade grade = new Grade();
@@ -24,7 +24,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Light,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.FlavorOption.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
             Grade grade = new Grade();
@@ -38,7 +38,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.FlavorOption.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
             Grade grade = new Grade();
@@ -52,7 +52,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Extra,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.FlavorOption.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
             Grade grade = new Grade();
@@ -66,7 +66,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.None,
                 drinkType = Order.FlavorOption.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
             Grade grade = new Grade();
@@ -80,7 +80,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Light,
                 drinkType = Order.FlavorOption.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
             Grade grade = new Grade();
@@ -94,7 +94,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.FlavorOption.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
             Grade grade = new Grade();
@@ -108,7 +108,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Extra,
                 drinkType = Order.FlavorOption.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
             Grade grade = new Grade();
@@ -122,7 +122,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.FlavorOption.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew, Order.Flavor.Coconut },
             };
             Globals.currentOrder = order;
             Grade grade = new Grade();
@@ -137,7 +137,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.FlavorOption.Half,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew, Order.Flavor.Coconut },
             };
             Globals.currentOrder = order;
             Grade grade = new Grade();
