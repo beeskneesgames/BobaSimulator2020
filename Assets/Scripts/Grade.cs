@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 
 public class Grade {
-    private Order currentOrder = Globals.currentOrder;
-    private int bobaCount = Globals.bobaCount;
-    private int iceCount = Globals.iceCount;
+    private readonly Order currentOrder = Globals.currentOrder;
+    private readonly int bobaCount = Globals.bobaCount;
+    private readonly int iceCount = Globals.iceCount;
 
     private Dictionary<Order.AddInOption, float> perfectAddInPercentages = new Dictionary<Order.AddInOption, float> {
         { Order.AddInOption.None,    0.0f },
@@ -24,11 +24,14 @@ public class Grade {
         C,
         F
     }
+    public LetterGrade letterGrade;
 
     public Grade Compile() {
         LetterGrade letterGrade = CompileLetterGrade();
 
-        Grade grade = new Grade();
+        Grade grade = new Grade {
+            letterGrade = letterGrade,
+        };
 
         return grade;
     }
@@ -38,6 +41,14 @@ public class Grade {
     }
 
     private List<Order.Flavor> ExtraFlavorsAdded() {
-        return new List<Order.Flavor>();
+        return currentOrder.drinkFlavors;
+    }
+
+    private float BobaPercentage() {
+        return bobaCount / 100;
+    }
+
+    private float IcePercentage() {
+        return iceCount / 100;
     }
 }
