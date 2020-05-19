@@ -157,4 +157,56 @@ public class Order {
 
         return flavors;
     }
+
+    public string IceDescription {
+        get {
+            switch (iceAmount) {
+                case AddInOption.None:
+                    return "No ice";
+                case AddInOption.Light:
+                    return "Light ice";
+                case AddInOption.Regular:
+                    return "Regular ice";
+                case AddInOption.Extra:
+                    return "Extra ice";
+                default:
+                    Debug.LogError("Invalid ice amount");
+                    return "Invalid ice";
+            }
+        }
+    }
+
+    public string BobaDescription {
+        get {
+            switch (bobaAmount) {
+                case AddInOption.None:
+                    return "No boba";
+                case AddInOption.Light:
+                    return "Light boba";
+                case AddInOption.Regular:
+                    return "Regular boba";
+                case AddInOption.Extra:
+                    return "Extra boba";
+                default:
+                    Debug.LogError("Invalid boba amount");
+                    return "Invalid boba";
+            }
+        }
+    }
+
+    public string FlavorDescription {
+        get {
+            switch (drinkType) {
+                case FlavorOption.Single:
+                    return drinkFlavors[0].ToString();
+                case FlavorOption.Half:
+                    return $"{drinkFlavors[0]} {drinkFlavors[1].ToString().ToLower()}";
+                case FlavorOption.Splash:
+                    return $"{drinkFlavors[0]} with a splash of {drinkFlavors[1].ToString().ToLower()}";
+                default:
+                    Debug.LogError("Invalid flavor option ");
+                    return "Invalid flavor";
+            }
+        }
+    }
 }
