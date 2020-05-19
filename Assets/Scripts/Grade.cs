@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 
 public class Grade {
-    private readonly Order currentOrder = Globals.currentOrder;
-    private readonly int bobaCount = Globals.bobaCount;
-    private readonly int iceCount = Globals.iceCount;
-
     private Dictionary<Order.AddInOption, float> perfectAddInPercentages = new Dictionary<Order.AddInOption, float> {
         { Order.AddInOption.None,    0.0f },
         { Order.AddInOption.Light,   0.10f },
@@ -111,15 +107,15 @@ public class Grade {
     }
 
     private List<Order.Flavor> ExtraFlavorsAdded() {
-        return currentOrder.drinkFlavors;
+        return Globals.currentOrder.drinkFlavors;
     }
 
     private float BobaPercentage() {
-        return bobaCount / 100;
+        return Globals.bobaCount / Globals.maxBobaCount;
     }
 
     private float IcePercentage() {
-        return iceCount / 100;
+        return Globals.iceCount / Globals.maxIceCount;
     }
 
     public string CompileComment() {
