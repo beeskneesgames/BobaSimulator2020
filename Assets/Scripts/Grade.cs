@@ -185,7 +185,7 @@ public class Grade {
         return Math.Abs(icePercentage - idealIcePercentage);
     }
 
-    public string CompileComment() {
+    private string CompileComment() {
         string exclamation = ChooseString(letterGrade, CommentType.exclamation);
         string descriptor = ChooseString(letterGrade, CommentType.descriptor);
         string phrase = ChooseString(letterGrade, CommentType.phrase);
@@ -200,7 +200,7 @@ public class Grade {
         return randomOption;
     }
 
-    public string CompileDrinkName() {
+    private string CompileDrinkName() {
         // This method returns a person's order as a readable sentence
 
         // For example:

@@ -5,6 +5,7 @@ using NUnit.Framework;
 namespace Tests {
     public class GradeTest {
         [Test]
+        [Test]
         public void CompileDrinkNameWithNoIce() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.None,
@@ -15,7 +16,7 @@ namespace Tests {
             Globals.currentOrder = order;
             Grade grade = new Grade();
 
-            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Honeydew bubble tea with no ice"));
+            Assert.That(grade.drinkName, Is.EqualTo("Honeydew bubble tea with no ice"));
         }
 
         [Test]
@@ -29,7 +30,7 @@ namespace Tests {
             Globals.currentOrder = order;
             Grade grade = new Grade();
 
-            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Honeydew bubble tea with light ice"));
+            Assert.That(grade.drinkName, Is.EqualTo("Honeydew bubble tea with light ice"));
         }
 
         [Test]
@@ -43,7 +44,7 @@ namespace Tests {
             Globals.currentOrder = order;
             Grade grade = new Grade();
 
-            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Honeydew bubble tea"));
+            Assert.That(grade.drinkName, Is.EqualTo("Honeydew bubble tea"));
         }
 
         [Test]
@@ -57,7 +58,7 @@ namespace Tests {
             Globals.currentOrder = order;
             Grade grade = new Grade();
 
-            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Honeydew bubble tea with extra ice"));
+            Assert.That(grade.drinkName, Is.EqualTo("Honeydew bubble tea with extra ice"));
         }
 
         [Test]
@@ -71,7 +72,7 @@ namespace Tests {
             Globals.currentOrder = order;
             Grade grade = new Grade();
 
-            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Honeydew tea"));
+            Assert.That(grade.drinkName, Is.EqualTo("Honeydew tea"));
         }
 
         [Test]
@@ -85,7 +86,7 @@ namespace Tests {
             Globals.currentOrder = order;
             Grade grade = new Grade();
 
-            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Honeydew bubble tea with light boba"));
+            Assert.That(grade.drinkName, Is.EqualTo("Honeydew bubble tea with light boba"));
         }
 
         [Test]
@@ -99,7 +100,7 @@ namespace Tests {
             Globals.currentOrder = order;
             Grade grade = new Grade();
 
-            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Honeydew bubble tea"));
+            Assert.That(grade.drinkName, Is.EqualTo("Honeydew bubble tea"));
         }
 
         [Test]
@@ -113,7 +114,7 @@ namespace Tests {
             Globals.currentOrder = order;
             Grade grade = new Grade();
 
-            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Honeydew bubble tea with extra boba"));
+            Assert.That(grade.drinkName, Is.EqualTo("Honeydew bubble tea with extra boba"));
         }
 
         [Test]
@@ -127,7 +128,7 @@ namespace Tests {
             Globals.currentOrder = order;
             Grade grade = new Grade();
 
-            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Honeydew bubble tea"));
+            Assert.That(grade.drinkName, Is.EqualTo("Honeydew bubble tea"));
         }
 
 
@@ -142,7 +143,7 @@ namespace Tests {
             Globals.currentOrder = order;
             Grade grade = new Grade();
 
-            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Honeydew coconut bubble tea"));
+            Assert.That(grade.drinkName, Is.EqualTo("Honeydew coconut bubble tea"));
         }
 
         [Test]
@@ -156,7 +157,7 @@ namespace Tests {
             Globals.currentOrder = order;
             Grade grade = new Grade();
 
-            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Honeydew with a splash of coconut bubble tea"));
+            Assert.That(grade.drinkName, Is.EqualTo("Honeydew with a splash of coconut bubble tea"));
         }
     }
 }
