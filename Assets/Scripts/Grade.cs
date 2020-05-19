@@ -135,10 +135,11 @@ public class Grade {
 
     private LetterGrade CompileLetterGrade() {
         float overallGrade = 1.0f;
-        float bobaGrade = GradeBoba();
-        float iceGrade = GradeIce();
+        float bobaDeductions = BobaDeductions();
+        float iceDeductions = IceDeductions();
+        float flavorDeductions = FlavorDeductions();
 
-        overallGrade = overallGrade - bobaGrade - iceGrade;
+        overallGrade = overallGrade - bobaDeductions - iceDeductions - flavorDeductions;
 
         switch (overallGrade) {
             case float gradePercentage when (gradePercentage >= 1.0f):
@@ -155,11 +156,15 @@ public class Grade {
         return Globals.currentOrder.drinkFlavors;
     }
 
+    private float FlavorDeductions() {
+        return 0.0f;
+    }
+
     private float BobaPercentage() {
         return Globals.bobaCount / Globals.maxBobaCount;
     }
 
-    private float GradeBoba() {
+    private float BobaDeductions() {
         float bobaPercentage = BobaPercentage();
         float idealBobaPercentage = perfectAddInPercentages[Globals.currentOrder.bobaAmount];
 
@@ -170,7 +175,7 @@ public class Grade {
         return Globals.iceCount / Globals.maxIceCount;
     }
 
-    private float GradeIce() {
+    private float IceDeductions() {
         float icePercentage = IcePercentage();
         float idealIcePercentage = perfectAddInPercentages[Globals.currentOrder.iceAmount];
 
