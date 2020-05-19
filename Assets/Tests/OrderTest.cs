@@ -74,7 +74,7 @@ namespace Tests {
         }
 
         [Test]
-        public void CompileToSentenceStringWithNoIce() {
+        public void IceDescriptionNoIce() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.None,
                 bobaAmount = Order.AddInOption.Regular,
@@ -82,11 +82,11 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with no ice"));
+            Assert.That(order.IceDescription, Is.EqualTo("No ice"));
         }
 
         [Test]
-        public void CompileToSentenceStringWithLightIce() {
+        public void IceDescriptionLightIce() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Light,
                 bobaAmount = Order.AddInOption.Regular,
@@ -94,11 +94,11 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with light ice"));
+            Assert.That(order.IceDescription, Is.EqualTo("Light ice"));
         }
 
         [Test]
-        public void CompileToSentenceStringWithRegularIce() {
+        public void IceDescriptionRegularIce() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
@@ -106,11 +106,11 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea"));
+            Assert.That(order.IceDescription, Is.EqualTo("Ice"));
         }
 
         [Test]
-        public void CompileToSentenceStringWithExtraIce() {
+        public void IceDescriptionExtraIce() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Extra,
                 bobaAmount = Order.AddInOption.Regular,
@@ -118,11 +118,11 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with extra ice"));
+            Assert.That(order.IceDescription, Is.EqualTo("Extra ice"));
         }
 
         [Test]
-        public void CompileToSentenceStringWithNoBoba() {
+        public void BobaDescriptionNoBoba() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.None,
@@ -130,11 +130,11 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango tea"));
+            Assert.That(order.BobaDescription, Is.EqualTo("No boba"));
         }
 
         [Test]
-        public void CompileToSentenceStringWithLightBoba() {
+        public void BobaDescriptionLightBoba() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Light,
@@ -142,11 +142,11 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with light boba"));
+            Assert.That(order.BobaDescription, Is.EqualTo("Light boba"));
         }
 
         [Test]
-        public void CompileToSentenceStringWithRegularBoba() {
+        public void BobaDescriptionRegularBoba() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
@@ -154,11 +154,11 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea"));
+            Assert.That(order.BobaDescription, Is.EqualTo("Boba"));
         }
 
         [Test]
-        public void CompileToSentenceStringWithExtraBoba() {
+        public void BobaDescriptionExtraBoba() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Extra,
@@ -166,24 +166,23 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with extra boba"));
+            Assert.That(order.BobaDescription, Is.EqualTo("Extra boba"));
         }
 
         [Test]
-        public void CompileToSentenceStringWithSingleFlavor() {
+        public void FlavorDescriptionSingleFlavor() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.FlavorOption.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea"));
+            Assert.That(order.FlavorDescription, Is.EqualTo("Mango"));
         }
 
-
         [Test]
-        public void CompileToSentenceStringWithHalfFlavor() {
+        public void FlavorDescriptionHalfFlavor() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
@@ -191,11 +190,11 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
             };
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango blueberry bubble tea"));
+            Assert.That(order.FlavorDescription, Is.EqualTo("Mango blueberry"));
         }
 
         [Test]
-        public void CompileToSentenceStringWithSplashFlavor() {
+        public void FlavorDescriptionSplashFlavor() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
@@ -203,7 +202,7 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
             };
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango with a splash of blueberry bubble tea"));
+            Assert.That(order.FlavorDescription, Is.EqualTo("Mango with a splash of blueberry"));
         }
     }
 }
