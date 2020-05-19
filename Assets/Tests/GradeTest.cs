@@ -5,53 +5,45 @@ using NUnit.Framework;
 namespace Tests {
     public class GradeTest {
         [Test]
-        public void OrderIsBubbleTea() {
-            Order order = new Order { bobaAmount = Order.AddInOption.Regular };
-
-            Assert.AreEqual(expected: true, actual: Order.IsBubbleTea());
-        }
-
-        [Test]
-        public void OrderNotBubbleTea() {
-            Order order = new Order();
-
-            Assert.AreEqual(expected: false, actual: order.IsBubbleTea());
-        }
-
-        [Test]
-        public void CompileToSentenceStringWithNoIce() {
+        public void CompileDrinkNameWithNoIce() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.None,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
+            Globals.currentOrder = order;
+            Grade grade = new Grade();
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with no ice"));
+            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Mango bubble tea with no ice"));
         }
 
         [Test]
-        public void CompileToSentenceStringWithLightIce() {
+        public void CompileDrinkNameWithLightIce() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Light,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
+            Globals.currentOrder = order;
+            Grade grade = new Grade();
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with light ice"));
+            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Mango bubble tea with light ice"));
         }
 
         [Test]
-        public void CompileToSentenceStringWithRegularIce() {
-            Order order = new Order {
+        public void CompileDrinkNameWithRegularIce() {
+                Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
+            Globals.currentOrder = order;
+            Grade grade = new Grade();
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea"));
+            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Mango bubble tea"));
         }
 
         [Test]
@@ -62,8 +54,10 @@ namespace Tests {
                 drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
+            Globals.currentOrder = order;
+            Grade grade = new Grade();
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with extra ice"));
+            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Mango bubble tea with extra ice"));
         }
 
         [Test]
@@ -74,8 +68,10 @@ namespace Tests {
                 drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
+            Globals.currentOrder = order;
+            Grade grade = new Grade();
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango tea"));
+            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Mango tea"));
         }
 
         [Test]
@@ -86,8 +82,10 @@ namespace Tests {
                 drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
+            Globals.currentOrder = order;
+            Grade grade = new Grade();
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with light boba"));
+            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Mango bubble tea with light boba"));
         }
 
         [Test]
@@ -98,8 +96,10 @@ namespace Tests {
                 drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
+            Globals.currentOrder = order;
+            Grade grade = new Grade();
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea"));
+            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Mango bubble tea"));
         }
 
         [Test]
@@ -110,8 +110,10 @@ namespace Tests {
                 drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
             };
+            Globals.currentOrder = order;
+            Grade grade = new Grade();
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea with extra boba"));
+            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Mango bubble tea with extra boba"));
         }
 
         [Test]
@@ -122,8 +124,10 @@ namespace Tests {
                 drinkType = Order.FlavorOption.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
             };
+            Globals.currentOrder = order;
+            Grade grade = new Grade();
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango bubble tea"));
+            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Mango bubble tea"));
         }
 
 
@@ -135,8 +139,10 @@ namespace Tests {
                 drinkType = Order.FlavorOption.Half,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
             };
+            Globals.currentOrder = order;
+            Grade grade = new Grade();
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango blueberry bubble tea"));
+            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Mango blueberry bubble tea"));
         }
 
         [Test]
@@ -147,8 +153,10 @@ namespace Tests {
                 drinkType = Order.FlavorOption.Splash,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
             };
+            Globals.currentOrder = order;
+            Grade grade = new Grade();
 
-            Assert.That(order.ToSentence(), Is.EqualTo("Mango with a splash of blueberry bubble tea"));
+            Assert.That(grade.CompileDrinkName(), Is.EqualTo("Mango with a splash of blueberry bubble tea"));
         }
     }
 }

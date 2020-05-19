@@ -207,7 +207,7 @@ public class Grade {
         Order.Flavor firstFlavor = Globals.currentOrder.drinkFlavors.First();
         Order.Flavor secondFlavor = Globals.currentOrder.drinkFlavors.Last();
         string secondFlavorStr = secondFlavor.ToString().ToLower();
-        string teaType = IsBubbleTea() ? "bubble tea" : "tea";
+        string teaType = Globals.currentOrder.IsBubbleTea() ? "bubble tea" : "tea";
 
         string compiledString;
 
@@ -227,11 +227,5 @@ public class Grade {
         }
 
         return $"{compiledString}";
-    }
-
-    public bool IsBubbleTea() {
-        bool isBubbleTea = Globals.currentOrder.bobaAmount != Order.AddInOption.None && Globals.currentOrder.bobaAmount != Order.AddInOption.NotSet;
-
-        return isBubbleTea;
     }
 }
