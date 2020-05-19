@@ -34,7 +34,7 @@ namespace Tests {
 
         [Test]
         public void CompileDrinkNameWithRegularIce() {
-                Order order = new Order {
+            Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.FlavorOption.Single,
