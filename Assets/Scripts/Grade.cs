@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 public class Grade {
@@ -56,20 +57,48 @@ public class Grade {
         "gross",
     };
 
+    private static List<string> goodPhrase = new List<string> {
+        $"The {Globals.currentOrder.drinkFlavors.First()} flavor is spot on!",
+        "This is exactly what I asked for!",
+        "You should get a raise!",
+        "Thank you so much!",
+    };
+
+    // TODO: Fill these out
+    private static List<string> mediocrePhrase = new List<string> {
+        "The flavor is a little off.",
+        "There’s too much (splash flavor).",
+        "There’s not enough (50/50 flavor).",
+        "Where’s the (50/50 flavor) though?",
+        "Do I taste (flavor that’s not supposed to be there)?",
+    };
+
+    // TODO: Fill these out
+    private static List<string> badPhrase = new List<string> {
+        "The flavor is a little off.",
+        "There’s too much (splash flavor).",
+        "There’s not enough (50/50 flavor).",
+        "Where’s the (50/50 flavor) though?",
+        "Do I taste (flavor that’s not supposed to be there)?",
+    };
+
     private static Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> comments = new Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> {
         { LetterGrade.A, new Dictionary<CommentType, List<string>> {
             { CommentType.exclamation, goodExclamation },
             { CommentType.descriptor, goodDescriptor },
+            { CommentType.phrase, goodPhrase },
         } },
 
         { LetterGrade.C, new Dictionary<CommentType, List<string>> {
             { CommentType.exclamation, mediocreExclamation},
             { CommentType.descriptor, mediocreDescriptor },
+            { CommentType.phrase, mediocrePhrase },
         } },
 
         { LetterGrade.F, new Dictionary<CommentType, List<string>> {
             { CommentType.exclamation, badExclamation },
             { CommentType.descriptor, badDescriptor },
+            { CommentType.phrase, badPhrase },
         } },
     };
 
@@ -119,19 +148,6 @@ public class Grade {
     }
 
     public string CompileComment() {
-        // "The (flavor) flavor is spot on!",
-        // "This is exactly what I asked for!",
-        // "You should get a raise!",
-        // "Thank you so much!",
-        // mediocre/bad phrase
-        // "The flavor is a little off.",
-        // "There’s too much (splash flavor)."
-        // "There’s not enough (50/50 flavor)."
-        // "Where’s the (50/50 flavor) though?"
-        // "Do I taste (flavor that’s not supposed to be there)?"
-
-        //[exclamation]! This tea was [descriptor]. [phrase].
-
         string exclamation = ChooseString(letterGrade, CommentType.exclamation);
         string descriptor = ChooseString(letterGrade, CommentType.descriptor);
         string phrase = ChooseString(letterGrade, CommentType.phrase);
@@ -140,37 +156,10 @@ public class Grade {
     }
 
     private string ChooseString(LetterGrade letterGrade, CommentType type) {
-        string str;
-        if (type == CommentType.phrase) {
-            str = ChoosePhrase(letterGrade);
-        } else {
-            List<string> commentList = comments[letterGrade][type];
-            string randomOption = comments[letterGrade][type][UnityEngine.Random.Range(1, commentList.Count - 1)];
-            str = randomOption;
-        }
+        List<string> commentList = comments[letterGrade][type];
+        string randomOption = comments[letterGrade][type][UnityEngine.Random.Range(1, commentList.Count - 1)];
 
-        return str;
-    }
-
-    private string ChoosePhrase(LetterGrade letterGrade) {
-        string phrase;
-
-        switch (letterGrade) {
-            case LetterGrade.A:
-                phrase = "";
-                break;
-            case LetterGrade.C:
-                phrase = "";
-                break;
-            case LetterGrade.F:
-                phrase = "";
-                break;
-            default:
-                phrase = "";
-                break;
-        }
-
-        return phrase;
+        return randomOption;
     }
 
     public string CompileDrinkName() {
