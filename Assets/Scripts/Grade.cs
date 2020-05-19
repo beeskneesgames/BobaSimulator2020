@@ -46,15 +46,15 @@ public class Grade {
     private static List<string> mediocreDescriptor = new List<string> {
         "ok.",
         "able to be drank.",
-        "pretty good",
-        "mediocre",
+        "pretty good.",
+        "mediocre.",
     };
 
     private static List<string> badDescriptor = new List<string> {
-        "bad",
-        "weird",
-        "upsetting",
-        "gross",
+        "bad.",
+        "weird.",
+        "upsetting.",
+        "gross.",
     };
 
     private static List<string> goodPhrase = new List<string> {
