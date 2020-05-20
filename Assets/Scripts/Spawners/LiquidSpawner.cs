@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LiquidSpawner : MonoBehaviour {
-    public float interval = 1.0f;
+    public float interval = 2.0f;
     public LiquidStream liquidStreamPrefab;
 
     private bool isSpawning = false;
