@@ -151,7 +151,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.DrinkType.Splash,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew, Order.Flavor.Coconut },
             };
             Globals.currentOrder = order;
             Grade grade = new Grade();
