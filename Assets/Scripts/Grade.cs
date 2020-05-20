@@ -16,26 +16,26 @@ public class Grade {
         { Order.FlavorOption.Single, 1.00f },
     };
 
-    private static List<string> goodExclamation = new List<string> {
+    private readonly static List<string> goodExclamation = new List<string> {
         "Wow!",
         "Yum!",
         "Mmmmm!",
     };
 
-    private static List<string> mediocreExclamation = new List<string> {
+    private readonly static List<string> mediocreExclamation = new List<string> {
         "Hmmm.",
         "Oh.",
         "Well…",
     };
 
-    private static List<string> badExclamation = new List<string> {
+    private readonly static List<string> badExclamation = new List<string> {
         "Uh oh!",
         "Yikes!",
         "Drats.",
         "Bummer…",
     };
 
-    private static List<string> goodDescriptor = new List<string> {
+    private readonly static List<string> goodDescriptor = new List<string> {
         "great!",
         "amazing!",
         "perfect!",
@@ -43,14 +43,14 @@ public class Grade {
         "refreshing!",
     };
 
-    private static List<string> mediocreDescriptor = new List<string> {
+    private readonly static List<string> mediocreDescriptor = new List<string> {
         "ok.",
         "able to be drank.",
         "pretty good.",
         "mediocre.",
     };
 
-    private static List<string> badDescriptor = new List<string> {
+    private readonly static List<string> badDescriptor = new List<string> {
         "bad.",
         "weird.",
         "upsetting.",
