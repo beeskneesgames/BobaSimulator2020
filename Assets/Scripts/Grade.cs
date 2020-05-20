@@ -190,11 +190,11 @@ public class Grade {
     }
 
     private float BobaDeductions() {
-        // TODO: We probably want to weight AddIns as less important than flavor
+        float deductionWeight = 0.25f;
         float bobaPercentage = BobaPercentage();
         float idealBobaPercentage = perfectAddInPercentages[Globals.currentOrder.bobaAmount];
 
-        return Math.Abs(bobaPercentage - idealBobaPercentage);
+        return Math.Abs((bobaPercentage - idealBobaPercentage) * deductionWeight);
     }
 
     private float IcePercentage() {
@@ -202,11 +202,11 @@ public class Grade {
     }
 
     private float IceDeductions() {
-        // TODO: We probably want to weight AddIns as less important than flavor
+        float deductionWeight = 0.25f;
         float icePercentage = IcePercentage();
         float idealIcePercentage = perfectAddInPercentages[Globals.currentOrder.iceAmount];
 
-        return Math.Abs(icePercentage - idealIcePercentage);
+        return Math.Abs((icePercentage - idealIcePercentage) * deductionWeight);
     }
 
     private string CompileComment() {
