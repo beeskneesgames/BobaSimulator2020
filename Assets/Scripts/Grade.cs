@@ -11,7 +11,7 @@ public class Grade {
         { Order.AddInOption.Extra,   0.5f },
     };
 
-    public static Dictionary<Order.DrinkType, float> perfectFlavorOptionPercentages = new Dictionary<Order.DrinkType, float> {
+    public static Dictionary<Order.DrinkType, float> perfectDrinkTypePercentages = new Dictionary<Order.DrinkType, float> {
         { Order.DrinkType.Splash, 0.25f },
         { Order.DrinkType.Half,   0.50f },
         { Order.DrinkType.Single, 1.00f },
@@ -58,30 +58,6 @@ public class Grade {
         "gross.",
     };
 
-    private static List<string> goodPhrase;
-    private static List<string> mediocrePhrase;
-    private static List<string> badPhrase;
-
-    private static Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> comments = new Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> {
-        { LetterGrade.A, new Dictionary<CommentType, List<string>> {
-            { CommentType.Exclamation, goodExclamation },
-            { CommentType.Descriptor, goodDescriptor },
-            { CommentType.Phrase, goodPhrase },
-        } },
-
-        { LetterGrade.C, new Dictionary<CommentType, List<string>> {
-            { CommentType.Exclamation, mediocreExclamation},
-            { CommentType.Descriptor, mediocreDescriptor },
-            { CommentType.Phrase, mediocrePhrase },
-        } },
-
-        { LetterGrade.F, new Dictionary<CommentType, List<string>> {
-            { CommentType.Exclamation, badExclamation },
-            { CommentType.Descriptor, badDescriptor },
-            { CommentType.Phrase, badPhrase },
-        } },
-    };
-
     private enum CommentType {
         Exclamation,
         Descriptor,
@@ -107,8 +83,8 @@ public class Grade {
         return grade;
     }
 
-    public static void InitializePhrases() {
-        goodPhrase = new List<string> {
+    private Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> InitializeComments() {
+        List<string> goodPhrase = new List<string> {
             $"The {Globals.currentOrder.drinkFlavors.First()} flavor is spot on!",
             "This is exactly what I asked for!",
             "The boba amount is just right.",
@@ -118,7 +94,7 @@ public class Grade {
         };
 
         // TODO: Fill these out
-        mediocrePhrase = new List<string> {
+        List<string> mediocrePhrase = new List<string> {
             "The flavor is a little odd.",
             "There’s too much (splash flavor).",
             "There’s not enough (50/50 flavor).",
@@ -129,12 +105,32 @@ public class Grade {
         };
 
         // TODO: Fill these out
-        badPhrase = new List<string> {
+        List<string> badPhrase = new List<string> {
             "The flavor is way off.",
             "There’s too much (splash flavor).",
             "There’s not enough (50/50 flavor).",
             "Where’s the (50/50 flavor) though?",
             "Do I taste (flavor that’s not supposed to be there)?",
+        };
+
+        return new Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> {
+            { LetterGrade.A, new Dictionary<CommentType, List<string>> {
+                { CommentType.Exclamation, goodExclamation},
+                { CommentType.Descriptor, goodDescriptor },
+                { CommentType.Phrase, goodPhrase },
+            } },
+
+            { LetterGrade.C, new Dictionary<CommentType, List<string>> {
+                { CommentType.Exclamation, mediocreExclamation},
+                { CommentType.Descriptor, mediocreDescriptor },
+                { CommentType.Phrase, mediocrePhrase },
+            } },
+
+            { LetterGrade.F, new Dictionary<CommentType, List<string>> {
+                { CommentType.Exclamation, badExclamation },
+                { CommentType.Descriptor, badDescriptor },
+                { CommentType.Phrase, badPhrase },
+            } },
         };
     }
 
@@ -171,16 +167,19 @@ public class Grade {
         // TODO: 2nd flavor logic
 
         float deductionWeight = 1.0f;
-        float percentageOfMainFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[0]];
-        //float percentageOfSecondFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[1]];
-        float idealFlavorPercentage = perfectFlavorOptionPercentages[Globals.currentOrder.drinkType];
 
-        float firstFlavorDifference = Math.Abs(percentageOfMainFlavor - idealFlavorPercentage);
+        // TODO: Check if empty first
+        //float percentageOfMainFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[0]];
+        //float percentageOfSecondFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[1]];
+        float idealFlavorPercentage = perfectDrinkTypePercentages[Globals.currentOrder.drinkType];
+
+        //float firstFlavorDifference = Math.Abs(percentageOfMainFlavor - idealFlavorPercentage);
         //float secondFlavorDifference = Math.Abs(percentageOfSecondFlavor - idealFlavorPercentage);
         float extraFlavorDifference = PercentageOfExtraFlavorsAdded();
 
         //return (firstFlavorDifference + secondFlavorDifference + extraFlavorDifference) * deductionWeight;
-        return (firstFlavorDifference + extraFlavorDifference) * deductionWeight;
+        //return (firstFlavorDifference + extraFlavorDifference) * deductionWeight;
+        return (extraFlavorDifference) * deductionWeight;
     }
 
     private float PercentageOfExtraFlavorsAdded() {
@@ -227,8 +226,8 @@ public class Grade {
     }
 
     private string ChooseString(LetterGrade letterGrade, CommentType type) {
-        List<string> commentList = comments[letterGrade][type];
-        string randomOption = comments[letterGrade][type][UnityEngine.Random.Range(0, commentList.Count - 1)];
+        List<string> commentList = InitializeComments()[letterGrade][type];
+        string randomOption = commentList[UnityEngine.Random.Range(0, commentList.Count - 1)];
 
         return randomOption;
     }
