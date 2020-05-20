@@ -143,6 +143,11 @@ public class Grade {
 
         score = score - bobaDeductions - iceDeductions - flavorDeductions;
 
+        Debug.Log($"score: {score}");
+        Debug.Log($"bobaDeductions: {bobaDeductions}");
+        Debug.Log($"iceDeductions: {iceDeductions}");
+        Debug.Log($"flavorDeductions: {flavorDeductions}");
+
         if (score >= 0.8f) {
             grade = LetterGrade.A;
         } else if (score < 0.8f && score >= 0.4f) {
