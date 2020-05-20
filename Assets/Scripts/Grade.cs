@@ -203,7 +203,7 @@ public class Grade {
 
     private string ChooseString(LetterGrade letterGrade, CommentType type) {
         List<string> commentList = comments[letterGrade][type];
-        string randomOption = comments[letterGrade][type][UnityEngine.Random.Range(1, commentList.Count - 1)];
+        string randomOption = comments[letterGrade][type][UnityEngine.Random.Range(0, commentList.Count - 1)];
 
         return randomOption;
     }
