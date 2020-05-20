@@ -74,11 +74,11 @@ public class LiquidStream : MonoBehaviour {
         float diceRoll = Random.value;
 
         if (diceRoll < CorrectFlavorChance) {
-            // Most of the time, randomly pick one of the flavors in the order.
+            // Sometimes, randomly pick one of the flavors in the order.
             flavorIndex = Random.Range(0, Globals.currentOrder.drinkFlavors.Count);
             CurrentFlavor = Globals.currentOrder.drinkFlavors[flavorIndex];
         } else {
-            // Occasionally, pick a random flavor that may not be in the order.
+            // Other times, pick a random flavor that may not be in the order.
             // Skip 0 since that's NotSet.
             flavorIndex = Random.Range(1, possibleFlavors.Length);
             CurrentFlavor = (Order.Flavor)possibleFlavors.GetValue(flavorIndex);
