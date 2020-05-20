@@ -17,47 +17,6 @@ public class Grade {
         { Order.DrinkType.Single, 1.00f },
     };
 
-    private readonly static List<string> goodExclamation = new List<string> {
-        "Wow!",
-        "Yum!",
-        "Mmmmm!",
-    };
-
-    private readonly static List<string> mediocreExclamation = new List<string> {
-        "Hmmm.",
-        "Oh.",
-        "Well…",
-    };
-
-    private readonly static List<string> badExclamation = new List<string> {
-        "Uh oh!",
-        "Yikes!",
-        "Drats.",
-        "Bummer…",
-    };
-
-    private readonly static List<string> goodDescriptor = new List<string> {
-        "great!",
-        "amazing!",
-        "perfect!",
-        "so yummy!",
-        "refreshing!",
-    };
-
-    private readonly static List<string> mediocreDescriptor = new List<string> {
-        "ok.",
-        "able to be drank.",
-        "pretty good.",
-        "mediocre.",
-    };
-
-    private readonly static List<string> badDescriptor = new List<string> {
-        "bad.",
-        "weird.",
-        "upsetting.",
-        "gross.",
-    };
-
     private enum CommentType {
         Exclamation,
         Descriptor,
@@ -84,6 +43,47 @@ public class Grade {
     }
 
     private Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> InitializeComments() {
+        List<string> goodExclamation = new List<string> {
+            "Wow!",
+            "Yum!",
+            "Mmmmm!",
+        };
+
+            List<string> mediocreExclamation = new List<string> {
+            "Hmmm.",
+            "Oh.",
+            "Well…",
+        };
+
+            List<string> badExclamation = new List<string> {
+            "Uh oh!",
+            "Yikes!",
+            "Drats.",
+            "Bummer…",
+        };
+
+            List<string> goodDescriptor = new List<string> {
+            "great!",
+            "amazing!",
+            "perfect!",
+            "so yummy!",
+            "refreshing!",
+        };
+
+            List<string> mediocreDescriptor = new List<string> {
+            "ok.",
+            "able to be drank.",
+            "pretty good.",
+            "mediocre.",
+        };
+
+            List<string> badDescriptor = new List<string> {
+            "bad.",
+            "weird.",
+            "upsetting.",
+            "gross.",
+        };
+
         List<string> goodPhrase = new List<string> {
             $"The {Globals.currentOrder.drinkFlavors.First()} flavor is spot on!",
             "This is exactly what I asked for!",
