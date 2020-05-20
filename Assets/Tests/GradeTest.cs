@@ -26,6 +26,25 @@ namespace Tests {
         [Test]
         public void CalculateCGradeWithAddIns() {
             Order order = new Order {
+                iceAmount = Order.AddInOption.Regular,
+                bobaAmount = Order.AddInOption.Regular,
+                drinkType = Order.DrinkType.Single,
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
+            };
+
+            Globals.currentOrder = order;
+            Globals.bobaCount = (int)(Globals.maxBobaCount);
+            Globals.iceCount = (int)(Globals.maxIceCount);
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float>();
+
+            Grade grade = Grade.Compile();
+
+            Assert.That(grade.letterGrade, Is.EqualTo(Grade.LetterGrade.C));
+        }
+
+        [Test]
+        public void CalculateFGradeWithAddIns() {
+            Order order = new Order {
                 iceAmount = Order.AddInOption.None,
                 bobaAmount = Order.AddInOption.None,
                 drinkType = Order.DrinkType.Single,
@@ -39,7 +58,7 @@ namespace Tests {
 
             Grade grade = Grade.Compile();
 
-            Assert.That(grade.letterGrade, Is.EqualTo(Grade.LetterGrade.C));
+            Assert.That(grade.letterGrade, Is.EqualTo(Grade.LetterGrade.F));
         }
 
         [Test]

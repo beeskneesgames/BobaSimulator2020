@@ -150,7 +150,7 @@ public class Grade {
 
         if (score >= 0.8f) {
             grade = LetterGrade.A;
-        } else if (score < 0.8f && score >= 0.4f) {
+        } else if (score < 0.8f && score >= 0.6f) {
             grade = LetterGrade.C;
         } else {
             grade = LetterGrade.F;
@@ -203,7 +203,7 @@ public class Grade {
     }
 
     private float BobaDeductions() {
-        float deductionWeight = 1.0f;
+        float deductionWeight = 0.25f;
         float bobaPercentage = BobaPercentage();
         float idealBobaPercentage = perfectAddInPercentages[Globals.currentOrder.bobaAmount];
 
@@ -218,7 +218,7 @@ public class Grade {
     }
 
     private float IceDeductions() {
-        float deductionWeight = 1.0f;
+        float deductionWeight = 0.25f;
         float icePercentage = IcePercentage();
         float idealIcePercentage = perfectAddInPercentages[Globals.currentOrder.iceAmount];
 
