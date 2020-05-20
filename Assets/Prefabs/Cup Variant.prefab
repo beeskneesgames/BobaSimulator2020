@@ -75,18 +75,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8774943833106552423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1780602450587893468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06d29d48c27ee4d44afae7e628b01d1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2014477892598289802
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +105,7 @@ Transform:
   m_Children:
   - {fileID: 6635281536823585372}
   m_Father: {fileID: 790085619033458796}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6956837419456897496
 MonoBehaviour:
@@ -223,7 +211,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 790085619033458796}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &701384633801086272
 MonoBehaviour:
@@ -239,6 +227,86 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bobaPrefab: {fileID: 7211006325878908688, guid: 79963be842a3f4e1998f98235422d128,
     type: 3}
+--- !u!1 &3738132264299582040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3693710357571402707}
+  - component: {fileID: 3600041871483104630}
+  - component: {fileID: 7756682217050060478}
+  - component: {fileID: 7690586728209270349}
+  m_Layer: 0
+  m_Name: LiquidCatcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3693710357571402707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3738132264299582040}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 790085619033458796}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3600041871483104630
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3738132264299582040}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.475, y: 1.7653475, z: 1.37}
+  m_Center: {x: 0.00000011920929, y: 0.05667472, z: 0}
+--- !u!114 &7756682217050060478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3738132264299582040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5012103be904741278479c2cd724139a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cupBottom: {fileID: 6058679674822358610}
+  liquidFillClippingPlane: {fileID: 0}
+  liquidStreamClippingPlane: {fileID: 0}
+  liquidPercentageText: {fileID: 0}
+  liquidPhase: {fileID: 0}
+  liquidFillSpeed: 2.4
+--- !u!54 &7690586728209270349
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3738132264299582040}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &150829013332249618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,11 +344,10 @@ GameObject:
   - component: {fileID: 6839920126890000847}
   - component: {fileID: 6068854567667401820}
   - component: {fileID: 3354550414495793895}
-  - component: {fileID: 5757651565647154844}
   - component: {fileID: 770944821597637519}
   - component: {fileID: 1810600026}
   m_Layer: 0
-  m_Name: Catcher
+  m_Name: BobaIceCatcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -327,23 +394,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bobaCountText: {fileID: 0}
   bobaPhase: {fileID: 0}
---- !u!114 &5757651565647154844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6018219313563978916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5012103be904741278479c2cd724139a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cupBottom: {fileID: 6058679674822358610}
-  liquidFillClippingPlane: {fileID: 0}
-  liquidStreamClippingPlane: {fileID: 0}
-  liquidPercentageText: {fileID: 0}
-  liquidFillSpeed: 2.4
 --- !u!114 &770944821597637519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,6 +596,18 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
+--- !u!114 &8774943833106552423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780602450587893468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d29d48c27ee4d44afae7e628b01d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2694455254242775540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -591,7 +653,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 8ca30019a011e4df9b042a34d5665957,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8ca30019a011e4df9b042a34d5665957,
         type: 3}
@@ -771,7 +833,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
         type: 3}
@@ -811,15 +873,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7751844398378543061}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1780602450587893468 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
-    type: 3}
-  m_PrefabInstance: {fileID: 7751844398378543061}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &38613139455543808 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -1504981713932161579, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7751844398378543061}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1780602450587893468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: cf0dd3bc2bae84b218da6d5697ac73c1,
     type: 3}
   m_PrefabInstance: {fileID: 7751844398378543061}
   m_PrefabAsset: {fileID: 0}
