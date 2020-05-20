@@ -5,6 +5,44 @@ using NUnit.Framework;
 namespace Tests {
     public class GradeTest {
         [Test]
+        public void CalculateAGrade() {
+            Order order = new Order {
+                iceAmount = Order.AddInOption.Regular,
+                bobaAmount = Order.AddInOption.Regular,
+                drinkType = Order.DrinkType.Single,
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
+            };
+
+            Globals.currentOrder = order;
+            Globals.bobaCount = (int)(Globals.maxBobaCount * Grade.perfectAddInPercentages[order.bobaAmount]);
+            Globals.iceCount = (int)(Globals.maxIceCount * Grade.perfectAddInPercentages[order.iceAmount]);
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float>();
+
+            Grade grade = new Grade();
+
+            Assert.That(grade.letterGrade, Is.EqualTo(Grade.LetterGrade.A));
+        }
+
+        [Test]
+        public void CalculateCGradeWithAddIns() {
+            Order order = new Order {
+                iceAmount = Order.AddInOption.None,
+                bobaAmount = Order.AddInOption.None,
+                drinkType = Order.DrinkType.Single,
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
+            };
+
+            Globals.currentOrder = order;
+            Globals.bobaCount = (int)(Globals.maxBobaCount);
+            Globals.iceCount = (int)(Globals.maxIceCount);
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float>();
+
+            Grade grade = new Grade();
+
+            Assert.That(grade.letterGrade, Is.EqualTo(Grade.LetterGrade.C));
+        }
+
+        [Test]
         public void CompileDrinkNameWithNoIce() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.None,

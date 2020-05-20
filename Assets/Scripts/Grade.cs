@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 
 public class Grade {
-    private Dictionary<Order.AddInOption, float> perfectAddInPercentages = new Dictionary<Order.AddInOption, float> {
+    public static Dictionary<Order.AddInOption, float> perfectAddInPercentages = new Dictionary<Order.AddInOption, float> {
         { Order.AddInOption.None,    0.0f },
         { Order.AddInOption.Light,   0.10f },
         { Order.AddInOption.Regular, 0.33f },
         { Order.AddInOption.Extra,   0.5f },
     };
 
-    private Dictionary<Order.DrinkType, float> perfectFlavorOptionPercentages = new Dictionary<Order.DrinkType, float> {
+    public static Dictionary<Order.DrinkType, float> perfectFlavorOptionPercentages = new Dictionary<Order.DrinkType, float> {
         { Order.DrinkType.Splash, 0.25f },
         { Order.DrinkType.Half,   0.50f },
         { Order.DrinkType.Single, 1.00f },
@@ -138,17 +138,17 @@ public class Grade {
     }
 
     private LetterGrade CalculateLetterGrade() {
-        float overallGrade = 1.0f;
+        float score = 1.0f;
         float bobaDeductions = BobaDeductions();
         float iceDeductions = IceDeductions();
         float flavorDeductions = FlavorDeductions();
         LetterGrade grade;
 
-        overallGrade = overallGrade - bobaDeductions - iceDeductions - flavorDeductions;
+        score -= bobaDeductions - iceDeductions - flavorDeductions;
 
-        if (overallGrade >= 1.0f) {
+        if (score >= 1.0) {
             grade = LetterGrade.A;
-        } else if (overallGrade < 1.0f && overallGrade >= 0.7f) {
+        } else if (score < 0.8f && score >= 0.4f) {
             grade = LetterGrade.C;
         } else {
             grade = LetterGrade.F;
@@ -167,17 +167,19 @@ public class Grade {
     }
 
     private float FlavorDeductions() {
-        float deductionWeight = 0.5f;
+        // TODO: 2nd flavor logic
+
+        float deductionWeight = 1.0f;
         float percentageOfMainFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[0]];
-        float percentageOfSecondFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[1]];
+        //float percentageOfSecondFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[1]];
         float idealFlavorPercentage = perfectFlavorOptionPercentages[Globals.currentOrder.drinkType];
 
         float firstFlavorDifference = Math.Abs(percentageOfMainFlavor - idealFlavorPercentage);
-        // TODO: This might be an issue if theres not a second flavor. Fix this.
-        float secondFlavorDifference = Math.Abs(percentageOfSecondFlavor - idealFlavorPercentage);
+        //float secondFlavorDifference = Math.Abs(percentageOfSecondFlavor - idealFlavorPercentage);
         float extraFlavorDifference = PercentageOfExtraFlavorsAdded();
 
-        return (firstFlavorDifference + secondFlavorDifference + extraFlavorDifference) * deductionWeight;
+        //return (firstFlavorDifference + secondFlavorDifference + extraFlavorDifference) * deductionWeight;
+        return (firstFlavorDifference + extraFlavorDifference) * deductionWeight;
     }
 
     private float PercentageOfExtraFlavorsAdded() {
@@ -196,7 +198,7 @@ public class Grade {
     }
 
     private float BobaDeductions() {
-        float deductionWeight = 0.25f;
+        float deductionWeight = 1.0f;
         float bobaPercentage = BobaPercentage();
         float idealBobaPercentage = perfectAddInPercentages[Globals.currentOrder.bobaAmount];
 
@@ -208,7 +210,7 @@ public class Grade {
     }
 
     private float IceDeductions() {
-        float deductionWeight = 0.25f;
+        float deductionWeight = 1.0f;
         float icePercentage = IcePercentage();
         float idealIcePercentage = perfectAddInPercentages[Globals.currentOrder.iceAmount];
 
