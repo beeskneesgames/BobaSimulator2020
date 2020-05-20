@@ -5488,6 +5488,11 @@ PrefabInstance:
       propertyPath: liquidStreamClippingPlane
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5757651565647154844, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: liquidPhase
+      value: 
+      objectReference: {fileID: 576963519}
     - target: {fileID: 6589357983551770575, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
       propertyPath: bounceDistance

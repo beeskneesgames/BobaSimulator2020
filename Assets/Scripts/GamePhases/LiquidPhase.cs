@@ -13,7 +13,9 @@ public class LiquidPhase : GamePhase {
     }
     public override float Time {
         get {
-            return 10.0f;
+            // One hour, since we really want this to last until the cup is full
+            // of liquid.
+            return 3600.0f;
         }
     }
 
@@ -37,6 +39,6 @@ public class LiquidPhase : GamePhase {
     }
 
     public override bool ShouldEndEarly() {
-        return false;
+        return Globals.TotalLiquidPercentage >= 1.0f;
     }
 }
