@@ -141,9 +141,9 @@ public class Grade {
         float flavorDeductions = FlavorDeductions();
         LetterGrade grade;
 
-        score -= bobaDeductions - iceDeductions - flavorDeductions;
+        score = score - bobaDeductions - iceDeductions - flavorDeductions;
 
-        if (score >= 1.0) {
+        if (score >= 0.8f) {
             grade = LetterGrade.A;
         } else if (score < 0.8f && score >= 0.4f) {
             grade = LetterGrade.C;
