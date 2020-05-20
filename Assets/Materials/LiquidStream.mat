@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HoneydewLiquidStream
+  m_Name: LiquidStream
   m_Shader: {fileID: -6465566751694194690, guid: f61ac01f059124625ac3faf1b1537c42,
     type: 3}
   m_ShaderKeywords: 

@@ -24,7 +24,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.None,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.DrinkType.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
             Assert.That(order.IsValid(), Is.True);
@@ -45,8 +45,8 @@ namespace Tests {
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.DrinkType.Single,
                 drinkFlavors = new List<Order.Flavor> {
-                    Order.Flavor.Mango,
-                    Order.Flavor.Mango,
+                    Order.Flavor.Taro,
+                    Order.Flavor.Taro,
                 },
             };
 
@@ -55,14 +55,14 @@ namespace Tests {
 
         [Test]
         public void GeneratesBasicOrder() {
-            List<Order.Flavor> flavor = new List<Order.Flavor> { Order.Flavor.Mango };
+            List<Order.Flavor> flavor = new List<Order.Flavor> { Order.Flavor.Taro };
             Order order = Order.GenerateBasic(flavor);
 
             Assert.That(order.IsValid(), Is.True);
             Assert.That(order.iceAmount, Is.EqualTo(Order.AddInOption.Regular));
             Assert.That(order.bobaAmount, Is.EqualTo(Order.AddInOption.Regular));
             Assert.That(order.drinkType, Is.EqualTo(Order.DrinkType.Single));
-            Assert.That(order.drinkFlavors.First(), Is.EqualTo(Order.Flavor.Mango));
+            Assert.That(order.drinkFlavors.First(), Is.EqualTo(Order.Flavor.Taro));
             Assert.That(order.drinkFlavors.Count, Is.EqualTo(1));
         }
 
@@ -79,7 +79,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.None,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.DrinkType.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
             Assert.That(order.IceDescription, Is.EqualTo("No ice"));
@@ -91,7 +91,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Light,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.DrinkType.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
             Assert.That(order.IceDescription, Is.EqualTo("Light ice"));
@@ -103,7 +103,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.DrinkType.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
             Assert.That(order.IceDescription, Is.EqualTo("Regular ice"));
@@ -115,7 +115,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Extra,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.DrinkType.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
             Assert.That(order.IceDescription, Is.EqualTo("Extra ice"));
@@ -127,7 +127,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.None,
                 drinkType = Order.DrinkType.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
             Assert.That(order.BobaDescription, Is.EqualTo("No boba"));
@@ -139,7 +139,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Light,
                 drinkType = Order.DrinkType.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
             Assert.That(order.BobaDescription, Is.EqualTo("Light boba"));
@@ -151,7 +151,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.DrinkType.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
             Assert.That(order.BobaDescription, Is.EqualTo("Regular boba"));
@@ -163,7 +163,7 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Extra,
                 drinkType = Order.DrinkType.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
             Assert.That(order.BobaDescription, Is.EqualTo("Extra boba"));
@@ -175,10 +175,10 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.DrinkType.Single,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
-            Assert.That(order.FlavorDescription, Is.EqualTo("Mango"));
+            Assert.That(order.FlavorDescription, Is.EqualTo("Taro"));
         }
 
         [Test]
@@ -187,10 +187,10 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.DrinkType.Half,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro, Order.Flavor.Coffee },
             };
 
-            Assert.That(order.FlavorDescription, Is.EqualTo("Mango blueberry"));
+            Assert.That(order.FlavorDescription, Is.EqualTo("Taro coffee"));
         }
 
         [Test]
@@ -199,10 +199,10 @@ namespace Tests {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
                 drinkType = Order.DrinkType.Splash,
-                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Mango, Order.Flavor.Blueberry },
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro, Order.Flavor.Coffee },
             };
 
-            Assert.That(order.FlavorDescription, Is.EqualTo("Mango with a splash of blueberry"));
+            Assert.That(order.FlavorDescription, Is.EqualTo("Taro with a splash of coffee"));
         }
     }
 }

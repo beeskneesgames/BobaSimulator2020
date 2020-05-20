@@ -9,6 +9,7 @@ public class LiquidCatcher : MonoBehaviour {
     public ClippingPlane liquidFillClippingPlane;
     public ClippingPlane liquidStreamClippingPlane;
     public Text liquidPercentageText;
+    public LiquidPhase liquidPhase;
     public float liquidFillSpeed = 2.4f;
     public float LiquidFillTopY {
         get {
@@ -48,8 +49,12 @@ public class LiquidCatcher : MonoBehaviour {
 
     private void Update() {
         if (CurrentLiquidStream != null && CurrentLiquidStream.IsShown) {
-            Globals.AddLiquid(CurrentLiquidStream.CurrentFlavor, Time.deltaTime * 0.2f);
+            Globals.AddLiquid(CurrentLiquidStream.CurrentFlavor, Time.deltaTime * 0.1f);
             UpdateLiquidDisplay();
+
+            if (liquidPhase.ShouldEndEarly()) {
+                liquidPhase.EndPhaseEarly();
+            }
         }
     }
 
