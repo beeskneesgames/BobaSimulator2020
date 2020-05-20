@@ -181,8 +181,14 @@ public class Grade {
     }
 
     private float PercentageOfExtraFlavorsAdded() {
-        // TODO: Implement this
-        return 0.5f;
+        List<Order.Flavor> extraFlavors = ExtraFlavorsAdded();
+        float percentage = 0.0f;
+
+        foreach (var flavor in extraFlavors) {
+            percentage += Globals.liquidPercentages[flavor];
+        }
+
+        return percentage;
     }
 
     private float BobaPercentage() {
