@@ -199,7 +199,7 @@ public class Grade {
     }
 
     private float BobaPercentage() {
-        return Globals.bobaCount / Globals.maxBobaCount;
+        return (float)Globals.bobaCount / Globals.maxBobaCount;
     }
 
     private float BobaDeductions() {
@@ -207,11 +207,14 @@ public class Grade {
         float bobaPercentage = BobaPercentage();
         float idealBobaPercentage = perfectAddInPercentages[Globals.currentOrder.bobaAmount];
 
+        Debug.Log($"bobaPercentage: {bobaPercentage}");
+        Debug.Log($"idealBobaPercentage: {idealBobaPercentage}");
+
         return Math.Abs((bobaPercentage - idealBobaPercentage) * deductionWeight);
     }
 
     private float IcePercentage() {
-        return Globals.iceCount / Globals.maxIceCount;
+        return (float)Globals.iceCount / Globals.maxIceCount;
     }
 
     private float IceDeductions() {
