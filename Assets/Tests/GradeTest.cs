@@ -5,7 +5,6 @@ using NUnit.Framework;
 namespace Tests {
     public class GradeTest {
         [Test]
-        [Test]
         public void CompileDrinkNameWithNoIce() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.None,

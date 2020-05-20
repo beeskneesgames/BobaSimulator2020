@@ -57,59 +57,34 @@ public class Grade {
         "gross.",
     };
 
-    private static List<string> goodPhrase = new List<string> {
-        $"The {Globals.currentOrder.drinkFlavors.First()} flavor is spot on!",
-        "This is exactly what I asked for!",
-        "The boba amount is just right.",
-        "The ice amount is just right.",
-        "You should get a raise!",
-        "Thank you so much!",
-    };
-
-    // TODO: Fill these out
-    private static List<string> mediocrePhrase = new List<string> {
-        "The flavor is a little odd.",
-        "There’s too much (splash flavor).",
-        "There’s not enough (50/50 flavor).",
-        "Where’s the (50/50 flavor) though?",
-        "Do I taste (flavor that’s not supposed to be there)?",
-        "There's too little boba.",
-        "There's too much boba.",
-    };
-
-    // TODO: Fill these out
-    private static List<string> badPhrase = new List<string> {
-        "The flavor is way off.",
-        "There’s too much (splash flavor).",
-        "There’s not enough (50/50 flavor).",
-        "Where’s the (50/50 flavor) though?",
-        "Do I taste (flavor that’s not supposed to be there)?",
-    };
+    private static List<string> goodPhrase;
+    private static List<string> mediocrePhrase;
+    private static List<string> badPhrase;
 
     private static Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> comments = new Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> {
         { LetterGrade.A, new Dictionary<CommentType, List<string>> {
-            { CommentType.exclamation, goodExclamation },
-            { CommentType.descriptor, goodDescriptor },
-            { CommentType.phrase, goodPhrase },
+            { CommentType.Exclamation, goodExclamation },
+            { CommentType.Descriptor, goodDescriptor },
+            { CommentType.Phrase, goodPhrase },
         } },
 
         { LetterGrade.C, new Dictionary<CommentType, List<string>> {
-            { CommentType.exclamation, mediocreExclamation},
-            { CommentType.descriptor, mediocreDescriptor },
-            { CommentType.phrase, mediocrePhrase },
+            { CommentType.Exclamation, mediocreExclamation},
+            { CommentType.Descriptor, mediocreDescriptor },
+            { CommentType.Phrase, mediocrePhrase },
         } },
 
         { LetterGrade.F, new Dictionary<CommentType, List<string>> {
-            { CommentType.exclamation, badExclamation },
-            { CommentType.descriptor, badDescriptor },
-            { CommentType.phrase, badPhrase },
+            { CommentType.Exclamation, badExclamation },
+            { CommentType.Descriptor, badDescriptor },
+            { CommentType.Phrase, badPhrase },
         } },
     };
 
     private enum CommentType {
-        exclamation,
-        descriptor,
-        phrase,
+        Exclamation,
+        Descriptor,
+        Phrase,
     }
 
     public enum LetterGrade {
@@ -121,34 +96,67 @@ public class Grade {
     public string comment;
     public string drinkName;
 
-    public Grade Compile() {
-        LetterGrade letterGrade = CompileLetterGrade();
+    public static Grade Compile() {
+        Grade grade = new Grade();
 
-        Grade grade = new Grade {
-            letterGrade = letterGrade,
-            drinkName = CompileDrinkName(),
-            comment = CompileComment(),
-        };
+        grade.letterGrade = grade.CalculateLetterGrade();
+        grade.drinkName = grade.CompileDrinkName();
+        grade.comment = grade.CompileComment();
 
         return grade;
     }
 
-    private LetterGrade CompileLetterGrade() {
+    public static void InitializePhrases() {
+
+
+        goodPhrase = new List<string> {
+            $"The {Globals.currentOrder.drinkFlavors.First()} flavor is spot on!",
+            "This is exactly what I asked for!",
+            "The boba amount is just right.",
+            "The ice amount is just right.",
+            "You should get a raise!",
+            "Thank you so much!",
+        };
+
+        // TODO: Fill these out
+        mediocrePhrase = new List<string> {
+            "The flavor is a little odd.",
+            "There’s too much (splash flavor).",
+            "There’s not enough (50/50 flavor).",
+            "Where’s the (50/50 flavor) though?",
+            "Do I taste (flavor that’s not supposed to be there)?",
+            "There's too little boba.",
+            "There's too much boba.",
+        };
+
+        // TODO: Fill these out
+        badPhrase = new List<string> {
+            "The flavor is way off.",
+            "There’s too much (splash flavor).",
+            "There’s not enough (50/50 flavor).",
+            "Where’s the (50/50 flavor) though?",
+            "Do I taste (flavor that’s not supposed to be there)?",
+        };
+    }
+
+    private LetterGrade CalculateLetterGrade() {
         float overallGrade = 1.0f;
         float bobaDeductions = BobaDeductions();
         float iceDeductions = IceDeductions();
         float flavorDeductions = FlavorDeductions();
+        LetterGrade grade;
 
         overallGrade = overallGrade - bobaDeductions - iceDeductions - flavorDeductions;
 
-        switch (overallGrade) {
-            case float gradePercentage when (gradePercentage >= 1.0f):
-                return LetterGrade.A;
-            case float gradePercentage when (gradePercentage < 1.0f && gradePercentage >= 0.7f):
-                return LetterGrade.C;
-            default:
-                return LetterGrade.F;
+        if (overallGrade >= 1.0f) {
+            grade = LetterGrade.A;
+        } else if (overallGrade < 1.0f && overallGrade >= 0.7f) {
+            grade = LetterGrade.C;
+        } else {
+            grade = LetterGrade.F;
         }
+
+        return grade;
     }
 
     private List<Order.Flavor> ExtraFlavorsAdded() {
@@ -186,9 +194,9 @@ public class Grade {
     }
 
     private string CompileComment() {
-        string exclamation = ChooseString(letterGrade, CommentType.exclamation);
-        string descriptor = ChooseString(letterGrade, CommentType.descriptor);
-        string phrase = ChooseString(letterGrade, CommentType.phrase);
+        string exclamation = ChooseString(letterGrade, CommentType.Exclamation);
+        string descriptor = ChooseString(letterGrade, CommentType.Descriptor);
+        string phrase = ChooseString(letterGrade, CommentType.Phrase);
 
         return $"{exclamation} {descriptor} {phrase}";
     }
