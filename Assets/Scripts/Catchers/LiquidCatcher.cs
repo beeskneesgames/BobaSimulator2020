@@ -49,7 +49,7 @@ public class LiquidCatcher : MonoBehaviour {
 
     private void Update() {
         if (CurrentLiquidStream != null && CurrentLiquidStream.IsShown) {
-            Globals.AddLiquid(CurrentLiquidStream.CurrentFlavor, Time.deltaTime * 0.2f);
+            Globals.AddLiquid(CurrentLiquidStream.CurrentFlavor, Time.deltaTime * 0.1f);
             UpdateLiquidDisplay();
 
             if (liquidPhase.ShouldEndEarly()) {
