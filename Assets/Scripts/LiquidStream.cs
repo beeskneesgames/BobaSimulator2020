@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LiquidStream : MonoBehaviour {
-    private const float PourSpeed = 50.0f;
+    private const float PourSpeed = 75.0f;
     private const float CorrectFlavorChance = 0.75f;
 
     public enum Transition {
