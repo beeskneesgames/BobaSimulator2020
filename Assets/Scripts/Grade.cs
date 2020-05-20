@@ -10,10 +10,10 @@ public class Grade {
         { Order.AddInOption.Extra,   0.5f },
     };
 
-    private Dictionary<Order.FlavorOption, float> perfectFlavorOptionPercentages = new Dictionary<Order.FlavorOption, float> {
-        { Order.FlavorOption.Splash, 0.25f },
-        { Order.FlavorOption.Half,   0.50f },
-        { Order.FlavorOption.Single, 1.00f },
+    private Dictionary<Order.DrinkType, float> perfectFlavorOptionPercentages = new Dictionary<Order.DrinkType, float> {
+        { Order.DrinkType.Splash, 0.25f },
+        { Order.DrinkType.Half,   0.50f },
+        { Order.DrinkType.Single, 1.00f },
     };
 
     private readonly static List<string> goodExclamation = new List<string> {
@@ -167,8 +167,22 @@ public class Grade {
     }
 
     private float FlavorDeductions() {
+        float deductionWeight = 0.5f;
+        float percentageOfMainFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[0]];
+        float percentageOfSecondFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[1]];
+        float idealFlavorPercentage = perfectFlavorOptionPercentages[Globals.currentOrder.drinkType];
+
+        float firstFlavorDifference = Math.Abs(percentageOfMainFlavor - idealFlavorPercentage);
+        // TODO: This might be an issue if theres not a second flavor. Fix this.
+        float secondFlavorDifference = Math.Abs(percentageOfSecondFlavor - idealFlavorPercentage);
+        float extraFlavorDifference = PercentageOfExtraFlavorsAdded();
+
+        return (firstFlavorDifference + secondFlavorDifference + extraFlavorDifference) * deductionWeight;
+    }
+
+    private float PercentageOfExtraFlavorsAdded() {
         // TODO: Implement this
-        return 0.0f;
+        return 0.5f;
     }
 
     private float BobaPercentage() {
@@ -275,11 +289,11 @@ public class Grade {
         string compiledString;
 
         switch (Globals.currentOrder.drinkType) {
-            case Order.FlavorOption.Splash:
+            case Order.DrinkType.Splash:
                 // Honeydew with a splash of coconut tea
                 compiledString = $"{firstFlavor} with a splash of {secondFlavorStr} {teaType}";
                 break;
-            case Order.FlavorOption.Half:
+            case Order.DrinkType.Half:
                 // Honeydew coconut tea
                 compiledString = $"{firstFlavor} {secondFlavorStr} {teaType}";
                 break;
