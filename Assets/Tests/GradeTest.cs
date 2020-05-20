@@ -25,7 +25,6 @@ namespace Tests {
 
         [Test]
         public void CalculateCGradeWithAddIns() {
-            Debug.Log("SHIIIIIIT");
             Order order = new Order {
                 iceAmount = Order.AddInOption.None,
                 bobaAmount = Order.AddInOption.None,
