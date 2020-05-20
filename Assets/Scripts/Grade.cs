@@ -107,8 +107,6 @@ public class Grade {
     }
 
     public static void InitializePhrases() {
-
-
         goodPhrase = new List<string> {
             $"The {Globals.currentOrder.drinkFlavors.First()} flavor is spot on!",
             "This is exactly what I asked for!",
@@ -160,8 +158,12 @@ public class Grade {
     }
 
     private List<Order.Flavor> ExtraFlavorsAdded() {
-        // TODO: Implement this
-        return Globals.currentOrder.drinkFlavors;
+        List<Order.Flavor> drinkFlavors = Globals.liquidPercentages.Keys.ToList();
+        List<Order.Flavor> orderFlavors = Globals.currentOrder.drinkFlavors;
+
+        IEnumerable<Order.Flavor> extraFlavors = drinkFlavors.Except(orderFlavors);
+
+        return extraFlavors.ToList();
     }
 
     private float FlavorDeductions() {
