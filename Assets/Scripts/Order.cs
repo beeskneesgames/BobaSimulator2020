@@ -29,11 +29,11 @@ public class Order {
     };
 
     public readonly static Dictionary<Flavor, Color> FlavorColors = new Dictionary<Flavor, Color>() {
-        { Flavor.Coconut,    new Color(0.96f,   0.96f,   0.96f  ) },
-        { Flavor.Coffee,     new Color(0.44f,   0.31f,   0.22f  ) },
-        { Flavor.Honeydew,   new Color(0.749f,  1.0f,    0.729f ) },
-        { Flavor.Strawberry, new Color(0.7843f, 0.2471f, 0.2863f) },
-        { Flavor.Taro,       new Color(0.7412f, 0.4863f, 0.7765f) },
+        { Flavor.Coconut,    new Color(0.96f,  0.96f,  0.96f ) },
+        { Flavor.Coffee,     new Color(0.514f, 0.361f, 0.255f) },
+        { Flavor.Honeydew,   new Color(0.749f, 1.0f,   0.729f) },
+        { Flavor.Strawberry, new Color(1.0f,   0.604f, 0.863f) },
+        { Flavor.Taro,       new Color(0.482f, 0.808f, 1.0f  ) },
     };
 
     public AddInOption iceAmount = AddInOption.NotSet;
