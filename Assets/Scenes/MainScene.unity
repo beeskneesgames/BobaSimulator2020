@@ -5493,16 +5493,6 @@ PrefabInstance:
       propertyPath: liquidPhase
       value: 
       objectReference: {fileID: 576963519}
-    - target: {fileID: 6589357983551770575, guid: 085f12f3e603343d283dff5825a08724,
-        type: 3}
-      propertyPath: bounceDistance
-      value: 0.075
-      objectReference: {fileID: 0}
-    - target: {fileID: 6589357983551770575, guid: 085f12f3e603343d283dff5825a08724,
-        type: 3}
-      propertyPath: bounceSpeed
-      value: 2.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 085f12f3e603343d283dff5825a08724, type: 3}
 --- !u!114 &8646206877487016826 stripped
