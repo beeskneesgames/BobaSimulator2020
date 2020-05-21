@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Stats : MonoBehaviour {
+public class GradeScreen : MonoBehaviour {
     public Text bobaCountText;
     public Text liquidPercentageText;
 
