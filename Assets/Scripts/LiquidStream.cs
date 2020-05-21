@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
@@ -76,16 +75,16 @@ public class LiquidStream : MonoBehaviour {
 
     public void TransitionIn() {
         int flavorIndex;
-        float diceRoll = UnityEngine.Random.value;
+        float diceRoll = Random.value;
 
         if (diceRoll < CorrectFlavorChance) {
             // Sometimes, randomly pick one of the flavors in the order.
-            flavorIndex = UnityEngine.Random.Range(0, Globals.currentOrder.drinkFlavors.Count);
+            flavorIndex = Random.Range(0, Globals.currentOrder.drinkFlavors.Count);
             CurrentFlavor = Globals.currentOrder.drinkFlavors[flavorIndex];
         } else {
             // Other times, pick a random flavor that may not be in the order.
             // Skip 0 since that's NotSet.
-            flavorIndex = UnityEngine.Random.Range(1, possibleFlavors.Length);
+            flavorIndex = Random.Range(1, possibleFlavors.Length);
             CurrentFlavor = (Order.Flavor)possibleFlavors.GetValue(flavorIndex);
         }
 
