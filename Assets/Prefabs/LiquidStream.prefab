@@ -112,6 +112,7 @@ MonoBehaviour:
   liquidCatcher: {fileID: 0}
   cupEffects: {fileID: 0}
   clippingPlane: {fileID: 5317381964136027581}
+  splashEffect: {fileID: 2596448262448196620}
 --- !u!1 &5972311968118602953
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +138,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5972311968118602953}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 0.16666667, z: 4}
   m_Children: []

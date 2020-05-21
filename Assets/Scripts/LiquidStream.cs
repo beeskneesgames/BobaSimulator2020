@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class LiquidStream : MonoBehaviour {
     private const float PourSpeed = 75.0f;
     private const float CorrectFlavorChance = 0.5f;
+    private static readonly int VFXColorProp = Shader.PropertyToID("Color");
 
     public enum Transition {
         In,
@@ -15,6 +18,7 @@ public class LiquidStream : MonoBehaviour {
     public LiquidCatcher liquidCatcher;
     public CupEffects cupEffects;
     public ClippingPlane clippingPlane;
+    public VisualEffect splashEffect;
     public Order.Flavor CurrentFlavor {
         get;
         private set;
@@ -60,6 +64,7 @@ public class LiquidStream : MonoBehaviour {
                 break;
             case Transition.None:
                 UpdateClippingPlaneY();
+                UpdateSplashEffect();
                 break;
         }
     }
@@ -71,20 +76,22 @@ public class LiquidStream : MonoBehaviour {
 
     public void TransitionIn() {
         int flavorIndex;
-        float diceRoll = Random.value;
+        float diceRoll = UnityEngine.Random.value;
 
         if (diceRoll < CorrectFlavorChance) {
             // Sometimes, randomly pick one of the flavors in the order.
-            flavorIndex = Random.Range(0, Globals.currentOrder.drinkFlavors.Count);
+            flavorIndex = UnityEngine.Random.Range(0, Globals.currentOrder.drinkFlavors.Count);
             CurrentFlavor = Globals.currentOrder.drinkFlavors[flavorIndex];
         } else {
             // Other times, pick a random flavor that may not be in the order.
             // Skip 0 since that's NotSet.
-            flavorIndex = Random.Range(1, possibleFlavors.Length);
+            flavorIndex = UnityEngine.Random.Range(1, possibleFlavors.Length);
             CurrentFlavor = (Order.Flavor)possibleFlavors.GetValue(flavorIndex);
         }
 
-        GetComponent<Renderer>().material.SetColor("_BaseColor", Order.FlavorColors[CurrentFlavor]);
+        Color flavorColor = Order.FlavorColors[CurrentFlavor];
+        GetComponent<Renderer>().material.SetColor("_BaseColor", flavorColor);
+        splashEffect.SetVector4(VFXColorProp, flavorColor);
         CurrentTransition = Transition.In;
         clippingPlanePreTransitionPosition = GetClippingPlaneHiddenPosition();
         clippingPlanePostTransitionPosition = GetClippingPlaneFullPosition();
@@ -130,6 +137,7 @@ public class LiquidStream : MonoBehaviour {
     }
 
     public void Hide() {
+        HideSplash();
         IsShown = false;
         clippingPlane.transform.position = GetClippingPlaneHiddenPosition();
     }
@@ -149,6 +157,10 @@ public class LiquidStream : MonoBehaviour {
     }
 
     private void AnimateTransitionIn() {
+        if (splashEffect.gameObject.activeInHierarchy) {
+            HideSplash();
+        }
+
         currentTimeTransitioning += Time.deltaTime;
         float fractionOfJourney = currentTimeTransitioning / maxTimeTransitioning;
 
@@ -165,6 +177,10 @@ public class LiquidStream : MonoBehaviour {
 
     private void AnimateTransitionOut() {
         UpdateClippingPlaneY();
+
+        if (splashEffect.gameObject.activeInHierarchy) {
+            HideSplash();
+        }
 
         currentTimeTransitioning += Time.deltaTime;
         float fractionOfJourney = currentTimeTransitioning / maxTimeTransitioning;
@@ -201,6 +217,22 @@ public class LiquidStream : MonoBehaviour {
         }
     }
 
+    private void UpdateSplashEffect() {
+        if (IsShown && liquidCatcher) {
+            if (!splashEffect.gameObject.activeInHierarchy) {
+                ShowSplash();
+            }
+
+            splashEffect.transform.position = new Vector3(
+                splashEffect.transform.position.x,
+                liquidCatcher.liquidFillClippingPlane.transform.position.y - 0.025f,
+                splashEffect.transform.position.z
+            );
+        } else if (splashEffect.gameObject.activeInHierarchy) {
+            HideSplash();
+        }
+    }
+
     private Vector3 GetClippingPlaneHiddenPosition() {
         return new Vector3(
             clippingPlane.transform.position.x,
@@ -231,5 +263,14 @@ public class LiquidStream : MonoBehaviour {
             -10.5f,
             transform.position.z
         );
+    }
+
+    private void ShowSplash() {
+        splashEffect.gameObject.SetActive(true);
+        splashEffect.SetVector4(VFXColorProp, Order.FlavorColors[CurrentFlavor]);
+    }
+
+    private void HideSplash() {
+        splashEffect.gameObject.SetActive(false);
     }
 }
