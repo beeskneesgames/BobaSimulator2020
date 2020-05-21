@@ -97,13 +97,11 @@ public class Grade {
             "Thank you so much!",
         };
 
-        // TODO: Fill these out
         List<string> mediocrePhrase = new List<string> {
             "The flavor is a little odd.",
             "It's not quite what I was expecting.",
         };
 
-        // TODO: Fill these out
             List<string> badPhrase = new List<string> {
             "The flavor is way off.",
             "I'd like a remake please.",
