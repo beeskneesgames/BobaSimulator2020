@@ -164,6 +164,9 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 1.0f },
+            };
 
             Grade grade = Grade.Compile();
 
@@ -179,6 +182,9 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 1.0f },
+            };
 
             Grade grade = Grade.Compile();
 
@@ -194,6 +200,9 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 1.0f },
+            };
 
             Grade grade = Grade.Compile();
 
@@ -209,6 +218,9 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 1.0f },
+            };
 
             Grade grade = Grade.Compile();
 
@@ -224,6 +236,9 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 1.0f },
+            };
 
             Grade grade = Grade.Compile();
 
@@ -239,6 +254,9 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 1.0f },
+            };
 
             Grade grade = Grade.Compile();
 
@@ -254,6 +272,9 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 1.0f },
+            };
 
             Grade grade = Grade.Compile();
 
@@ -269,6 +290,9 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
             };
             Globals.currentOrder = order;
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 1.0f },
+            };
 
             Grade grade = Grade.Compile();
 
@@ -284,6 +308,9 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew, Order.Flavor.Coconut },
             };
             Globals.currentOrder = order;
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 1.0f },
+            };
 
             Grade grade = Grade.Compile();
 
@@ -300,6 +327,10 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew, Order.Flavor.Coconut },
             };
             Globals.currentOrder = order;
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 0.5f },
+                { Order.Flavor.Coconut, 0.5f },
+            };
 
             Grade grade = Grade.Compile();
 
@@ -315,6 +346,10 @@ namespace Tests {
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew, Order.Flavor.Coconut },
             };
             Globals.currentOrder = order;
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 0.75f },
+                { Order.Flavor.Coconut, 0.25f },
+            };
 
             Grade grade = Grade.Compile();
 
