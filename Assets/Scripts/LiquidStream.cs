@@ -91,7 +91,6 @@ public class LiquidStream : MonoBehaviour {
 
         Color flavorColor = Order.FlavorColors[CurrentFlavor];
         GetComponent<Renderer>().material.SetColor("_BaseColor", flavorColor);
-        splashEffect.SetVector4(VFXColorProp, flavorColor);
         CurrentTransition = Transition.In;
         clippingPlanePreTransitionPosition = GetClippingPlaneHiddenPosition();
         clippingPlanePostTransitionPosition = GetClippingPlaneFullPosition();
@@ -223,6 +222,7 @@ public class LiquidStream : MonoBehaviour {
                 ShowSplash();
             }
 
+            splashEffect.SetVector4(VFXColorProp, Globals.LiquidFillColor);
             splashEffect.transform.position = new Vector3(
                 splashEffect.transform.position.x,
                 liquidCatcher.liquidFillClippingPlane.transform.position.y - 0.025f,
@@ -267,7 +267,6 @@ public class LiquidStream : MonoBehaviour {
 
     private void ShowSplash() {
         splashEffect.gameObject.SetActive(true);
-        splashEffect.SetVector4(VFXColorProp, Order.FlavorColors[CurrentFlavor]);
     }
 
     private void HideSplash() {
