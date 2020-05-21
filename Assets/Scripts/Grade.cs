@@ -169,22 +169,24 @@ public class Grade {
     }
 
     private float FlavorDeductions() {
-        // TODO: 2nd flavor logic
-
         float deductionWeight = 1.0f;
-
-        // TODO: Check if empty first
-        //float percentageOfMainFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[0]];
-        //float percentageOfSecondFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[1]];
+        float secondFlavorDifference = 0.0f;
         float idealFlavorPercentage = perfectDrinkTypePercentages[Globals.currentOrder.drinkType];
 
-        //float firstFlavorDifference = Math.Abs(percentageOfMainFlavor - idealFlavorPercentage);
-        //float secondFlavorDifference = Math.Abs(percentageOfSecondFlavor - idealFlavorPercentage);
+        float percentageOfMainFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[0]];
+        if (Globals.currentOrder.drinkType == Order.DrinkType.Half || Globals.currentOrder.drinkType == Order.DrinkType.Splash) {
+            float percentageOfSecondFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[1]];
+            secondFlavorDifference = Math.Abs(percentageOfSecondFlavor - idealFlavorPercentage);
+        }
+
+        float firstFlavorDifference = Math.Abs(percentageOfMainFlavor - idealFlavorPercentage);
         float extraFlavorDifference = PercentageOfExtraFlavorsAdded();
 
-        //return (firstFlavorDifference + secondFlavorDifference + extraFlavorDifference) * deductionWeight;
-        //return (firstFlavorDifference + extraFlavorDifference) * deductionWeight;
-        return (extraFlavorDifference) * deductionWeight;
+        Debug.Log($"firstFlavorDifference: {firstFlavorDifference}");
+        Debug.Log($"secondFlavorDifference: {secondFlavorDifference}");
+        Debug.Log($"extraFlavorDifference: {extraFlavorDifference}");
+
+        return (firstFlavorDifference + secondFlavorDifference + extraFlavorDifference) * deductionWeight;
     }
 
     private float PercentageOfExtraFlavorsAdded() {
@@ -206,9 +208,6 @@ public class Grade {
         float deductionWeight = 0.25f;
         float bobaPercentage = BobaPercentage();
         float idealBobaPercentage = perfectAddInPercentages[Globals.currentOrder.bobaAmount];
-
-        Debug.Log($"bobaPercentage: {bobaPercentage}");
-        Debug.Log($"idealBobaPercentage: {idealBobaPercentage}");
 
         return Math.Abs((bobaPercentage - idealBobaPercentage) * deductionWeight);
     }

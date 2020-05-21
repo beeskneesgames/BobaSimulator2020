@@ -16,7 +16,9 @@ namespace Tests {
             Globals.currentOrder = order;
             Globals.bobaCount = (int)(Globals.maxBobaCount * Grade.perfectAddInPercentages[order.bobaAmount]);
             Globals.iceCount = (int)(Globals.maxIceCount * Grade.perfectAddInPercentages[order.iceAmount]);
-            Globals.liquidPercentages = new Dictionary<Order.Flavor, float>();
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 1.0f },
+            };
 
             Grade grade = Grade.Compile();
 
@@ -35,7 +37,9 @@ namespace Tests {
             Globals.currentOrder = order;
             Globals.bobaCount = (int)(Globals.maxBobaCount);
             Globals.iceCount = (int)(Globals.maxIceCount);
-            Globals.liquidPercentages = new Dictionary<Order.Flavor, float>();
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 1.0f },
+            };
 
             Grade grade = Grade.Compile();
 
@@ -54,7 +58,9 @@ namespace Tests {
             Globals.currentOrder = order;
             Globals.bobaCount = (int)(Globals.maxBobaCount);
             Globals.iceCount = (int)(Globals.maxIceCount);
-            Globals.liquidPercentages = new Dictionary<Order.Flavor, float>();
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 1.0f },
+            };
 
             Grade grade = Grade.Compile();
 
