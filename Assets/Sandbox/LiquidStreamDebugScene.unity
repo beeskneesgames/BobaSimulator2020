@@ -3782,7 +3782,7 @@ PrefabInstance:
     - target: {fileID: 5085018562323935777, guid: 09ffb6d8f597b4d60bf48bc8b6413f22,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10.309
       objectReference: {fileID: 0}
     - target: {fileID: 5085018562323935777, guid: 09ffb6d8f597b4d60bf48bc8b6413f22,
         type: 3}
@@ -3828,6 +3828,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LiquidStream
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680317733622886634, guid: 09ffb6d8f597b4d60bf48bc8b6413f22,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7845647152828416921, guid: 09ffb6d8f597b4d60bf48bc8b6413f22,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.025
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09ffb6d8f597b4d60bf48bc8b6413f22, type: 3}
