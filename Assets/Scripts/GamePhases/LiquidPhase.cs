@@ -35,7 +35,7 @@ public class LiquidPhase : GamePhase {
     }
 
     protected override void ExecuteNext() {
-        SceneManager.LoadScene("FinalScoreScene");
+        SceneManager.LoadScene("GradeScene");
     }
 
     public override bool ShouldEndEarly() {
