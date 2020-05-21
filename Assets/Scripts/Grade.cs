@@ -43,6 +43,10 @@ public class Grade {
     }
 
     private Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> InitializeComments() {
+        float bobaDifference = BobaDifference();
+        float iceDifference = IceDifference();
+        List<Order.Flavor> extraFlavors = ExtraFlavorsAdded();
+
         List<string> goodExclamation = new List<string> {
             "Wow!",
             "Yum!",
@@ -96,22 +100,35 @@ public class Grade {
         // TODO: Fill these out
         List<string> mediocrePhrase = new List<string> {
             "The flavor is a little odd.",
-            "There’s too much (splash flavor).",
-            "There’s not enough (50/50 flavor).",
-            "Where’s the (50/50 flavor) though?",
-            "Do I taste (flavor that’s not supposed to be there)?",
-            "There's too little boba.",
-            "There's too much boba.",
+            "It's not quite what I was expecting.",
         };
 
         // TODO: Fill these out
-        List<string> badPhrase = new List<string> {
+            List<string> badPhrase = new List<string> {
             "The flavor is way off.",
-            "There’s too much (splash flavor).",
-            "There’s not enough (50/50 flavor).",
-            "Where’s the (50/50 flavor) though?",
-            "Do I taste (flavor that’s not supposed to be there)?",
+            "I'd like a remake please.",
         };
+
+        if (bobaDifference > 0.2f) {
+            mediocrePhrase.Add("There's too much boba.");
+            badPhrase.Add("There's way too much boba.");
+        } else if (bobaDifference < -0.2f) {
+            mediocrePhrase.Add("There's too little boba.");
+            badPhrase.Add("Where's the boba?");
+        }
+
+        if (iceDifference > 0.2f) {
+            mediocrePhrase.Add("There's too much ice.");
+            badPhrase.Add("There's way too much ice.");
+        } else if (iceDifference < -0.2f) {
+            mediocrePhrase.Add("There's too little ice.");
+            badPhrase.Add("Where's the ice?");
+        }
+
+        if (extraFlavors.Count > 0) {
+            mediocrePhrase.Add($"Do I taste {extraFlavors[0]}?");
+            badPhrase.Add($"Why do I taste {extraFlavors[0]}?");
+        }
 
         return new Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> {
             { LetterGrade.A, new Dictionary<CommentType, List<string>> {
@@ -207,10 +224,15 @@ public class Grade {
 
     private float BobaDeductions() {
         float deductionWeight = 0.25f;
+
+        return Math.Abs(BobaDifference() * deductionWeight);
+    }
+
+    private float BobaDifference() {
         float bobaPercentage = BobaPercentage();
         float idealBobaPercentage = perfectAddInPercentages[Globals.currentOrder.bobaAmount];
 
-        return Math.Abs((bobaPercentage - idealBobaPercentage) * deductionWeight);
+        return bobaPercentage - idealBobaPercentage;
     }
 
     private float IcePercentage() {
@@ -219,10 +241,15 @@ public class Grade {
 
     private float IceDeductions() {
         float deductionWeight = 0.25f;
+
+        return Math.Abs(IceDifference() * deductionWeight);
+    }
+
+    private float IceDifference() {
         float icePercentage = IcePercentage();
         float idealIcePercentage = perfectAddInPercentages[Globals.currentOrder.iceAmount];
 
-        return Math.Abs((icePercentage - idealIcePercentage) * deductionWeight);
+        return icePercentage - idealIcePercentage;
     }
 
     private string CompileComment() {
