@@ -52,36 +52,31 @@ public class Grade {
             "Yum!",
             "Mmmmm!",
         };
-
-            List<string> mediocreExclamation = new List<string> {
+        List<string> mediocreExclamation = new List<string> {
             "Hmmm.",
             "Oh.",
             "Well…",
         };
-
-            List<string> badExclamation = new List<string> {
+        List<string> badExclamation = new List<string> {
             "Uh oh!",
             "Yikes!",
             "Drats.",
             "Bummer…",
         };
-
-            List<string> goodDescriptor = new List<string> {
+        List<string> goodDescriptor = new List<string> {
             "great!",
             "amazing!",
             "perfect!",
             "so yummy!",
             "refreshing!",
         };
-
-            List<string> mediocreDescriptor = new List<string> {
+        List<string> mediocreDescriptor = new List<string> {
             "ok.",
             "able to be drank.",
             "pretty good.",
             "mediocre.",
         };
-
-            List<string> badDescriptor = new List<string> {
+        List<string> badDescriptor = new List<string> {
             "bad.",
             "weird.",
             "upsetting.",
@@ -102,7 +97,7 @@ public class Grade {
             "It's not quite what I was expecting.",
         };
 
-            List<string> badPhrase = new List<string> {
+        List<string> badPhrase = new List<string> {
             "The flavor is way off.",
             "I'd like a remake please.",
         };
@@ -158,14 +153,9 @@ public class Grade {
 
         score = score - bobaDeductions - iceDeductions - flavorDeductions;
 
-        Debug.Log($"score: {score}");
-        Debug.Log($"bobaDeductions: {bobaDeductions}");
-        Debug.Log($"iceDeductions: {iceDeductions}");
-        Debug.Log($"flavorDeductions: {flavorDeductions}");
-
         if (score >= 0.8f) {
             grade = LetterGrade.A;
-        } else if (score < 0.8f && score >= 0.6f) {
+        } else if (score >= 0.6f) {
             grade = LetterGrade.C;
         } else {
             grade = LetterGrade.F;
@@ -197,10 +187,6 @@ public class Grade {
 
         float firstFlavorDifference = Math.Abs(percentageOfMainFlavor - idealMainFlavorPercentage);
         float extraFlavorDifference = PercentageOfExtraFlavorsAdded();
-
-        Debug.Log($"firstFlavorDifference: {firstFlavorDifference}");
-        Debug.Log($"secondFlavorDifference: {secondFlavorDifference}");
-        Debug.Log($"extraFlavorDifference: {extraFlavorDifference}");
 
         return (firstFlavorDifference + secondFlavorDifference + extraFlavorDifference) * deductionWeight;
     }
@@ -260,7 +246,7 @@ public class Grade {
 
     private string ChooseString(LetterGrade letterGrade, CommentType type) {
         List<string> commentList = InitializeComments()[letterGrade][type];
-        string randomOption = commentList[UnityEngine.Random.Range(0, commentList.Count - 1)];
+        string randomOption = commentList[UnityEngine.Random.Range(0, commentList.Count)];
 
         return randomOption;
     }
