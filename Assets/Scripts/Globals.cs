@@ -18,6 +18,18 @@ public class Globals {
         private set;
     }
 
+    public static Color LiquidFillColor {
+        get {
+            Color color = new Color(0.0f, 0.0f, 0.0f);
+
+            foreach (KeyValuePair<Order.Flavor, float> pair in liquidPercentages) {
+                color += Order.FlavorColors[pair.Key] * (pair.Value / TotalLiquidPercentage);
+            }
+
+            return color;
+        }
+    }
+
     public static void AddLiquid(Order.Flavor flavor, float percentage) {
         // Clamp the percentage so we don't go above 1.
         float remainingLiquidPercentage = 1.0f - TotalLiquidPercentage;
