@@ -13,9 +13,9 @@ public class BobaPlacer : MonoBehaviour {
         }
     }
 
-    float bobaSize = 0.18f;
-    int layerIndex = 0;
-    Vector3 defaultPosition;
+    private float bobaSize = 0.18f;
+    private int layerIndex = 0;
+    private Vector3 defaultPosition;
 
     private List<List<float>> xLayers = new List<List<float>> {
         new List<float> { -0.15f, 0.5f, 1.0f, 1.6f, 2.0f, 3.0f, 3.8f, 4.1f },

@@ -23,7 +23,7 @@ namespace Tests {
             Order order = new Order {
                 iceAmount = Order.AddInOption.None,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = Order.FlavorOption.Single,
+                drinkType = Order.DrinkType.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
@@ -43,7 +43,7 @@ namespace Tests {
             Order order = new Order {
                 iceAmount = Order.AddInOption.None,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = Order.FlavorOption.Single,
+                drinkType = Order.DrinkType.Single,
                 drinkFlavors = new List<Order.Flavor> {
                     Order.Flavor.Taro,
                     Order.Flavor.Taro,
@@ -61,7 +61,7 @@ namespace Tests {
             Assert.That(order.IsValid(), Is.True);
             Assert.That(order.iceAmount, Is.EqualTo(Order.AddInOption.Regular));
             Assert.That(order.bobaAmount, Is.EqualTo(Order.AddInOption.Regular));
-            Assert.That(order.drinkType, Is.EqualTo(Order.FlavorOption.Single));
+            Assert.That(order.drinkType, Is.EqualTo(Order.DrinkType.Single));
             Assert.That(order.drinkFlavors.First(), Is.EqualTo(Order.Flavor.Taro));
             Assert.That(order.drinkFlavors.Count, Is.EqualTo(1));
         }
@@ -78,7 +78,7 @@ namespace Tests {
             Order order = new Order {
                 iceAmount = Order.AddInOption.None,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = Order.FlavorOption.Single,
+                drinkType = Order.DrinkType.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
@@ -90,7 +90,7 @@ namespace Tests {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Light,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = Order.FlavorOption.Single,
+                drinkType = Order.DrinkType.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
@@ -102,7 +102,7 @@ namespace Tests {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = Order.FlavorOption.Single,
+                drinkType = Order.DrinkType.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
@@ -114,7 +114,7 @@ namespace Tests {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Extra,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = Order.FlavorOption.Single,
+                drinkType = Order.DrinkType.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
@@ -126,7 +126,7 @@ namespace Tests {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.None,
-                drinkType = Order.FlavorOption.Single,
+                drinkType = Order.DrinkType.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
@@ -138,7 +138,7 @@ namespace Tests {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Light,
-                drinkType = Order.FlavorOption.Single,
+                drinkType = Order.DrinkType.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
@@ -150,7 +150,7 @@ namespace Tests {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = Order.FlavorOption.Single,
+                drinkType = Order.DrinkType.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
@@ -162,7 +162,7 @@ namespace Tests {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Extra,
-                drinkType = Order.FlavorOption.Single,
+                drinkType = Order.DrinkType.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
@@ -174,7 +174,7 @@ namespace Tests {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = Order.FlavorOption.Single,
+                drinkType = Order.DrinkType.Single,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro },
             };
 
@@ -186,7 +186,7 @@ namespace Tests {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = Order.FlavorOption.Half,
+                drinkType = Order.DrinkType.Half,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro, Order.Flavor.Coffee },
             };
 
@@ -198,7 +198,7 @@ namespace Tests {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
-                drinkType = Order.FlavorOption.Splash,
+                drinkType = Order.DrinkType.Splash,
                 drinkFlavors = new List<Order.Flavor> { Order.Flavor.Taro, Order.Flavor.Coffee },
             };
 

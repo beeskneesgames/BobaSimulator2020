@@ -13,7 +13,7 @@ public class Order {
         Taro,
     };
 
-    public enum FlavorOption {
+    public enum DrinkType {
         NotSet,
         Splash,
         Half,
@@ -38,7 +38,7 @@ public class Order {
 
     public AddInOption iceAmount = AddInOption.NotSet;
     public AddInOption bobaAmount = AddInOption.NotSet;
-    public FlavorOption drinkType = FlavorOption.NotSet;
+    public DrinkType drinkType = DrinkType.NotSet;
     public List<Flavor> drinkFlavors = new List<Flavor> { Flavor.NotSet };
 
     public bool IsBubbleTea() {
@@ -53,7 +53,7 @@ public class Order {
 
         if (iceAmount == AddInOption.NotSet ||
             bobaAmount == AddInOption.NotSet ||
-            drinkType == FlavorOption.NotSet ||
+            drinkType == DrinkType.NotSet ||
             drinkFlavors.First() == Flavor.NotSet ||
             drinkFlavors.Last() == Flavor.NotSet ||
             (multipleFlavors && drinkFlavors.First() == drinkFlavors.Last())) {
@@ -64,7 +64,7 @@ public class Order {
     }
 
     public static Order GenerateBasic() {
-        FlavorOption drinkType = FlavorOption.Single;
+        DrinkType drinkType = DrinkType.Single;
 
         Order randomOrder = new Order {
             iceAmount = AddInOption.Regular,
@@ -77,7 +77,7 @@ public class Order {
     }
 
     public static Order GenerateBasic(List<Flavor> flavors) {
-        FlavorOption drinkType = FlavorOption.Single;
+        DrinkType drinkType = DrinkType.Single;
 
         Order randomOrder = new Order {
             iceAmount = AddInOption.Regular,
@@ -90,7 +90,7 @@ public class Order {
     }
 
     public static Order GenerateRandom() {
-        FlavorOption drinkType = GetRandomDrinkType();
+        DrinkType drinkType = GetRandomDrinkType();
 
         Order randomOrder = new Order {
             iceAmount = GetRandomOption(),
@@ -113,19 +113,19 @@ public class Order {
         return randomOption;
     }
 
-    private static FlavorOption GetRandomDrinkType() {
-        Array liquidOptions = Enum.GetValues(typeof(FlavorOption));
+    private static DrinkType GetRandomDrinkType() {
+        Array liquidOptions = Enum.GetValues(typeof(DrinkType));
 
         // Start at 1 to avoid setting FlavorOption.NotSet
-        FlavorOption randomOption = (FlavorOption)liquidOptions.GetValue(
+        DrinkType randomOption = (DrinkType)liquidOptions.GetValue(
             UnityEngine.Random.Range(1, liquidOptions.Length - 1)
         );
 
         return randomOption;
     }
 
-    private static List<Flavor> GetRandomDrinkFlavors(FlavorOption drinkType) {
-        int numberOfFlavors = (drinkType == FlavorOption.Single) ? 1 : 2;
+    private static List<Flavor> GetRandomDrinkFlavors(DrinkType drinkType) {
+        int numberOfFlavors = (drinkType == DrinkType.Single) ? 1 : 2;
         List<Flavor> flavors = new List<Flavor> { };
         Array flavorOptions = Enum.GetValues(typeof(Flavor));
 
@@ -190,11 +190,11 @@ public class Order {
     public string FlavorDescription {
         get {
             switch (drinkType) {
-                case FlavorOption.Single:
+                case DrinkType.Single:
                     return drinkFlavors[0].ToString();
-                case FlavorOption.Half:
+                case DrinkType.Half:
                     return $"{drinkFlavors[0]} {drinkFlavors[1].ToString().ToLower()}";
-                case FlavorOption.Splash:
+                case DrinkType.Splash:
                     return $"{drinkFlavors[0]} with a splash of {drinkFlavors[1].ToString().ToLower()}";
                 default:
                     Debug.LogError("Invalid flavor option ");
