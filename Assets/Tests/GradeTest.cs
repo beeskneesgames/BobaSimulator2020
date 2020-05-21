@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Tests {
     public class GradeTest {
         [Test]
-        public void CalculateAGrade() {
+        public void CalculateAGradeSingleFlavor() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.Regular,
                 bobaAmount = Order.AddInOption.Regular,
@@ -18,6 +18,50 @@ namespace Tests {
             Globals.iceCount = (int)(Globals.maxIceCount * Grade.perfectAddInPercentages[order.iceAmount]);
             Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
                 { Order.Flavor.Honeydew, 1.0f },
+            };
+
+            Grade grade = Grade.Compile();
+
+            Assert.That(grade.letterGrade, Is.EqualTo(Grade.LetterGrade.A));
+        }
+
+        [Test]
+        public void CalculateAGradeHalfFlavor() {
+            Order order = new Order {
+                iceAmount = Order.AddInOption.Regular,
+                bobaAmount = Order.AddInOption.Regular,
+                drinkType = Order.DrinkType.Half,
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew, Order.Flavor.Coconut },
+            };
+
+            Globals.currentOrder = order;
+            Globals.bobaCount = (int)(Globals.maxBobaCount * Grade.perfectAddInPercentages[order.bobaAmount]);
+            Globals.iceCount = (int)(Globals.maxIceCount * Grade.perfectAddInPercentages[order.iceAmount]);
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 0.5f },
+                { Order.Flavor.Coconut, 0.5f },
+            };
+
+            Grade grade = Grade.Compile();
+
+            Assert.That(grade.letterGrade, Is.EqualTo(Grade.LetterGrade.A));
+        }
+
+        [Test]
+        public void CalculateAGradeSplashFlavor() {
+            Order order = new Order {
+                iceAmount = Order.AddInOption.Regular,
+                bobaAmount = Order.AddInOption.Regular,
+                drinkType = Order.DrinkType.Splash,
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew, Order.Flavor.Coconut },
+            };
+
+            Globals.currentOrder = order;
+            Globals.bobaCount = (int)(Globals.maxBobaCount * Grade.perfectAddInPercentages[order.bobaAmount]);
+            Globals.iceCount = (int)(Globals.maxIceCount * Grade.perfectAddInPercentages[order.iceAmount]);
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 0.75f },
+                { Order.Flavor.Coconut, 0.25f },
             };
 
             Grade grade = Grade.Compile();
@@ -47,6 +91,28 @@ namespace Tests {
         }
 
         [Test]
+        public void CalculateCGradeWithFlavors() {
+            Order order = new Order {
+                iceAmount = Order.AddInOption.Regular,
+                bobaAmount = Order.AddInOption.Regular,
+                drinkType = Order.DrinkType.Single,
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
+            };
+
+            Globals.currentOrder = order;
+            Globals.bobaCount = (int)(Globals.maxBobaCount);
+            Globals.iceCount = (int)(Globals.maxIceCount);
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 0.75f },
+                { Order.Flavor.Strawberry, 0.25f },
+            };
+
+            Grade grade = Grade.Compile();
+
+            Assert.That(grade.letterGrade, Is.EqualTo(Grade.LetterGrade.C));
+        }
+
+        [Test]
         public void CalculateFGradeWithAddIns() {
             Order order = new Order {
                 iceAmount = Order.AddInOption.None,
@@ -60,6 +126,28 @@ namespace Tests {
             Globals.iceCount = (int)(Globals.maxIceCount);
             Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
                 { Order.Flavor.Honeydew, 1.0f },
+            };
+
+            Grade grade = Grade.Compile();
+
+            Assert.That(grade.letterGrade, Is.EqualTo(Grade.LetterGrade.F));
+        }
+
+        [Test]
+        public void CalculateFGradeWithFlavors() {
+            Order order = new Order {
+                iceAmount = Order.AddInOption.Regular,
+                bobaAmount = Order.AddInOption.Regular,
+                drinkType = Order.DrinkType.Single,
+                drinkFlavors = new List<Order.Flavor> { Order.Flavor.Honeydew },
+            };
+
+            Globals.currentOrder = order;
+            Globals.bobaCount = (int)(Globals.maxBobaCount);
+            Globals.iceCount = (int)(Globals.maxIceCount);
+            Globals.liquidPercentages = new Dictionary<Order.Flavor, float> {
+                { Order.Flavor.Honeydew, 0.5f },
+                { Order.Flavor.Strawberry, 0.5f },
             };
 
             Grade grade = Grade.Compile();

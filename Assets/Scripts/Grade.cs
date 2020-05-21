@@ -12,8 +12,8 @@ public class Grade {
     };
 
     public static Dictionary<Order.DrinkType, float> perfectDrinkTypePercentages = new Dictionary<Order.DrinkType, float> {
-        { Order.DrinkType.Splash, 0.25f },
         { Order.DrinkType.Half,   0.50f },
+        { Order.DrinkType.Splash, 0.75f },
         { Order.DrinkType.Single, 1.00f },
     };
 
@@ -169,17 +169,18 @@ public class Grade {
     }
 
     private float FlavorDeductions() {
-        float deductionWeight = 1.0f;
+        float deductionWeight = 0.1f;
         float secondFlavorDifference = 0.0f;
-        float idealFlavorPercentage = perfectDrinkTypePercentages[Globals.currentOrder.drinkType];
-
+        float idealMainFlavorPercentage = perfectDrinkTypePercentages[Globals.currentOrder.drinkType];
         float percentageOfMainFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[0]];
+
         if (Globals.currentOrder.drinkType == Order.DrinkType.Half || Globals.currentOrder.drinkType == Order.DrinkType.Splash) {
+            float idealSecondFlavorPercentage = 1.0f - idealMainFlavorPercentage;
             float percentageOfSecondFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[1]];
-            secondFlavorDifference = Math.Abs(percentageOfSecondFlavor - idealFlavorPercentage);
+            secondFlavorDifference = Math.Abs(percentageOfSecondFlavor - idealSecondFlavorPercentage);
         }
 
-        float firstFlavorDifference = Math.Abs(percentageOfMainFlavor - idealFlavorPercentage);
+        float firstFlavorDifference = Math.Abs(percentageOfMainFlavor - idealMainFlavorPercentage);
         float extraFlavorDifference = PercentageOfExtraFlavorsAdded();
 
         Debug.Log($"firstFlavorDifference: {firstFlavorDifference}");
