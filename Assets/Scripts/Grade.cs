@@ -69,6 +69,7 @@ public class Grade {
             "perfect!",
             "so yummy!",
             "refreshing!",
+            "delicious.",
         };
         List<string> mediocreDescriptor = new List<string> {
             "ok.",
@@ -241,7 +242,7 @@ public class Grade {
         string descriptor = ChooseString(letterGrade, CommentType.Descriptor);
         string phrase = ChooseString(letterGrade, CommentType.Phrase);
 
-        return $"{exclamation} {descriptor} {phrase}";
+        return $"{exclamation} This tea was {descriptor} {phrase}";
     }
 
     private string ChooseString(LetterGrade letterGrade, CommentType type) {
