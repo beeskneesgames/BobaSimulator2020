@@ -7,9 +7,11 @@ public class GradeScreen : MonoBehaviour {
     public TextMeshProUGUI letterGradeText;
 
     private void Start() {
-        commentText.text = $"This drink sucks";
-        drinkNameText.text = $"Coconut stuff";
-        letterGradeText.text = $"F";
+        Grade grade = Grade.Compile();
+
+        commentText.text = $"\"{grade.comment}\"";
+        drinkNameText.text = grade.drinkName;
+        letterGradeText.text = grade.letterGrade.ToString();
     }
 
     public void RestartGame() {
