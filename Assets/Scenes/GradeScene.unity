@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 304503177}
   - component: {fileID: 304503178}
   m_Layer: 5
-  m_Name: Stats
+  m_Name: Grade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,8 +464,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17c498f1dbb1e4041a29e33a8169ec08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bobaCountText: {fileID: 0}
-  liquidPercentageText: {fileID: 0}
+  commentText: {fileID: 1859121092}
+  drinkNameText: {fileID: 1089766189}
+  letterGradeText: {fileID: 545445192}
 --- !u!1 &442894338
 GameObject:
   m_ObjectHideFlags: 0

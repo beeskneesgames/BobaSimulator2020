@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GradeScreen : MonoBehaviour {
-    public Text bobaCountText;
-    public Text liquidPercentageText;
+    public TextMeshProUGUI commentText;
+    public TextMeshProUGUI drinkNameText;
+    public TextMeshProUGUI letterGradeText;
 
     private void Start() {
-        bobaCountText.text = $"Boba Count: {Globals.bobaCount}";
-        liquidPercentageText.text = $"Liquid Percentage: {Globals.FormattedLiquidPercentage}%";
+        commentText.text = $"This drink sucks";
+        drinkNameText.text = $"Coconut stuff";
+        letterGradeText.text = $"F";
     }
 
     public void RestartGame() {
