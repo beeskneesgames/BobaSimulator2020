@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -616,7 +616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 25}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -200, y: -50}
+  m_AnchoredPosition: {x: -150, y: -50}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &545445192
@@ -640,16 +640,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: A
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 133cc306efeea43c6ac88aa5a007ad9f, type: 2}
-  m_sharedMaterial: {fileID: 3965178666651016601, guid: 133cc306efeea43c6ac88aa5a007ad9f,
+  m_fontAsset: {fileID: 11400000, guid: 6b68a204d29ad4982820b0cf42b4dbf2, type: 2}
+  m_sharedMaterial: {fileID: 5094720371360857085, guid: 6b68a204d29ad4982820b0cf42b4dbf2,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4293243376
-  m_fontColor: {r: 0.94117653, g: 0.69411767, b: 0.8980393, a: 1}
+    rgba: 4293177840
+  m_fontColor: {r: 0.94117653, g: 0.69411767, b: 0.8941177, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
