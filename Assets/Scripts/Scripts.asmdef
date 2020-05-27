@@ -1,8 +1,8 @@
 {
     "name": "Scripts",
     "references": [
-        "3rdParty",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "Tayx.Graphy"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
