@@ -1,7 +1,6 @@
 {
     "name": "Scripts",
     "references": [
-        "3rdParty",
         "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
