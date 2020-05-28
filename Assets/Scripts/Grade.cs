@@ -232,7 +232,7 @@ public class Grade {
     }
 
     private float IceDeductions() {
-        float deductionWeight = 0.25f;
+        float deductionWeight = 0.2f;
 
         return Math.Abs(IceDifference() * deductionWeight);
     }
