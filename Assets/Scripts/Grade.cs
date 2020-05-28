@@ -73,9 +73,10 @@ public class Grade {
         };
         List<string> mediocreDescriptor = new List<string> {
             "ok.",
-            "able to be drank.",
-            "pretty good.",
+            "drinkable.",
             "mediocre.",
+            "slightly odd.",
+            "interesting.",
         };
         List<string> badDescriptor = new List<string> {
             "bad.",
@@ -136,9 +137,9 @@ public class Grade {
 
         score = score - bobaDeductions - iceDeductions - flavorDeductions;
 
-        if (score >= 0.85f) {
+        if (score >= 0.88f) {
             grade = LetterGrade.A;
-        } else if (score >= 0.75f) {
+        } else if (score >= 0.8f) {
             grade = LetterGrade.C;
         } else {
             grade = LetterGrade.F;
@@ -157,7 +158,7 @@ public class Grade {
     }
 
     private float FlavorDeductions() {
-        float deductionWeight = 0.15f;
+        float deductionWeight = 0.5f;
         float secondFlavorDifference = 0.0f;
         float idealMainFlavorPercentage = perfectDrinkTypePercentages[Globals.currentOrder.drinkType];
         float percentageOfMainFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[0]];
@@ -171,10 +172,11 @@ public class Grade {
         float firstFlavorDifference = Math.Abs(percentageOfMainFlavor - idealMainFlavorPercentage);
         float extraFlavorDifference = PercentageOfExtraFlavorsAdded();
 
-        return (firstFlavorDifference + secondFlavorDifference + extraFlavorDifference) * deductionWeight;
+        return ((firstFlavorDifference + secondFlavorDifference) * deductionWeight) + extraFlavorDifference;
     }
 
     private float PercentageOfExtraFlavorsAdded() {
+        float deductionWeight = 0.25f;
         List<Order.Flavor> extraFlavors = ExtraFlavorsAdded();
         float percentage = 0.0f;
 
@@ -182,7 +184,7 @@ public class Grade {
             percentage += Globals.liquidPercentages[flavor];
         }
 
-        return percentage;
+        return percentage * deductionWeight;
     }
 
     private float BobaPercentage() {
@@ -190,7 +192,7 @@ public class Grade {
     }
 
     private float BobaDeductions() {
-        float deductionWeight = 0.5f;
+        float deductionWeight = 0.75f;
 
         return Math.Abs(BobaDifference() * deductionWeight);
     }
@@ -207,7 +209,7 @@ public class Grade {
     }
 
     private float IceDeductions() {
-        float deductionWeight = 0.15f;
+        float deductionWeight = 0.1f;
 
         return Math.Abs(IceDifference() * deductionWeight);
     }
@@ -238,123 +240,133 @@ public class Grade {
         List<string> commentList = InitializeComments()[letterGrade][CommentType.Phrase];
         float bobaDifference = BobaDifference();
         float iceDifference = IceDifference();
+        float flavorDeductions = FlavorDeductions();
         List<Order.Flavor> extraFlavors = ExtraFlavorsAdded();
         string phrase = "";
 
         if (letterGrade == LetterGrade.A) {
-            if (bobaDifference <= 0.1f && bobaDifference >= -0.1f) {
+            if (bobaDifference <= 0.01f && bobaDifference >= -0.01f) {
                 phrase = "The boba amount is just right.";
-            } else if (iceDifference <= 0.1f && iceDifference >= -0.1f) {
-                phrase = "The ice amount is just right.";
             }
         } else if (letterGrade == LetterGrade.C || letterGrade == LetterGrade.F) {
-            if (bobaDifference > 0.10f) {
+            if (extraFlavors.Count >= 1 && flavorDeductions >= 0.25f) {
+                phrase = "This flavor is really really weird.";
+            }
+            if (Globals.currentOrder.bobaAmount == Order.AddInOption.None) {
+                if (bobaDifference >= 0.01f) {
+                    phrase = "Why is there boba in here?";
+                }
+            } else if (Globals.currentOrder.iceAmount == Order.AddInOption.None) {
+                if (iceDifference >= 0.01f) {
+                    phrase = "Why is there ice in here?";
+                }
+            } else if (bobaDifference > 0.10f) {
                 phrase = "There's way too much boba.";
             } else if (bobaDifference >= 0.05f) {
                 phrase = "There's too much boba.";
-            } else if (bobaDifference <= -0.05f) {
-                phrase = "There's too little boba.";
-            } else if (bobaDifference <= -0.10f) {
+            } else if (bobaDifference <= -0.15f) {
                 phrase = "Where's the boba?";
+            } else if (bobaDifference <= -0.10f) {
+                phrase = "There's too little boba.";
             } else if (extraFlavors.Count > 0) {
                 phrase = $"Do I taste {extraFlavors[0]}?";
             } else if (iceDifference >= 0.10f) {
                 phrase = "There's way too much ice.";
             } else if (iceDifference >= 0.05f) {
                 phrase = "There's too much ice.";
+            } else if (iceDifference <= -0.15f) {
+                phrase = "Where's the ice?";
             } else if (iceDifference <= -0.10f) {
                 phrase = "There's too little ice.";
-            } else if (iceDifference <= -0.10f) {
-                phrase = "Where's the ice?";
             }
         }
 
         if (String.IsNullOrEmpty(phrase)) {
             phrase = ChooseString(letterGrade, CommentType.Phrase);
-        }
+}
 
         return phrase;
     }
 
     private string CompileDrinkName() {
-        // This method returns a person's order as a readable sentence
+    // This method returns a person's order as a readable sentence
 
-        // For example:
-        // Honeydew tea 
-        // Honeydew bubble tea
-        // Honeydew bubble tea with light ice
-        // Honeydew bubble tea with light boba
-        // Honeydew bubble tea with no ice and extra boba
+    // For example:
+    // Honeydew tea 
+    // Honeydew bubble tea
+    // Honeydew bubble tea with light ice
+    // Honeydew bubble tea with light boba
+    // Honeydew bubble tea with no ice and extra boba
 
-        // Honeydew coconut bubble tea
-        // Honeydew with a splash of coconut tea
+    // Honeydew coconut bubble tea
+    // Honeydew with a splash of coconut tea
 
-        return $"{CompileFlavorString()}{CompileIceString()}{CompileBobaString()}";
-    }
+    return $"{CompileFlavorString()}{CompileIceString()}{CompileBobaString()}";
+}
 
-    private string CompileIceString() {
-        string compiledString;
-        string iceAmountStr = Globals.currentOrder.iceAmount.ToString().ToLower();
+private string CompileIceString() {
+    string compiledString;
+    string iceAmountStr = Globals.currentOrder.iceAmount.ToString().ToLower();
 
-        switch (Globals.currentOrder.iceAmount) {
-            case Order.AddInOption.None:
-                // Honeydew bubble tea with no ice
-                compiledString = " with no ice";
-                break;
-            case Order.AddInOption.Regular:
-                // Honeydew bubble tea
-                compiledString = "";
-                break;
-            default:
-                // Honeydew bubble tea with light ice
-                compiledString = $" with {iceAmountStr} ice";
-                break;
-        }
-
-        return compiledString;
-    }
-
-    private string CompileBobaString() {
-        string compiledString;
-        string bobaAmountStr = Globals.currentOrder.bobaAmount.ToString().ToLower();
-
-        if (Globals.currentOrder.bobaAmount == Order.AddInOption.None || Globals.currentOrder.bobaAmount == Order.AddInOption.Regular) {
-            // Honeydew tea
+    switch (Globals.currentOrder.iceAmount) {
+        case Order.AddInOption.None:
+            // Honeydew bubble tea with no ice
+            compiledString = " with no ice";
+            break;
+        case Order.AddInOption.Regular:
+            // Honeydew bubble tea
             compiledString = "";
-        } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Regular) {
-            // Honeydew bubble tea with extra boba
-            compiledString = $" with {bobaAmountStr} boba";
-        } else {
-            // Honeydew bubble tea with no ice and light boba
-            compiledString = $" and {bobaAmountStr} boba";
-        }
-
-        return compiledString;
+            break;
+        default:
+            // Honeydew bubble tea with light ice
+            compiledString = $" with {iceAmountStr} ice";
+            break;
     }
 
-    private string CompileFlavorString() {
-        Order.Flavor firstFlavor = Globals.currentOrder.drinkFlavors.First();
-        Order.Flavor secondFlavor = Globals.currentOrder.drinkFlavors.Last();
-        string secondFlavorStr = secondFlavor.ToString().ToLower();
-        string teaType = Globals.currentOrder.IsBubbleTea() ? "bubble tea" : "tea";
+    return compiledString;
+}
 
-        string compiledString;
+private string CompileBobaString() {
+    string compiledString;
+    string bobaAmountStr = Globals.currentOrder.bobaAmount.ToString().ToLower();
 
-        switch (Globals.currentOrder.drinkType) {
-            case Order.DrinkType.Splash:
-                // Honeydew with a splash of coconut tea
-                compiledString = $"{firstFlavor} with a splash of {secondFlavorStr} {teaType}";
-                break;
-            case Order.DrinkType.Half:
-                // Honeydew coconut tea
-                compiledString = $"{firstFlavor} {secondFlavorStr} {teaType}";
-                break;
-            default:
-                // Honeydew tea
-                compiledString = $"{firstFlavor} {teaType}";
-                break;
-        }
-
-        return $"{compiledString}";
+    if (Globals.currentOrder.bobaAmount == Order.AddInOption.None || Globals.currentOrder.bobaAmount == Order.AddInOption.Regular) {
+        // Honeydew tea
+        compiledString = "";
+    } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Regular) {
+        // Honeydew bubble tea with extra boba
+        compiledString = $" with {bobaAmountStr} boba";
+    } else {
+        // Honeydew bubble tea with no ice and light boba
+        compiledString = $" and {bobaAmountStr} boba";
     }
+
+    return compiledString;
+}
+
+private string CompileFlavorString() {
+    Order.Flavor firstFlavor = Globals.currentOrder.drinkFlavors.First();
+    Order.Flavor secondFlavor = Globals.currentOrder.drinkFlavors.Last();
+    string secondFlavorStr = secondFlavor.ToString().ToLower();
+    string teaType = Globals.currentOrder.IsBubbleTea() ? "bubble tea" : "tea";
+
+    string compiledString;
+
+    switch (Globals.currentOrder.drinkType) {
+        case Order.DrinkType.Splash:
+            // Honeydew with a splash of coconut tea
+            compiledString = $"{firstFlavor} with a splash of {secondFlavorStr} {teaType}";
+            break;
+        case Order.DrinkType.Half:
+            // Honeydew coconut tea
+            compiledString = $"{firstFlavor} {secondFlavorStr} {teaType}";
+            break;
+        default:
+            // Honeydew tea
+            compiledString = $"{firstFlavor} {teaType}";
+            break;
+    }
+
+    return $"{compiledString}";
+}
 }
