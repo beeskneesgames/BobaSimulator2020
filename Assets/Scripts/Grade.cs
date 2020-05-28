@@ -87,10 +87,9 @@ public class Grade {
         List<string> goodPhrase = new List<string> {
             $"The {Globals.currentOrder.drinkFlavors.First()} flavor is spot on!",
             "This is exactly what I asked for!",
-            "The boba amount is just right.",
-            "The ice amount is just right.",
             "You should get a raise!",
             "Thank you so much!",
+            "Yum yum yum yum.",
         };
 
         List<string> mediocrePhrase = new List<string> {
@@ -103,20 +102,24 @@ public class Grade {
             "I'd like a remake please.",
         };
 
-        if (bobaDifference > 0.2f) {
+        if (bobaDifference > 0.3f) {
             mediocrePhrase.Add("There's too much boba.");
             badPhrase.Add("There's way too much boba.");
-        } else if (bobaDifference < -0.2f) {
+        } else if (bobaDifference < -0.1f) {
             mediocrePhrase.Add("There's too little boba.");
             badPhrase.Add("Where's the boba?");
+        } else {
+            goodPhrase.Add("The boba amount is just right.");
         }
 
-        if (iceDifference > 0.2f) {
+        if (iceDifference > 0.3f) {
             mediocrePhrase.Add("There's too much ice.");
             badPhrase.Add("There's way too much ice.");
-        } else if (iceDifference < -0.2f) {
+        } else if (iceDifference < -0.1f) {
             mediocrePhrase.Add("There's too little ice.");
             badPhrase.Add("Where's the ice?");
+        } else {
+            goodPhrase.Add("The ice amount is just right.");
         }
 
         if (extraFlavors.Count > 0) {
@@ -152,11 +155,15 @@ public class Grade {
         float flavorDeductions = FlavorDeductions();
         LetterGrade grade;
 
+        Debug.Log($"boba deductions: {bobaDeductions}");
+        Debug.Log($"ice deductions: {iceDeductions}");
+        Debug.Log($"flavor deductions: {flavorDeductions}");
+
         score = score - bobaDeductions - iceDeductions - flavorDeductions;
 
-        if (score >= 0.8f) {
+        if (score >= 0.85f) {
             grade = LetterGrade.A;
-        } else if (score >= 0.6f) {
+        } else if (score >= 0.75f) {
             grade = LetterGrade.C;
         } else {
             grade = LetterGrade.F;
@@ -175,7 +182,7 @@ public class Grade {
     }
 
     private float FlavorDeductions() {
-        float deductionWeight = 0.1f;
+        float deductionWeight = 0.25f;
         float secondFlavorDifference = 0.0f;
         float idealMainFlavorPercentage = perfectDrinkTypePercentages[Globals.currentOrder.drinkType];
         float percentageOfMainFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[0]];
@@ -208,7 +215,7 @@ public class Grade {
     }
 
     private float BobaDeductions() {
-        float deductionWeight = 0.25f;
+        float deductionWeight = 0.75f;
 
         return Math.Abs(BobaDifference() * deductionWeight);
     }
