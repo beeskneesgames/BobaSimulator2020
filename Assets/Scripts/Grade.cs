@@ -102,31 +102,6 @@ public class Grade {
             "I'd like a remake please.",
         };
 
-        if (bobaDifference > 0.3f) {
-            mediocrePhrase.Add("There's too much boba.");
-            badPhrase.Add("There's way too much boba.");
-        } else if (bobaDifference < -0.1f) {
-            mediocrePhrase.Add("There's too little boba.");
-            badPhrase.Add("Where's the boba?");
-        } else {
-            goodPhrase.Add("The boba amount is just right.");
-        }
-
-        if (iceDifference > 0.3f) {
-            mediocrePhrase.Add("There's too much ice.");
-            badPhrase.Add("There's way too much ice.");
-        } else if (iceDifference < -0.1f) {
-            mediocrePhrase.Add("There's too little ice.");
-            badPhrase.Add("Where's the ice?");
-        } else {
-            goodPhrase.Add("The ice amount is just right.");
-        }
-
-        if (extraFlavors.Count > 0) {
-            mediocrePhrase.Add($"Do I taste {extraFlavors[0]}?");
-            badPhrase.Add($"Why do I taste {extraFlavors[0]}?");
-        }
-
         return new Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> {
             { LetterGrade.A, new Dictionary<CommentType, List<string>> {
                 { CommentType.Exclamation, goodExclamation},
@@ -182,7 +157,7 @@ public class Grade {
     }
 
     private float FlavorDeductions() {
-        float deductionWeight = 0.25f;
+        float deductionWeight = 0.15f;
         float secondFlavorDifference = 0.0f;
         float idealMainFlavorPercentage = perfectDrinkTypePercentages[Globals.currentOrder.drinkType];
         float percentageOfMainFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[0]];
@@ -215,7 +190,7 @@ public class Grade {
     }
 
     private float BobaDeductions() {
-        float deductionWeight = 0.75f;
+        float deductionWeight = 0.5f;
 
         return Math.Abs(BobaDifference() * deductionWeight);
     }
@@ -232,7 +207,7 @@ public class Grade {
     }
 
     private float IceDeductions() {
-        float deductionWeight = 0.2f;
+        float deductionWeight = 0.15f;
 
         return Math.Abs(IceDifference() * deductionWeight);
     }
@@ -247,7 +222,7 @@ public class Grade {
     private string CompileComment() {
         string exclamation = ChooseString(letterGrade, CommentType.Exclamation);
         string descriptor = ChooseString(letterGrade, CommentType.Descriptor);
-        string phrase = ChooseString(letterGrade, CommentType.Phrase);
+        string phrase = ChoosePhrase(letterGrade);
 
         return $"{exclamation} This tea is {descriptor} {phrase}";
     }
@@ -257,6 +232,48 @@ public class Grade {
         string randomOption = commentList[UnityEngine.Random.Range(0, commentList.Count)];
 
         return randomOption;
+    }
+
+    private string ChoosePhrase(LetterGrade letterGrade) {
+        List<string> commentList = InitializeComments()[letterGrade][CommentType.Phrase];
+        float bobaDifference = BobaDifference();
+        float iceDifference = IceDifference();
+        List<Order.Flavor> extraFlavors = ExtraFlavorsAdded();
+        string phrase = "";
+
+        if (letterGrade == LetterGrade.A) {
+            if (bobaDifference <= 0.1f && bobaDifference >= -0.1f) {
+                phrase = "The boba amount is just right.";
+            } else if (iceDifference <= 0.1f && iceDifference >= -0.1f) {
+                phrase = "The ice amount is just right.";
+            }
+        } else if (letterGrade == LetterGrade.C || letterGrade == LetterGrade.F) {
+            if (bobaDifference > 0.10f) {
+                phrase = "There's way too much boba.";
+            } else if (bobaDifference >= 0.05f) {
+                phrase = "There's too much boba.";
+            } else if (bobaDifference <= -0.05f) {
+                phrase = "There's too little boba.";
+            } else if (bobaDifference <= -0.10f) {
+                phrase = "Where's the boba?";
+            } else if (extraFlavors.Count > 0) {
+                phrase = $"Do I taste {extraFlavors[0]}?";
+            } else if (iceDifference >= 0.10f) {
+                phrase = "There's way too much ice.";
+            } else if (iceDifference >= 0.05f) {
+                phrase = "There's too much ice.";
+            } else if (iceDifference <= -0.10f) {
+                phrase = "There's too little ice.";
+            } else if (iceDifference <= -0.10f) {
+                phrase = "Where's the ice?";
+            }
+        }
+
+        if (String.IsNullOrEmpty(phrase)) {
+            phrase = ChooseString(letterGrade, CommentType.Phrase);
+        }
+
+        return phrase;
     }
 
     private string CompileDrinkName() {
