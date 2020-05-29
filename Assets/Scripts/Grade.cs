@@ -246,11 +246,7 @@ public class Grade {
         List<Order.Flavor> extraFlavors = ExtraFlavorsAdded();
         string phrase = "";
 
-        if (letterGrade == LetterGrade.A) {
-            if (bobaDifference <= 0.01f && bobaDifference >= -0.01f) {
-                phrase = "The boba amount is just right.";
-            }
-        } else if (letterGrade == LetterGrade.C || letterGrade == LetterGrade.F) {
+        if (letterGrade == LetterGrade.C || letterGrade == LetterGrade.F) {
             if (extraFlavors.Count >= 1 && flavorDeductions >= 0.2f) {
                 phrase = "This flavor is really really weird.";
             }
@@ -281,7 +277,7 @@ public class Grade {
 
         if (String.IsNullOrEmpty(phrase)) {
             phrase = ChooseString(letterGrade, CommentType.Phrase);
-}
+        }
 
         return phrase;
     }
