@@ -160,7 +160,7 @@ public class Grade {
     }
 
     private float FlavorDeductions() {
-        float deductionWeight = 0.4f;
+        float deductionWeight = 0.3f;
         float secondFlavorDifference = 0.0f;
         float idealMainFlavorPercentage = perfectDrinkTypePercentages[Globals.currentOrder.drinkType];
         float percentageOfMainFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[0]];
@@ -211,7 +211,7 @@ public class Grade {
     }
 
     private float IceDeductions() {
-        float deductionWeight = 0.1f;
+        float deductionWeight = 0.15f;
 
         return Math.Abs(IceDifference() * deductionWeight);
     }
