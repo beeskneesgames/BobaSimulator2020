@@ -60,8 +60,8 @@ public class Grade {
         List<string> badExclamation = new List<string> {
             "Uh oh!",
             "Yikes!",
-            "Drats.",
             "Bummer…",
+            "Errrr…",
         };
         List<string> goodDescriptor = new List<string> {
             "great!",
@@ -83,6 +83,7 @@ public class Grade {
             "weird.",
             "upsetting.",
             "gross.",
+            "isn't right.",
         };
 
         List<string> goodPhrase = new List<string> {
@@ -101,6 +102,7 @@ public class Grade {
         List<string> badPhrase = new List<string> {
             "The flavor is way off.",
             "I'd like a remake please.",
+            "Is this even my order?",
         };
 
         return new Dictionary<LetterGrade, Dictionary<CommentType, List<string>>> {
@@ -249,17 +251,21 @@ public class Grade {
                 phrase = "The boba amount is just right.";
             }
         } else if (letterGrade == LetterGrade.C || letterGrade == LetterGrade.F) {
-            if (extraFlavors.Count >= 1 && flavorDeductions >= 0.25f) {
+            if (extraFlavors.Count >= 1 && flavorDeductions >= 0.2f) {
                 phrase = "This flavor is really really weird.";
             }
             if (Globals.currentOrder.bobaAmount == Order.AddInOption.None) {
                 if (bobaDifference >= 0.01f) {
                     phrase = "Why is there boba in here?";
                 }
+            } else if (Globals.bobaCount == 0) {
+                phrase = "Where is the boba?";
             } else if (Globals.currentOrder.iceAmount == Order.AddInOption.None) {
                 if (iceDifference >= 0.01f) {
                     phrase = "Why is there ice in here?";
                 }
+            } else if (Globals.iceCount == 0) {
+                phrase = "Where is the ice?";
             } else if (bobaDifference > 0.10f) {
                 phrase = "There's way too much boba.";
             } else if (bobaDifference >= 0.05f) {
