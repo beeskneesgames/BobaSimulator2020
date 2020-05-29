@@ -266,9 +266,9 @@ public class Grade {
                 }
             } else if (Globals.iceCount == 0) {
                 phrase = "Where is the ice?";
-            } else if (bobaDifference >= 0.10f) {
+            } else if (bobaDifference >= 0.15f) {
                 phrase = "There's too much boba.";
-            } else if (bobaDifference <= -0.10f) {
+            } else if (bobaDifference <= -0.15f) {
                 phrase = "There's too little boba.";
             } else if (extraFlavors.Count > 0) {
                 phrase = $"Do I taste {extraFlavors[0]}?";
