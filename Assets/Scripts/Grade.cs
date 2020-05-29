@@ -160,7 +160,7 @@ public class Grade {
     }
 
     private float FlavorDeductions() {
-        float deductionWeight = 0.3f;
+        float deductionWeight = 1.0f;
         float secondFlavorDifference = 0.0f;
         float idealMainFlavorPercentage = perfectDrinkTypePercentages[Globals.currentOrder.drinkType];
         float percentageOfMainFlavor = Globals.liquidPercentages[Globals.currentOrder.drinkFlavors[0]];
