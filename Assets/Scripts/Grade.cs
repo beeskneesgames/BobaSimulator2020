@@ -266,22 +266,14 @@ public class Grade {
                 }
             } else if (Globals.iceCount == 0) {
                 phrase = "Where is the ice?";
-            } else if (bobaDifference > 0.10f) {
-                phrase = "There's way too much boba.";
-            } else if (bobaDifference >= 0.05f) {
+            } else if (bobaDifference >= 0.10f) {
                 phrase = "There's too much boba.";
-            } else if (bobaDifference <= -0.15f) {
-                phrase = "Where's the boba?";
             } else if (bobaDifference <= -0.10f) {
                 phrase = "There's too little boba.";
             } else if (extraFlavors.Count > 0) {
                 phrase = $"Do I taste {extraFlavors[0]}?";
             } else if (iceDifference >= 0.10f) {
-                phrase = "There's way too much ice.";
-            } else if (iceDifference >= 0.05f) {
                 phrase = "There's too much ice.";
-            } else if (iceDifference <= -0.15f) {
-                phrase = "Where's the ice?";
             } else if (iceDifference <= -0.10f) {
                 phrase = "There's too little ice.";
             }
