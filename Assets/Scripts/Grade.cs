@@ -139,9 +139,9 @@ public class Grade {
 
         score = score - bobaDeductions - iceDeductions - flavorDeductions;
 
-        if (score >= 0.88f) {
+        if (score >= 0.89f) {
             grade = LetterGrade.A;
-        } else if (score >= 0.8f) {
+        } else if (score >= 0.75f) {
             grade = LetterGrade.C;
         } else {
             grade = LetterGrade.F;
@@ -194,7 +194,7 @@ public class Grade {
     }
 
     private float BobaDeductions() {
-        float deductionWeight = 0.5f;
+        float deductionWeight = 0.75f;
 
         return Math.Abs(BobaDifference() * deductionWeight);
     }
