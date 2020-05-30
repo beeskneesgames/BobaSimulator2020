@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BobaSpawner : MonoBehaviour {
     public GameObject bobaPrefab;
-    public float interval = 0.001f;
+    public float interval = 0.0001f;
 
     private bool isSpawning = false;
     private float timeSinceLastBoba = 0.0f;
