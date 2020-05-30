@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IceSpawner : MonoBehaviour {
     public GameObject icePrefab;
-    public float interval = 0.2f;
+    public float interval = 3.0f;
 
     private bool isSpawning = false;
     private float timeSinceLastIce = 0.0f;

@@ -8,7 +8,7 @@ public class BobaPhase : GamePhase {
 
     public override float EndDelay {
         get {
-            return 2.0f;
+            return 1.0f;
         }
     }
     public override string Name {
@@ -18,7 +18,7 @@ public class BobaPhase : GamePhase {
     }
     public override float Time {
         get {
-            return 20.0f;
+            return 15.0f;
         }
     }
 

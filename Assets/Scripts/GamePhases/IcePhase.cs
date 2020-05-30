@@ -18,7 +18,7 @@ public class IcePhase : GamePhase {
     }
     public override float Time {
         get {
-            return 20.0f;
+            return 10.0f;
         }
     }
 
