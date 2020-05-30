@@ -22,8 +22,13 @@ public class BobaPhase : GamePhase {
         }
     }
 
-    protected override void ExecuteBeforeStart() {
+    private IEnumerator ShowBobaInstructionsAfterDelay() {
+        yield return new WaitForSecondsRealtime(2);
         phaseManager.instructionsAnimator.SetTrigger("StartBoba");
+    }
+
+    protected override void ExecuteBeforeStart() {
+        StartCoroutine(ShowBobaInstructionsAfterDelay());
     }
 
     protected override void ExecuteStart() {
