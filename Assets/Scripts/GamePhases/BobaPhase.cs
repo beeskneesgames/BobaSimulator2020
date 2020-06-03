@@ -23,7 +23,7 @@ public class BobaPhase : GamePhase {
     }
 
     private IEnumerator ShowBobaInstructionsAfterDelay() {
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(3);
         phaseManager.instructionsAnimator.SetTrigger("StartBoba");
     }
 
