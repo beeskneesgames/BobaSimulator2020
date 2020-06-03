@@ -107,7 +107,7 @@ public class Order {
 
         // Start at 1 to avoid setting AddInOption.NotSet
         AddInOption randomOption = (AddInOption)addInOptions.GetValue(
-            UnityEngine.Random.Range(1, addInOptions.Length - 1)
+            UnityEngine.Random.Range(1, addInOptions.Length)
         );
 
         return randomOption;
@@ -118,7 +118,7 @@ public class Order {
 
         // Start at 1 to avoid setting FlavorOption.NotSet
         DrinkType randomOption = (DrinkType)liquidOptions.GetValue(
-            UnityEngine.Random.Range(1, liquidOptions.Length - 1)
+            UnityEngine.Random.Range(1, liquidOptions.Length)
         );
 
         return randomOption;
@@ -130,7 +130,7 @@ public class Order {
         Array flavorOptions = Enum.GetValues(typeof(Flavor));
 
         // Start at 1 to avoid setting Flavor.NotSet
-        int firstIndex = UnityEngine.Random.Range(1, flavorOptions.Length - 1);
+        int firstIndex = UnityEngine.Random.Range(1, flavorOptions.Length);
 
         Flavor firstFlavor = (Flavor)flavorOptions.GetValue(firstIndex);
 
@@ -141,7 +141,7 @@ public class Order {
 
             do {
                 // Start at 1 to avoid setting Flavor.NotSet
-                secondIndex = UnityEngine.Random.Range(1, flavorOptions.Length - 1);
+                secondIndex = UnityEngine.Random.Range(1, flavorOptions.Length);
             } while (firstIndex == secondIndex);
 
             Flavor secondFlavor = (Flavor)flavorOptions.GetValue(secondIndex);
