@@ -410,7 +410,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -1200}
-  m_SizeDelta: {x: 1750, y: 0}
+  m_SizeDelta: {x: 1650, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1682349233
 MonoBehaviour:
@@ -434,57 +434,50 @@ MonoBehaviour:
   m_text: '<size=200%>Credits</size>
 
 
-    <size=150%>Game Created By</size>
+    <size=150%>Created by</size>
 
-    Bee''s
-    Knees Games
+    <size=150%>Bee''s
+    Knees Games</size>
 
-    Jessica Card
-
-    Jake Card
+    Jessica & Jake Card
 
 
     <size=150%>Special Thanks</size>
 
 
-    <size=75%>Joseph
-    Dawson for the Balloons font</size>
+    Joseph
+    Dawson
 
-    <size=50%>https://www.fontspace.com/balloons-font-f33013</size>
-
-
-    <size=75%>Darrell
-    Flood for the Marker Notes font</size>
-
-    <size=50%>https://www.fontspace.com/marker-notes-font-f32268</size>
+    <size=75%>For the Balloons font on FontSpace</size>
 
 
-    <size=75%>Askasknot
-    for the arm model</size>
+    Darrell
+    Flood
 
-    <size=50%>https://sketchfab.com/3d-models/free-fps-hands-2111009606fa4a07b355413ffa3c74f9</size>
-
-
-    <size=75%>Orange
-    Free Sounds for the bell sound</size>
-
-    <size=50%>http://www.orangefreesounds.com/</size>
+    <size=75%>For the Marker Notes on FontSpace</size>
 
 
-    <size=75%>Kenny.nl
-    for their particle pack</size>
+    Askasknot
 
-    <size=50%>https://kenney.nl/</size>
-
-    <size=50%>https://opengameart.org/content/particle-pack-80-sprites</size>
+    <size=75%>For
+    the arm model on Sketchfab</size>
 
 
-    <size=75%>Tayx
-    for Graphy</size>
+    Orange Free Sounds
 
-    <size=50%>https://kenney.nl/</size>
+    <size=75%>For
+    the bell sound</size>
 
-    <size=50%>https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-fps-counter-stats-monitor-debugger-105778</size>'
+
+    Kenny.nl
+
+    <size=75%>For their particle pack on
+    OpenGameArt</size>
+
+
+    Tayx
+
+    <size=75%>For Graphy on the Unity Asset Store</size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 133cc306efeea43c6ac88aa5a007ad9f, type: 2}
   m_sharedMaterial: {fileID: 3965178666651016601, guid: 133cc306efeea43c6ac88aa5a007ad9f,
@@ -554,12 +547,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1682349233}
-    characterCount: 690
+    characterCount: 344
     spriteCount: 0
-    spaceCount: 61
-    wordCount: 85
+    spaceCount: 64
+    wordCount: 57
     linkCount: 0
-    lineCount: 34
+    lineCount: 28
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
