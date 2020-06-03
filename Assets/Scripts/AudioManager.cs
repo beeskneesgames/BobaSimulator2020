@@ -56,6 +56,10 @@ public class AudioManager : MonoBehaviour {
         Play("Paper");
     }
 
+    public void PlayBell() {
+        Play("Bell");
+    }
+
     public void PlayLiquid() {
         Play("Liquid");
     }

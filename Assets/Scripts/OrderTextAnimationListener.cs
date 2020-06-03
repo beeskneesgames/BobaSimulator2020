@@ -7,5 +7,6 @@ public class OrderTextAnimationListener : MonoBehaviour {
 
     public void EnterAnimationEnded() {
         tabletUI.UpdateOrderHeader();
+        AudioManager.Instance.PlayBell();
     }
 }
