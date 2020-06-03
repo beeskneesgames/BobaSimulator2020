@@ -372,6 +372,7 @@ GameObject:
   - component: {fileID: 102307516}
   - component: {fileID: 102307518}
   - component: {fileID: 102307517}
+  - component: {fileID: 102307519}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -438,6 +439,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102307515}
   m_CullTransparentMesh: 0
+--- !u!114 &102307519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102307515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &109144813
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,7 +670,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cf166ce96d81f48bfa0e28022b885691, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
@@ -843,6 +856,7 @@ GameObject:
   - component: {fileID: 203430922}
   - component: {fileID: 203430921}
   - component: {fileID: 203430923}
+  - component: {fileID: 203430924}
   m_Layer: 0
   m_Name: OrderText
   m_TagString: Untagged
@@ -1012,6 +1026,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &203430924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203430919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce0decd82401f46f58af72ec2db72040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabletUI: {fileID: 114723739}
 --- !u!1001 &226161004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1717,7 +1744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Order #0001
+  m_text: Order #0000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 41cf266ee4740417fa0236fd48660a9d, type: 2}
   m_sharedMaterial: {fileID: -2305757427919442112, guid: 41cf266ee4740417fa0236fd48660a9d,
