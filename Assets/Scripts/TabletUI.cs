@@ -4,25 +4,41 @@ using UnityEngine;
 using TMPro;
 
 public class TabletUI : MonoBehaviour {
+    public TextMeshProUGUI orderHeader;
     public TextMeshProUGUI orderText;
     public PhaseManager phaseManager;
 
     private Order displayedOrder;
     private string displayedPhase;
+    private Animator orderTextAnimator;
+
+    private void Start() {
+        orderTextAnimator = orderText.GetComponent<Animator>();
+    }
 
     private void Update() {
         if (displayedOrder != Globals.currentOrder || displayedPhase != phaseManager.CurrentPhase.Name) {
+            if (displayedOrder != Globals.currentOrder) {
+                orderTextAnimator.SetTrigger("ShowOrder");
+            }
+
             displayedOrder = Globals.currentOrder;
             displayedPhase = phaseManager.CurrentPhase.Name;
-
-            string[] lines = {
-                "<b>Order</b>",
-                MarkedLine(displayedOrder.FlavorDescription, displayedPhase == "Liquid Phase"),
-                MarkedLine(displayedOrder.BobaDescription, displayedPhase == "Boba Phase"),
-                MarkedLine(displayedOrder.IceDescription, displayedPhase == "Ice Phase")
-            };
-            orderText.text = string.Join("\n", lines);
+            UpdateDisplayedOrder();
         }
+    }
+
+    private void UpdateDisplayedOrder() {
+        string[] lines = {
+            MarkedLine(displayedOrder.FlavorDescription, displayedPhase == "Liquid Phase"),
+            MarkedLine(displayedOrder.BobaDescription, displayedPhase == "Boba Phase"),
+            MarkedLine(displayedOrder.IceDescription, displayedPhase == "Ice Phase")
+        };
+        orderText.text = string.Join("\n", lines);
+    }
+
+    public void UpdateOrderHeader() {
+        orderHeader.text = "Order #" + Globals.orderCount.ToString("D4"); // D4 means "padded with 0s until the string is 4 characters long".
     }
 
     private static string MarkedLine(string line, bool isMarked) {
