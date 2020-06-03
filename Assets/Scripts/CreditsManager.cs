@@ -8,7 +8,9 @@ public class CreditsManager : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetMouseButtonUp(0)) {
+        if (Input.GetMouseButtonUp(0) ||
+            Input.GetKeyDown(KeyCode.Space) ||
+            Input.GetKeyDown(KeyCode.Escape)) {
             GameManager.StartTitleScene();
         }
     }
