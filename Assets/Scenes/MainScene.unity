@@ -783,8 +783,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 512, y: -201}
-  m_SizeDelta: {x: 924, y: 463.0382}
+  m_AnchoredPosition: {x: 510, y: -201}
+  m_SizeDelta: {x: 920, y: 463.0382}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &203430921
 MonoBehaviour:
@@ -5232,36 +5232,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8569601301868214071, guid: dcd3cc2a3a8404343bc30ad468dc8d86,
-        type: 3}
-      propertyPath: sounds.Array.size
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569601301868214071, guid: dcd3cc2a3a8404343bc30ad468dc8d86,
-        type: 3}
-      propertyPath: sounds.Array.data[21].name
-      value: Bell
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569601301868214071, guid: dcd3cc2a3a8404343bc30ad468dc8d86,
-        type: 3}
-      propertyPath: sounds.Array.data[21].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: cf166ce96d81f48bfa0e28022b885691, type: 3}
-    - target: {fileID: 8569601301868214071, guid: dcd3cc2a3a8404343bc30ad468dc8d86,
-        type: 3}
-      propertyPath: sounds.Array.data[21].volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569601301868214071, guid: dcd3cc2a3a8404343bc30ad468dc8d86,
-        type: 3}
-      propertyPath: sounds.Array.data[21].pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569601301868214071, guid: dcd3cc2a3a8404343bc30ad468dc8d86,
-        type: 3}
-      propertyPath: sounds.Array.data[21].loop
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8569601301868214072, guid: dcd3cc2a3a8404343bc30ad468dc8d86,
         type: 3}
       propertyPath: m_LocalPosition.x
