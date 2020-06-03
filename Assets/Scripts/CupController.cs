@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CupController : MonoBehaviour {
     private void Update() {
-        if (PauseMenu.isPaused) {
+        if (Globals.isPaused) {
             return;
         }
 
