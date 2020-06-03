@@ -26,23 +26,6 @@ public class TabletUI : MonoBehaviour {
             displayedPhase = phaseManager.CurrentPhase.Name;
             UpdateDisplayedOrder();
         }
-        //if (animating) {
-        //    float startingPosition = orderUI.position.x;
-        //    float targetPosition = orderUI.position.x;
-        //    float fractionOfJourney = currentTimeAnimating / maxTimeAnimating;
-
-        //    currentTimeAnimating += Time.deltaTime;
-
-        //    if (maxTimeAnimating >= 0.0f && fractionOfJourney < 1.0f) {
-        //        orderUI.position = new Vector3(
-        //            Mathf.Lerp(startingPosition, targetPosition, fractionOfJourney),
-        //            orderUI.position.y,
-        //            orderUI.position.z
-        //        );
-        //    } else {
-        //        animating = false;
-        //    }
-        //}
     }
 
     private void UpdateDisplayedOrder() {
