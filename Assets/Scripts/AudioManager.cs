@@ -42,14 +42,14 @@ public class AudioManager : MonoBehaviour {
         int clipNumber = UnityEngine.Random.Range(1, BobaClipCount);
 
         // Choose a random clip
-        Play($"Boba{clipNumber.ToString()}");
+        Play($"Boba{clipNumber}");
     }
 
     public void PlayIce() {
         int clipNumber = UnityEngine.Random.Range(1, IceClipCount);
 
         // Choose a random clip
-        Play($"Ice{clipNumber.ToString()}");
+        Play($"Ice{clipNumber}");
     }
 
     public void PlayPaper() {
@@ -77,7 +77,7 @@ public class AudioManager : MonoBehaviour {
     }
 
     private void Play(string soundName) {
-        Sound sound = Array.Find(sounds, (Predicate<Sound>)(item => item.name == soundName));
+        Sound sound = Array.Find(sounds, item => item.name == soundName);
         CheckForSound(sound, soundName);
 
         sound.source.volume = sound.volume * (1.0f + UnityEngine.Random.Range(-sound.volumeVariance * 0.5f, sound.volumeVariance * 0.5f));
@@ -87,7 +87,7 @@ public class AudioManager : MonoBehaviour {
     }
 
     private void Stop(string soundName) {
-        Sound sound = Array.Find(sounds, (Predicate<Sound>)(item => item.name == soundName));
+        Sound sound = Array.Find(sounds, item => item.name == soundName);
         CheckForSound(sound, soundName);
 
         sound.source.Stop();
