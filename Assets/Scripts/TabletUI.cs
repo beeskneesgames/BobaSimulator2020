@@ -10,13 +10,18 @@ public class TabletUI : MonoBehaviour {
 
     private Order displayedOrder;
     private string displayedPhase;
-    private float currentTimeAnimating = 0.0f;
-    private float maxTimeAnimating =  0.5f;
+    private Animator orderTextAnimator;
 
-    private bool animating = true;
+    private void Start() {
+        orderTextAnimator = orderText.GetComponent<Animator>();
+    }
 
     private void Update() {
         if (displayedOrder != Globals.currentOrder || displayedPhase != phaseManager.CurrentPhase.Name) {
+            if (displayedOrder != Globals.currentOrder) {
+                orderTextAnimator.SetTrigger("ShowOrder");
+            }
+
             displayedOrder = Globals.currentOrder;
             displayedPhase = phaseManager.CurrentPhase.Name;
             UpdateDisplayedOrder();
