@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class PauseMenu : MonoBehaviour {
-    public static bool isPaused = false;
     public GameObject menuContainer;
 
     private float oldTimeScale;
@@ -17,7 +11,7 @@ public class PauseMenu : MonoBehaviour {
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (isPaused) {
+            if (Globals.isPaused) {
                 Resume();
             } else {
                 Pause();
@@ -30,14 +24,14 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void Resume() {
-        isPaused = false;
+        Globals.isPaused = false;
         Time.timeScale = oldTimeScale;
 
         menuContainer.SetActive(false);
     }
 
     public void Pause() {
-        isPaused = true;
+        Globals.isPaused = true;
         oldTimeScale = Time.timeScale;
         Time.timeScale = 0.0f;
 
