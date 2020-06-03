@@ -47,6 +47,7 @@ public class TabletUI : MonoBehaviour {
             MarkedLine(displayedOrder.IceDescription, displayedPhase == "Ice Phase")
         };
         orderText.text = string.Join("\n", lines);
+        orderHeader.text = "Order #" + Globals.orderCount.ToString("D4"); // D4 means "padded with 0s until the string is 4 characters long".
     }
 
     private static string MarkedLine(string line, bool isMarked) {
