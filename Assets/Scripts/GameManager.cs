@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager {
     public static void ExitGame() {
-        Application.Quit();
+        Globals.orderCount = 0;
+        SceneManager.LoadScene("TitleScene");
     }
 
     public static void StartCreditsScene() {
