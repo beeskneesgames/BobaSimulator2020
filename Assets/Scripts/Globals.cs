@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Globals {
+    public static bool isPaused = false;
+
     public static int bobaCount;
     public static int maxBobaCount = 163;
     public static int orderCount = 0;
     public static int iceCount;
     public static int maxIceCount = 16;
+
     public static Dictionary<Order.Flavor, float> liquidPercentages = new Dictionary<Order.Flavor, float>();
     public static Order currentOrder;
     public static string FormattedLiquidPercentage {
