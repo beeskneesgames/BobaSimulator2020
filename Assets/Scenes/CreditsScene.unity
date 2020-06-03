@@ -453,9 +453,38 @@ MonoBehaviour:
     <size=50%>https://www.fontspace.com/balloons-font-f33013</size>
 
 
-    <size=75%>Askasknot</size>
+    <size=75%>Darrell
+    Flood for the Marker Notes font</size>
 
-    <size=50%>https://sketchfab.com/3d-models/free-fps-hands-2111009606fa4a07b355413ffa3c74f9</size>'
+    <size=50%>https://www.fontspace.com/marker-notes-font-f32268</size>
+
+
+    <size=75%>Askasknot
+    for the arm model</size>
+
+    <size=50%>https://sketchfab.com/3d-models/free-fps-hands-2111009606fa4a07b355413ffa3c74f9</size>
+
+
+    <size=75%>Orange
+    Free Sounds for the bell sound</size>
+
+    <size=50%>http://www.orangefreesounds.com/</size>
+
+
+    <size=75%>Kenny.nl
+    for their particle pack</size>
+
+    <size=50%>https://kenney.nl/</size>
+
+    <size=50%>https://opengameart.org/content/particle-pack-80-sprites</size>
+
+
+    <size=75%>Tayx
+    for Graphy</size>
+
+    <size=50%>https://kenney.nl/</size>
+
+    <size=50%>https://assetstore.unity.com/packages/tools/gui/graphy-ultimate-fps-counter-stats-monitor-debugger-105778</size>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 133cc306efeea43c6ac88aa5a007ad9f, type: 2}
   m_sharedMaterial: {fileID: 3965178666651016601, guid: 133cc306efeea43c6ac88aa5a007ad9f,
@@ -525,12 +554,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1682349233}
-    characterCount: 256
+    characterCount: 690
     spriteCount: 0
-    spaceCount: 25
-    wordCount: 30
+    spaceCount: 61
+    wordCount: 85
     linkCount: 0
-    lineCount: 15
+    lineCount: 30
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
