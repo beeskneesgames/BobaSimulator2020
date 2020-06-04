@@ -2545,6 +2545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3883bb2822049848ffd58bf8e7c966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cupAnimator: {fileID: 8646206877487016828}
   instructionsAnimator: {fileID: 382275890}
   currentPhaseText: {fileID: 1990101993}
   timeRemainingText: {fileID: 1043665535}
@@ -7164,6 +7165,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -8
       objectReference: {fileID: 0}
+    - target: {fileID: 7458605169920103414, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: phaseManager
+      value: 
+      objectReference: {fileID: 576963516}
     - target: {fileID: 7756682217050060478, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
       propertyPath: liquidFillClippingPlane
@@ -7193,3 +7199,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b69f766b950a412ab5e91832a33bee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &8646206877487016828 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5355369070743479875, guid: 085f12f3e603343d283dff5825a08724,
+    type: 3}
+  m_PrefabInstance: {fileID: 8646206877487016825}
+  m_PrefabAsset: {fileID: 0}

@@ -5,7 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PhaseManager : MonoBehaviour {
+    public Animator cupAnimator;
     public Animator instructionsAnimator;
+
     public Text currentPhaseText;
     public Text timeRemainingText;
     public GamePhase startingPhase;
@@ -81,7 +83,7 @@ public class PhaseManager : MonoBehaviour {
     }
 
     public void InstructionsHidden() {
-        currentPhase.StartPhase();
+        StartCoroutine(ShowCup());
     }
 
     public void CurrentPhaseStarted() {
@@ -94,6 +96,19 @@ public class PhaseManager : MonoBehaviour {
         if (timerActive && !currentPhase.phaseEnding) {
             TimeRemaining = currentPhase.EndDelay;
         }
+    }
+
+    public void CupShown() {
+        currentPhase.StartPhase();
+    }
+
+    public void CupHidden() {
+        //throw new NotImplementedException();
+    }
+
+    private IEnumerator ShowCup() {
+        yield return new WaitForSecondsRealtime(1);
+        cupAnimator.SetTrigger("ShowCup");
     }
 
     private bool IsInStartDelay() {
