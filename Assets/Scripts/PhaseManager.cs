@@ -102,10 +102,6 @@ public class PhaseManager : MonoBehaviour {
         currentPhase.StartPhase();
     }
 
-    public void CupHidden() {
-        //throw new NotImplementedException();
-    }
-
     private IEnumerator ShowCup() {
         yield return new WaitForSecondsRealtime(1);
         cupAnimator.SetTrigger("ShowCup");
@@ -124,10 +120,7 @@ public class PhaseManager : MonoBehaviour {
 
         if (IsInEndDelay()) {
             if (!currentPhase.phaseEnding) {
-                cupAnimator.enabled = true;
-                cupAnimator.StartPlayback();
                 cupAnimator.SetTrigger("HideCup");
-
                 currentPhase.EndPhase();
             }
         }
