@@ -27,7 +27,7 @@ public class Boba : MonoBehaviour {
                 transform.position = new Vector3(
                     transform.position.x,
                     Mathf.Lerp(startingPosition.y, targetWorldPosition.y, fractionOfJourney),
-                    transform.position.z
+                    targetWorldPosition.z
                 );
             } else {
                 manuallyFalling = false;
