@@ -8,6 +8,8 @@ public class GradeScreen : MonoBehaviour {
 
     private void Start() {
         Grade grade = Grade.Compile();
+        GameObject cup = Globals.cup;
+        float cupScale = 250.0f;
 
         commentText.text = $"\"{grade.comment}\"";
         drinkNameText.text = grade.drinkName;
@@ -15,7 +17,20 @@ public class GradeScreen : MonoBehaviour {
 
         Transform parentTransform = GameObject.Find("GradedCup").transform;
 
-        Globals.cup.transform.SetParent(parentTransform);
+        cup.transform.SetParent(parentTransform);
+        cup.transform.SetPositionAndRotation(
+            new Vector3(
+                parentTransform.position.x,
+                parentTransform.position.y,
+                parentTransform.position.z + 10.0f
+            ),
+            new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)
+        );
+
+        cup.transform.localScale = new Vector3(cupScale, cupScale, cupScale);
+
+        Destroy(GameObject.Find("ArmCup"));
+        Destroy(cup.GetComponent<CupController>());
     }
 
     public void RestartGame() {
