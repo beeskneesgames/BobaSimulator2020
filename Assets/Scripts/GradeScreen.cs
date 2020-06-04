@@ -12,6 +12,10 @@ public class GradeScreen : MonoBehaviour {
         commentText.text = $"\"{grade.comment}\"";
         drinkNameText.text = grade.drinkName;
         letterGradeText.text = grade.letterGrade.ToString();
+
+        Transform parentTransform = GameObject.Find("GradedCup").transform;
+
+        Globals.cup.transform.SetParent(parentTransform);
     }
 
     public void RestartGame() {
