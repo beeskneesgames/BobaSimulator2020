@@ -124,6 +124,10 @@ public class PhaseManager : MonoBehaviour {
 
         if (IsInEndDelay()) {
             if (!currentPhase.phaseEnding) {
+                cupAnimator.enabled = true;
+                cupAnimator.StartPlayback();
+                cupAnimator.SetTrigger("HideCup");
+
                 currentPhase.EndPhase();
             }
         }
