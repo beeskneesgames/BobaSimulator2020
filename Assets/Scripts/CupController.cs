@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CupController : MonoBehaviour {
+    private CupAnimationListener animationListener;
+
+    private void Start() {
+        animationListener = GetComponent<CupAnimationListener>();
+    }
+
     private void Update() {
-        if (Globals.isPaused) {
+        if (Globals.isPaused || !animationListener.IsShown) {
             return;
         }
 
