@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LiquidPhase : GamePhase {
     public LiquidSpawner liquidSpawner;
+    public GameObject sparkles;
 
     public override string Name {
         get {
@@ -54,6 +54,7 @@ public class LiquidPhase : GamePhase {
         AudioManager.Instance.StopCupLiquid();
 
         AudioManager.Instance.PlayYay();
+        sparkles.SetActive(true);
 
         yield return new WaitForSecondsRealtime(4);
 
