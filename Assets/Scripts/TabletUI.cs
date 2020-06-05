@@ -14,6 +14,7 @@ public class TabletUI : MonoBehaviour {
 
     private void Start() {
         orderTextAnimator = orderText.GetComponent<Animator>();
+        UpdateOrderHeader();
     }
 
     private void Update() {
