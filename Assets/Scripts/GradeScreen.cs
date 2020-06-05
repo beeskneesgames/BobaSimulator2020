@@ -34,10 +34,17 @@ public class GradeScreen : MonoBehaviour {
     }
 
     public void RestartGame() {
+        DestroyCup();
         GameManager.StartMainScene();
     }
 
     public void ExitGame() {
+        DestroyCup();
         GameManager.ExitGame();
+    }
+
+    private void DestroyCup() {
+        Destroy(Globals.cup);
+        Globals.cup = null;
     }
 }

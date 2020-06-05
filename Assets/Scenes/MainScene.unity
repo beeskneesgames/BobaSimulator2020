@@ -5618,6 +5618,7 @@ GameObject:
   - component: {fileID: 1843330132}
   - component: {fileID: 1843330134}
   - component: {fileID: 1843330133}
+  - component: {fileID: 1843330135}
   m_Layer: 0
   m_Name: CupContainer
   m_TagString: Untagged
@@ -5652,7 +5653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2047a22e30d2451fac9ecebd70d6c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   phaseManager: {fileID: 576963516}
 --- !u!95 &1843330134
 Animator:
@@ -5673,6 +5673,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1843330135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843330131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3857284a5ac6242628144fa265e31518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1857562723
 GameObject:
   m_ObjectHideFlags: 0

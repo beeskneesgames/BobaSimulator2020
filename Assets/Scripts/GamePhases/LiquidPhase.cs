@@ -18,15 +18,8 @@ public class LiquidPhase : GamePhase {
         }
     }
 
-    private GameObject cupObj;
-
-    private void Start() {
-        cupObj = GameObject.Find("Cup");
-    }
-
     protected override void ExecuteBeforeStart() {
         StartCoroutine(HideCupAndShowInstructions());
-        DontDestroyOnLoad(cupObj);
     }
 
     protected override void ExecuteStart() {
@@ -41,8 +34,6 @@ public class LiquidPhase : GamePhase {
     }
 
     protected override void ExecuteNext() {
-        Globals.cup = cupObj;
-
         SceneManager.LoadScene("GradeScene");
     }
 
