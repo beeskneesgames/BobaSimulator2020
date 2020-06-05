@@ -251,13 +251,13 @@ public class Grade {
                 phrase = "This flavor is really really weird.";
             }
             if (Globals.currentOrder.bobaAmount == Order.AddInOption.None) {
-                if (bobaDifference >= 0.01f) {
+                if (Globals.bobaCount > 5) {
                     phrase = "Why is there boba in here?";
                 }
             } else if (Globals.bobaCount == 0) {
                 phrase = "Where is the boba?";
             } else if (Globals.currentOrder.iceAmount == Order.AddInOption.None) {
-                if (iceDifference >= 0.01f) {
+                if (Globals.iceCount > 1) {
                     phrase = "Why is there ice in here?";
                 }
             } else if (Globals.iceCount == 0) {
