@@ -6,6 +6,7 @@ public class GradeScreen : MonoBehaviour {
     public TextMeshProUGUI drinkNameText;
     public TextMeshProUGUI letterGradeText;
     public GameObject gradeContainer;
+    public GameObject sparkles;
 
     private void Start() {
         Grade grade = Grade.Compile();
@@ -23,6 +24,10 @@ public class GradeScreen : MonoBehaviour {
 
         cupContainer.transform.localScale = new Vector3(cupScale, cupScale, cupScale);
         cupContainer.PrepareForGradeScreen();
+
+        if (grade.letterGrade == Grade.LetterGrade.A) {
+            sparkles.SetActive(true);
+        };
     }
 
     public void RestartGame() {
