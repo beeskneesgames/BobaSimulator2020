@@ -24,7 +24,7 @@ public class LiquidPhase : GamePhase {
     }
 
     protected override void ExecuteBeforeStart() {
-        phaseManager.instructionsAnimator.SetTrigger("StartLiquid");
+        StartCoroutine(HideCupAndShowInstructions());
         DontDestroyOnLoad(cupObj);
     }
 
@@ -47,5 +47,13 @@ public class LiquidPhase : GamePhase {
 
     public override bool ShouldEndEarly() {
         return Globals.TotalLiquidPercentage >= 1.0f;
+    }
+
+    private IEnumerator HideCupAndShowInstructions() {
+        phaseManager.cupAnimator.SetTrigger("HideCup");
+
+        yield return new WaitForSecondsRealtime(1);
+
+        phaseManager.instructionsAnimator.SetTrigger("StartLiquid");
     }
 }
