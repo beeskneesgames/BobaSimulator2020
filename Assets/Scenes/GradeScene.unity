@@ -467,6 +467,7 @@ MonoBehaviour:
   commentText: {fileID: 1859121092}
   drinkNameText: {fileID: 1089766189}
   letterGradeText: {fileID: 545445192}
+  gradeContainer: {fileID: 1491772121}
 --- !u!1 &442894338
 GameObject:
   m_ObjectHideFlags: 0

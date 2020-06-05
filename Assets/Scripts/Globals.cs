@@ -4,7 +4,7 @@ using UnityEngine;
 public class Globals {
     public static bool isPaused = false;
 
-    public static GameObject cup;
+    public static CupContainer cupContainer;
 
     public static int bobaCount;
     public static int maxBobaCount = 163;
