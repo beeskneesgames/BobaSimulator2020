@@ -2545,6 +2545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3883bb2822049848ffd58bf8e7c966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cupAnimator: {fileID: 1843330134}
   instructionsAnimator: {fileID: 382275890}
   currentPhaseText: {fileID: 1990101993}
   timeRemainingText: {fileID: 1043665535}
@@ -5606,6 +5607,72 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1843330131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1843330132}
+  - component: {fileID: 1843330134}
+  - component: {fileID: 1843330133}
+  m_Layer: 0
+  m_Name: CupContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1843330132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843330131}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1927683572}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1843330133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843330131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2047a22e30d2451fac9ecebd70d6c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  phaseManager: {fileID: 576963516}
+--- !u!95 &1843330134
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843330131}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d163cc808fcce48528138ced8b4d5d7d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1857562723
 GameObject:
   m_ObjectHideFlags: 0
@@ -6064,6 +6131,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916954714}
   m_CullTransparentMesh: 0
+--- !u!4 &1927683572 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 790085619033458796, guid: 085f12f3e603343d283dff5825a08724,
+    type: 3}
+  m_PrefabInstance: {fileID: 8646206877487016825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1943442420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6962,7 +7035,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1843330132}
     m_Modifications:
     - target: {fileID: 770944821597637519, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
@@ -6992,7 +7065,7 @@ PrefabInstance:
     - target: {fileID: 790085619033458796, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 790085619033458796, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
@@ -7012,7 +7085,7 @@ PrefabInstance:
     - target: {fileID: 790085619033458796, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 790085619033458796, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
@@ -7078,6 +7151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355369070743479875, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5654722184922151969, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
@@ -7164,6 +7242,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -8
       objectReference: {fileID: 0}
+    - target: {fileID: 7458605169920103414, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: phaseManager
+      value: 
+      objectReference: {fileID: 576963516}
     - target: {fileID: 7756682217050060478, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
       propertyPath: liquidFillClippingPlane
@@ -7179,7 +7262,9 @@ PrefabInstance:
       propertyPath: liquidPhase
       value: 
       objectReference: {fileID: 576963519}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5355369070743479875, guid: 085f12f3e603343d283dff5825a08724, type: 3}
+    - {fileID: 7458605169920103414, guid: 085f12f3e603343d283dff5825a08724, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 085f12f3e603343d283dff5825a08724, type: 3}
 --- !u!114 &8646206877487016826 stripped
 MonoBehaviour:
