@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class LiquidPhase : GamePhase {
     public LiquidSpawner liquidSpawner;
     public GameObject sparkles;
+    public GameObject banner;
 
     public override string Name {
         get {
@@ -29,7 +30,7 @@ public class LiquidPhase : GamePhase {
     }
 
     protected override void ExecuteEnd() {
-
+        liquidSpawner.StopSpawning();
     }
 
     protected override void ExecuteNext() {
@@ -49,12 +50,13 @@ public class LiquidPhase : GamePhase {
     }
 
     private IEnumerator ExecuteEndSequence() {
-        liquidSpawner.StopSpawning();
         AudioManager.Instance.StopLiquid();
         AudioManager.Instance.StopCupLiquid();
 
         AudioManager.Instance.PlayYay();
+
         sparkles.SetActive(true);
+        banner.SetActive(true);
 
         yield return new WaitForSecondsRealtime(4);
 
