@@ -41,7 +41,7 @@ public class Ice : MonoBehaviour {
                     // Let the ice placer know that we're done being placed.
                     icePlacer.IcePlaced(this);
                 } else {
-                    Destroy(this);
+                    Destroy(gameObject);
                 }
 
                 cupEffects.Bounce();
