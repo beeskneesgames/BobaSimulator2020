@@ -29,13 +29,11 @@ public class LiquidPhase : GamePhase {
     }
 
     protected override void ExecuteEnd() {
-        liquidSpawner.StopSpawning();
-        AudioManager.Instance.StopLiquid();
-        AudioManager.Instance.StopCupLiquid();
+
     }
 
     protected override void ExecuteNext() {
-        SceneManager.LoadScene("GradeScene");
+        StartCoroutine(ExecuteEndSequence());
     }
 
     public override bool ShouldEndEarly() {
@@ -48,5 +46,17 @@ public class LiquidPhase : GamePhase {
         yield return new WaitForSecondsRealtime(1);
 
         phaseManager.instructionsAnimator.SetTrigger("StartLiquid");
+    }
+
+    private IEnumerator ExecuteEndSequence() {
+        liquidSpawner.StopSpawning();
+        AudioManager.Instance.StopLiquid();
+        AudioManager.Instance.StopCupLiquid();
+
+        AudioManager.Instance.PlayYay();
+
+        yield return new WaitForSecondsRealtime(4);
+
+        SceneManager.LoadScene("GradeScene");
     }
 }

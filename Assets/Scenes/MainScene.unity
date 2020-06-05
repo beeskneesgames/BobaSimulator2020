@@ -5349,6 +5349,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8569601301868214071, guid: dcd3cc2a3a8404343bc30ad468dc8d86,
+        type: 3}
+      propertyPath: sounds.Array.size
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569601301868214071, guid: dcd3cc2a3a8404343bc30ad468dc8d86,
+        type: 3}
+      propertyPath: sounds.Array.data[22].name
+      value: Yay
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569601301868214071, guid: dcd3cc2a3a8404343bc30ad468dc8d86,
+        type: 3}
+      propertyPath: sounds.Array.data[22].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 622fa944e7eb44498b590e0e84a90046, type: 3}
+    - target: {fileID: 8569601301868214071, guid: dcd3cc2a3a8404343bc30ad468dc8d86,
+        type: 3}
+      propertyPath: sounds.Array.data[22].volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8569601301868214071, guid: dcd3cc2a3a8404343bc30ad468dc8d86,
+        type: 3}
+      propertyPath: sounds.Array.data[22].pitch
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8569601301868214072, guid: dcd3cc2a3a8404343bc30ad468dc8d86,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5652,7 +5677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2047a22e30d2451fac9ecebd70d6c34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   phaseManager: {fileID: 576963516}
 --- !u!95 &1843330134
 Animator:
