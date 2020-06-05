@@ -40,6 +40,12 @@ public class LiquidCatcher : MonoBehaviour {
     }
     private float liquidFillClippingPlaneStartY;
 
+    private Order.Flavor currentFlavor = Order.Flavor.NotSet;
+    private float currentFlavorTime = 0.0f;
+    private readonly float maxFlavorTime = 3.0f;
+    private Color previousColor;
+    private Color targetColor;
+
     private CupEffects cupEffects;
 
     private void Start() {
@@ -49,6 +55,31 @@ public class LiquidCatcher : MonoBehaviour {
 
     private void Update() {
         if (CurrentLiquidStream != null && CurrentLiquidStream.IsShown) {
+            if (currentFlavor != CurrentLiquidStream.CurrentFlavor) {
+                targetColor = Order.FlavorColors[CurrentLiquidStream.CurrentFlavor];
+
+                if (currentFlavor == Order.Flavor.NotSet) {
+                    // When color A hits the cup, the fill should just be A.
+                    // To keep the code simpler, we lerp from A to A.
+                    previousColor = targetColor;
+                } else {
+                    // When color B hits the cup, start lerping from A to B.
+                    // After 3 seconds, we should be entirely lerped to B. Until then,
+                    // we're showing a mix between A and B (let's call this color AB).
+                    //
+                    // If color C hits the cup while we're showing AB, start lerping
+                    // from AB to C.
+                    // Again, after 3 seconds, we should be entirely lerped to C.
+                    previousColor = Globals.liquidFillColor;
+                }
+
+                currentFlavorTime = 0.0f;
+                currentFlavor = CurrentLiquidStream.CurrentFlavor;
+            }
+
+            currentFlavorTime += Time.deltaTime;
+            Globals.liquidFillColor = Color.Lerp(previousColor, targetColor, currentFlavorTime / maxFlavorTime);
+
             Globals.AddLiquid(CurrentLiquidStream.CurrentFlavor, Time.deltaTime * 0.1f);
             UpdateLiquidDisplay();
 

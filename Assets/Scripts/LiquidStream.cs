@@ -221,7 +221,7 @@ public class LiquidStream : MonoBehaviour {
                 ShowSplash();
             }
 
-            splashEffect.SetVector4(VFXColorProp, Globals.LiquidFillColor);
+            splashEffect.SetVector4(VFXColorProp, Globals.liquidFillColor);
             splashEffect.transform.position = new Vector3(
                 splashEffect.transform.position.x,
                 liquidCatcher.liquidFillClippingPlane.transform.position.y - 0.025f,

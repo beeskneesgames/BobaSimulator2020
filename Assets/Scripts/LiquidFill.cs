@@ -13,8 +13,7 @@ public class LiquidFill : MonoBehaviour {
     private void Update() {
         if (Globals.TotalLiquidPercentage > percentage) {
             percentage = Globals.TotalLiquidPercentage;
-            renderer.material.SetColor("_BaseColor", Globals.LiquidFillColor);
+            renderer.material.SetColor("_BaseColor", Globals.liquidFillColor);
         }
-
     }
 }
