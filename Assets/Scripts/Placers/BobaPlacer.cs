@@ -17,24 +17,24 @@ public class BobaPlacer : MonoBehaviour {
     private int layerIndex = 0;
     private Vector3 defaultPosition;
 
-    private List<List<float>> xLayers = new List<List<float>> {
-        new List<float> { -0.15f, 0.5f, 1.0f, 1.6f, 2.0f, 3.0f, 3.8f, 4.1f },
-        new List<float> { -0.3f, 0.0f, 0.3f, 1.3f, 2.0f, 2.3f, 3.3f, 3.0f, 4.3f },
-        new List<float> { -0.35f, 0.0f, 0.35f, 1.35f, 1.9f, 2.35f, 3.35f, 4.0f, 4.35f },
-        new List<float> { -0.4f, 0.4f, 1.4f, 2.0f, 2.4f, 2.8f, 3.4f, 4.0f, 4.4f },
-        new List<float> { -0.45f, 0.0f, 0.6f, 1.4f, 2.0f, 2.4f, 3.0f, 3.4f, 4.0f, 4.45f },
-        new List<float> { -0.5f, 0.0f, 0.7f, 1.5f, 2.5f, 3.0f, 3.7f, 4.2f, 4.5f },
-        new List<float> { -0.55f, 0.0f, 0.8f, 1.6f, 2.6f, 3.0f, 3.8f, 4.1f, 4.55f },
-        new List<float> { -0.6f, -0.1f, 0.6f, 1.3f, 1.9f, 2.0f, 2.8f, 3.6f, 4.3f, 4.6f },
-        new List<float> { -0.65f, -0.2f, 0.7f, 1.2f, 1.8f, 2.1f, 2.6f, 3.4f, 4.2f, 4.65f },
-        new List<float> { -0.7f, -0.3f, 0.5f, 1.0f, 1.8f, 2.2f, 2.5f, 3.4f, 4.2f, 4.7f },
-        new List<float> { -0.75f, -0.3f, 0.4f, 1.1f, 1.9f, 2.3f, 2.6f, 3.5f, 4.3f, 4.75f },
-        new List<float> { -0.8f, -0.4f, 0.3f, 1.1f, 1.7f, 2.2f, 2.7f, 3.5f, 4.4f, 4.8f },
-        new List<float> { -0.85f, -0.5f, 0.4f, 1.2f, 1.6f, 2.3f, 2.8f, 3.6f, 4.5f, 4.85f },
-        new List<float> { -0.9f, -0.7f, 0.2f, 1.0f, 1.5f, 2.1f, 2.6f, 3.4f, 4.3f, 4.9f },
-        new List<float> { -0.95f, -0.6f, 0.3f, 0.9f, 1.4f, 2.0f, 2.8f, 3.2f, 4.1f, 4.95f },
-        new List<float> { -1.0f, -0.7f, 0.2f, 1.0f, 1.5f, 2.1f, 2.6f, 3.4f, 4.3f, 5.0f },
-        new List<float> { -1.05f, -0.5f, 0.1f, 0.8f, 1.3f, 2.0f, 2.8f, 3.2f, 4.1f, 5.05f },
+    private readonly List<List<float>> xLayers = new List<List<float>> {
+        new List<float> { -0.05f,  0.5f,  1.0f,  1.6f,  2.0f,  3.0f,  3.8f,  4.0f },
+        new List<float> { -0.2f,   0.0f,  0.3f,  1.3f,  2.0f,  2.3f,  3.3f,  3.0f,  4.2f  },
+        new List<float> { -0.25f,  0.0f,  0.35f, 1.35f, 1.9f,  2.35f, 3.35f, 4.0f,  4.25f },
+        new List<float> { -0.3f,   0.4f,  1.4f,  2.0f,  2.4f,  2.8f,  3.4f,  4.0f,  4.3f  },
+        new List<float> { -0.35f,  0.0f,  0.6f,  1.4f,  2.0f,  2.4f,  3.0f,  3.4f,  4.0f,  4.35f },
+        new List<float> { -0.4f,   0.0f,  0.7f,  1.5f,  2.5f,  3.0f,  3.7f,  4.2f,  4.4f  },
+        new List<float> { -0.45f,  0.0f,  0.8f,  1.6f,  2.6f,  3.0f,  3.8f,  4.1f,  4.45f },
+        new List<float> { -0.5f,  -0.1f,  0.6f,  1.3f,  1.9f,  2.0f,  2.8f,  3.6f,  4.3f,  4.5f  },
+        new List<float> { -0.55f, -0.2f,  0.7f,  1.2f,  1.8f,  2.1f,  2.6f,  3.4f,  4.2f,  4.55f },
+        new List<float> { -0.6f,  -0.3f,  0.5f,  1.0f,  1.8f,  2.2f,  2.5f,  3.4f,  4.2f,  4.6f  },
+        new List<float> { -0.65f, -0.3f,  0.4f,  1.1f,  1.9f,  2.3f,  2.6f,  3.5f,  4.3f,  4.65f },
+        new List<float> { -0.7f,  -0.4f,  0.3f,  1.1f,  1.7f,  2.2f,  2.7f,  3.5f,  4.4f,  4.7f  },
+        new List<float> { -0.75f, -0.5f,  0.4f,  1.2f,  1.6f,  2.3f,  2.8f,  3.6f,  4.5f,  4.75f },
+        new List<float> { -0.8f,  -0.7f,  0.2f,  1.0f,  1.5f,  2.1f,  2.6f,  3.4f,  4.3f,  4.8f  },
+        new List<float> { -0.85f, -0.6f,  0.3f,  0.9f,  1.4f,  2.0f,  2.8f,  3.2f,  4.1f,  4.85f },
+        new List<float> { -0.9f,  -0.7f,  0.2f,  1.0f,  1.5f,  2.1f,  2.6f,  3.4f,  4.3f,  4.9f  },
+        new List<float> { -0.95f, -0.5f,  0.1f,  0.8f,  1.3f,  2.0f,  2.8f,  3.2f,  4.1f,  4.95f },
     };
 
     private List<List<Vector3>> positionLayers;
