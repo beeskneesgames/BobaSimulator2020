@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -35,6 +34,7 @@ public class LiquidPhase : GamePhase {
     }
 
     protected override void ExecuteNext() {
+        phaseManager.cupAnimator.enabled = false;
         SceneManager.LoadScene("GradeScene");
     }
 
