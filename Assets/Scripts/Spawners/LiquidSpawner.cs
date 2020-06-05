@@ -39,7 +39,7 @@ public class LiquidSpawner : MonoBehaviour {
         return new Vector3(
             xPosition,
             0.0f,
-            transform.position.z + 0.5f
+            transform.position.z + 0.2f
         );
     }
 
