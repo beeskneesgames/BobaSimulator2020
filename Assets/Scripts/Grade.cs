@@ -237,7 +237,7 @@ public class Grade {
         string descriptor = ChooseString(letterGrade, CommentType.Descriptor);
         string phrase = ChoosePhrase(letterGrade);
 
-        return $"{exclamation} This tea is {descriptor} {phrase}";
+        return $"{exclamation} This drink is {descriptor} {phrase}";
     }
 
     private string ChooseString(LetterGrade letterGrade, CommentType type) {
