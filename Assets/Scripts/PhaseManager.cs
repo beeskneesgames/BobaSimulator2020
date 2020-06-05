@@ -120,7 +120,6 @@ public class PhaseManager : MonoBehaviour {
 
         if (IsInEndDelay()) {
             if (!currentPhase.phaseEnding) {
-                cupAnimator.SetTrigger("HideCup");
                 currentPhase.EndPhase();
             }
         }
