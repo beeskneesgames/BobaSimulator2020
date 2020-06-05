@@ -4174,6 +4174,12 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1268551852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4372339344446634623, guid: 085f12f3e603343d283dff5825a08724,
+    type: 3}
+  m_PrefabInstance: {fileID: 8646206877487016825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1292319618
 GameObject:
   m_ObjectHideFlags: 0
@@ -5692,6 +5698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arm: {fileID: 1003830166}
+  cup: {fileID: 1268551852}
 --- !u!1 &1857562723
 GameObject:
   m_ObjectHideFlags: 0
