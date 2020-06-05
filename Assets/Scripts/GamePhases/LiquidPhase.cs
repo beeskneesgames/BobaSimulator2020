@@ -34,6 +34,7 @@ public class LiquidPhase : GamePhase {
     }
 
     protected override void ExecuteNext() {
+        phaseManager.cupAnimator.enabled = false;
         SceneManager.LoadScene("GradeScene");
     }
 

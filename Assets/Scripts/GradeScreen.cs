@@ -17,14 +17,9 @@ public class GradeScreen : MonoBehaviour {
         letterGradeText.text = grade.letterGrade.ToString();
 
         cupContainer.transform.SetParent(gradeContainer.transform);
-        cupContainer.transform.SetPositionAndRotation(
-            new Vector3(
-                gradeContainer.transform.position.x,
-                gradeContainer.transform.position.y,
-                gradeContainer.transform.position.z + 10.0f
-            ),
-            new Quaternion(0.0f, 0.0f, 0.0f, 0.0f)
-        );
+        cupContainer.transform.localPosition = new Vector3(40.0f, 40.0f, 0.0f);
+        cupContainer.transform.rotation = Quaternion.identity;
+        cupContainer.transform.Rotate(Vector3.forward * -7.5f);
 
         cupContainer.transform.localScale = new Vector3(cupScale, cupScale, cupScale);
         cupContainer.PrepareForGradeScreen();
