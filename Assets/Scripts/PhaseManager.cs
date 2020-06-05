@@ -46,7 +46,11 @@ public class PhaseManager : MonoBehaviour {
 
     private void Start() {
         Debugger.Instance.phaseManager = this;
+
+        // Reset most globals
         Globals.ResetLiquid();
+        Globals.bobaCount = 0;
+        Globals.iceCount = 0;
 
         Globals.orderCount++;
 
