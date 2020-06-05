@@ -69,12 +69,14 @@ public class PhaseManager : MonoBehaviour {
                 timerActive = false;
             }
         } else if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
-            // If the phase timer is inactive, it means we're playing an
-            // instructions animation.
-            //
-            // While in one of these animations, if the player clicks, fast
-            // forward the animation.
-            instructionsAnimator.SetTrigger("Hide");
+            if (Debugger.Instance.IsOn) {
+                // If the phase timer is inactive, it means we're playing an
+                // instructions animation.
+                //
+                // While in one of these animations, if the player clicks, fast
+                // forward the animation.
+                instructionsAnimator.SetTrigger("Hide");
+            }
         }
     }
 
