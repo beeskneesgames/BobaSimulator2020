@@ -468,7 +468,7 @@ MonoBehaviour:
   drinkNameText: {fileID: 1089766189}
   letterGradeText: {fileID: 545445192}
   gradeContainer: {fileID: 1491772121}
-  sparkles: {fileID: 0}
+  sparkles: {fileID: 1368603889}
 --- !u!1 &442894338
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,7 +1599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368603889}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 125, y: 100, z: 0}
+  m_LocalPosition: {x: 75, y: 75, z: 5000}
   m_LocalScale: {x: 108.387085, y: 108.387085, z: 108.387085}
   m_Children: []
   m_Father: {fileID: 1491772122}
@@ -1669,7 +1669,10 @@ VisualEffect:
     m_Uint:
       m_Array: []
     m_Int:
-      m_Array: []
+      m_Array:
+      - m_Value: 150
+        m_Name: SparkleAmount
+        m_Overridden: 1
     m_Matrix4x4f:
       m_Array: []
     m_AnimationCurve:
@@ -2703,7 +2706,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 157feafbdcccf4f4688ad05cb857a180,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 157feafbdcccf4f4688ad05cb857a180, type: 3}
