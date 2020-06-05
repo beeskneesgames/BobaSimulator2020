@@ -17,6 +17,7 @@ public class Ice : MonoBehaviour {
     private float currentTimeFalling = 0.0f;
     private float maxTimeFalling;
     private IcePlacer icePlacer;
+    private bool keepAfterLanding;
 
     private void Update() {
         if (manuallyFalling) {
@@ -32,13 +33,18 @@ public class Ice : MonoBehaviour {
                 );
             } else {
                 manuallyFalling = false;
-                transform.parent = icePlacer.transform;
-                transform.localPosition = targetLocalPosition;
 
-                // Let the ice placer know that we're done being placed.
-                icePlacer.IcePlaced(this);
+                if (keepAfterLanding) {
+                    transform.parent = icePlacer.transform;
+                    transform.localPosition = targetLocalPosition;
+
+                    // Let the ice placer know that we're done being placed.
+                    icePlacer.IcePlaced(this);
+                } else {
+                    Destroy(this);
+                }
+
                 cupEffects.Bounce();
-
                 AudioManager.Instance.PlayIce();
             }
         } else if (transform.position.y <= -100.0f) {
@@ -54,6 +60,7 @@ public class Ice : MonoBehaviour {
 
         manuallyFalling = true;
 
+        keepAfterLanding = icePlacer.HasPositions();
         startingPosition = transform.localPosition;
         targetLocalPosition = icePlacer.PopPosition(startingPosition);
         targetWorldPosition = icePlacer.transform.TransformPoint(targetLocalPosition);
