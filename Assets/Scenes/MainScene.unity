@@ -3646,6 +3646,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000590830}
   m_CullTransparentMesh: 0
+--- !u!1 &1003830166 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6216460421945886973, guid: 085f12f3e603343d283dff5825a08724,
+    type: 3}
+  m_PrefabInstance: {fileID: 8646206877487016825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1043665533
 GameObject:
   m_ObjectHideFlags: 0
@@ -4276,6 +4282,12 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1268551852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4372339344446634623, guid: 085f12f3e603343d283dff5825a08724,
+    type: 3}
+  m_PrefabInstance: {fileID: 8646206877487016825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1292319618
 GameObject:
   m_ObjectHideFlags: 0
@@ -5726,6 +5738,7 @@ GameObject:
   - component: {fileID: 1843330132}
   - component: {fileID: 1843330134}
   - component: {fileID: 1843330133}
+  - component: {fileID: 1843330135}
   m_Layer: 0
   m_Name: CupContainer
   m_TagString: Untagged
@@ -5781,6 +5794,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1843330135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843330131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3857284a5ac6242628144fa265e31518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arm: {fileID: 1003830166}
+  cup: {fileID: 1268551852}
 --- !u!1 &1857562723
 GameObject:
   m_ObjectHideFlags: 0

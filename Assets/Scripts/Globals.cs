@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Globals {
     public static bool isPaused = false;
+
+    public static CupContainer cupContainer;
 
     public static int bobaCount;
     public static int maxBobaCount = 163;

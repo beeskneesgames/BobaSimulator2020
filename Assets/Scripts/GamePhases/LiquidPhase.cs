@@ -58,6 +58,7 @@ public class LiquidPhase : GamePhase {
 
         yield return new WaitForSecondsRealtime(4);
 
+        phaseManager.cupAnimator.enabled = false;
         SceneManager.LoadScene("GradeScene");
     }
 }
