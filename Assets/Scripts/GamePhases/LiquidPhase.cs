@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LiquidPhase : GamePhase {
     public LiquidSpawner liquidSpawner;
+    public GameObject sparkles;
 
     public override string Name {
         get {
@@ -28,14 +29,11 @@ public class LiquidPhase : GamePhase {
     }
 
     protected override void ExecuteEnd() {
-        liquidSpawner.StopSpawning();
-        AudioManager.Instance.StopLiquid();
-        AudioManager.Instance.StopCupLiquid();
+
     }
 
     protected override void ExecuteNext() {
-        phaseManager.cupAnimator.enabled = false;
-        SceneManager.LoadScene("GradeScene");
+        StartCoroutine(ExecuteEndSequence());
     }
 
     public override bool ShouldEndEarly() {
@@ -48,5 +46,19 @@ public class LiquidPhase : GamePhase {
         yield return new WaitForSecondsRealtime(1);
 
         phaseManager.instructionsAnimator.SetTrigger("StartLiquid");
+    }
+
+    private IEnumerator ExecuteEndSequence() {
+        liquidSpawner.StopSpawning();
+        AudioManager.Instance.StopLiquid();
+        AudioManager.Instance.StopCupLiquid();
+
+        AudioManager.Instance.PlayYay();
+        sparkles.SetActive(true);
+
+        yield return new WaitForSecondsRealtime(4);
+
+        phaseManager.cupAnimator.enabled = false;
+        SceneManager.LoadScene("GradeScene");
     }
 }

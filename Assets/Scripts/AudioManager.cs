@@ -64,6 +64,10 @@ public class AudioManager : MonoBehaviour {
         Play("Liquid");
     }
 
+    public void PlayYay() {
+        Play("Yay");
+    }
+
     public void StopLiquid() {
         Stop("Liquid");
     }
