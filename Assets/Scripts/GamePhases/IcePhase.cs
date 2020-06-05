@@ -23,7 +23,7 @@ public class IcePhase : GamePhase {
     }
 
     protected override void ExecuteBeforeStart() {
-        phaseManager.instructionsAnimator.SetTrigger("StartIce");
+        StartCoroutine(HideCupAndShowInstructions());
     }
 
     protected override void ExecuteStart() {
@@ -40,5 +40,13 @@ public class IcePhase : GamePhase {
 
     public override bool ShouldEndEarly() {
         return !icePlacer.HasPositions();
+    }
+
+    private IEnumerator HideCupAndShowInstructions() {
+        phaseManager.cupAnimator.SetTrigger("HideCup");
+
+        yield return new WaitForSecondsRealtime(1);
+
+        phaseManager.instructionsAnimator.SetTrigger("StartIce");
     }
 }

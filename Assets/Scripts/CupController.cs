@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CupController : MonoBehaviour {
+
     private void Update() {
         if (Globals.isPaused) {
             return;
