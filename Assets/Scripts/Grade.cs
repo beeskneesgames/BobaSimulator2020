@@ -201,7 +201,7 @@ public class Grade {
     }
 
     private float BobaDeductions() {
-        float deductionWeight = 0.6f;
+        float deductionWeight = 0.5f;
 
         return Math.Abs(BobaDifference() * deductionWeight);
     }
