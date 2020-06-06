@@ -50,8 +50,7 @@ public class IceSpawner : MonoBehaviour {
     }
 
     private Vector3 GeneratePosition() {
-        //float xPosition = Debugger.Instance.IsOn ? transform.position.x : Random.Range(-screenSize, screenSize);
-        float xPosition = screenSize;
+        float xPosition = Debugger.Instance.IsOn ? transform.position.x : Random.Range(-screenSize, screenSize);
 
         return new Vector3(
             xPosition,
