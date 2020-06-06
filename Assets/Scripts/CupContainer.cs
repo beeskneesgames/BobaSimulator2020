@@ -3,6 +3,7 @@
 public class CupContainer : MonoBehaviour {
     public GameObject arm;
     public GameObject cup;
+    public GameObject straw;
 
     private void Start() {
         DontDestroyOnLoad(gameObject);
@@ -10,6 +11,10 @@ public class CupContainer : MonoBehaviour {
     }
 
     public void PrepareForGradeScreen() {
+        // Show the straw and pick a color for it
+        straw.SetActive(true);
+
+        // Make cup more transparent
         Renderer cupRenderer = cup.GetComponent<Renderer>();
         Color cupColor = cupRenderer.material.color;
         cupRenderer.material.color = new Color(
@@ -18,9 +23,12 @@ public class CupContainer : MonoBehaviour {
             cupColor.b,
             0.5f
         );
-        cup.transform.localPosition = Vector3.zero;
-        Destroy(arm);
 
+        // Move the cup to the center of the container
+        cup.transform.localPosition = Vector3.zero;
+
+        // Hide the arm and clear out unused components
+        Destroy(arm);
         foreach (Transform child in transform) {
             ClearComponentsForGradeScreen(child.gameObject);
         }
