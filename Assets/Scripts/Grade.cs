@@ -83,7 +83,7 @@ public class Grade {
             "weird.",
             "upsetting.",
             "gross.",
-            "isn't right.",
+            "not right.",
         };
 
         List<string> goodPhrase = new List<string> {
