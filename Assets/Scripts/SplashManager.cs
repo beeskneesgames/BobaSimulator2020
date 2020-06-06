@@ -7,7 +7,7 @@ public class SplashManager : MonoBehaviour {
     private void Update() {
         TickTimer();
 
-        if (timeRemaining <= 0.0f || (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))) {
+        if (timeRemaining <= 0.0f || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
             sceneFader.FadeOut(() => {
                 GameManager.StartIntroCutScene();
             });

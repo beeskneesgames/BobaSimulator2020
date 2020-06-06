@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IntroManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class IntroManager : MonoBehaviour {
+    public SceneFader sceneFader;
+
+    private void Update() {
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
+            FadeToTitleScene();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void OnArmHidden() {
+        FadeToTitleScene();
+    }
+
+    private void FadeToTitleScene() {
+        sceneFader.FadeOut(() => {
+            GameManager.StartTitleScene();
+        });
     }
 }
