@@ -7,17 +7,9 @@ public class IntroManager : MonoBehaviour {
 
     private void Update() {
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) {
-            FadeToTitleScene();
+            sceneFader.FadeOut(() => {
+                GameManager.StartTitleScene();
+            });
         }
-    }
-
-    public void OnArmHidden() {
-        FadeToTitleScene();
-    }
-
-    private void FadeToTitleScene() {
-        sceneFader.FadeOut(() => {
-            GameManager.StartTitleScene();
-        });
     }
 }
