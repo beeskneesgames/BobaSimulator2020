@@ -18,7 +18,14 @@ public class IcePhase : GamePhase {
     }
     public override float Time {
         get {
-            return 15.0f;
+            if (Globals.currentOrder.iceAmount == Order.AddInOption.None ||
+                Globals.currentOrder.iceAmount == Order.AddInOption.Light) {
+                return 10.0f;
+            } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Regular) {
+                return 15.0f;
+            } else {
+                return 20.0f;
+            }
         }
     }
 

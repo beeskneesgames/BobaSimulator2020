@@ -16,7 +16,7 @@ public class IceSpawner : MonoBehaviour {
             interval = 5.0f;
         } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Regular) {
             interval = 4.0f;
-        } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Extra) {
+        } else {
             interval = 3.0f;
         }
 

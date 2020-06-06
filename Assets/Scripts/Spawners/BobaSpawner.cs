@@ -15,9 +15,7 @@ public class BobaSpawner : MonoBehaviour {
             interval = 0.1f;
         } else if (Globals.currentOrder.bobaAmount == Order.AddInOption.Light) {
             interval = 0.01f;
-        } else if (Globals.currentOrder.bobaAmount == Order.AddInOption.Regular) {
-            interval = 0.0001f;
-        } else if (Globals.currentOrder.bobaAmount == Order.AddInOption.Extra) {
+        } else {
             interval = 0.0001f;
         }
 
@@ -30,10 +28,20 @@ public class BobaSpawner : MonoBehaviour {
 
             if (timeSinceLastBoba > interval) {
                 GameObject boba1 = Instantiate(bobaPrefab);
-                GameObject boba2 = Instantiate(bobaPrefab);
 
                 boba1.transform.position = GeneratePosition();
-                boba2.transform.position = GeneratePosition();
+
+
+                if (Globals.currentOrder.bobaAmount == Order.AddInOption.Regular ||
+                    Globals.currentOrder.bobaAmount == Order.AddInOption.Extra) {
+                    GameObject boba2 = Instantiate(bobaPrefab);
+                    boba2.transform.position = GeneratePosition();
+                }
+
+                if (Globals.currentOrder.bobaAmount == Order.AddInOption.Extra) {
+                    GameObject boba3 = Instantiate(bobaPrefab);
+                    boba3.transform.position = GeneratePosition();
+                }
 
                 timeSinceLastBoba = 0.0f;
             }
@@ -49,8 +57,7 @@ public class BobaSpawner : MonoBehaviour {
     }
 
     private Vector3 GeneratePosition() {
-        //float xPosition = Debugger.Instance.IsOn ? transform.position.x : Random.Range(-screenSize, screenSize);
-        float xPosition = screenSize;
+        float xPosition = Debugger.Instance.IsOn ? transform.position.x : Random.Range(-screenSize, screenSize);
 
         return new Vector3(
             xPosition,
