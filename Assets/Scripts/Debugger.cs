@@ -16,7 +16,7 @@ public class Debugger : MonoBehaviour {
     }
 
     private List<IDebuggerListener> listeners;
-    private bool isOn = true;
+    private bool isOn = false;
     public bool IsOn {
         get {
             return isOn;

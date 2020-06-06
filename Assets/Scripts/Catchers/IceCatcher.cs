@@ -1,10 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class IceCatcher : MonoBehaviour {
-    public Text iceCountText;
     public IcePhase icePhase;
 
     private int iceCount = 0;
@@ -16,7 +12,6 @@ public class IceCatcher : MonoBehaviour {
         set {
             iceCount = value;
             Globals.iceCount = IceCount;
-            iceCountText.text = $"Ice Count: {IceCount}";
         }
     }
 

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PhaseManager : MonoBehaviour {
     public Animator cupAnimator;
     public Animator instructionsAnimator;
 
-    public Text currentPhaseText;
-    public Text timeRemainingText;
     public GamePhase startingPhase;
     public float timeRemaining;
     public float TimeRemaining {
@@ -23,12 +18,6 @@ public class PhaseManager : MonoBehaviour {
             } else {
                 timeRemaining = 0.0f;
             }
-
-            // Add 1 to time remaining to make it easier to read
-            float timeRemainingToDisplay = TimeRemaining + 1.0f;
-            int minutesRemaining = (int)timeRemainingToDisplay / 60;
-            int secondsRemaining = (int)timeRemainingToDisplay % 60;
-            timeRemainingText.text = $"{minutesRemaining}:{secondsRemaining.ToString("00")}";
         }
     }
 
@@ -94,7 +83,6 @@ public class PhaseManager : MonoBehaviour {
 
     public void CurrentPhaseStarted() {
         TimeRemaining = currentPhase.Time + currentPhase.StartDelay + currentPhase.EndDelay;
-        currentPhaseText.text = currentPhase.Name;
         timerActive = true;
     }
 
@@ -128,12 +116,6 @@ public class PhaseManager : MonoBehaviour {
             if (!currentPhase.phaseEnding) {
                 currentPhase.EndPhase();
             }
-        }
-
-        if (IsInStartDelay() || IsInEndDelay()) {
-            timeRemainingText.color = Color.red;
-        } else {
-            timeRemainingText.color = Color.white;
         }
     }
 }
