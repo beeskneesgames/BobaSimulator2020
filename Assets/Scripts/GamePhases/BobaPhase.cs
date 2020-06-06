@@ -18,7 +18,7 @@ public class BobaPhase : GamePhase {
     }
     public override float Time {
         get {
-            return 15.0f;
+            return 20.0f;
         }
     }
 

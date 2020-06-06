@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BobaSpawner : MonoBehaviour {
     public GameObject bobaPrefab;
-    public float interval = 0.0001f;
+    public float interval = 0.01f;
 
     private bool isSpawning = false;
     private float timeSinceLastBoba = 0.0f;
@@ -29,8 +29,12 @@ public class BobaSpawner : MonoBehaviour {
             timeSinceLastBoba += Time.deltaTime;
 
             if (timeSinceLastBoba > interval) {
-                GameObject boba = Instantiate(bobaPrefab);
-                boba.transform.position = GeneratePosition();
+                GameObject boba1 = Instantiate(bobaPrefab);
+                GameObject boba2 = Instantiate(bobaPrefab);
+
+                boba1.transform.position = GeneratePosition();
+                boba2.transform.position = GeneratePosition();
+
                 timeSinceLastBoba = 0.0f;
             }
         }
