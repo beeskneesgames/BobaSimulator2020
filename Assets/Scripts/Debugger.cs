@@ -54,7 +54,7 @@ public class Debugger : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.BackQuote)) {
+        if (Debug.isDebugBuild && Input.GetKeyDown(KeyCode.BackQuote)) {
             IsOn = !IsOn;
         }
 
