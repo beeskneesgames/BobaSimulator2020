@@ -39,6 +39,7 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void Restart() {
+        Globals.orderCount = 0;
         GameManager.StartMainScene();
     }
 

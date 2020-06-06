@@ -31,7 +31,6 @@ public class GradeScreen : MonoBehaviour {
     }
 
     public void RestartGame() {
-        Globals.orderCount = 0;
         DestroyCup();
         GameManager.StartMainScene();
     }
