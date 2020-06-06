@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BobaPhase : GamePhase {
@@ -18,7 +17,14 @@ public class BobaPhase : GamePhase {
     }
     public override float Time {
         get {
-            return 20.0f;
+            if (Globals.currentOrder.bobaAmount == Order.AddInOption.None ||
+                Globals.currentOrder.bobaAmount == Order.AddInOption.Light) {
+                return 10.0f;
+            } else if (Globals.currentOrder.bobaAmount == Order.AddInOption.Regular) {
+                return 15.0f;
+            } else {
+                return 20.0f;
+            }
         }
     }
 

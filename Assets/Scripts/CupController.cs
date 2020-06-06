@@ -9,7 +9,7 @@ public class CupController : MonoBehaviour {
 
     private void Start() {
         cameraPos = Camera.main.transform.position;
-        screenSizeX = Vector2.Distance(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)), Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0))) * 0.5f;
+        screenSizeX = Vector2.Distance(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)), Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0))) * 0.55f;
         rightX = cameraPos.x + screenSizeX - buffer;
         leftX = cameraPos.x - screenSizeX + buffer;
     }

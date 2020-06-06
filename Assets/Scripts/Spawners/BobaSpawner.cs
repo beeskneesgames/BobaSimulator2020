@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BobaSpawner : MonoBehaviour {
     public GameObject bobaPrefab;
@@ -20,10 +18,8 @@ public class BobaSpawner : MonoBehaviour {
 
             if (timeSinceLastBoba > interval) {
                 GameObject boba1 = Instantiate(bobaPrefab);
-                GameObject boba2 = Instantiate(bobaPrefab);
 
                 boba1.transform.position = GeneratePosition();
-                boba2.transform.position = GeneratePosition();
 
                 timeSinceLastBoba = 0.0f;
             }
@@ -31,6 +27,14 @@ public class BobaSpawner : MonoBehaviour {
     }
 
     public void StartSpawning() {
+        if (Globals.currentOrder.bobaAmount == Order.AddInOption.None) {
+            interval = 0.5f;
+        } else if (Globals.currentOrder.bobaAmount == Order.AddInOption.Light) {
+            interval = 0.1f;
+        } else {
+            interval = 0.05f;
+        }
+
         isSpawning = true;
     }
 
@@ -40,6 +44,7 @@ public class BobaSpawner : MonoBehaviour {
 
     private Vector3 GeneratePosition() {
         float xPosition = Debugger.Instance.IsOn ? transform.position.x : Random.Range(-screenSize, screenSize);
+
         return new Vector3(
             xPosition,
             transform.position.y,
