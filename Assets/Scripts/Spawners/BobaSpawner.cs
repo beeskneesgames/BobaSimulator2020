@@ -23,18 +23,6 @@ public class BobaSpawner : MonoBehaviour {
 
                 boba1.transform.position = GeneratePosition();
 
-
-                //if (Globals.currentOrder.bobaAmount == Order.AddInOption.Regular ||
-                //    Globals.currentOrder.bobaAmount == Order.AddInOption.Extra) {
-                //    GameObject boba2 = Instantiate(bobaPrefab);
-                //    boba2.transform.position = GeneratePosition();
-                //}
-
-                //if (Globals.currentOrder.bobaAmount == Order.AddInOption.Extra) {
-                //    GameObject boba3 = Instantiate(bobaPrefab);
-                //    boba3.transform.position = GeneratePosition();
-                //}
-
                 timeSinceLastBoba = 0.0f;
             }
         }
@@ -42,9 +30,9 @@ public class BobaSpawner : MonoBehaviour {
 
     public void StartSpawning() {
         if (Globals.currentOrder.bobaAmount == Order.AddInOption.None) {
-            interval = 2.0f;
+            interval = 0.5f;
         } else if (Globals.currentOrder.bobaAmount == Order.AddInOption.Light) {
-            interval = 1.0f;
+            interval = 0.1f;
         } else {
             interval = 0.05f;
         }

@@ -34,11 +34,11 @@ public class IceSpawner : MonoBehaviour {
     public void StartSpawning() {
         if (Globals.currentOrder.iceAmount == Order.AddInOption.None ||
             Globals.currentOrder.iceAmount == Order.AddInOption.Light) {
-            interval = 1.0f;
-        } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Regular) {
             interval = 0.5f;
+        } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Regular) {
+            interval = 0.25f;
         } else {
-            interval = 0.1f;
+            interval = 0.75f;
         }
 
         isSpawning = true;
