@@ -275,9 +275,9 @@ public class Grade {
                 phrase = "There's too little boba.";
             } else if (extraFlavors.Count > 0) {
                 phrase = $"Do I taste {extraFlavors[0]}?";
-            } else if (iceDifference >= 0.12f) {
+            } else if (iceDifference >= 0.20f) {
                 phrase = "There's too much ice.";
-            } else if (iceDifference <= -0.12f) {
+            } else if (iceDifference <= -0.20f) {
                 phrase = "There's too little ice.";
             }
         }
