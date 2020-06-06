@@ -83,7 +83,7 @@ public class Grade {
             "weird.",
             "upsetting.",
             "gross.",
-            "isn't right.",
+            "not right.",
         };
 
         List<string> goodPhrase = new List<string> {
@@ -95,12 +95,10 @@ public class Grade {
         };
 
         List<string> mediocrePhrase = new List<string> {
-            "The flavor is a little odd.",
             "It's not quite what I was expecting.",
         };
 
         List<string> badPhrase = new List<string> {
-            "The flavor is way off.",
             "I'd like a remake please.",
             "Is this even my order?",
         };
@@ -203,7 +201,7 @@ public class Grade {
     }
 
     private float BobaDeductions() {
-        float deductionWeight = 0.6f;
+        float deductionWeight = 0.5f;
 
         return Math.Abs(BobaDifference() * deductionWeight);
     }
@@ -256,8 +254,8 @@ public class Grade {
         string phrase = "";
 
         if (letterGrade == LetterGrade.C || letterGrade == LetterGrade.F) {
-            if (extraFlavors.Count >= 1 && flavorDeductions >= 0.2f) {
-                phrase = "This flavor is really really weird.";
+            if (extraFlavors.Count >= 1 && flavorDeductions >= 0.12f) {
+                phrase = "The flavor is weird.";
             }
             if (Globals.currentOrder.bobaAmount == Order.AddInOption.None) {
                 if (Globals.bobaCount > 5) {
@@ -271,15 +269,15 @@ public class Grade {
                 }
             } else if (Globals.iceCount == 0) {
                 phrase = "Where is the ice?";
-            } else if (bobaDifference >= 0.15f) {
+            } else if (bobaDifference >= 0.20f) {
                 phrase = "There's too much boba.";
-            } else if (bobaDifference <= -0.15f) {
+            } else if (bobaDifference <= -0.20f) {
                 phrase = "There's too little boba.";
             } else if (extraFlavors.Count > 0) {
                 phrase = $"Do I taste {extraFlavors[0]}?";
-            } else if (iceDifference >= 0.10f) {
+            } else if (iceDifference >= 0.12f) {
                 phrase = "There's too much ice.";
-            } else if (iceDifference <= -0.10f) {
+            } else if (iceDifference <= -0.12f) {
                 phrase = "There's too little ice.";
             }
         }
