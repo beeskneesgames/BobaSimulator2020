@@ -131,10 +131,6 @@ public class Grade {
         float flavorDeductions = FlavorDeductions();
         LetterGrade grade;
 
-        Debug.Log($"boba deductions: {bobaDeductions}");
-        Debug.Log($"ice deductions: {iceDeductions}");
-        Debug.Log($"flavor deductions: {flavorDeductions}");
-
         score = score - bobaDeductions - iceDeductions - flavorDeductions;
 
         if (score >= 0.89f) {
