@@ -38,11 +38,6 @@ public class PauseMenu : MonoBehaviour {
         menuContainer.SetActive(true);
     }
 
-    public void Restart() {
-        Globals.orderCount = 0;
-        GameManager.StartMainScene();
-    }
-
     public void ExitGame() {
         GameManager.StartTitleScene();
     }
