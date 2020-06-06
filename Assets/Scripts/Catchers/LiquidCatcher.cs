@@ -42,7 +42,7 @@ public class LiquidCatcher : MonoBehaviour {
 
     private Order.Flavor currentFlavor = Order.Flavor.NotSet;
     private float currentFlavorTime = 0.0f;
-    private readonly float maxFlavorTime = 3.0f;
+    private readonly float maxFlavorTime = 2.0f;
     private Color previousColor;
     private Color targetColor;
 
@@ -56,20 +56,25 @@ public class LiquidCatcher : MonoBehaviour {
     private void Update() {
         if (CurrentLiquidStream != null && CurrentLiquidStream.IsShown) {
             if (currentFlavor != CurrentLiquidStream.CurrentFlavor) {
+                // If we're in here, we caught a new flavor/color on this frame.
+                // 
+                // If this is the first color (color A) hitting the cup, the
+                // fill should just show A.
+                // To keep the code simpler, we lerp from A to A.
+                //
+                // If this is the second color (color B) hitting the cup, start
+                // lerping from A to B.
+                // After N seconds, we should be entirely lerped to B. Until then,
+                // we're showing a mix between A and B (let's call this color AB).
+                //
+                // If this is the third color (color C) hitting the cup and
+                // we're currently showing AB, start lerping from AB to C.
+                // Again, after N seconds, we should be entirely lerped to C.
                 targetColor = Order.FlavorColors[CurrentLiquidStream.CurrentFlavor];
 
                 if (currentFlavor == Order.Flavor.NotSet) {
-                    // When color A hits the cup, the fill should just be A.
-                    // To keep the code simpler, we lerp from A to A.
                     previousColor = targetColor;
                 } else {
-                    // When color B hits the cup, start lerping from A to B.
-                    // After 3 seconds, we should be entirely lerped to B. Until then,
-                    // we're showing a mix between A and B (let's call this color AB).
-                    //
-                    // If color C hits the cup while we're showing AB, start lerping
-                    // from AB to C.
-                    // Again, after 3 seconds, we should be entirely lerped to C.
                     previousColor = Globals.liquidFillColor;
                 }
 
