@@ -32,6 +32,10 @@ public class PhaseManager : MonoBehaviour {
             currentPhase = value;
         }
     }
+    public bool IsCupShown {
+        get;
+        private set;
+    }
 
     private void Start() {
         Debugger.Instance.phaseManager = this;
@@ -48,6 +52,8 @@ public class PhaseManager : MonoBehaviour {
         } else {
             Globals.currentOrder = Order.GenerateBasic();
         }
+
+        IsCupShown = false;
 
         startingPhase.BeforeStartPhase();
     }
@@ -92,8 +98,17 @@ public class PhaseManager : MonoBehaviour {
         }
     }
 
+    public void CupHidden() {
+        IsCupShown = false;
+    }
+
     public void CupShown() {
+        IsCupShown = true;
         currentPhase.StartPhase();
+    }
+
+    public void HideCup() {
+        cupAnimator.SetTrigger("HideCup");
     }
 
     private IEnumerator ShowCup() {

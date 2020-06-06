@@ -49,7 +49,9 @@ public class IcePhase : GamePhase {
     }
 
     private IEnumerator HideCupAndShowInstructions() {
-        phaseManager.cupAnimator.SetTrigger("HideCup");
+        if (phaseManager.IsCupShown) {
+            phaseManager.HideCup();
+        }
 
         yield return new WaitForSecondsRealtime(1);
 
