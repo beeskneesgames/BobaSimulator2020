@@ -20,7 +20,7 @@ public class GradeScreen : MonoBehaviour {
         cupContainer.transform.SetParent(gradeContainer.transform);
         cupContainer.transform.localPosition = new Vector3(40.0f, 0.0f, 0.0f);
         cupContainer.transform.rotation = Quaternion.identity;
-        cupContainer.transform.Rotate(Vector3.forward * -7.5f);
+        cupContainer.transform.Rotate(Vector3.forward * -11f);
 
         cupContainer.transform.localScale = new Vector3(cupScale, cupScale, cupScale);
         cupContainer.PrepareForGradeScreen();
