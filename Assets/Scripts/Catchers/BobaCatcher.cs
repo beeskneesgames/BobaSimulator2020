@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BobaCatcher : MonoBehaviour {
-    public Text bobaCountText;
     public BobaPhase bobaPhase;
 
     private int bobaCount = 0;
@@ -16,7 +15,6 @@ public class BobaCatcher : MonoBehaviour {
         set {
             bobaCount = value;
             Globals.bobaCount = BobaCount;
-            bobaCountText.text = $"Boba Count: {BobaCount}";
         }
     }
 

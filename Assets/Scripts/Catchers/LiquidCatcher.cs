@@ -8,7 +8,6 @@ public class LiquidCatcher : MonoBehaviour {
     public GameObject cupBottom;
     public ClippingPlane liquidFillClippingPlane;
     public ClippingPlane liquidStreamClippingPlane;
-    public Text liquidPercentageText;
     public LiquidPhase liquidPhase;
     public float liquidFillSpeed = 2.4f;
     public float LiquidFillTopY {
@@ -123,7 +122,6 @@ public class LiquidCatcher : MonoBehaviour {
     }
 
     private void UpdateLiquidDisplay() {
-        liquidPercentageText.text = $"Liquid Percentage: {Globals.FormattedLiquidPercentage}%";
         liquidFillClippingPlane.transform.localPosition = new Vector3(
             liquidFillClippingPlane.transform.localPosition.x,
             LiquidFillTopY,
