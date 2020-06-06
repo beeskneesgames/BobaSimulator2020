@@ -138,6 +138,7 @@ public class LiquidStream : MonoBehaviour {
         HideSplash();
         IsShown = false;
         clippingPlane.transform.position = GetClippingPlaneHiddenPosition();
+        CurrentTransition = Transition.None;
     }
 
     public void StartBeingCaught(LiquidCatcher catcher) {
