@@ -10,16 +10,6 @@ public class IceSpawner : MonoBehaviour {
     private float screenSize;
 
     private void Start() {
-        if (Globals.currentOrder.iceAmount == Order.AddInOption.None) {
-            interval = 6.0f;
-        } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Light) {
-            interval = 5.0f;
-        } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Regular) {
-            interval = 4.0f;
-        } else {
-            interval = 3.0f;
-        }
-
         screenSize = Globals.GetScreenSize(Camera.main);
     }
 
@@ -42,6 +32,15 @@ public class IceSpawner : MonoBehaviour {
     }
 
     public void StartSpawning() {
+        if (Globals.currentOrder.iceAmount == Order.AddInOption.None ||
+            Globals.currentOrder.iceAmount == Order.AddInOption.Light) {
+            interval = 1.0f;
+        } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Regular) {
+            interval = 0.5f;
+        } else {
+            interval = 0.1f;
+        }
+
         isSpawning = true;
     }
 

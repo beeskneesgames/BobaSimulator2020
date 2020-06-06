@@ -11,14 +11,6 @@ public class BobaSpawner : MonoBehaviour {
     private float screenSize;
 
     private void Start() {
-        if (Globals.currentOrder.bobaAmount == Order.AddInOption.None) {
-            interval = 0.1f;
-        } else if (Globals.currentOrder.bobaAmount == Order.AddInOption.Light) {
-            interval = 0.01f;
-        } else {
-            interval = 0.0001f;
-        }
-
         screenSize = Globals.GetScreenSize(Camera.main);
     }
 
@@ -32,16 +24,16 @@ public class BobaSpawner : MonoBehaviour {
                 boba1.transform.position = GeneratePosition();
 
 
-                if (Globals.currentOrder.bobaAmount == Order.AddInOption.Regular ||
-                    Globals.currentOrder.bobaAmount == Order.AddInOption.Extra) {
-                    GameObject boba2 = Instantiate(bobaPrefab);
-                    boba2.transform.position = GeneratePosition();
-                }
+                //if (Globals.currentOrder.bobaAmount == Order.AddInOption.Regular ||
+                //    Globals.currentOrder.bobaAmount == Order.AddInOption.Extra) {
+                //    GameObject boba2 = Instantiate(bobaPrefab);
+                //    boba2.transform.position = GeneratePosition();
+                //}
 
-                if (Globals.currentOrder.bobaAmount == Order.AddInOption.Extra) {
-                    GameObject boba3 = Instantiate(bobaPrefab);
-                    boba3.transform.position = GeneratePosition();
-                }
+                //if (Globals.currentOrder.bobaAmount == Order.AddInOption.Extra) {
+                //    GameObject boba3 = Instantiate(bobaPrefab);
+                //    boba3.transform.position = GeneratePosition();
+                //}
 
                 timeSinceLastBoba = 0.0f;
             }
@@ -49,6 +41,14 @@ public class BobaSpawner : MonoBehaviour {
     }
 
     public void StartSpawning() {
+        if (Globals.currentOrder.bobaAmount == Order.AddInOption.None) {
+            interval = 2.0f;
+        } else if (Globals.currentOrder.bobaAmount == Order.AddInOption.Light) {
+            interval = 1.0f;
+        } else {
+            interval = 0.05f;
+        }
+
         isSpawning = true;
     }
 
