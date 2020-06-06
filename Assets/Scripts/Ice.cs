@@ -62,7 +62,7 @@ public class Ice : MonoBehaviour {
 
         keepAfterLanding = icePlacer.HasPositions();
         startingPosition = transform.localPosition;
-        targetLocalPosition = icePlacer.PopPosition(startingPosition);
+        targetLocalPosition = icePlacer.PopPosition(startingPosition, this);
         targetWorldPosition = icePlacer.transform.TransformPoint(targetLocalPosition);
         maxTimeFalling = (startingPosition.y - targetWorldPosition.y) / velocity;
 

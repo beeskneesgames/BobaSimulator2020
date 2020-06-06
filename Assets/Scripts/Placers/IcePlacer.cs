@@ -16,7 +16,7 @@ public class IcePlacer : MonoBehaviour {
     private bool iceFloating = false;
     private float liquidFillClippingPlaneLastY;
 
-    private List<List<float>> xLayers = new List<List<float>> {
+    private readonly List<List<float>> xLayers = new List<List<float>> {
         new List<float> {  0.2f,  0.85f },
         new List<float> { -0.05f, 0.9f  },
         new List<float> { -0.1f,  0.55f, 1.18f },
@@ -26,6 +26,7 @@ public class IcePlacer : MonoBehaviour {
     };
 
     private List<List<Vector3>> positionLayers;
+    private List<List<Ice>> caughtIce = new List<List<Ice>>();
 
     private void Awake() {
         // Set up the ice positions
@@ -48,6 +49,10 @@ public class IcePlacer : MonoBehaviour {
 
     private void Start() {
         liquidFillClippingPlaneLastY = liquidFillClippingPlane.transform.localPosition.y;
+
+        for (int i = 0; i < xLayers.Count; i++) {
+            caughtIce.Add(new List<Ice>());
+        }
     }
 
     private void Update() {
@@ -62,6 +67,18 @@ public class IcePlacer : MonoBehaviour {
         }
     }
 
+    public List<Ice> TopIceLayer {
+        get {
+            for (int i = caughtIce.Count - 1; i >= 0; i--) {
+                if (caughtIce[i].Count > 0) {
+                    return caughtIce[i];
+                }
+            }
+
+            return caughtIce[0];
+        }
+    }
+
     public void IcePlaced(Ice ice) {
         // Put the ice placer collider on the same level as the last placed ice
         // so the liquid will hit it there.
@@ -69,7 +86,7 @@ public class IcePlacer : MonoBehaviour {
             icePlacerCollider.transform.localPosition.x,
             // Add iceSize so we don't start floating until we're most of the
             // way up the ice.
-            ice.transform.localPosition.y + iceSize * 0.5f,
+            ice.transform.localPosition.y + iceSize * 0.85f,
             icePlacerCollider.transform.localPosition.z
         );
     }
@@ -83,7 +100,7 @@ public class IcePlacer : MonoBehaviour {
         return layerIndex < xLayers.Count;
     }
 
-    public Vector3 PopPosition(Vector3 startingPosition) {
+    public Vector3 PopPosition(Vector3 startingPosition, Ice ice) {
         // If we run out of positions before the phase is over while ice is still falling,
         // return a previous position to avoid errors.
         if (!HasPositions()) {
@@ -94,6 +111,8 @@ public class IcePlacer : MonoBehaviour {
             layerIndex = Mathf.RoundToInt(bobaPlacer.TopY / iceSize);
             layerIndexCalculated = true;
         }
+
+        caughtIce[layerIndex].Add(ice);
 
         int closestPositionIndex = 0;
         Vector3 closestPosition = positionLayers[layerIndex][closestPositionIndex];

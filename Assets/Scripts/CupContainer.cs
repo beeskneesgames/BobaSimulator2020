@@ -4,6 +4,7 @@ public class CupContainer : MonoBehaviour {
     public GameObject arm;
     public GameObject cup;
     public GameObject straw;
+    public IcePlacer icePlacer;
 
     private void Start() {
         DontDestroyOnLoad(gameObject);
@@ -26,6 +27,17 @@ public class CupContainer : MonoBehaviour {
 
         // Move the cup to the center of the container
         cup.transform.localPosition = Vector3.zero;
+
+        // Move the top layer of ice down a little so it looks like there's a
+        // lid on the cup lol
+        foreach (Ice ice in icePlacer.TopIceLayer) {
+            ice.transform.localPosition = new Vector3(
+                ice.transform.localPosition.x,
+                ice.transform.localPosition.y - 1.03f,
+                ice.transform.localPosition.z
+            );
+            Debug.Log(ice);
+        }
 
         // Hide the arm and clear out unused components
         Destroy(arm);
