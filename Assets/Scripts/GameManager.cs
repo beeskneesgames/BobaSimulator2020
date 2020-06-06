@@ -11,6 +11,10 @@ public class GameManager {
         SceneManager.LoadScene("CreditsScene");
     }
 
+    public static void StartIntroCutScene() {
+        SceneManager.LoadScene("IntroCutScene");
+    }
+
     public static void StartMainScene() {
         SceneManager.LoadScene("MainScene");
     }
