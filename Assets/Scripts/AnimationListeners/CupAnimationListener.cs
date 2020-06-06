@@ -10,7 +10,6 @@ public class CupAnimationListener : MonoBehaviour {
     }
 
     public void CupExited() {
-        // We don't do anything here right now, but we may need to in the near
-        // future.
+        phaseManager.CupHidden();
     }
 }
