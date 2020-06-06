@@ -131,10 +131,6 @@ public class Grade {
         float flavorDeductions = FlavorDeductions();
         LetterGrade grade;
 
-        Debug.Log($"boba deductions: {bobaDeductions}");
-        Debug.Log($"ice deductions: {iceDeductions}");
-        Debug.Log($"flavor deductions: {flavorDeductions}");
-
         score = score - bobaDeductions - iceDeductions - flavorDeductions;
 
         if (score >= 0.89f) {
@@ -275,9 +271,9 @@ public class Grade {
                 phrase = "There's too little boba.";
             } else if (extraFlavors.Count > 0) {
                 phrase = $"Do I taste {extraFlavors[0]}?";
-            } else if (iceDifference >= 0.12f) {
+            } else if (iceDifference >= 0.20f) {
                 phrase = "There's too much ice.";
-            } else if (iceDifference <= -0.12f) {
+            } else if (iceDifference <= -0.20f) {
                 phrase = "There's too little ice.";
             }
         }

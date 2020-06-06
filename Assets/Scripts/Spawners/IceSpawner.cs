@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class IceSpawner : MonoBehaviour {
     public GameObject icePrefab;
-    public float interval = 3.0f;
-
+    public float interval;
     private bool isSpawning = false;
     private float timeSinceLastIce = 0.0f;
     private float screenSize;
@@ -33,6 +32,15 @@ public class IceSpawner : MonoBehaviour {
     }
 
     public void StartSpawning() {
+        if (Globals.currentOrder.iceAmount == Order.AddInOption.None ||
+            Globals.currentOrder.iceAmount == Order.AddInOption.Light) {
+            interval = 0.5f;
+        } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Regular) {
+            interval = 0.25f;
+        } else {
+            interval = 0.75f;
+        }
+
         isSpawning = true;
     }
 
@@ -42,6 +50,7 @@ public class IceSpawner : MonoBehaviour {
 
     private Vector3 GeneratePosition() {
         float xPosition = Debugger.Instance.IsOn ? transform.position.x : Random.Range(-screenSize, screenSize);
+
         return new Vector3(
             xPosition,
             transform.position.y,
