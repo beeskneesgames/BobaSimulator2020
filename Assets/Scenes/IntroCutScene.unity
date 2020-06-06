@@ -1885,6 +1885,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Note
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2789660d7a19c4bb8a1bc05205e6fe74,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2789660d7a19c4bb8a1bc05205e6fe74, type: 3}
 --- !u!4 &636018264 stripped
@@ -3622,7 +3627,7 @@ GameObject:
   - component: {fileID: 1851759652}
   - component: {fileID: 1851759653}
   - component: {fileID: 1851759654}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NoteContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
