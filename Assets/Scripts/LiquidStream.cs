@@ -168,6 +168,14 @@ public class LiquidStream : MonoBehaviour {
                 clippingPlanePostTransitionPosition,
                 currentTimeTransitioning / maxTimeTransitioning
             );
+
+            if (liquidCatcher && clippingPlane.transform.position.y < liquidCatcher.cupBottom.transform.position.y) {
+                // If the stream should be getting caught and would blip through
+                // the bottom of the cup, move the clipping plane so the stream
+                // looks like it's caught properly and end the transition.
+                clippingPlane.transform.position = GetClippingPlaneCaughtPosition();
+                StopTransitionIn();
+            }
         } else {
             StopTransitionIn();
         }
