@@ -12,6 +12,14 @@ public class CupContainer : MonoBehaviour {
     }
 
     public void PrepareForGradeScreen() {
+        Renderer cupRenderer = cup.GetComponent<Renderer>();
+        Color cupColor = cupRenderer.material.color;
+        cupRenderer.material.color = new Color(
+            cupColor.r,
+            cupColor.g,
+            cupColor.b,
+            0.5f
+        );
         cup.transform.localPosition = Vector3.zero;
         Destroy(arm);
 
