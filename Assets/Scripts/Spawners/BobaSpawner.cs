@@ -11,6 +11,16 @@ public class BobaSpawner : MonoBehaviour {
     private float screenSize;
 
     private void Start() {
+        if (Globals.currentOrder.bobaAmount == Order.AddInOption.None) {
+            interval = 0.1f;
+        } else if (Globals.currentOrder.bobaAmount == Order.AddInOption.Light) {
+            interval = 0.01f;
+        } else if (Globals.currentOrder.bobaAmount == Order.AddInOption.Regular) {
+            interval = 0.0001f;
+        } else if (Globals.currentOrder.bobaAmount == Order.AddInOption.Extra) {
+            interval = 0.0001f;
+        }
+
         screenSize = Globals.GetScreenSize(Camera.main);
     }
 

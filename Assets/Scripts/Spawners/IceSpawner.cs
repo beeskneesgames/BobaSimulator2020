@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class IceSpawner : MonoBehaviour {
     public GameObject icePrefab;
-    public float interval = 3.0f;
-
+    public float interval;
     private bool isSpawning = false;
     private float timeSinceLastIce = 0.0f;
     private float screenSize;
 
     private void Start() {
+        if (Globals.currentOrder.iceAmount == Order.AddInOption.None) {
+            interval = 6.0f;
+        } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Light) {
+            interval = 5.0f;
+        } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Regular) {
+            interval = 4.0f;
+        } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Extra) {
+            interval = 3.0f;
+        }
+
         screenSize = Globals.GetScreenSize(Camera.main);
     }
 
