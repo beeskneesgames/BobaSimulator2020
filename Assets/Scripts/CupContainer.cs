@@ -3,6 +3,7 @@
 public class CupContainer : MonoBehaviour {
     public GameObject arm;
     public GameObject cup;
+    public GameObject lid;
     public GameObject straw;
 
     private void Start() {
@@ -13,6 +14,7 @@ public class CupContainer : MonoBehaviour {
     public void PrepareForGradeScreen() {
         // Show the straw and pick a color for it
         straw.SetActive(true);
+        lid.SetActive(true);
 
         // Make cup more transparent
         Renderer cupRenderer = cup.GetComponent<Renderer>();

@@ -3476,7 +3476,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: a9b7c146c59d54a9e8cf493319c5de03,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9b7c146c59d54a9e8cf493319c5de03, type: 3}
@@ -5482,6 +5482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arm: {fileID: 1003830166}
   cup: {fileID: 1268551852}
+  lid: {fileID: 8646206877487016827}
   straw: {fileID: 236357466}
 --- !u!1001 &1890668212
 PrefabInstance:
@@ -6595,6 +6596,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1219240725338953755, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2064720734355128166, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6614,6 +6620,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cup
+      objectReference: {fileID: 0}
+    - target: {fileID: 4372339344446634623, guid: 085f12f3e603343d283dff5825a08724,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5355369070743479875, guid: 085f12f3e603343d283dff5825a08724,
         type: 3}
@@ -6686,3 +6697,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b69f766b950a412ab5e91832a33bee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8646206877487016827 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1219240725338953755, guid: 085f12f3e603343d283dff5825a08724,
+    type: 3}
+  m_PrefabInstance: {fileID: 8646206877487016825}
+  m_PrefabAsset: {fileID: 0}
