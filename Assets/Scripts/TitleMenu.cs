@@ -20,4 +20,8 @@ public class TitleMenu : MonoBehaviour {
     public void ShowCredits() {
         GameManager.StartCreditsScene();
     }
+
+    public void ExitGame() {
+        Application.Quit();
+    }
 }
