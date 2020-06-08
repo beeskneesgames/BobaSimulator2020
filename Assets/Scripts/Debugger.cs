@@ -75,7 +75,7 @@ public class Debugger : MonoBehaviour {
 
     private void UpdateGraphy() {
         if (graphy != null) {
-            graphy.gameObject.SetActive(IsOn);
+            graphy.gameObject.SetActive(Debug.isDebugBuild && IsOn);
         }
     }
 
