@@ -31,9 +31,9 @@ public class TabletUI : MonoBehaviour {
 
     private void UpdateDisplayedOrder() {
         string[] lines = {
-            MarkedLine(displayedOrder.FlavorDescription, displayedPhase == "Liquid Phase"),
             MarkedLine(displayedOrder.BobaDescription, displayedPhase == "Boba Phase"),
-            MarkedLine(displayedOrder.IceDescription, displayedPhase == "Ice Phase")
+            MarkedLine(displayedOrder.IceDescription, displayedPhase == "Ice Phase"),
+            MarkedLine(displayedOrder.FlavorDescription, displayedPhase == "Liquid Phase")
         };
         orderText.text = string.Join("\n", lines);
     }

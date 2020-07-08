@@ -30,13 +30,21 @@ public class IceSpawner : MonoBehaviour {
     }
 
     public void StartSpawning() {
-        if (Globals.currentOrder.iceAmount == Order.AddInOption.None ||
-            Globals.currentOrder.iceAmount == Order.AddInOption.Light) {
-            interval = 0.5f;
-        } else if (Globals.currentOrder.iceAmount == Order.AddInOption.Regular) {
-            interval = 0.25f;
-        } else {
-            interval = 0.75f;
+        switch (Globals.currentOrder.iceAmount) {
+            case Order.AddInOption.None:
+            case Order.AddInOption.Light:
+                interval = 0.5f;
+                break;
+            case Order.AddInOption.Regular:
+                interval = 0.25f;
+                break;
+            case Order.AddInOption.Extra:
+                interval = 0.125f;
+                break;
+            default:
+                Debug.LogWarning($"iceAmount set to invalid value: {Globals.currentOrder.iceAmount}");
+                interval = 0.25f;
+                break;
         }
 
         isSpawning = true;

@@ -826,11 +826,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Honeydew with a splash of coffee
+  m_text: 'Extra boba
 
-    Extra boba
+    Extra ice
 
-    Extra ice'
+    Honeydew with a splash of coffee'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d8347b888c67f494bac9db5e50bc3821, type: 2}
   m_sharedMaterial: {fileID: -8875104348106905566, guid: d8347b888c67f494bac9db5e50bc3821,
