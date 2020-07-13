@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 public class PauseMenu : MonoBehaviour {
+    public CupContainer cupContainer;
     public GameObject menuContainer;
 
     private float oldTimeScale;
@@ -39,6 +40,13 @@ public class PauseMenu : MonoBehaviour {
     }
 
     public void ExitGame() {
+        // HACK: CupContainer calls DontDestroyOnLoad, so we need to manually
+        // destroy it if we exit via the pause menu. There's definitely multiple
+        // better ways to do this, which we should investigate in the future.
+        if (cupContainer) {
+            Destroy(cupContainer.gameObject);
+        }
+
         GameManager.StartTitleScene();
     }
 }
